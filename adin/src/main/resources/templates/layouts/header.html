@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>ADIN</title>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="header-logo">
+				<a th:href="@{/}" title="메인으로 가기">
+					<img class="logo-img" th:src="@{/images/logo.png}" alt="ADIN">
+				</a>
+			</div>
+			<div class="header-search">
+				<input type="text" class="main-search">
+				<i class="ri-search-line"></i>
+			</div>
+			<div class="header-login">
+				<button class="login-btn" id="loginBtn">로그인</button>
+				<button class="signup-btn">회원가입</button>
+			</div>
+		</div>
+	</header>
+	<div class="header-sns">
+		<div class="go-sns-ad">
+			<ul>
+				<li><span class="sns-name">YouTube</span><i class="ri-youtube-fill"></i></li>
+				<li class="instar-li"><span class="sns-name">Instargram</span><i class="ri-instagram-line"></i></li>
+				<li><span class="sns-name">Facebook</span><i class="ri-facebook-box-fill"></i></li>
+				<li><span class="sns-name">대중교통</span><i class="ri-subway-fill"></i></li>
+				<li><span class="sns-name">전광판</span><i class="ri-computer-line"></i></li>
+				<li><span class="sns-name">영화관</span><i class="ri-film-fill"></i></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

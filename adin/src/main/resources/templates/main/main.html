@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>ADIN</title>
+	<link rel="stylesheet" th:href="@{/css/main/main.css}">
+	<link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+	<script defer th:src="@{/js/main/main.js}"></script>
+	<script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+	<div class="wrap">
+		<div class="youtube-area">
+			<div class="youtube-title">
+				<span class="youtube-ad-here">유튜브 광고는 여기</span><i class="ri-youtube-fill main-youtube-logo"></i><i class="ri-arrow-right-line"></i>
+			</div>
+			<div class="youtube-contents">
+				<div class="youtube-each-contents">
+					
+				</div>
+				<div class="youtube-each-contents">
+					
+				</div>
+				<div class="youtube-each-contents">
+					
+				</div>
+				<div class="youtube-each-contents">
+					
+				</div>
+				<div class="youtube-each-contents">
+					
+				</div>
+				<div class="youtube-each-contents">
+					
+				</div>
+				<div class="youtube-each-contents">
+					
+				</div>
+				<div class="youtube-each-contents">
+					
+				</div>
+				<div class="youtube-each-contents">
+					
+				</div>
+				<div class="youtube-each-contents">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="login-cover" id="loginCover">
+		<div class="login-box">
+			<div class="close-btn" id="closeBtn">
+				<i class="ri-close-line"></i>
+			</div>
+			<div class="title">
+				<img class="login-logo-img" th:src="@{/images/logo.png}" alt="ADIN">
+			</div>
+			<input type="email" class="email-input" placeholder="이메일" autofocus>
+			<input type="password" class="password-input" placeholder="비밀번호">
+			<div class="user-service">
+				<a>비밀번호 찾기</a>
+				<span>/</span>
+				<a>회원가입</a>
+			</div>
+			<div class="other-login">다른 로그인 방법</div>
+			<div class="other-login-logo">
+				<a>
+					<img th:src="@{/images/kakao-logo.png}" alt="KAKAO">
+				</a>
+				<a>
+					<img th:src="@{/images/google-logo.png}" alt="GOOGLE">
+				</a>
+			</div>
+		</div>
+	</div>	
+</body>
+</html>
+
