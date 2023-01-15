@@ -71,83 +71,83 @@ header {
 
 /* 로그인 */
 .login-cover {
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
-	background-color:rgba(255, 255, 255, 0.8);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.8);
 	backdrop-filter: blur(2px);
-	align-items:center;
-	display:none;
-	flex-direction:column;
-	justify-content:center;
-	position:fixed;
-	z-index:9;
+	align-items: center;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	position: fixed;
+	z-index: 9;
 }
 
 .login-box {
-	width:22rem;
-	height:26rem;
+	width: 22rem;
+	height: 26rem;
 	border: 1px solid #eee;
-	border-radius:2rem;
-	background-color:rgb(255, 255, 255);
-	display:flex;
-	flex-direction:column;
-	justify-content:center;
-	align-items:center;
-	position:fixed;
+	border-radius: 2rem;
+	background-color: rgb(255, 255, 255);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
 }
 
 .login-box > .close-btn{
-	cursor:pointer;
-	margin-left:18rem;
-	font-size:1.25rem;
+	cursor: pointer;
+	margin-left: 18rem;
+	font-size: 1.25rem;
 }
 
 .login-box > .title {
-	margin-bottom:1rem;
+	margin-bottom: 1rem;
 }
 
 .login-box > .title > .login-logo-img {
-	width:10rem;
+	width: 10rem;
 }
 
 .login-box > input {
-	margin-bottom:1rem;
-	width:15rem;
-	height:2.5rem;
-	border-radius:0.5rem;
-	border:1px solid #D9D9D9;
-	padding-left:0.5rem;
+	margin-bottom: 1rem;
+	width: 15rem;
+	height: 2.5rem;
+	border-radius: 0.5rem;
+	border: 1px solid #D9D9D9;
+	padding-left: 0.5rem;
 }
 
 .login-box > .user-service > a {
-	cursor:pointer;
-	text-decoration:underline;
+	cursor: pointer;
+	text-decoration: underline;
 }
 
 .login-box > .other-login {
-	margin:1rem 0 0.5rem 0;
-	color:#D9D9D9;
+	margin: 1rem 0 0.5rem 0;
+	color: #D9D9D9;
 }
 
 .login-box > .other-login-logo {
-	margin-bottom:1rem;
+	margin-bottom: 1rem;
 }
 
 .login-box > .other-login-logo > a > img {
-	cursor:pointer;
-	width:3rem;
+	cursor: pointer;
+	width: 3rem;
 }
 
 .login-box > .other-login-logo > a:first-of-type > img {
-	margin-right:0.5rem;
+	margin-right: 0.5rem;
 }
 
 .login-box > .other-login-logo > a:last-of-type > img {
-	border:1px solid #D9D9D9;
-	border-radius:0.3rem;
-	box-sizing:border-box;
+	border: 1px solid #D9D9D9;
+	border-radius: 0.3rem;
+	box-sizing: border-box;
 }
 
 /* 헤더 sns */
