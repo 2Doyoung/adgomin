@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+/* 사이즈 조정 */
+html {
+    margin: 0;
+    height: 100vh;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+body > .main {
+    height: 100%;
+}
+
+/* 내용 가운데 정렬 및 위치조정 */
+body > .main > .content {
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+body > .main > .content > .form {
+    width: 100%;
+    max-width: 50rem;
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* step 가로 정렬 */
+body > .main > .content > .form > .title-container > .step-container {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+/* 현재 step 색 표시 */
+body > .main > .content > .form.step1 > .title-container > .step-container > .step.step1,
+body > .main > .content > .form.step2 > .title-container > .step-container > .step.step2,
+body > .main > .content > .form.step3 > .title-container > .step-container > .step.step3{
+    color: #5C8AE6;
+}
+
+/* step 간격 설정 */
+body > .main > .content > .form > .title-container > .step-container > span + span {
+    margin-left: 5.5rem;
+}
+
+/* 현재 단계 title 위치 조정 및 사이즈, margin 설정 */
+body > .main > .content > .form > .title-container > .text {
+    margin: 2.5rem 0 1rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+body > .main > .content > .form > .step {
+    align-items: center;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+body > .main > .content > .form.step1 > .step.step1,
+body > .main > .content > .form.step2 > .step.step2,
+body > .main > .content > .form.step3 > .step.step3 {
+    display: flex;
+}
+
+/* 이용약관 상자 */
+body > .main > .content > .form > .step > .label > .input.term {
+    width: 25rem;
+    height: 15rem;
+    resize: none;
+    overflow: hidden;
+    border: 1px solid #BEBEBE;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* 이용약관 체크박스 */
+body > .main > .content > .form > .step > .check {
+    align-self: flex-start;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+body > .main > .content > .form > .step > .check > .text {
+    font-size: 0.825rem;
+    margin-left: 0.2rem;
+}
+
+/* 다음 넘어가는 버튼 */
+body > .main > .content > .form > .btn-container > .next-btn {
+    width: 15.95rem;
+    height: 2.25rem;
+    background-color: rgba(95, 144, 243, 0.84);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    border: none;
+    border-radius: 0.2rem;
+    margin-top: 1rem;
+}
+
+/* 경고창 */
+body > .main > .content > .form > .warning {
+    color: rgba(231, 76, 60, 0.89);
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    align-items: center;
+    /* 기본적으로는 안 보이는 상태 */
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+}
+
+body > .main > .content > .form > .warning.visible {
+    /* 체크하지 않은 상태에서 버튼을 누르면 경고문구가 보임 */
+    display: flex;
+}
+
+body > .main > .content > .form > .warning > .text {
+    flex: 1;
+    margin: 0 0 0.1rem 0.5rem;
+}
+
+/* step2 */
+body > .main > .content > .form > .step2 > .table > tbody > tr > td {
+    padding: 0.5rem;
+}
+
+body > .main > .content > .form > .step2 > .table > tbody > tr > td > label > div {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+}
+
+body > .main > .content > .form > .step2 > .table > tbody > tr > td > label > input {
+    width: 15rem;
+    height: 2rem;
+    border-radius: 0.2rem;;
+    padding-left: 0.5rem;
+    border: 1px solid #ccc;
+}
+
+/* step3 */
+body > .main > .content > .form > .step3 > .message {
+    font-size: 1.2rem;
+    margin: 1rem;
+}
+
+body > .main > .content > .form > .step3 > .message-small {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}

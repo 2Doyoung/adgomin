@@ -18,10 +18,36 @@
 			</div>
 			<div class="header-login">
 				<button class="login-btn" id="loginBtn">로그인</button>
-				<button class="signup-btn">회원가입</button>
+				<button class="signup-btn" id="signupBtn">회원가입</button>
 			</div>
 		</div>
 	</header>
+	<div class="login-cover" id="loginCover">
+		<div class="login-box">
+			<div class="close-btn" id="closeBtn">
+				<i class="ri-close-line"></i>
+			</div>
+			<div class="title">
+				<img class="login-logo-img" th:src="@{/images/logo.png}" alt="ADIN">
+			</div>
+			<input type="email" class="email-input" placeholder="이메일" autofocus>
+			<input type="password" class="password-input" placeholder="비밀번호">
+			<div class="user-service">
+				<a>비밀번호 찾기</a>
+				<span>/</span>
+				<a>회원가입</a>
+			</div>
+			<div class="other-login">다른 로그인 방법</div>
+			<div class="other-login-logo">
+				<a>
+					<img th:src="@{/images/kakao-logo.png}" alt="KAKAO">
+				</a>
+				<a>
+					<img th:src="@{/images/google-logo.png}" alt="GOOGLE">
+				</a>
+			</div>
+		</div>
+	</div>
 	<div class="header-sns">
 		<div class="go-sns-ad">
 			<ul>
