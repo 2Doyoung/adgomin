@@ -87,18 +87,49 @@ body > .main > .content > .form > .step > .label > .input.term {
     margin-bottom: 0.5rem;
 }
 
-/* 이용약관 체크박스 */
+/* 이용약관 체크박스 둥글게 */
 body > .main > .content > .form > .step > .check {
     align-self: flex-start;
-    align-items: center;
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    user-select: none;
+}
+
+body > .main > .content > .form > .step > .check > input {
+    display: none;
+}
+
+body > .main > .content > .form > .step > .check > .checkbox {
+    width: 0.8rem;
+    height: 0.8rem;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border: 0.0625rem solid #A4A4A4;
+    border-radius: 2rem;
+    color: rgb(255, 255, 255);
+    display: flex;
+    flex: 0 0 0.8rem;
+
+    flex-direction: row;
+    justify-content: center;
+    margin-right: 0.5rem;
+    overflow: hidden;
+}
+
+body > .main > .content > .form > .step > .check > input[type=checkbox]:checked ~ .checkbox {
+    color: #A4A4A4;
+}
+
+body > .main > .content > .form > .step > .check > .checkbox > .icon {
+    font-size: 0.7rem;
+    position: relative;
 }
 
 body > .main > .content > .form > .step > .check > .text {
+    color: #424242;
     font-size: 0.825rem;
-    margin-left: 0.2rem;
 }
 
 /* 다음 넘어가는 버튼 */
@@ -151,6 +182,47 @@ body > .main > .content > .form > .step2 > .table > tbody > tr > td > label > in
     border-radius: 0.2rem;;
     padding-left: 0.5rem;
     border: 1px solid #ccc;
+}
+
+/* 간편 회원가입 줄긋기 포함*/
+body > .main > .content > .form > .step2 > .line {
+    width: 15.9rem;
+    position: relative;
+    top: 1rem;
+    height: 1px;
+    background-color: #eee;
+    border: 0;
+}
+
+body > .main > .content > .form > .step2 > .other-login {
+    font-weight: 400;
+    margin-bottom: 16px;
+    padding: 0 8px;
+    font-size: 11px;
+    line-height: 16px;
+    letter-spacing: -.3px;
+    color: #abb0b5;
+    z-index: 1;
+    background: #fff;
+}
+
+body > .main > .content > .form > .step2 > .other-login-logo {
+    margin-bottom:1rem;
+}
+
+body > .main > .content > .form > .step2 > .other-login-logo > a > img {
+    cursor:pointer;
+    width:2.5rem;
+}
+
+body > .main > .content > .form > .step2 > .other-login-logo > a:first-of-type > img {
+    margin-right:0.5rem;
+}
+
+body > .main > .content > .form > .step2 > .other-login-logo > a:last-of-type > img {
+    border:1px solid #D9D9D9;
+    border-radius:0.3rem;
+    box-sizing:border-box;
 }
 
 /* step3 */

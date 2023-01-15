@@ -29,6 +29,9 @@
                 </label>
                 <label class="check">
                     <input name="termAgree" type="checkbox">
+                    <span class="checkbox">
+                        <i class="icon fa-solid fa-check"></i>
+                    </span>
                     <span class="text">애드인 이용약관 동의</span>
                 </label>
             </div>
@@ -72,6 +75,18 @@
             </div>
             <div class="btn-container">
                 <input type="button" class="next-btn" rel="nextBtn" value="회원가입">
+            </div>
+            <div class="step step2">
+                <hr class="line">
+                <div class="other-login">간편 회원가입</div>
+                <div class="other-login-logo">
+                    <a>
+                        <img th:src="@{/images/kakao-logo.png}" alt="KAKAO">
+                    </a>
+                    <a>
+                        <img th:src="@{/images/google-logo.png}" alt="GOOGLE">
+                    </a>
+                </div>
             </div>
         </form>
     </div>

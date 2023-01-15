@@ -91,24 +91,10 @@ form.querySelector('[rel="nextBtn"]').addEventListener('click', () => {
             form.classList.remove('step2');
             form.classList.add('step3'); }
     } else if (form.classList.contains('step3')) {
-        window.location.href = 'login';
+        window.location.href = '/';
     }
 });
 
-// 이메일 주소를 입력하지 않고 인증번호 전송 버튼을 눌렀을 때 뜨는 경고 문구
-// form['emailSend'].addEventListener('click', () => {
-//     form.querySelector('[rel="emailWarning"]').classList.remove('visible');
-//     if (form['email'].value === '') {
-//         EmailWarning.show('이메일 주소를 입력해 주세요.');
-//         form['email'].focus();
-//         return;
-//     }
-    // if (!new RegExp('^([\\da-zA-Z\\-_.]{4,})@([\\da-z\\-]{2,}\\.)?([\\da-z\\-]{2,})\\.([a-z]{2, 15})(\.[a-z]{2})?$').test(form['email'].value)) {
-    //     form.querySelector('[rel="emailWarning"]').innerText = '올바른 이메일 주소를 입력해 주세요.';
-    //     form.querySelector('[rel="emailWarning"]').classList.add('visible');
-    //     form['email'].focus();
-    //     return;
-    // }
 
 //     Cover.show('인증번호를 전송하고 있습니다.\n\n잠시만 기다려 주세요.');
 //     const xhr = new XMLHttpRequest();
