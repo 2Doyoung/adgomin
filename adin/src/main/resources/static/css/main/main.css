@@ -1,43 +1,177 @@
 /* 글꼴 */
-@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+@import url('https: //fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
-.youtube-ad-here {
-	font-family: 'Do Hyeon', sans-serif;
+.youtube-ad-here, .instagram-ad-here, .facebook-ad-here {
+	font-family:  'Do Hyeon', sans-serif;
 }
 
 /* wrap 전체 */
 .wrap {
-	margin:auto 15%; 
+	margin:  auto 15%; 
 }
 
-/* 유튜브 타이틀 */
+/* 유튜브 */
 .youtube-title {
-	margin-top:1rem;
-	margin-bottom:1rem;
+	margin-top:  1rem;
+	margin-bottom:  1rem;
 }
 
 .youtube-title > .youtube-ad-here {
-	font-size:2rem;
-	vertical-align:middle;
+	font-size:  2rem;
+	vertical-align:  middle;
 }
 
-/* 유튜브 타이틀 로고 */
 .main-youtube-logo {
-	font-size:3rem;
+	font-size:  3rem;
 }
 
 /* 화살표 */
 .ri-arrow-right-line {
-	font-size:2rem;
-	vertical-align:middle;
-	margin-left:1rem;
+	font-size:  2rem;
+	vertical-align:  middle;
+	margin-left:  1rem;
 }
 
-/* 유튜브 콘텐츠 */
 .youtube-each-contents {
-	background-color:black;
-	width:15rem;
-	height:20rem;
-	display:inline-block;
+	background-color:  black;
+	width:  15rem;
+	height:  20rem;
+	display:  inline-block;
 }
 
+/* 인스타그램 */
+.instagram-title {
+	margin-top:  1rem;
+	margin-bottom:  1rem;
+}
+
+.instagram-title > .instagram-ad-here {
+	font-size:  2rem;
+	vertical-align:  middle;
+}
+
+.main-instagram-logo {
+	font-size:  3rem;
+}
+
+/* 화살표 */
+.ri-arrow-right-line {
+	font-size:  2rem;
+	vertical-align:  middle;
+	margin-left:  1rem;
+}
+
+.instagram-each-contents {
+	background-color:  black;
+	width:  15rem;
+	height:  20rem;
+	display:  inline-block;
+}
+
+/* 페이스북 */
+.facebook-title {
+	margin-top:  1rem;
+	margin-bottom:  1rem;
+}
+
+.facebook-title > .facebook-ad-here {
+	font-size:  2rem;
+	vertical-align:  middle;
+}
+
+.main-facebook-logo {
+	font-size:  3rem;
+}
+
+/* 화살표 */
+.ri-arrow-right-line {
+	font-size:  2rem;
+	vertical-align:  middle;
+	margin-left:  1rem;
+}
+
+.facebook-each-contents {
+	background-color:  black;
+	width:  15rem;
+	height:  20rem;
+	display:  inline-block;
+}
+
+/* 로그인 */
+.login-cover {
+	top:  0;
+	left:  0;
+	width:  100%;
+	height:  100%;
+	background-color:  rgba(255, 255, 255, 0.8);
+	align-items:  center;
+	display:  none;
+	flex-direction:  column;
+	justify-content:  center;
+	position:  fixed;
+	z-index:  9;
+}
+
+.login-box {
+	width: 22rem;
+    height: 26rem;
+    border-radius: 2rem;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+}
+
+.login-box > .close-btn{
+	cursor: pointer;
+	margin-left: 18rem;
+    font-size: 1.25rem;
+}
+
+.login-box > .title {
+	margin-bottom: 1rem;
+}
+
+.login-box > .title > .login-logo-img {
+	width: 10rem;
+}
+
+.login-box > input {
+	margin-bottom: 1rem;
+    width: 15rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #D9D9D9;
+    padding-left: 0.5rem;
+}
+
+.login-box > .user-service > a {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+.login-box > .other-login {
+	margin: 1rem 0 0.5rem 0;
+	color: #D9D9D9;
+}
+
+.login-box > .other-login-logo {
+	margin-bottom: 1rem;
+}
+
+.login-box > .other-login-logo > a > img {
+	cursor: pointer;
+	width: 3rem;
+}
+
+.login-box > .other-login-logo > a > img:first-of-type {
+	margin-right: 0.5rem;
+}
+
+.login-box > .other-login-logo > a > img:last-of-type {
+	border: 1px solid #D9D9D9;
+    border-radius: 0.3rem;
+    box-sizing: border-box;
+}
