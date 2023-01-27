@@ -119,7 +119,8 @@ body > .main > .content > .form > .step > .check > .checkbox {
 }
 
 body > .main > .content > .form > .step > .check > input[type=checkbox]:checked ~ .checkbox {
-    color: #A4A4A4;
+    background-color: rgba(95, 144, 243, 0.84);
+    border: 0.0625rem solid rgba(95, 144, 243, 0.77);
 }
 
 body > .main > .content > .form > .step > .check > .checkbox > .icon {
