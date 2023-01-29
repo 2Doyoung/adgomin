@@ -5,6 +5,7 @@
 	<title>ADIN</title>
 	<link rel="stylesheet" th:href="@{/css/main/main.css}">
 	<link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+	<link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
 	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 	<script defer th:src="@{/js/main/main.js}"></script>
 	<script defer th:src="@{/js/layouts/header.js}"></script>
@@ -124,6 +125,7 @@
 			</div>
 		</div>
 	</div>
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
 </body>
 </html>
 

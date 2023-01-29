@@ -15,7 +15,7 @@ header {
 }
 
 .logo-img {
-	width: 150px;
+	width: 110px;
 }
 
 /* 메인 검색창 */
@@ -49,9 +49,8 @@ header {
 .login-btn {
 	background-color: #FFFFFF; 
 	height: 35px; 
-	border: 1px solid black; 
-	border-radius: 5px; 
-	width: 90px; 
+	border: 1px solid #bbb;
+	border-radius: 5px;
 	font-size: 1rem; 
 	cursor: pointer;
 }
@@ -60,9 +59,8 @@ header {
 .signup-btn {
 	background-color: rgba(95, 144, 243, 0.84);
 	height: 35px; 
-	border: 1px solid black; 
-	border-radius: 5px; 
-	width: 90px; 
+	border: 1px solid #bbb;
+	border-radius: 5px;
 	font-size: 1rem; 
 	cursor: pointer; 
 	margin-left: 10px; 

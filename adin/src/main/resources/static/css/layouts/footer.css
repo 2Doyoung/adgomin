@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+/* 푸터 전체 */
+footer {
+    background-color: #D8D8D8;
+    margin-top: 2rem;
+}
+
+.footer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.footer-left {
+    height: 300px;
+    margin: auto 10% auto 15%;
+}
+
+.footer-left > .logo-area > img {
+    width: 8rem;
+    margin: 1rem 1rem 0 1rem;
+}
+
+.footer-left > .logo-area > span {
+    vertical-align: super;
+    font-size: 1.2rem;
+}
+
+.footer-left > .info-area {
+    margin-top: 1rem;
+}
+
+.footer-left > .info-area > span {
+    margin: 1rem;
+    font-size: 0.9rem;
+    color: #A4A4A4;
+}
+
+.footer-left > .privacy-area {
+    margin-top: 6rem;
+    margin-left: 1rem;
+}
+
+.footer-right {
+    height: 260px;
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.footer-right > ul {
+    font-weight: 500;
+}
+
+.footer-right > ul > li {
+    color: #A4A4A4;
+    font-weight: 400;
+    font-size: 0.9rem;
+    list-style: none;
+    margin-top: 1rem;
+}
