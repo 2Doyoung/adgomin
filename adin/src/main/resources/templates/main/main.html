@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
-	<title>ADIN</title>
+	<title>애드인 - 모든 광고가 한곳에</title>
 	<link rel="stylesheet" th:href="@{/css/main/main.css}">
 	<link rel="stylesheet" th:href="@{/css/layouts/header.css}">
 	<link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
@@ -13,114 +13,308 @@
 <body>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 	<div class="wrap">
-		<div class="youtube-area">
-			<div class="youtube-title">
-				<span class="youtube-ad-here">유튜브에 광고하고싶다면</span><i class="ri-youtube-fill main-youtube-logo"></i><i class="ri-arrow-right-line"></i>
-			</div>
-			<div class="youtube-contents">
-				<div class="youtube-each-contents">
-					
+		<div class="ad-slide-wrap">
+			<div class="ad-slide-area">
+				<div class="ad-slide-left">
+					<div class="ad-slide-left-area">
+						<i class="ri-arrow-left-s-fill"></i>
+						<img th:src="@{/images/ad-slide-test.png}">
+						<i class="ri-arrow-right-s-fill"></i>
+					</div>
 				</div>
-				<div class="youtube-each-contents">
-					
-				</div>
-				<div class="youtube-each-contents">
-					
-				</div>
-				<div class="youtube-each-contents">
-					
-				</div>
-				<div class="youtube-each-contents">
-					
-				</div>
-				<div class="youtube-each-contents">
-					
-				</div>
-				<div class="youtube-each-contents">
-					
-				</div>
-				<div class="youtube-each-contents">
-					
-				</div>
-				<div class="youtube-each-contents">
-					
-				</div>
-				<div class="youtube-each-contents">
-					
-				</div>
-			</div>
-		</div>
-		<div class="instagram-area">
-			<div class="instagram-title">
-				<span class="instagram-ad-here">인스타그램에 광고하고싶다면</span><i class="ri-instagram-line main-instagram-logo"></i><i class="ri-arrow-right-line"></i>
-			</div>
-			<div class="instagram-contents">
-				<div class="instagram-each-contents">
-					
-				</div>
-				<div class="instagram-each-contents">
-					
-				</div>
-				<div class="instagram-each-contents">
-					
-				</div>
-				<div class="instagram-each-contents">
-					
-				</div>
-				<div class="instagram-each-contents">
-					
-				</div>
-				<div class="instagram-each-contents">
-					
-				</div>
-				<div class="instagram-each-contents">
-					
-				</div>
-				<div class="instagram-each-contents">
-					
-				</div>
-				<div class="instagram-each-contents">
-					
-				</div>
-				<div class="instagram-each-contents">
-					
+				<div class="ad-slide-right">
+					<div class="ad-slide-right-span">
+						<span>애드인 HOT🔥 광고매체</span><br>
+						<span>지금 바로 신청하세요!</span><br>
+					</div>
+					<div class="category-search-example">
+						<ul>
+							<li>
+								# 게임
+							</li>
+							<li>
+								# 제품
+							</li>
+							<li>
+								# 음식점
+							</li>
+							<li>
+								# 병원
+							</li>
+							<li>
+								# 어플
+							</li>
+						</ul>
+					</div>
+					<div class="category-search-area">
+						<input type="text" class="category-search" placeholder="부류를 검색해보세요.">
+						<i class="ri-search-line"></i>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="facebook-area">
-			<div class="facebook-title">
-				<span class="facebook-ad-here">페이스북에 광고하고싶다면</span><i class="ri-facebook-box-fill main-facebook-logo"></i><i class="ri-arrow-right-line"></i>
+		<div class="icon-category-title">원하는 광고 매체를 찾아보세요</div>
+		<div class="icon-category-area">
+			<ul class="icon-category-ul">
+				<li>
+					<i class="ri-youtube-fill"></i>
+					<span class="icon-category-youtube-span">유튜브</span>
+				</li>
+				<li class="icon-category-instagram-li">
+					<i class="ri-instagram-line"></i>
+					<span class="icon-category-instagram-span">인스타그램</span>
+				</li>
+				<li>
+					<i class="ri-facebook-circle-fill"></i>
+					<span class="icon-category-facebook-span">페이스북</span>
+				</li>
+				<li>
+					<img class="blog-logo" th:src="@{/images/blog-logo.png}">
+					<span class="icon-category-blog-span">블로그</span>
+				</li>
+				<li>
+					<i class="ri-subway-fill"></i>
+					<span class="icon-category-subway-span">지하철</span>
+				</li>
+				<li>
+					<i class="ri-bus-2-fill"></i>
+					<span class="icon-category-bus-span">버스</span>
+				</li>
+				<li>
+					<i class="ri-building-fill"></i>
+					<span class="icon-category-outdoor-span">옥외광고</span>
+				</li>
+				<li>
+					<i class="ri-movie-2-fill"></i>
+					<span class="icon-category-movie-span">영화관</span>
+				</li>
+			</ul>
+		</div>
+		<div class="popular-sns-title">✨인기있는 SNS 광고매체 ></div>
+		<div class="popular-sns-ad">
+			<div class="popular-sns-card">
+				<div class="popular-sns-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
+				</div>
 			</div>
-			<div class="facebook-contents">
-				<div class="facebook-each-contents">
-					
+			<div class="popular-sns-card">
+				<div class="popular-sns-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
 				</div>
-				<div class="facebook-each-contents">
-					
+			</div>
+			<div class="popular-sns-card">
+				<div class="popular-sns-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
 				</div>
-				<div class="facebook-each-contents">
-					
+			</div>
+			<div class="popular-sns-card">
+				<div class="popular-sns-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
 				</div>
-				<div class="facebook-each-contents">
-					
+			</div>
+			<div class="popular-sns-card">
+				<div class="popular-sns-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
 				</div>
-				<div class="facebook-each-contents">
-					
+			</div>
+		</div>
+		<div class="popular-transport-title">✨인기있는 대중교통 광고매체 ></div>
+		<div class="popular-transport-ad">
+			<div class="popular-transport-card">
+				<div class="popular-transport-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
 				</div>
-				<div class="facebook-each-contents">
-					
+			</div>
+			<div class="popular-transport-card">
+				<div class="popular-transport-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
 				</div>
-				<div class="facebook-each-contents">
-					
+			</div>
+			<div class="popular-transport-card">
+				<div class="popular-transport-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
 				</div>
-				<div class="facebook-each-contents">
-					
+			</div>
+			<div class="popular-transport-card">
+				<div class="popular-transport-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
 				</div>
-				<div class="facebook-each-contents">
-					
+			</div>
+			<div class="popular-transport-card">
+				<div class="popular-transport-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
 				</div>
-				<div class="facebook-each-contents">
-					
+			</div>
+		</div>
+		<div class="popular-outdoor-title">✨인기있는 옥외광고 광고매체 ></div>
+		<div class="popular-outdoor-ad">
+			<div class="popular-outdoor-card">
+				<div class="popular-outdoor-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
+				</div>
+			</div>
+			<div class="popular-outdoor-card">
+				<div class="popular-outdoor-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
+				</div>
+			</div>
+			<div class="popular-outdoor-card">
+				<div class="popular-outdoor-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
+				</div>
+			</div>
+			<div class="popular-outdoor-card">
+				<div class="popular-outdoor-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
+				</div>
+			</div>
+			<div class="popular-outdoor-card">
+				<div class="popular-outdoor-thumbnail"></div>
+				<div class="review-star">
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<i class="ri-star-fill"></i>
+					<div class="review-count">(123)</div>
+				</div>
+			</div>
+		</div>
+		<div class="success-ad-preview-wrap">
+			<div class="success-ad-preview-title">
+				성공한 광고 미리보기<br>
+				<span class="success-ad-preview-title-sub">성공한 광고를 미리보면서 광고매체를 선택해보세요.</span>
+			</div>
+			<div class="success-ad-preview-video-wrap">
+				<div class="success-ad-preview-video"></div>
+				<div class="success-ad-preview-video"></div>
+				<div class="success-ad-preview-video"></div>
+			</div>
+		</div>
+		<div class="main-review-list-wrap">
+			<div class="main-review-list-left">
+				<div class="main-review-list-title">광고주들의 <span class="main-review-list-title-color">솔직한 후기</span></div>
+				<div class="main-review-list-title-sub-wrap">
+					<span class="main-review-list-title-sub">
+						마케팅에 효율을 높힐수 있는 후기를 찾아보세요.<br>
+					</span>
+						<span class="main-review-list-title-sub">
+						광고매체를 찾는 수고를 덜어주는 애드인<br>
+					</span>
+						<span class="main-review-list-title-sub">
+						기업 수익창출에 도움되어보세요.<br>
+					</span>
+					<input type="button" class="main-review-list-button" value="후기 더보기 >">
+				</div>
+			</div>
+			<div class="main-review-list-right">
+				<div class="main-review-list">
+					<div class="main-review-list-detail"></div>
+					<div class="main-review-list-detail"></div>
+					<div class="main-review-list-detail"></div>
+					<div class="main-review-list-detail"></div>
+					<div class="main-review-list-detail"></div>
+				</div>
+			</div>
+
+		</div>
+		<div class="adin-marketing-method-wrap">
+			<div class="adin-marketing-method-title">
+				애드인으로 마케팅 활용<br>
+				<span class="adin-marketing-method-title-sub">애드인을 100% 활용해보세요.</span>
+			</div>
+			<div class="adin-marketing-method-content-wrap">
+				<div class="adin-marketing-method-content-left">
+					<div class="adin-marketing-method-content-media"></div>
+					<span class="adin-marketing-method-content-media-span">광고매체 가이드</span>
+				</div>
+				<div class="adin-marketing-method-content-right">
+					<div class="adin-marketing-method-content-advertiser"></div>
+					<span class="adin-marketing-method-content-advertiser-span">광고입 가이드</span>
 				</div>
 			</div>
 		</div>

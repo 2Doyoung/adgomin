@@ -1,102 +1,484 @@
 /* 글꼴 */
-@import url('https: //fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
-
-.youtube-ad-here, .instagram-ad-here, .facebook-ad-here {
-	font-family:  'Do Hyeon', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
 
 body {
 	margin: 0;
 }
 
-/* wrap 전체 */
-.wrap {
-	margin:  auto 15%; 
+body {
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
-/* 유튜브 */
-.youtube-title {
-	margin-top:  1rem;
-	margin-bottom:  1rem;
+/* 유료 광고 */
+.ad-slide-wrap {
+	height: 450px;
+	background-color: #81BEF7;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
-.youtube-title > .youtube-ad-here {
-	font-size:  2rem;
-	vertical-align:  middle;
+.ad-slide-area {
+	margin: auto 17%;
+	display: flex;
 }
 
-.main-youtube-logo {
-	font-size:  3rem;
+.ad-slide-left, .ad-slide-right {
+	display: inline-block;
 }
 
-/* 화살표 */
-.ri-arrow-right-line {
-	font-size:  2rem;
-	vertical-align:  middle;
-	margin-left:  1rem;
+.ad-slide-left {
+	width: 50%;
+	height: 450px;
 }
 
-.youtube-each-contents {
-	background-color:  black;
-	width:  15rem;
-	height:  20rem;
-	display:  inline-block;
+.ad-slide-left > div > img {
+	width: 100%;
+	border-radius: 30px;
 }
 
-/* 인스타그램 */
-.instagram-title {
-	margin-top:  1rem;
-	margin-bottom:  1rem;
+.ri-arrow-left-s-fill, .ri-arrow-right-s-fill {
+	font-size: 3rem;
+	color: #FFFFFF;
 }
 
-.instagram-title > .instagram-ad-here {
-	font-size:  2rem;
-	vertical-align:  middle;
+.ad-slide-left-area {
+	display: flex;
+	align-items: center;
+	margin-top: 12%;
 }
 
-.main-instagram-logo {
-	font-size:  3rem;
+.ad-slide-right {
+	width: 50%;
+	height: 450px;
 }
 
-/* 화살표 */
-.ri-arrow-right-line {
-	font-size:  2rem;
-	vertical-align:  middle;
-	margin-left:  1rem;
+.ad-slide-right > div > span {
+	color: #FFFFFF;
+    font-weight: 500;
 }
 
-.instagram-each-contents {
-	background-color:  black;
-	width:  15rem;
-	height:  20rem;
-	display:  inline-block;
+.ad-slide-right-span {
+	font-size: 2.1rem;
+	line-height: 3.3rem;
+	margin-top: 11%;
+	margin-left: 25%;
 }
 
-/* 페이스북 */
-.facebook-title {
-	margin-top:  1rem;
-	margin-bottom:  1rem;
+.ad-slide-button {
+	width: 160px;
+	height: 55px;
+	font-size: 1.6rem;
+	background-color: #00BFFF;
+	color: #FFFFFF;
+	border: 1px solid #00BFFF;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 2rem;
+	font-weight: 500;
+	display: block;
 }
 
-.facebook-title > .facebook-ad-here {
-	font-size:  2rem;
-	vertical-align:  middle;
+/* 아이콘 카테고리 */
+.icon-category-area {
+	margin: auto 19%;
+	display: flex;
 }
 
-.main-facebook-logo {
-	font-size:  3rem;
+.icon-category-ul {
+	list-style: none;
+	background-color: #FAFAFA;
+	padding: 2rem;
+	border-radius: 2rem;
+	text-align: center;
 }
 
-/* 화살표 */
-.ri-arrow-right-line {
-	font-size:  2rem;
-	vertical-align:  middle;
-	margin-left:  1rem;
+.icon-category-area > ul > li {
+	width: 80px;
+	float: left;
 }
 
-.facebook-each-contents {
-	background-color:  black;
-	width:  15rem;
-	height:  20rem;
-	display:  inline-block;
+.icon-category-area > ul > li:not(:first-of-type) {
+	margin-left: 3rem;
+}
+
+.icon-category-title {
+	margin: auto 19%;
+	display: flex;
+	font-size: 1.5rem;
+	font-weight: 400;
+	padding-left: 1rem;
+	margin-top: 4rem;
+}
+
+.icon-category-instagram-span {
+	display: block;
+}
+
+.icon-category-instagram-li {
+	margin-top: 0.8%;
+}
+
+/* 유튜브 로고 */
+.ri-youtube-fill {
+	color: #FF0000;
+	vertical-align: middle;
+	font-size: 3.5rem;
+	display: block;
+}
+
+/* 인스타그램 로고 */
+.ri-instagram-line {
+	background: radial-gradient(circle farthest-corner at 32% 106%,#ffe17d 0%,#ffcd69 10%,#fa9137 28%,#eb4141 42%,transparent 82%) , linear-gradient(135deg,#234bd7 12%,#c33cbe 58%);
+	color: #FFFFFF;
+	border-radius: 20%;
+	font-size: 2.7rem;
+}
+
+/* 페이스북 로고 */
+.ri-facebook-circle-fill {
+	color: #1877f2;
+	font-size: 3.46rem;
+	display: block;
+}
+
+/* 블로그 로고 */
+.blog-logo {
+	width: 58%;
+	display: block;
+	margin: 0 auto;
+	margin-top: 8%;
+	margin-bottom: 3.3%;
+}
+
+/* 지하철 로고 */
+.ri-subway-fill {
+	display: block;
+	font-size: 3.4rem;
+}
+
+/* 버스 로고 */
+.ri-bus-2-fill {
+	display: block;
+	font-size: 3.4rem;
+}
+
+/* 옥외광고 로고 */
+.ri-building-fill {
+	display: block;
+	font-size: 3.4rem;
+}
+
+/* 영화관 로고 */
+.ri-movie-2-fill {
+	display: block;
+	font-size: 3.4rem;
+}
+
+/* 부류 검색창 */
+.category-search {
+	border: 0px;
+	outline: 0px;
+	height: 45px;
+	font-size: 1rem;
+	padding-left: 20px;
+	font-size: 1.5rem;
+	border-radius: 15px;
+}
+
+.category-search-area {
+	background-color: #FFFFFF;
+	margin-top: 9.5rem;
+	margin-left: 25%;
+	width: 315px;
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	font-size: 1.5rem;
+}
+
+.category-search-example {
+	margin-left: 15%;
+	margin-top: 6rem;
+}
+
+.category-search-example > ul {
+	list-style: none;
+}
+
+.category-search-example > ul > li {
+	float: left;
+	background-color: #2E9AFE;
+	margin-left: 0.5rem;
+	padding: 5px 10px 5px 10px;
+	border-radius: 20px;
+	color: #FFFFFF;
+}
+
+.category-search-example > ul > li:first-child {
+	margin-left: 1.4rem;
+}
+
+/* 인기있는 sns 광고매체 */
+.popular-sns-title {
+	margin: auto 19%;
+	display: flex;
+	font-size: 1.5rem;
+	font-weight: 700;
+	padding-left: 1rem;
+	margin-top: 4rem;
+	color: #1C1C1C;
+}
+
+.popular-sns-ad {
+	margin: auto 19%;
+	margin-top: 1rem;
+}
+
+.popular-sns-card {
+	display: inline-block;
+	width: 19%;
+	margin-left: 0.1rem;
+}
+
+.popular-sns-card:first-child {
+	margin-left: 1rem;
+}
+
+.popular-sns-thumbnail {
+	background-color: #A4A4A4;
+	height: 160px;
+}
+
+/* 인기있는 대중교통 광고매체 */
+.popular-transport-title {
+	margin: auto 19%;
+	display: flex;
+	font-size: 1.5rem;
+	font-weight: 700;
+	padding-left: 1rem;
+	margin-top: 4rem;
+	color: #1C1C1C;
+}
+
+.popular-transport-ad {
+	margin: auto 19%;
+	margin-top: 1rem;
+}
+
+.popular-transport-card {
+	display: inline-block;
+	width: 19%;
+	margin-left: 0.1rem;
+}
+
+.popular-transport-card:first-child {
+	margin-left: 1rem;
+}
+
+.popular-transport-thumbnail {
+	background-color: #A4A4A4;
+	height: 160px;
+}
+
+/* 인기있는 옥외광 광고매체 */
+.popular-outdoor-title {
+	margin: auto 19%;
+	display: flex;
+	font-size: 1.5rem;
+	font-weight: 700;
+	padding-left: 1rem;
+	margin-top: 4rem;
+	color: #1C1C1C;
+}
+
+.popular-outdoor-ad {
+	margin: auto 19%;
+	margin-top: 1rem;
+}
+
+.popular-outdoor-card {
+	display: inline-block;
+	width: 19%;
+	margin-left: 0.1rem;
+}
+
+.popular-outdoor-card:first-child {
+	margin-left: 1rem;
+}
+
+.popular-outdoor-thumbnail {
+	background-color: #A4A4A4;
+	height: 160px;
+}
+
+/* 인기있는 광고매체 리뷰 */
+.ri-star-fill {
+	color: #FFD400;
+	vertical-align: middle;
+}
+
+.review-count {
+	display: inline-block;
+	font-size: 0.8rem;
+}
+
+/* 성공한 광고 미리보기 */
+.success-ad-preview-wrap{
+	height: 400px;
+	background-color: #E6F0FF;
+	font-family: 'Noto Sans KR', sans-serif;
+	margin-top: 7rem;
+}
+
+.success-ad-preview-title {
+	text-align: center;
+	font-size: 2rem;
+	font-weight: 700;
+	padding: 1rem;
+	color: #1C1C1C;
+}
+
+.success-ad-preview-title-sub {
+	font-size: 1rem;
+	color: #6E6E6E;
+}
+
+.success-ad-preview-video {
+	background-color: #A4A4A4;
+	margin-left: 1%;
+	width: 32%;
+	height: 250px;
+	display: inline-block;
+}
+
+.success-ad-preview-video-wrap {
+	margin: auto 19%;
+}
+
+/* 메인페이지 리뷰 리스트*/
+.main-review-list-wrap {
+	height: 600px;
+	margin: auto 19%;
+	display: flex;
+}
+
+.main-review-list-left {
+	display: inline-block;
+	height: 100%;
+	width: 40%;
+}
+
+.main-review-list-right {
+	display: inline-block;
+	height: 100%;
+	width: 59%;
+}
+
+.main-review-list-title {
+	font-size: 2.5rem;
+	margin-left: 10%;
+	margin-top: 30%;
+	font-weight: 500;
+}
+
+.main-review-list-title-color {
+	color: #81BEF7;
+}
+
+.main-review-list-title-sub-wrap {
+	margin-top: 1rem;
+}
+
+.main-review-list-title-sub {
+	margin-left: 10%;
+	color: #6E6E6E;
+}
+
+.main-review-list {
+	display: inline-block;
+	width: 100%;
+	margin-top: 8%;
+}
+
+.main-review-list-detail {
+	background-color: #A4A4A4;
+	width: 90%;
+	height: 80px;
+	display: inline-block;
+	margin-left: 8%;
+	margin-top: 2%;
+}
+
+.main-review-list-button {
+	margin-left: 10%;
+	margin-top: 10%;
+	width: 40%;
+	height: 48px;
+	font-size: 1.5rem;
+	font-weight: 500;
+	background-color: #00BFFF;
+	border: 1px solid #00BFFF;
+	color: #FFFFFF;
+	border-radius: 15px;
+}
+
+/* 애드인 마케팅 방법 */
+.adin-marketing-method-wrap {
+	height: 500px;
+	background-color: #E6F0FF;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.adin-marketing-method-title {
+	text-align: center;
+	font-size: 2rem;
+	font-weight: 700;
+	padding: 1rem;
+	color: #1C1C1C;
+}
+
+.adin-marketing-method-title-sub {
+	font-size: 1rem;
+	color: #6E6E6E;
+}
+
+.adin-marketing-method-content-left {
+	margin-left: 7%;
+	width: 45%;
+	height: 350px;
+	display: inline-block;
+}
+
+.adin-marketing-method-content-right {
+	margin-left: 1%;
+	width: 45%;
+	height: 350px;
+	display: inline-block;
+}
+
+.adin-marketing-method-content-media {
+	background-color: #A4A4A4;
+	width: 90%;
+	height: 280px;
+	margin-bottom: 3%;
+}
+
+.adin-marketing-method-content-advertiser {
+	background-color: #A4A4A4;
+	width: 90%;
+	height: 280px;
+	margin-bottom: 3%;
+}
+
+.adin-marketing-method-content-wrap {
+	margin: auto 19%;
+}
+
+.adin-marketing-method-content-media-span {
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.adin-marketing-method-content-advertiser-span {
+	font-size: 1.5rem;
+	font-weight: 500;
 }

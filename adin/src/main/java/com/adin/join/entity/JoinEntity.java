@@ -6,85 +6,93 @@ import java.util.Objects;
 public class JoinEntity {
     private String email;
     private String password;
-    private String name;
     private String nickname;
+    private String userType;
+    private String marketingYn;
     private String useYn;
     private Date createDt;
     private Date modifyDt;
+
+    private String certified;
+    private String certifiedYn;
+
+    public String getCertifiedYn() {
+        return certifiedYn;
+    }
+
+    public void setCertifiedYn(String certifiedYn) {
+        this.certifiedYn = certifiedYn;
+    }
+
+    public String getCertified() {
+        return certified;
+    }
+
+    public void setCertified(String certified) {
+        this.certified = certified;
+    }
 
     public String getEmail() {
         return email;
     }
 
-    public JoinEntity setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
-        return this;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public JoinEntity setPassword(String password) {
+    public void setPassword(String password) {
         this.password = password;
-        return this;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public JoinEntity setName(String name) {
-        this.name = name;
-        return this;
     }
 
     public String getNickname() {
         return nickname;
     }
 
-    public JoinEntity setNickname(String nickname) {
+    public void setNickname(String nickname) {
         this.nickname = nickname;
-        return this;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public String getMarketingYn() {
+        return marketingYn;
+    }
+
+    public void setMarketingYn(String marketingYn) {
+        this.marketingYn = marketingYn;
     }
 
     public String getUseYn() {
         return useYn;
     }
 
-    public JoinEntity setUseYn(String useYn) {
+    public void setUseYn(String useYn) {
         this.useYn = useYn;
-        return this;
     }
 
     public Date getCreateDt() {
         return createDt;
     }
 
-    public JoinEntity setCreateDt(Date createDt) {
+    public void setCreateDt(Date createDt) {
         this.createDt = createDt;
-        return this;
     }
 
     public Date getModifyDt() {
         return modifyDt;
     }
 
-    public JoinEntity setModifyDt(Date modifyDt) {
+    public void setModifyDt(Date modifyDt) {
         this.modifyDt = modifyDt;
-        return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        JoinEntity that = (JoinEntity) o;
-        return Objects.equals(email, that.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(email);
     }
 }

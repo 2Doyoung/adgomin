@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adin.join.mapper.JoinMapper">
+    <insert id="join" parameterType="com.adin.join.entity.JoinEntity">
+        INSERT INTO adin_user
+            (email, password, nickname, user_type, marketing_yn, use_yn,  create_dt, modify_dt, certified)
+        VALUES
+            (#{email}, #{password}, #{nickname}, #{userType}, #{marketingYn}, "1", now(), now(), #{certified})
+    </insert>
+
+    <select id="emailCheck" resultType="com.adin.join.vo.JoinVO">
+        SELECT
+            count(*) AS count
+        FROM adin_user
+        WHERE 1=1
+        AND email = #{email}
+    </select>
+
+    <select id="loginUser" resultType="com.adin.join.vo.JoinVO">
+        SELECT
+            count(*) AS count
+            ,email AS email
+            ,password AS password
+            ,nickname AS nickname
+            ,user_type AS userType
+            ,marketing_yn AS marketingYn
+            ,use_yn AS useYn
+            ,certified_yn AS certifiedYn
+        FROM adin_user
+        WHERE 1=1
+        AND email = #{email}
+    </select>
+
+    <select id="certifiedCheck" resultType="com.adin.join.vo.JoinVO">
+        SELECT
+            count(*) AS count
+            ,email AS email
+            ,password AS password
+            ,nickname AS nickname
+            ,user_type AS userType
+            ,marketing_yn AS marketingYn
+            ,use_yn AS useYn
+            ,certified_yn AS certifiedYn
+        FROM adin_user
+        WHERE 1=1
+        AND email = #{email}
+        AND certified = #{certified}
+    </select>
+
+    <update id="certifiedUpdate" parameterType="com.adin.join.entity.JoinEntity">
+        UPDATE
+            adin_user
+        SET certified_yn = '1'
+        WHERE 1=1
+        AND email = #{email}
+    </update>
+
+    <insert id="insertLoginLog" parameterType="com.adin.join.entity.LoginLogEntity">
+        INSERT INTO adin_login_log
+            (email, login_time, status)
+        VALUES
+            (#{email}, #{loginTime}, #{status})
+    </insert>
+</mapper>

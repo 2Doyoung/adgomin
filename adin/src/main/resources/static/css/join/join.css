@@ -1,238 +1,320 @@
-@charset "UTF-8";
-
-/* 사이즈 조정 */
-html {
-    margin: 0;
-    height: 100vh;
-}
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
 
 body {
     margin: 0;
-    height: 100vh;
 }
 
-body > .main {
-    height: 100%;
+body {
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
-/* 내용 가운데 정렬 및 위치조정 */
-body > .main > .content {
-    margin-top: 3rem;
-    margin-bottom: 4rem;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.join-wrap {
+    margin: auto 19%;
+    height: 45rem;
 }
 
-body > .main > .content > .form {
-    width: 100%;
-    max-width: 50rem;
-
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+.join-wrap-next-step {
+    margin: auto 19%;
+    height: 60rem;
 }
 
-/* step 가로 정렬 */
-body > .main > .content > .form > .title-container > .step-container {
-    align-items: stretch;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
-/* 현재 step 색 표시 */
-body > .main > .content > .form.step1 > .title-container > .step-container > .step.step1,
-body > .main > .content > .form.step2 > .title-container > .step-container > .step.step2,
-body > .main > .content > .form.step3 > .title-container > .step-container > .step.step3{
-    color: #5C8AE6;
-}
-
-/* step 간격 설정 */
-body > .main > .content > .form > .title-container > .step-container > span + span {
-    margin-left: 5.5rem;
-}
-
-/* 현재 단계 title 위치 조정 및 사이즈, margin 설정 */
-body > .main > .content > .form > .title-container > .text {
-    margin: 2.5rem 0 1rem 0;
-    text-align: center;
+.join-title {
     font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 5rem;
+    color: #1C1C1C;
+    text-align: center;
 }
 
-body > .main > .content > .form > .step {
-    align-items: center;
-    display: none;
-    flex-direction: column;
-    justify-content: flex-start;
+.join-title-sub {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #1C1C1C;
+    margin-left: 4rem;
 }
 
-body > .main > .content > .form.step1 > .step.step1,
-body > .main > .content > .form.step2 > .step.step2,
-body > .main > .content > .form.step3 > .step.step3 {
-    display: flex;
+.join-service-category {
+    margin-top: 2.5rem;
+    margin-left: 4rem;
 }
 
-/* 이용약관 상자 */
-body > .main > .content > .form > .step > .label > .input.term {
-    width: 25rem;
-    height: 15rem;
-    resize: none;
-    overflow: hidden;
-    border: 1px solid #BEBEBE;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+.join-service-media, .join-service-advertiser {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    height: 8rem;
+    width: 30rem;
+    display: inline-block;
+    border: 1px solid #D9D9D9;
 }
 
-/* 이용약관 체크박스 둥글게 */
-body > .main > .content > .form > .step > .check {
-    align-self: flex-start;
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    user-select: none;
+.join-service-advertiser {
+    margin-top: 2rem;
 }
 
-body > .main > .content > .form > .step > .check > input {
-    display: none;
+.join-footer {
+    border: 0.5px solid #D9D9D9;
 }
 
-body > .main > .content > .form > .step > .check > .checkbox {
-    width: 0.8rem;
-    height: 0.8rem;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
-    border: 0.0625rem solid #A4A4A4;
-    border-radius: 2rem;
-    color: rgb(255, 255, 255);
-    display: flex;
-    flex: 0 0 0.8rem;
-
-    flex-direction: row;
-    justify-content: center;
-    margin-right: 0.5rem;
-    overflow: hidden;
+.join-service-category-div {
+    font-size: 1.5rem;
+    color: #1C1C1C;
+    margin-top: 1rem;
+    margin-left: 1.5rem;
 }
 
-body > .main > .content > .form > .step > .check > input[type=checkbox]:checked ~ .checkbox {
-    background-color: rgba(95, 144, 243, 0.84);
-    border: 0.0625rem solid rgba(95, 144, 243, 0.77);
+.ri-check-fill {
+    color: #6E6E6E;
+    vertical-align: middle;
 }
 
-body > .main > .content > .form > .step > .check > .checkbox > .icon {
-    font-size: 0.7rem;
-    position: relative;
+.join-wrap-sub {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 500px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
 }
 
-body > .main > .content > .form > .step > .check > .text {
-    color: #424242;
-    font-size: 0.825rem;
+.join-wrap-sub-next-step {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 750px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
 }
 
-/* 다음 넘어가는 버튼 */
-body > .main > .content > .form > .btn-container > .next-btn {
-    width: 15.95rem;
-    height: 2.25rem;
-    background-color: rgba(95, 144, 243, 0.84);
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-    border: none;
-    border-radius: 0.2rem;
+.join-service-media > span, .join-service-advertiser > span {
+    margin-left: 3.5rem;
+    color: #6E6E6E;
+}
+
+.join-wrap-id-password {
+    font-size: 1.1rem;
+    color: #1C1C1C;
+    margin-left: 4rem;
+    margin-top: 2rem;
+}
+
+.join-wrap-id-password > div {
     margin-top: 1rem;
 }
 
-/* 경고창 */
-body > .main > .content > .form > .warning {
-    color: rgba(231, 76, 60, 0.89);
-    margin-top: 1rem;
+.join-wrap-id-password > div > input {
+    width: 28rem;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    padding-left: 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 10px;
+    border: 1px solid #D9D9D9;
+}
+
+.join-wrap-id-password > div > input::placeholder {
+    color: #D8D8D8;
+}
+
+.essential-star {
     font-size: 0.8rem;
-    align-items: center;
-    /* 기본적으로는 안 보이는 상태 */
-    display: none;
-    flex-direction: row;
-    justify-content: center;
+    color: #2E9AFE;
 }
 
-body > .main > .content > .form > .warning.visible {
-    /* 체크하지 않은 상태에서 버튼을 누르면 경고문구가 보임 */
-    display: flex;
+.ri-checkbox-circle-fill {
+    color: #6E6E6E;
 }
 
-body > .main > .content > .form > .warning > .text {
-    flex: 1;
-    margin: 0 0 0.1rem 0.5rem;
+.join-check-box {
+    margin-left: 4rem;
+    margin-top: 2rem;
 }
 
-/* step2 */
-body > .main > .content > .form > .step2 > .table > tbody > tr > td {
-    padding: 0.5rem;
+.all-check {
+    font-size: 1.5rem;
+    color: #1C1C1C;
+    cursor: pointer;
 }
 
-body > .main > .content > .form > .step2 > .table > tbody > tr > td > label > div {
-    font-size: 0.8rem;
-    margin-bottom: 0.2rem;
+.check-box-line {
+    width: 86%;
+    margin-left: 0;
+    border: 0.5px solid #D9D9D9;
 }
 
-body > .main > .content > .form > .step2 > .table > tbody > tr > td > label > input {
-    width: 15rem;
-    height: 2rem;
-    border-radius: 0.2rem;;
-    padding-left: 0.5rem;
-    border: 1px solid #ccc;
+.check-box-list {
+    color: #6E6E6E;
+    line-height: 1.5rem;
 }
 
-/* 간편 회원가입 줄긋기 포함*/
-body > .main > .content > .form > .step2 > .line {
-    width: 15.9rem;
-    position: relative;
-    top: 1rem;
-    height: 1px;
-    background-color: #eee;
-    border: 0;
+.essential-type {
+    color: #2E9AFE;
 }
 
-body > .main > .content > .form > .step2 > .other-login {
-    font-weight: 400;
-    margin-bottom: 16px;
-    padding: 0 8px;
-    font-size: 11px;
-    line-height: 16px;
-    letter-spacing: -.3px;
-    color: #abb0b5;
-    z-index: 1;
-    background: #fff;
+.choice-type {
+    color: #6E6E6E;
 }
 
-body > .main > .content > .form > .step2 > .other-login-logo {
-    margin-bottom:1rem;
+.join-complete-button-wrap {
+    margin-left: 4rem;
+    margin-top: 2rem;
 }
 
-body > .main > .content > .form > .step2 > .other-login-logo > a > img {
-    cursor:pointer;
-    width:2.5rem;
+.join-complete-button {
+    background-color: #81BEF7;
+    border: 1px solid #81BEF7;
+    width: 29rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
 }
 
-body > .main > .content > .form > .step2 > .other-login-logo > a:first-of-type > img {
-    margin-right:0.5rem;
+.join-complete-button:hover {
+    background-color: #0047AA;
+    transition: background-color 0.2s ease-out;
 }
 
-body > .main > .content > .form > .step2 > .other-login-logo > a:last-of-type > img {
-    border:1px solid #D9D9D9;
-    border-radius:0.3rem;
-    box-sizing:border-box;
+.check-box-color {
+    color: #00BFFF;
+    transition: color 0.2s ease-out;
 }
 
-/* step3 */
-body > .main > .content > .form > .step3 > .message {
-    font-size: 1.2rem;
-    margin: 1rem;
+.join-service-media:hover {
+    color: #81BEF7;
+    border: 2px solid #81BEF7;
+    margin: -1px;
+    cursor: pointer;
 }
 
-body > .main > .content > .form > .step3 > .message-small {
+.join-service-media:hover > div  {
+    color: #81BEF7;
+    font-weight: 500;
+}
+
+.join-service-media:hover > div > .ri-check-fill {
+    color: #81BEF7;
+    font-weight: bolder;
+}
+
+.join-service-advertiser:hover {
+    color: #81BEF7;
+    border: 2px solid #81BEF7;
+    margin: 1.95rem -1px -1px -1px;
+    cursor: pointer;
+}
+
+.join-service-advertiser:hover > div  {
+    color: #81BEF7;
+    font-weight: 500;
+}
+
+.join-service-advertiser:hover > div > .ri-check-fill {
+    color: #81BEF7;
+    font-weight: bolder;
+}
+
+.check-box-item-line {
+    cursor: pointer;
+}
+
+.email-error {
     font-size: 0.9rem;
-    margin-bottom: 1rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    display: none;
+}
+
+.password-error {
+    font-size: 0.9rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    display: none;
+}
+
+.password-check-error {
+    font-size: 0.9rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    display: none;
+}
+
+.check-box-error {
+    font-size: 0.9rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    display: none;
+}
+
+.join-email-wrap {
+    margin: auto 19%;
+    height: 45rem;
+}
+
+.join-email-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 5rem;
+    color: #1C1C1C;
+    text-align: center;
+}
+
+.join-wrap-sub-email {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 450px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
+}
+
+.join-wrap-sub-email > .email-sub-title {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #1C1C1C;
+    margin-left: 4rem;
+}
+
+.join-wrap-sub-email > .email-sub-title > span{
+    color: #81BEF7;
+    font-weight: 500;
+}
+
+.join-wrap-sub-email > .sub-email {
+    font-size: 1.2rem;
+    margin-left: 4rem;
+}
+
+.sub-email {
+    margin-top: 2rem;
+}
+
+.join-email-home-button {
+    background-color: #81BEF7;
+    border: 1px solid #81BEF7;
+    width: 29rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 4rem;
+    margin-top: 4rem;
+}
+
+.join-email-request {
+    background-color: #81BEF7;
+    border: 1px solid #81BEF7;
+    width: 29rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 4rem;
+    margin-top: 4rem;
 }

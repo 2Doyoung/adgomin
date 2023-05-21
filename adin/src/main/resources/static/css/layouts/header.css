@@ -1,70 +1,113 @@
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+body {
+	padding-top: 9.45rem;
+}
+
 /* 헤더 전체 */
 header {
 	border-bottom: 1px solid #D9D9D9;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: #FFFFFF;
 }
 
 .header {
-	display: flex; 
-	margin: auto 15%; 
+	display: flex;
+	margin: auto 19%;
 	font-size: 1rem;
 }
 
-/* 로고 이미지 */
-.header-logo {
-	display: inline-block;
+/* 로고 */
+.header-logo > a {
+	text-decoration: none;
 }
 
-.logo-img {
-	width: 110px;
+.header-logo {
+	display: flex;
+	margin: 0.5rem 0 1rem 0;
+	width: 170px;
+}
+
+.logo {
+	font-size: 2rem;
+	color: black;
 }
 
 /* 메인 검색창 */
 .header-search {
-  	display: flex; 
-	align-items: center; 
-	margin: auto; 
-	background-color: #F2F2F2; 
-	border-radius: 5px; 
+  	display: flex;
+	align-items: center;
+	margin: auto;
+	border-radius: 5px;
 	border: 1px solid black;
-	height: 35px; 
-	width: 200px; 
+	height: 35px;
+	width: 280px;
 	font-size: 1rem;
 }
 
 .main-search {
-	background-color: #F2F2F2; 
-	border: 0px; 
-	outline: 0px; 
-	height: 30px; 
+	border: 0px;
+	outline: 0px;
+	height: 30px;
 	font-size: 1rem;
 	padding-left: 10px;
+	width: 240px;
+}
+
+/* 전체 카테고리 */
+.all-category-area {
+	text-align: center;
+	font-size: 1.2rem;
+	margin-top: 2rem;
+	margin-bottom: 1rem;
+}
+
+.ri-menu-line {
+	vertical-align: middle;
+}
+
+.ri-arrow-drop-down-line {
+	font-size: 1.5rem;
+	vertical-align: middle;
+}
+
+.category-text {
+	vertical-align: middle;
+	display: inline-block;
+	height: 30px;
 }
 
 /* 로그인 버튼 */
 .header-login {
-	display: flex; 
+	display: flex;
 	align-items: center;
 }
 
-.login-btn {
-	background-color: #FFFFFF; 
-	height: 35px; 
+.login-button {
+	background-color: #FFFFFF;
+	height: 35px;
 	border: 1px solid #bbb;
 	border-radius: 5px;
-	font-size: 1rem; 
+	font-size: 1rem;
 	cursor: pointer;
+	width: 80px;
 }
 
 /* 회원가입 버튼 */
-.signup-btn {
-	background-color: rgba(95, 144, 243, 0.84);
-	height: 35px; 
-	border: 1px solid #bbb;
+.signup-button {
+	background-color: #81BEF7;
+	height: 35px;
+	border: 1px solid #81BEF7;
 	border-radius: 5px;
-	font-size: 1rem; 
-	cursor: pointer; 
-	margin-left: 10px; 
-	color: #FFFFFF
+	font-size: 1rem;
+	cursor: pointer;
+	margin-left: 10px;
+	color: #FFFFFF;
+	width: 80px;
 }
 
 /* 로그인 */
@@ -73,7 +116,7 @@ header {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(255, 255, 255, 0.8);
+	background-color: rgba(0, 0, 0, 0.2);
 	backdrop-filter: blur(2px);
 	align-items: center;
 	display: none;
@@ -84,22 +127,27 @@ header {
 }
 
 .login-box {
-	width: 22rem;
-	height: 26rem;
+	width: 25rem;
+	height: 31rem;
 	border: 1px solid #eee;
-	border-radius: 2rem;
+	border-radius: 1rem;
 	background-color: rgb(255, 255, 255);
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 	position: fixed;
+}
+
+.login-logo {
+	font-size: 2.5rem;
+	font-weight: 400;
+	text-align: center;
 }
 
 .login-box > .close-btn{
 	cursor: pointer;
-	margin-left: 18rem;
-	font-size: 1.25rem;
+	margin-left: 22rem;
+	font-size: 1.8rem;
+	margin-top: 1rem;
 }
 
 .login-box > .title {
@@ -110,13 +158,41 @@ header {
 	width: 10rem;
 }
 
-.login-box > input {
+.email-input, .password-input {
 	margin-bottom: 1rem;
-	width: 15rem;
-	height: 2.5rem;
+	width: 20rem;
+	height: 3rem;
 	border-radius: 0.5rem;
 	border: 1px solid #D9D9D9;
-	padding-left: 0.5rem;
+	font-size: 1.1rem;
+	padding-left: 1rem;
+	margin-left: 1.9rem;
+}
+
+.login-box > input::placeholder {
+	color: #D8D8D8;
+}
+
+.login-box-login-button {
+	width: 21.3rem;
+	color: #FFFFFF;
+	background-color: #81BEF7;
+	border: 1px solid #81BEF7;
+	height: 3.2rem;
+	font-weight: 500;
+	border-radius: 0.5rem;
+	font-size: 1.1rem;
+	margin-bottom: 1rem;
+	cursor: pointer;
+	margin-left: 1.9rem;
+}
+
+.id-password-find {
+	margin-left: 5rem;
+}
+
+.user-service {
+	text-align: center;
 }
 
 .login-box > .user-service > a {
@@ -124,122 +200,144 @@ header {
 	text-decoration: underline;
 }
 
-.login-box > .other-login {
-	margin: 1rem 0 0.5rem 0;
-	color: #D9D9D9;
-}
-
-.login-box > .other-login-logo {
+.login-box-hr {
+	width: 80%;
+	margin-top: 1rem;
 	margin-bottom: 1rem;
+	border: 0.1px solid #BDBDBD;
 }
 
-.login-box > .other-login-logo > a > img {
+.login-box-signup-button {
+	width: 21.3rem;
+	color: #81BEF7;
+	background-color: #FFFFFF;
+	border: 1px solid #81BEF7;
+	height: 3.2rem;
+	font-weight: 500;
+	border-radius: 0.5rem;
+	font-size: 1.1rem;
 	cursor: pointer;
-	width: 3rem;
+	margin-left: 1.9rem;
 }
 
-.login-box > .other-login-logo > a:first-of-type > img {
-	margin-right: 0.5rem;
+.login-box-email-error {
+	margin-left: 2.5rem;
+	color: #FF402B;
+	display: none;
 }
 
-.login-box > .other-login-logo > a:last-of-type > img {
-	border: 1px solid #D9D9D9;
-	border-radius: 0.3rem;
-	box-sizing: border-box;
+.login-box-email-exist-error {
+	margin-left: 2.5rem;
+	color: #FF402B;
+	display: none;
 }
 
-/* 헤더 sns */
-.header-sns {
-	border-bottom: 1px solid #D9D9D9;
+.login-box-password-error {
+	margin-left: 2.5rem;
+	color: #FF402B;
+	display: none;
 }
 
-/* sns 바로가기 버튼 */
-.go-sns-ad {
-	margin: auto 10%;
+/* 로그인 후 버튼 */
+.header-after-login {
+	display: flex;
+	align-items: center;
+	width: 170px;
+	text-align: center;
 }
 
-.go-sns-ad > ul {
-	list-style: none; 
-	margin: 10px;
+.header-message {
+	font-size: 1rem;
+	padding: 0.2rem 0.4rem;
+	border-radius: 0.5rem;
 }
 
-.go-sns-ad > ul > li {
-	display: inline-block; 
-	font-size: 1.1rem; 
-	margin-left: 4%; 
-	border: 1px solid #A4A4A4; 
-	border-radius: 20px; 
-	padding-left: 10px; 
-	padding-right: 10px; 
-	cursor: pointer;
+.header-mypage {
+	font-size: 1rem;
+	padding: 0.2rem 0.5rem;
+	border-radius: 0.5rem;
+	margin-left: 1rem;
 }
 
-.sns-name {
-	vertical-align: middle; 
-	font-weight: bold; 
-	color: #424242;
+.dropdown {
+	position: relative;
+	display: inline-block;
 }
 
-/* sns 바로가기 마우스 올렸을 때 */
-.go-sns-ad > ul > li:hover {
-	border: 2px solid #5C8AE6;
-	margin: -2px -2px -2px 4%;
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	padding: 12px 16px;
+	z-index: 1;
 }
 
-.go-sns-ad > ul > li:hover .sns-name {
-	color: #5C8AE6;
+.dropdown:hover .dropdown-content {
+	display: block;
 }
 
-/* 유튜브 로고 */
-.ri-youtube-fill {
-	color: #FF0000; 
-	vertical-align: middle; 
-	font-size: 2.5rem; 
-	margin-left: 10px;
+.profile-icon {
+	position: relative;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	background-color: #ccc;
+	overflow: hidden;
+	border: 1px solid #ccc;
 }
 
-/* 인스타그램 로고 */
-.ri-instagram-line {
-	background: radial-gradient(circle farthest-corner at 32% 106%,#ffe17d 0%,#ffcd69 10%,#fa9137 28%,#eb4141 42%,transparent 82%) , linear-gradient(135deg,#234bd7 12%,#c33cbe 58%); 
-	color: #FFFFFF; 
-	border-radius: 20%; 
-	vertical-align: middle; 
-	font-size: 2rem; 
-	margin-left: 10px;
+.profile-icon-body {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 30px;
+	height: 25%;
+	background-color: #fff;
+	border-radius: 15px;
 }
 
-/* 페이스북 로고 */
-.ri-facebook-box-fill {
-	color: #3B5998; 
-	vertical-align: middle; 
-	font-size: 2.5rem; 
-	margin-left: 10px;
+.profile-icon-head {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%, 40%);
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background-color: #fff;
 }
 
-/* 대중교통 로고 */
-.ri-subway-fill {
-	color: #A4A4A4; 
-	vertical-align: middle; 
-	font-size: 2.5rem; 
-	margin-left: 10px;
+.heart-icon {
+	position: relative;
+	width: 40px;
+	height: 40px;
+	background: #ccc;
+	border-radius: 50%;
 }
 
-/* 전광판 로고 */
-.ri-computer-line {
-	vertical-align: middle; 
-	font-size: 2.5rem; 
-	margin-left: 10px;
+.heart-top,
+.heart-bottom {
+	position: absolute;
+	top: 0;
+	background-color: #FFFFFF;
 }
 
-/* 영화관 로고 */
-.ri-film-fill {
-	vertical-align: middle; 
-	font-size: 2.5rem; 
-	margin-left: 10px;
+.heart-top {
+	border-radius: 40px 40px 0 0;
+	width: 20px;
+	height: 20px;
+	left: 50%;
+	transform: translate(-50%, 45%);
 }
 
-/* 인스타그램 li태그 */
-.instar-li {
-	padding-top: 4px; 
-	padding-bottom: 4px;
+.heart-bottom {
+	top: 25px;
+	border-radius: 40px 40px 40px 40px;
+	width: 8px;
+	height: 8px;
+	left: 50%;
+	transform: translateX(-50%);
 }

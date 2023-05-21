@@ -12,17 +12,37 @@
 		<div class="header">
 			<div class="header-logo">
 				<a th:href="@{/}" title="메인으로 가기">
-					<img class="logo-img" th:src="@{/images/logo.png}" alt="ADIN">
+					<span class="logo">AD-IN</span>
 				</a>
 			</div>
 			<div class="header-search">
-				<input type="text" class="main-search">
+				<input type="text" class="main-search" placeholder="광고하고 싶은 매체를 검색해보세요.">
 				<i class="ri-search-line"></i>
 			</div>
-			<div class="header-login">
-				<button class="login-btn" id="loginBtn">로그인</button>
-				<button class="signup-btn" id="signupBtn">회원가입</button>
+			<div class="header-login" th:if="${session.LOGIN_USER == null}">
+				<button class="login-button" id="loginBtn" >로그인</button>
+				<button class="signup-button" id="signupBtn">회원가입</button>
 			</div>
+			<div class="header-after-login" th:if="${session.LOGIN_USER != null}">
+				<div class="header-message">
+					<div class="heart-icon">
+						<div class="heart-top"></div>
+						<div class="heart-bottom"></div>
+					</div>
+				</div>
+				<div class="header-mypage dropdown">
+					<div class="profile-icon">
+						<span class="profile-icon-body"></span>
+						<span class="profile-icon-head"></span>
+					</div>
+					<div class="dropdown-content">
+						<div>로그아웃</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="all-category-area">
+			<span><i class="ri-menu-line"></i> <span class="category-text">전체 카테고리</span><i class="ri-arrow-drop-down-line"></i></span>
 		</div>
 	</header>
 	<div class="login-cover" id="loginCover">
@@ -31,36 +51,23 @@
 				<i class="ri-close-line"></i>
 			</div>
 			<div class="title">
-				<img class="login-logo-img" th:src="@{/images/logo.png}" alt="ADIN">
+				<div class="login-logo">AD-IN</div>
 			</div>
-			<input type="email" class="email-input" placeholder="이메일" autofocus>
-			<input type="password" class="password-input" placeholder="비밀번호">
+			<input type="email" id="loginBoxEmail" class="email-input" placeholder="이메일을 입력해 주세요." autofocus>
+			<span class="login-box-email-error" id="loginBoxEmailError">이메일을 확인해 주세요.</span>
+			<span class="login-box-email-exist-error" id="loginBoxEmailExistError">가입되어 있지 않은 이메일 입니다.</span>
+			<input type="password" id="loginBoxPassword" class="password-input" placeholder="비밀번호를 입력해 주세요.">
+			<span class="login-box-password-error" id="loginBoxPasswordError">비밀번호를 확인해 주세요.</span>
+			<input type="button" class="login-box-login-button" id="loginBoxLoginButton" value="로그인">
 			<div class="user-service">
-				<a>비밀번호 찾기</a>
+				<input type="checkbox" id="rememberMe" name="rememberMe">
+				<label for="rememberMe">로그인 유지</label>
+				<a class="id-password-find">아이디</a>
 				<span>/</span>
-				<a>회원가입</a>
+				<a>비밀번호 찾기</a>
 			</div>
-			<div class="other-login">다른 로그인 방법</div>
-			<div class="other-login-logo">
-				<a>
-					<img th:src="@{/images/kakao-logo.png}" alt="KAKAO">
-				</a>
-				<a>
-					<img th:src="@{/images/google-logo.png}" alt="GOOGLE">
-				</a>
-			</div>
-		</div>
-	</div>
-	<div class="header-sns">
-		<div class="go-sns-ad">
-			<ul>
-				<li><span class="sns-name">YouTube</span><i class="ri-youtube-fill"></i></li>
-				<li class="instar-li"><span class="sns-name">Instargram</span><i class="ri-instagram-line"></i></li>
-				<li><span class="sns-name">Facebook</span><i class="ri-facebook-box-fill"></i></li>
-				<li><span class="sns-name">대중교통</span><i class="ri-subway-fill"></i></li>
-				<li><span class="sns-name">전광판</span><i class="ri-computer-line"></i></li>
-				<li><span class="sns-name">영화관</span><i class="ri-film-fill"></i></li>
-			</ul>
+			<hr class="login-box-hr">
+			<input type="button" id="loginBoxSignupButton" class="login-box-signup-button" value="애드인 회원가입">
 		</div>
 	</div>
 </body>

@@ -2,94 +2,48 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>애드인 - 회원가입</title>
     <link rel="stylesheet" th:href="@{/css/join/join.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/282afddd53.js" crossorigin="anonymous"></script>
     <script defer th:src="@{/js/join/join.js}"></script>
     <script defer th:src="@{/js/layouts/header.js}"></script>
 </head>
 <body>
+<script th:inline="javascript">
+    let sessionLoginUser = [[${session.LOGIN_USER}]];
+
+    if(sessionLoginUser != null) {
+        window.location.href = "/"
+    }
+</script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
-<main class="main">
-    <div class="content">
-        <form class="form step1" id="form">
-            <div class="title-container">
-                <div class="step-container">
-                    <span class="step step1">1. 약관 동의</span>
-                    <span class="step step2">2. 회원 가입</span>
-                    <span class="step step3">3. 이메일 인증</span>
+    <div class="join-wrap">
+        <div class="join-title">
+            회원가입
+        </div>
+        <div class="join-wrap-sub">
+            <div class="join-title-sub">
+                애드인에서 이용하고 싶은<br> 서비스 유형을 선택해 주세요.
+            </div>
+            <div class="join-service-category">
+                <div class="join-service-media" id="joinServiceMedia">
+                    <div class="join-service-category-div">
+                        <i class="ri-check-fill"></i> 광고매체로 가입
+                    </div><br>
+                    <span>광고매체를 등록해 광고를 해주는 사용자</span>
                 </div>
-                <div class="text" rel="stepText">약관 동의</div>
-            </div>
-            <div class="step step1">
-                <label class="label">
-                    <textarea class="input term" readonly>서비스 이용약관</textarea>
-                </label>
-                <label class="check">
-                    <input name="termAgree" type="checkbox">
-                    <span class="checkbox">
-                        <i class="icon fa-solid fa-check"></i>
-                    </span>
-                    <span class="text">애드인 이용약관 동의</span>
-                </label>
-            </div>
-            <div class="step step2">
-                <table class="table">
-                    <tbody>
-                    <tr>
-                        <td>
-                            <label class="label email">
-                                <div>이메일</div>
-                                <input type="email" class="input email" maxlength="50" name="email" placeholder="이메일" autofocus>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label class="label password">
-                                <div>비밀번호</div>
-                                <input type="password"  class="input password" maxlength="50" name="password" placeholder="비밀번호">
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label class="label password">
-                                <div>비밀번호 확인</div>
-                                <input type="password" class="input password" maxlength="50" name="passwordCheck" placeholder="비밀번호 확인">
-                            </label>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="step step3">
-                <div class="message">이메일 인증 메일을 확인해 주시기 바랍니다.</div>
-                <div class="message-small">이메일 인증이 완료가 되면 애드인을 사용하실 수 있습니다.</div>
-            </div>
-            <div class="warning" rel="warning">
-                <i class="icon fa-solid fa-triangle-exclamation"></i>
-                <div class="text" rel="warningText"></div>
-            </div>
-            <div class="btn-container">
-                <input type="button" class="next-btn" rel="nextBtn" value="회원가입">
-            </div>
-            <div class="step step2">
-                <hr class="line">
-                <div class="other-login">간편 회원가입</div>
-                <div class="other-login-logo">
-                    <a>
-                        <img th:src="@{/images/kakao-logo.png}" alt="KAKAO">
-                    </a>
-                    <a>
-                        <img th:src="@{/images/google-logo.png}" alt="GOOGLE">
-                    </a>
+                <div class="join-service-advertiser" id="joinServiceAdvertiser">
+                    <div class="join-service-category-div">
+                        <i class="ri-check-fill"></i> 광고주로 가입
+                    </div><br>
+                    <span>광고를 등록해 매출상승을 하려는 사용자</span>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-</main>
+<hr class="join-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
 </body>
 </html>

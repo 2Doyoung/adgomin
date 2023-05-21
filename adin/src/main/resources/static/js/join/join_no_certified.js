@@ -1,24 +1,17 @@
 /**
  * 전역변수
  */
-const joinServiceMedia = document.getElementById("joinServiceMedia");
-const joinServiceAdvertiser = document.getElementById("joinServiceAdvertiser")
+const joinEmailRequest = document.getElementById("joinEmailRequest");
 
 /**
  * 이벤트 함수
  */
-if(joinServiceMedia !== null) {
-    joinServiceMedia.addEventListener("click", () => {
-        window.location = "/join?user_type=media"
-    });
-}
+joinEmailRequest.addEventListener("click", () => {
+    let email = document.getElementById("email").value;
 
-if(joinServiceAdvertiser !== null) {
-    joinServiceAdvertiser.addEventListener("click", () => {
-        window.location = "/join?user_type=advertiser"
-    });
-}
-
+    xhr("/reSendEmail?email=" + email, null, "GET", "reSendEmail");
+    window.location.href = "/join/email";
+});
 
 /**
  * 사용자 함수
