@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -80,6 +81,9 @@ public class JoinController {
     public String emailCertified(@RequestParam(value = "email", required = false) String email, @RequestParam(value = "certified", required = false) String certified, HttpServletRequest request) {
         JSONObject responseObject = new JSONObject();
         Enum<?> result = this.joinService.certifiedCheck(email, certified, request);
+        if("failure".equals(result.name().toLowerCase())) {
+            return "redirect:http://localhost:8080/errorpage";
+        }
         responseObject.put("result", result.name().toLowerCase());
 
         return "redirect:http://localhost:8080";
@@ -97,6 +101,68 @@ public class JoinController {
     public ModelAndView getJoinNoCertified(@RequestParam(value = "email", required = false) String email) {
         ModelAndView modelAndView = new ModelAndView("join/join_no_certified");
         modelAndView.addObject("email", email);
+        return  modelAndView;
+    }
+
+    @GetMapping("/logouts")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        session.invalidate();
+
+        Cookie cookie = new Cookie("REMEMBER", null);
+        Cookie cookie2 = new Cookie("JSESSIONID", null);
+        cookie.setMaxAge(0);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+        cookie2.setMaxAge(0);
+        cookie2.setPath("/");
+        response.addCookie(cookie2);
+
+        return "redirect:http://localhost:8080";
+    }
+
+    @GetMapping(value = "/passwordEmail")
+    public ModelAndView passwordEmail() {
+        ModelAndView modelAndView = new ModelAndView("join/password_email");
+
+        return  modelAndView;
+    }
+
+    @GetMapping(value = "/passwordEmailAfter")
+    public ModelAndView passwordEmailAfter() {
+        ModelAndView modelAndView = new ModelAndView("join/password_email_after");
+
+        return  modelAndView;
+    }
+
+    @GetMapping(value = "/password/change")
+    public ModelAndView passwordChange(@RequestParam(value = "email", required = false) String email,  @RequestParam(value = "certified", required = false) String certified) {
+        Enum<?> result = this.joinService.passwordCertifiedCheck(email, certified);
+        ModelAndView modelAndView = null;
+        if("success".equals(result.name().toLowerCase())) {
+            modelAndView = new ModelAndView("join/password_change");
+            modelAndView.addObject("email", email);
+        } else if("failure".equals(result.name().toLowerCase())) {
+            modelAndView = new ModelAndView("error/error");
+        }
+
+        return  modelAndView;
+    }
+
+    @PatchMapping("/passwordChange")
+    @ResponseBody
+    public String passwordChange(JoinEntity joinEntity) {
+        JSONObject responseObject = new JSONObject();
+        Enum<?> result = this.joinService.passwordChange(joinEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
+
+    @GetMapping(value = "/password/change/complete")
+    public ModelAndView passwordChangeComplete() {
+        ModelAndView modelAndView = new ModelAndView("join/password_change_complete");
+
         return  modelAndView;
     }
 }

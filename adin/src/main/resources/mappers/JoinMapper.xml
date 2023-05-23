@@ -63,4 +63,12 @@
         VALUES
             (#{email}, #{loginTime}, #{status})
     </insert>
+
+    <update id="passwordChange" parameterType="com.adin.join.entity.JoinEntity">
+        UPDATE
+            adin_user
+        SET password = #{password}
+        WHERE 1=1
+          AND email = #{email}
+    </update>
 </mapper>

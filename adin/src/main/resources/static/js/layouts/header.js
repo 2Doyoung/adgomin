@@ -8,6 +8,10 @@ const signupBtn = document.getElementById("signupBtn");
 
 const loginBoxLoginButton = document.getElementById("loginBoxLoginButton");
 const loginBoxSignupButton = document.getElementById("loginBoxSignupButton");
+
+const logout = document.getElementById("logout");
+
+const passwordFind = document.getElementById("passwordFind");
 /**
  * 이벤트 함수
  */
@@ -104,6 +108,18 @@ document.getElementById("loginBoxPassword").addEventListener("keyup", (e) => {
 		document.getElementById("loginBoxPassword").style.marginBottom = "1rem";
 	}
 })
+
+if(logout != null) {
+	logout.addEventListener("click", () => {
+		window.location.href = "/logouts";
+	});
+}
+
+if(passwordFind != null) {
+	passwordFind.addEventListener("click", () => {
+		window.location.href = "/passwordEmail"
+	});
+}
 
 /**
  * 사용자 함수

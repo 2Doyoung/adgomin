@@ -59,12 +59,15 @@ document.getElementById("email").addEventListener("keyup", () => {
     let email = document.getElementById("email").value;
     let emailError = document.getElementById("emailError");
 
+    let emailDuplicateError = document.getElementById("emailDuplicateError");
+
     if(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/.test(email)) {
         emailError.style.display = "none";
 
         xhr("./join/emailDuplicate?email=" + email, null, "GET", "emailDuplicate");
     } else if(!/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/.test(email)) {
         emailError.style.display = "inline-block";
+        emailDuplicateError.style.display = "none";
     }
 });
 
@@ -101,6 +104,7 @@ document.getElementById("passwordCheck").addEventListener("keyup", () => {
 })
 
 allCheck.addEventListener("click", () => {
+    let checkBoxError = document.getElementById("checkBoxError")
     if(allCheckItem.classList.contains("check-box-color")) {
         allCheckItem.classList.remove("check-box-color");
 
@@ -164,7 +168,7 @@ for(let i = 0; i < checkBoxItemLine.length - 1; i++) {
 /**
  * 사용자 함수
  */
-
+document.getElementById("email").focus();
 /**
  * XMLHttpRequest 성공 함수
  */

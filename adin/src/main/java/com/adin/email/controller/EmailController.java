@@ -82,4 +82,31 @@ public class EmailController {
 
         return responseObject.toString();
     }
+
+    @GetMapping(value = "/passwordSendEmail")
+    @ResponseBody
+    public String passwordEmail(@RequestParam(value = "email", required = false) String email) throws MessagingException {
+        String certified = this.emailService.selectCertified(email);
+
+        StringBuilder emailContent = new StringBuilder();
+        try {
+            ClassPathResource resource = new ClassPathResource("/templates/join/password_send_email.html");
+            byte[] fileBytes = FileCopyUtils.copyToByteArray(resource.getInputStream());
+            String htmlContent = new String(fileBytes, StandardCharsets.UTF_8);
+
+            // Replace placeholders with actual values
+            htmlContent = htmlContent.replace("{email}", email);
+            htmlContent = htmlContent.replace("{certified}", certified);
+
+            emailContent.append(htmlContent);
+        } catch (IOException ioException) {
+
+        }
+        emailService.sendMail(email, "[애드인] 비밀번호 변경 링크입니다.", emailContent.toString());
+
+        JSONObject responseObject = new JSONObject();
+        responseObject.put("result", "success");
+
+        return responseObject.toString();
+    }
 }

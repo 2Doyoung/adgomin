@@ -19,4 +19,6 @@ public interface JoinMapper {
     int certifiedUpdate(@Param(value = "email") String email);
 
     int insertLoginLog(LoginLogEntity loginLogEntity);
+
+    int passwordChange(JoinEntity joinEntity);
 }

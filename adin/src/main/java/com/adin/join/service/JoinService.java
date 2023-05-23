@@ -40,7 +40,9 @@ public class JoinService {
     public Enum<?> join(JoinEntity joinEntity) {
         String encodePassword = passwordEncoder.encode(joinEntity.getPassword());
         joinEntity.setPassword(encodePassword);
-        joinEntity.setNickname(joinEntity.getEmail());
+
+        String nickname = joinEntity.getEmail().split("@")[0];
+        joinEntity.setNickname(nickname);
         joinEntity.setCertified(certifiedKey());
 
         return this.joinMapper.join(joinEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
@@ -133,5 +135,22 @@ public class JoinService {
         }
 
         return CommonResult.FAILURE;
+    }
+
+    public Enum<?> passwordCertifiedCheck(String email, String certified) {
+        JoinVO joinVO = this.joinMapper.certifiedCheck(email, certified);
+
+        if(joinVO.getCount() > 0) {
+            return CommonResult.SUCCESS;
+        }
+
+        return CommonResult.FAILURE;
+    }
+
+    public Enum<?> passwordChange(JoinEntity joinEntity) {
+        String encodePassword = passwordEncoder.encode(joinEntity.getPassword());
+        joinEntity.setPassword(encodePassword);
+
+        return this.joinMapper.passwordChange(joinEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 }

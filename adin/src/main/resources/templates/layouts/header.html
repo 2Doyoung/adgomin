@@ -24,10 +24,15 @@
 				<button class="signup-button" id="signupBtn">회원가입</button>
 			</div>
 			<div class="header-after-login" th:if="${session.LOGIN_USER != null}">
+				<div class="header-heart">
+					<div class="heart-wrap">
+						<div class="heart-icon"></div>
+					</div>
+				</div>
 				<div class="header-message">
-					<div class="heart-icon">
-						<div class="heart-top"></div>
-						<div class="heart-bottom"></div>
+					<div class="message-icon">
+						<div class="message-top"></div>
+						<div class="message-bottom"></div>
 					</div>
 				</div>
 				<div class="header-mypage dropdown">
@@ -36,7 +41,18 @@
 						<span class="profile-icon-head"></span>
 					</div>
 					<div class="dropdown-content">
-						<div>로그아웃</div>
+						<div class="profile-wrap">
+							<div class="profile-image">
+								<img th:src="@{/images/profile.png}">
+							</div>
+							<div class="profile-nickname-usertype">
+								<div th:text="${session.LOGIN_USER.nickname}" class="profile-nickname"></div>
+								<div th:if="${session.LOGIN_USER.userType == 'media'}" class="profile-usertype">광고매체</div>
+								<div th:if="${session.LOGIN_USER.userType == 'advertiser'}" class="profile-usertype">광고주</div>
+							</div>
+						</div>
+						<div class="dropdown-sub">계정설정</div>
+						<div class="dropdown-sub" id="logout">로그아웃</div>
 					</div>
 				</div>
 			</div>
@@ -62,9 +78,7 @@
 			<div class="user-service">
 				<input type="checkbox" id="rememberMe" name="rememberMe">
 				<label for="rememberMe">로그인 유지</label>
-				<a class="id-password-find">아이디</a>
-				<span>/</span>
-				<a>비밀번호 찾기</a>
+				<a class="id-password-find" id="passwordFind">비밀번호 찾기</a>
 			</div>
 			<hr class="login-box-hr">
 			<input type="button" id="loginBoxSignupButton" class="login-box-signup-button" value="애드인 회원가입">

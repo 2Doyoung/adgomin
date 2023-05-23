@@ -318,3 +318,216 @@ body {
     margin-left: 4rem;
     margin-top: 4rem;
 }
+
+.password-find-wrap {
+    margin: auto 19%;
+    height: 45rem;
+}
+
+.password-find-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 5rem;
+    color: #1C1C1C;
+    text-align: center;
+}
+
+.password-find-wrap-sub {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 300px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
+}
+
+.password-find-wrap-sub > .sub-password-find {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #1C1C1C;
+    margin-left: 4rem;
+}
+
+.password-find-wrap-sub > .sub-password-find {
+    font-size: 1.2rem;
+    margin-left: 4rem;
+}
+
+.sub-email {
+    margin-top: 2rem;
+}
+
+.sub-password-find > .password-find-sub-title {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #1C1C1C;
+}
+
+.password-find-email-button {
+    background-color: #81BEF7;
+    border: 1px solid #81BEF7;
+    width: 29rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 4rem;
+    margin-top: 1rem;
+}
+
+.password-find-email {
+    border: 1px solid;
+    border-radius: 0.5rem;
+    width: 27.7rem;
+    height: 2.5rem;
+    margin-left: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+}
+
+.password-check-email-error {
+    font-size: 1rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    margin-left: 4.5rem;
+    display: none;
+}
+
+.password-wrap-sub-email {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 400px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
+}
+
+.password-wrap-sub-email > .email-sub-title {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #1C1C1C;
+    margin-left: 4rem;
+}
+
+.password-wrap-sub-email > .email-sub-title > span{
+    color: #81BEF7;
+    font-weight: 500;
+}
+
+.password-wrap-sub-email > .sub-email {
+    font-size: 1.2rem;
+    margin-left: 4rem;
+}
+
+.password-change-wrap {
+    margin: auto 19%;
+    height: 45rem;
+}
+
+.password-change-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 5rem;
+    color: #1C1C1C;
+    text-align: center;
+}
+
+.password-change-wrap-sub {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 350px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
+}
+
+.password-change {
+    border: 1px solid;
+    border-radius: 0.5rem;
+    width: 27.7rem;
+    height: 2.5rem;
+    margin-left: 4rem;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.password-change-button {
+    background-color: #81BEF7;
+    border: 1px solid #81BEF7;
+    width: 29rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 4rem;
+    margin-top: 2rem;
+}
+
+.password-change-error {
+    font-size: 1rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    margin-left: 4.5rem;
+    display: none;
+}
+
+.password-change-check-error {
+    font-size: 1rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    margin-left: 4.5rem;
+    display: none;
+}
+
+.password-change-check {
+    border: 1px solid;
+    border-radius: 0.5rem;
+    width: 27.7rem;
+    height: 2.5rem;
+    margin-left: 4rem;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.password-change-wrap-sub > div {
+    margin-top: 1rem;
+}
+
+.password-change-wrap-sub > div > label {
+    margin-left: 4rem;
+    font-size: 1.3rem;
+}
+
+.password-wrap-sub-change {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 300px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
+}
+
+.password-wrap-sub-change > .change-sub-title {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #1C1C1C;
+    margin-left: 4rem;
+}
+
+.password-wrap-sub-change > .change-sub-title > span{
+    color: #81BEF7;
+    font-weight: 500;
+}
+
+.password-wrap-sub-change > .sub-change {
+    font-size: 1.2rem;
+    margin-left: 4rem;
+    margin-top: 1rem;
+}
