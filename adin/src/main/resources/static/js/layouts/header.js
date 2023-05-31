@@ -10,6 +10,7 @@ const loginBoxLoginButton = document.getElementById("loginBoxLoginButton");
 const loginBoxSignupButton = document.getElementById("loginBoxSignupButton");
 
 const logout = document.getElementById("logout");
+const userSetting = document.getElementById("userSetting");
 
 const passwordFind = document.getElementById("passwordFind");
 /**
@@ -118,6 +119,12 @@ if(logout != null) {
 if(passwordFind != null) {
 	passwordFind.addEventListener("click", () => {
 		window.location.href = "/passwordEmail"
+	});
+}
+
+if(userSetting != null) {
+	userSetting.addEventListener("click", () => {
+		window.location.href = "/user"
 	});
 }
 

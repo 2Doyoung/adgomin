@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adin.user.mapper.UserMapper">
+    <update id="changeProfileImg" parameterType="com.adin.join.vo.JoinVO">
+        UPDATE
+            adin_user
+        SET profile_img_nm = #{profileImgNm}
+        ,profile_origin_file_nm = #{profileOriginFileNm}
+        ,profile_img_file_path = #{profileImgFilePath}
+        WHERE 1=1
+          AND email = #{email}
+    </update>
+
+    <select id="profileImage" resultType="com.adin.join.vo.JoinVO">
+        SELECT
+            profile_img_nm AS profileImgNm
+            ,profile_origin_file_nm AS profileOriginFileNm
+            ,profile_img_file_path AS profileImgFilePath
+        FROM adin_user
+        WHERE 1=1
+          AND email = #{email}
+    </select>
+</mapper>

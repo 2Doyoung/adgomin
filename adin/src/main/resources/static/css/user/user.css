@@ -1,0 +1,232 @@
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.user-footer {
+    border: 0.5px solid #D9D9D9;
+}
+
+.user-wrap {
+    margin: auto 19%;
+    height: 900px;
+}
+
+.user-main-title {
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-bottom: 2px solid #000000;
+    font-weight: 500;
+}
+
+.user-sub-wrap {
+    display: flex;
+}
+
+.user-sub-menu {
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+}
+
+.user-sub-main {
+    width: 69%;
+    height: 100%;
+    display: inline-block;
+}
+
+.user-sub-menu > ul {
+    list-style: none;
+    padding: 1rem;
+}
+
+.user-sub-menu > ul > li {
+    font-size: 1.1rem;
+    padding-bottom: 1rem;
+    cursor: pointer;
+}
+
+.user-sub-main-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.user-sub-main-content {
+    height: 700px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.user-sub-password-change-content {
+    height: 350px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.user-sub-secession-content {
+    height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.user-sub-main-content > div > img {
+    width: 10rem;
+    height: 10rem;
+    border: 2px solid #ccc;
+    margin: 3rem 1rem 0 3rem;
+    border-radius: 50%;
+}
+
+.user-sub-main-content-sub {
+    display: flex;
+}
+
+.user-sub-main-content-sub > div {
+    padding-top: 7rem;
+}
+
+.profile_change {
+    display: block;
+    width: 6rem;
+    height: 2rem;
+    background-color: #A4A4A4;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    padding-top: 0.3rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.user-sub-main-content-sub > div > span {
+    margin-left: 0.3rem;
+    color: #BDBDBD;
+    font-size: 0.9rem;
+}
+
+.user-sub-main-content-information {
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.user-sub-main-content-information > div > label {
+    display: block;
+    font-size: 1.2rem;
+}
+
+.user-sub-main-content-information > div > div > input[type=text] {
+    height: 2.7rem;
+    width: 70%;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    background-color: #E6E6E6;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #2E2E2E;
+}
+
+.user-sub-main-content-information > div > div > input[type=button] {
+    height: 2.8rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.user-sub-main-content-information > div > div {
+    display: flex;
+}
+
+.user-sub-main-content-information > div > span {
+    font-size: 0.9rem;
+    color: #BDBDBD;
+}
+
+.user-sub-main-content-information > div > div > input[type=password] {
+    height: 2.7rem;
+    width: 70%;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    background-color: #E6E6E6;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #2E2E2E;
+}
+
+.user-secession-sub-title {
+    margin-left: 3rem;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+
+.user-secession-reason {
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.user-secession-reason > label {
+    display: block;
+    margin-top: 1rem;
+    color: #585858;
+}
+
+.user-secession-notice {
+    width: 72.5%;
+    height: 200px;
+    margin-left: 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+    background-color: #D8D8D8;
+}
+
+.user-secession-password > input[type=password] {
+    height: 2.7rem;
+    width: 70%;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    background-color: #E6E6E6;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #2E2E2E;
+    margin-left: 3rem;
+}
+
+.user-secession-password > input[type=button] {
+    height: 2.8rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    background-color: #DF013A;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.email_readonly:focus {
+    outline: none;
+}
+
+.profile_img {
+    display: none;
+}
