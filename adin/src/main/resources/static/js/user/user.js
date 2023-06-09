@@ -4,6 +4,10 @@
 const userPasswordChange = document.getElementById("userPasswordChange");
 const userSecession = document.getElementById("userSecession");
 const profileImg = document.getElementById("profileImg");
+const nicknameChange = document.getElementById("nicknameChange");
+const nickname = document.getElementById("nickname");
+
+const modalCheck = document.getElementById("modalCheck");
 
 /**
  * 이벤트 함수
@@ -17,11 +21,50 @@ userSecession.addEventListener("click", () => {
 })
 
 profileImg.addEventListener("change", () => {
-    const formData = new FormData();
+    let ext = profileImg.value.slice(profileImg.value.lastIndexOf(".") + 1).toLowerCase();
 
-    formData.append("profileFile", profileImg.files[0]);
+    if(!(ext == "jpg" || ext == "png" || ext == "jpeg")) {
+        let extSpan = document.getElementById("extSpan");
+        extSpan.style.color = "#FF0040";
+    } else {
+        const formData = new FormData();
 
-    xhr("/change/profileImg", formData, "PATCH", "changeProfileImg");
+        formData.append("profileFile", profileImg.files[0]);
+
+        xhr("/change/profileImg", formData, "PATCH", "changeProfileImg");
+    }
+})
+
+nicknameChange.addEventListener("click", () => {
+    if(!nicknameChange.readOnly) {
+        let nickname = document.getElementById("nickname").value;
+        let nicknameSpan = document.getElementById("nicknameSpan");
+
+        if(!/^[A-Za-z0-9가-힣]{2,18}$/.test(nickname)) {
+            nicknameSpan.style.color = "#FF0040";
+            document.getElementById("nickname").focus();
+        } else if(/^[A-Za-z0-9가-힣]{2,18}$/.test(nickname)) {
+            const formData = new FormData();
+
+            formData.append("nickname", nickname);
+
+            xhr("/change/nickname", formData, "PATCH", "changeNickname");
+        } else {
+
+        }
+    } else if(nicknameChange.readOnly) {
+
+    } else {
+
+    }
+})
+
+nickname.addEventListener("change", () => {
+    nicknameChange.readOnly = false;
+})
+
+modalCheck.addEventListener("click", () => {
+    window.location.href = "/user";
 })
 
 /**
@@ -33,7 +76,17 @@ profileImg.addEventListener("change", () => {
  */
 let successXhr = (responseObject, flag) => {
     if(flag === "changeProfileImg") {
-        window.location.href = "/user"
+        let modalBg = document.getElementById("modalBg");
+        let modalTitle = document.getElementById("modalTitle");
+
+        modalBg.style.display = "block";
+        modalTitle.innerText = "프로필 변경이 완료되었습니다.";
+    } else if(flag === "changeNickname") {
+        let modalBg = document.getElementById("modalBg");
+        let modalTitle = document.getElementById("modalTitle");
+
+        modalBg.style.display = "block";
+        modalTitle.innerText = "닉네임 변경이 완료되었습니다.";
     }
 }
 

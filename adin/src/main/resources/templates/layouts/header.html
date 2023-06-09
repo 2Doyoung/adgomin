@@ -24,26 +24,21 @@
 				<button class="signup-button" id="signupBtn">회원가입</button>
 			</div>
 			<div class="header-after-login" th:if="${session.LOGIN_USER != null}">
+				<div class="adin-manage">
+					애드인 관리
+				</div>
 				<div class="header-heart">
-					<div class="heart-wrap">
-						<div class="heart-icon"></div>
-					</div>
+					<i class="ri-heart-3-line"></i>
 				</div>
 				<div class="header-message">
-					<div class="message-icon">
-						<div class="message-top"></div>
-						<div class="message-bottom"></div>
-					</div>
+					<i class="ri-notification-2-line"></i>
 				</div>
 				<div class="header-mypage dropdown">
-					<div class="profile-icon">
-						<span class="profile-icon-body"></span>
-						<span class="profile-icon-head"></span>
-					</div>
+					<i class="ri-user-5-line"></i>
 					<div class="dropdown-content">
 						<div class="profile-wrap">
 							<div class="profile-image">
-								<img th:src="@{/images/profile.png}">
+								<img th:if="${session.LOGIN_USER != null}" th:src="@{/profile/image (email=${session.LOGIN_USER.getEmail()})}">
 							</div>
 							<div class="profile-nickname-usertype">
 								<div th:text="${session.LOGIN_USER.nickname}" class="profile-nickname"></div>
@@ -51,6 +46,7 @@
 								<div th:if="${session.LOGIN_USER.userType == 'advertiser'}" class="profile-usertype">광고주</div>
 							</div>
 						</div>
+						<div th:if="${session.LOGIN_USER.userType == 'media'}" class="dropdown-sub" id="mediaManage">광고매체 관리</div>
 						<div class="dropdown-sub" id="userSetting">계정설정</div>
 						<div class="dropdown-sub" id="logout">로그아웃</div>
 					</div>

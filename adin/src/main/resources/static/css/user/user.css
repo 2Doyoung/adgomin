@@ -14,7 +14,7 @@ body {
 }
 
 .user-wrap {
-    margin: auto 19%;
+    margin: auto 17%;
     height: 900px;
 }
 
@@ -30,13 +30,13 @@ body {
 }
 
 .user-sub-menu {
-    width: 30%;
+    width: 25%;
     height: 100%;
     display: inline-block;
 }
 
 .user-sub-main {
-    width: 69%;
+    width: 74%;
     height: 100%;
     display: inline-block;
 }
@@ -66,7 +66,7 @@ body {
 }
 
 .user-sub-password-change-content {
-    height: 350px;
+    height: 370px;
     border: 1px solid #ccc;
     border-radius: 10px;
 }
@@ -80,9 +80,8 @@ body {
 .user-sub-main-content > div > img {
     width: 10rem;
     height: 10rem;
-    border: 2px solid #ccc;
     margin: 3rem 1rem 0 3rem;
-    border-radius: 50%;
+    border-radius: 30px;
 }
 
 .user-sub-main-content-sub {
@@ -122,15 +121,15 @@ body {
 .user-sub-main-content-information > div > label {
     display: block;
     font-size: 1.2rem;
+    margin-top: 0.5rem;
 }
 
 .user-sub-main-content-information > div > div > input[type=text] {
     height: 2.7rem;
-    width: 70%;
+    width: 80%;
     margin-bottom: 1rem;
     margin-top: 0.5rem;
-    background-color: #E6E6E6;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
     padding-left: 1rem;
@@ -160,11 +159,9 @@ body {
 
 .user-sub-main-content-information > div > div > input[type=password] {
     height: 2.7rem;
-    width: 70%;
-    margin-bottom: 1rem;
+    width: 80%;
     margin-top: 0.5rem;
-    background-color: #E6E6E6;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
     padding-left: 1rem;
@@ -189,7 +186,7 @@ body {
 }
 
 .user-secession-notice {
-    width: 72.5%;
+    width: 79.5%;
     height: 200px;
     margin-left: 3rem;
     margin-top: 3rem;
@@ -199,16 +196,14 @@ body {
 
 .user-secession-password > input[type=password] {
     height: 2.7rem;
-    width: 70%;
-    margin-bottom: 1rem;
+    width: 77%;
     margin-top: 0.5rem;
-    background-color: #E6E6E6;
-    border: none;
     border-radius: 5px;
     font-size: 1rem;
     padding-left: 1rem;
     color: #2E2E2E;
     margin-left: 3rem;
+    border: 1px solid #ccc;
 }
 
 .user-secession-password > input[type=button] {
@@ -229,4 +224,91 @@ body {
 
 .profile_img {
     display: none;
+}
+
+.nickname_change {
+    cursor: pointer;
+}
+
+.password-change-error {
+    color: #FF402B !important;
+    display: none;
+}
+
+.password-change-check-error {
+    color: #FF402B !important;
+    display: none;
+}
+
+.password-present-error {
+    color: #FF402B !important;
+    display: none;
+}
+
+.password-change-button {
+    cursor: pointer;
+}
+
+.modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.1);
+    display: none;
+}
+
+.modal-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 100px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+
+.modal-body > div {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.modal-body > input {
+    height: 2.5rem;
+    width: 4.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 1.5rem;
+}
+
+.ri-checkbox-circle-line {
+    vertical-align: bottom;
+    color: #81BEF7;
+    font-size: 3rem;
+}
+
+.modal-check-div {
+    margin-top: 1rem !important;
+    cursor: pointer;
+}
+
+.secessionButton {
+    cursor: pointer;
+}
+
+.password-present-error-secession {
+    color: #FF402B !important;
+    margin-left: 3.5rem;
+    display: none;
+}
+
+.user_phone_readonly:focus {
+    outline: none;
 }

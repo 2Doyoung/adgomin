@@ -69,7 +69,7 @@ document.getElementById("passwordChangeCheck").addEventListener("keyup", () => {
 document.getElementById("passwordChange").focus();
 
 /**
- * XMLHttpRequest 성공 함수다
+ * XMLHttpRequest 성공 함수
  */
 let successXhr = (responseObject, flag) => {
     if(flag === "patchPasswordChange") {

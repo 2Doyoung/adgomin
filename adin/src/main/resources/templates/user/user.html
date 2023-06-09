@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>애드인 - 회원가입</title>
+    <title>애드인 - 계정설정(내정보)</title>
     <link rel="stylesheet" th:href="@{/css/user/user.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
@@ -47,16 +47,16 @@
                                 <div class="profile_change">프로필 변경</div>
                             </label>
                             <input type="file" class="profile_img" name="profile_img" id="profileImg">
-                            <span>확장자 : png, jpg, jpeg</span>
+                            <span id="extSpan">확장자 : png, jpg, jpeg</span>
                         </div>
                     </div>
                     <div class="user-sub-main-content-information">
                         <div>
                             <label>닉네임</label>
-                            <span>한글/영문/숫자 조합/2~18자 이하</span>
+                            <span id="nicknameSpan">한글/영문/숫자 조합/2~18자 이하</span>
                             <div>
-                                <input type="text" th:value="${nickname}">
-                                <input type="button" value="변경하기">
+                                <input type="text" id="nickname" th:value="${nickname}">
+                                <input type="button"  class="nickname_change" id="nicknameChange" value="변경하기" readonly>
                             </div>
                         </div>
                         <div>
@@ -70,7 +70,7 @@
                             <label>휴대폰 번호</label>
                             <span>본인 인증을 완료해 주세요.</span>
                             <div>
-                                <input type="text">
+                                <input type="text" class="user_phone_readonly" readonly>
                                 <input type="button" value="본인인증">
                             </div>
                         </div>
@@ -79,6 +79,14 @@
            </div>
        </div>
    </div>
+<div class="modal-bg" id="modalBg">
+    <div class="modal-body">
+        <div id="modalTitle"></div>
+        <div class="modal-check-div" id="modalCheck">
+            <i class="ri-checkbox-circle-line"></i>
+        </div>
+    </div>
+</div>
 <hr class="user-footer">
 <th:block th:replace="~{layouts/footer :: body}"></th:block>
 </body>

@@ -13,6 +13,8 @@ const logout = document.getElementById("logout");
 const userSetting = document.getElementById("userSetting");
 
 const passwordFind = document.getElementById("passwordFind");
+
+const mediaManage = document.getElementById("mediaManage");
 /**
  * 이벤트 함수
  */
@@ -125,6 +127,12 @@ if(passwordFind != null) {
 if(userSetting != null) {
 	userSetting.addEventListener("click", () => {
 		window.location.href = "/user"
+	});
+}
+
+if(mediaManage != null) {
+	mediaManage.addEventListener("click", () => {
+		window.location.href = "/mediaManage/introduce"
 	});
 }
 

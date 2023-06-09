@@ -17,7 +17,7 @@ header {
 
 .header {
 	display: flex;
-	margin: auto 19%;
+	margin: auto 17%;
 	font-size: 1rem;
 }
 
@@ -29,7 +29,7 @@ header {
 .header-logo {
 	display: flex;
 	margin: 0.5rem 0 1rem 0;
-	width: 170px;
+	width: 260px;
 }
 
 .logo {
@@ -85,6 +85,7 @@ header {
 .header-login {
 	display: flex;
 	align-items: center;
+	margin-left: 6rem;
 }
 
 .login-button {
@@ -242,27 +243,30 @@ header {
 .header-after-login {
 	display: flex;
 	align-items: center;
-	width: 170px;
+	width: 265px;
 }
 
 .header-message {
-	font-size: 1rem;
+	font-size: 1.6rem;
 	border-radius: 0.5rem;
 	padding: 0.6rem 0 0.6rem 0rem;
 	margin-left: 1.5rem;
+	cursor: pointer;
 }
 
 .header-mypage {
-	font-size: 1rem;
+	font-size: 1.7rem;
 	border-radius: 0.5rem;
 	padding: 0.6rem 0 0.6rem 0rem;
 	margin-left: 1.5rem;
+	cursor: pointer;
 }
 
 .header-heart {
-	font-size: 1rem;
+	font-size: 1.6rem;
 	border-radius: 0.5rem;
 	padding: 0.6rem 0 0.6rem 0;
+	cursor: pointer;
 }
 
 .dropdown {
@@ -277,7 +281,7 @@ header {
 	min-width: 190px;
 	padding: 12px 16px;
 	z-index: 1;
-	left: -169px;
+	left: -195px;
 	top: 54px;
 	border-radius: 3px;
 	border: 1px solid #ccc;
@@ -287,110 +291,13 @@ header {
 	display: block;
 }
 
-.profile-icon {
-	position: relative;
-	width: 33px;
-	height: 33px;
-	border-radius: 50%;
-	background-color: #ccc;
-	overflow: hidden;
-	border: 1px solid #A4A4A4;
-	cursor: pointer;
-}
-
-.profile-icon-body {
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 26px;
-	height: 25%;
-	background-color: #fff;
-	border-radius: 15px;
-}
-
-.profile-icon-head {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translate(-50%, 40%);
-	width: 15px;
-	height: 15px;
-	border-radius: 50%;
-	background-color: #fff;
-}
-
-.message-icon {
-	position: relative;
-	width: 35px;
-	height: 35px;
-	background: #ccc;
-	border-radius: 50%;
-	border: 1px solid #A4A4A4;
-	cursor: pointer;
-}
-
-.message-top,
-.message-bottom {
-	position: absolute;
-	top: 0;
-	background-color: #FFFFFF;
-}
-
-.message-top {
-	border-radius: 40px 40px 0 0;
-	width: 18px;
-	height: 18px;
-	left: 50%;
-	transform: translate(-50%, 35%);
-}
-
-.message-bottom {
-	top: 22px;
-	border-radius: 40px 40px 40px 40px;
-	width: 6px;
-	height: 6px;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-.heart-icon {
-	width: 14px;
-	height: 14px;
-	background: #FFFFFF;
-	position: relative;
-	transform: rotate(45deg);
-	top: 34%;
-	left: 30%;
-}
-
-.heart-icon::before,
-.heart-icon::after {
-	content: "";
-	width: 14px;
-	height: 14px;
-	position: absolute;
-	border-radius: 50%;
-	background: #FFFFFF;
-}
-
-.heart-icon::before {
-	left: -40%;
-}
-
-.heart-icon::after {
-	top: -40%;
-	left: 0%;
-}
-
 .heart-wrap {
 	position: relative;
 	width: 35px;
 	height: 35px;
-	background: #ccc;
-	border-radius: 50%;
-	border: 1px solid #A4A4A4;
+	border-radius: 10px;
 	cursor: pointer;
+	color: #848484;
 }
 
 .profile-image {
@@ -399,8 +306,9 @@ header {
 }
 
 .profile-image > img {
-	width: 100%;
-	border-radius: 1rem;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 10px;
 }
 
 .profile-nickname {
@@ -438,4 +346,15 @@ header {
 
 .dropdown-sub:hover {
 	background-color: #E6E6E6;
+}
+
+.adin-manage {
+	margin-right: 1rem;
+	border: 1px solid #A4A4A4;
+	padding: 0.4rem 0.5rem;
+	border-radius: 10px;
+}
+
+.ri-heart-3-line, .ri-notification-2-line, .ri-user-5-line {
+	color: #A4A4A4;
 }

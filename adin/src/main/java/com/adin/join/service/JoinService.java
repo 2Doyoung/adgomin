@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.adin.enums.CommonResult;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import java.util.Date;
 import java.util.Random;
 
 @Service(value = "com.adin.join.service.JoinService")
+@Transactional
 public class JoinService {
     private static final String COOKIE = "adinEncryptionCookie";
     private static final String SALT = "adinEncryptionSalt";

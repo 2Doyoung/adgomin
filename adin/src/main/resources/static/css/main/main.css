@@ -79,13 +79,13 @@ body {
 
 /* 아이콘 카테고리 */
 .icon-category-area {
-	margin: auto 19%;
+	margin: auto 17%;
 	display: flex;
 }
 
 .icon-category-ul {
 	list-style: none;
-	background-color: #FAFAFA;
+	background-color: #F2F2F2;
 	padding: 2rem;
 	border-radius: 2rem;
 	text-align: center;
@@ -101,7 +101,7 @@ body {
 }
 
 .icon-category-title {
-	margin: auto 19%;
+	margin: auto 17%;
 	display: flex;
 	font-size: 1.5rem;
 	font-weight: 400;
@@ -219,7 +219,7 @@ body {
 
 /* 인기있는 sns 광고매체 */
 .popular-sns-title {
-	margin: auto 19%;
+	margin: auto 17%;
 	display: flex;
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -229,7 +229,7 @@ body {
 }
 
 .popular-sns-ad {
-	margin: auto 19%;
+	margin: auto 17%;
 	margin-top: 1rem;
 }
 
@@ -250,7 +250,7 @@ body {
 
 /* 인기있는 대중교통 광고매체 */
 .popular-transport-title {
-	margin: auto 19%;
+	margin: auto 17%;
 	display: flex;
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -260,7 +260,7 @@ body {
 }
 
 .popular-transport-ad {
-	margin: auto 19%;
+	margin: auto 17%;
 	margin-top: 1rem;
 }
 
@@ -281,7 +281,7 @@ body {
 
 /* 인기있는 옥외광 광고매체 */
 .popular-outdoor-title {
-	margin: auto 19%;
+	margin: auto 17%;
 	display: flex;
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -291,7 +291,7 @@ body {
 }
 
 .popular-outdoor-ad {
-	margin: auto 19%;
+	margin: auto 17%;
 	margin-top: 1rem;
 }
 
@@ -351,13 +351,13 @@ body {
 }
 
 .success-ad-preview-video-wrap {
-	margin: auto 19%;
+	margin: auto 17%;
 }
 
 /* 메인페이지 리뷰 리스트*/
 .main-review-list-wrap {
 	height: 600px;
-	margin: auto 19%;
+	margin: auto 17%;
 	display: flex;
 }
 
@@ -470,7 +470,7 @@ body {
 }
 
 .adin-marketing-method-content-wrap {
-	margin: auto 19%;
+	margin: auto 17%;
 }
 
 .adin-marketing-method-content-media-span {

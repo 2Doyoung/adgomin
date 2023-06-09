@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.adin.main.mapper.MainMapper;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-@Service
+@Service(value = "com.adin.main.service.MainService")
+@Transactional
 public class MainService {
 	
 	private final MainMapper mainMapper;

@@ -22,4 +22,32 @@
         WHERE 1=1
           AND email = #{email}
     </select>
+
+    <update id="changeNickname" parameterType="com.adin.join.vo.JoinVO">
+        UPDATE
+            adin_user
+        SET nickname = #{nickname}
+        WHERE 1=1
+          AND email = #{email}
+    </update>
+
+    <update id="userPasswordChange" parameterType="com.adin.join.vo.JoinVO">
+        UPDATE
+            adin_user
+        SET password = #{password}
+        WHERE 1=1
+          AND email = #{email}
+    </update>
+
+    <delete id="userSecession" parameterType="com.adin.join.vo.JoinVO">
+        DELETE FROM adin_user
+        WHERE email = #{email}
+    </delete>
+
+    <insert id="userSecessionReason" parameterType="com.adin.user.entity.SecessionReasonEntity">
+        INSERT INTO adin_secession_reason
+        (reason, email)
+        VALUES
+            (#{reason}, #{email})
+    </insert>
 </mapper>
