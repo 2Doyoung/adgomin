@@ -15,7 +15,7 @@ body {
 
 .user-wrap {
     margin: auto 17%;
-    height: 900px;
+    height: 1300px;
 }
 
 .user-main-title {
@@ -59,7 +59,7 @@ body {
 }
 
 .user-sub-main-content {
-    height: 670px;
+    height: 1050px;
     border: 1px solid #ccc;
     border-radius: 10px;
 }
@@ -188,7 +188,7 @@ body {
 }
 
 .user-secession-notice {
-    width: 74.5%;
+    width: 77.5%;
     height: 200px;
     margin-left: 3rem;
     margin-top: 3rem;
@@ -198,7 +198,7 @@ body {
 
 .user-secession-password > input[type=password] {
     height: 2.5rem;
-    width: 72%;
+    width: 75%;
     margin-top: 0.5rem;
     border-radius: 5px;
     font-size: 1rem;
@@ -315,4 +315,127 @@ body {
 
 .user_phone_readonly:focus {
     outline: none;
+}
+
+.user-sub-main-content-information > div > div > textarea {
+    height: 10rem;
+    width: 77%;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    color: #2E2E2E;
+    resize: none;
+}
+
+.user-sub-main-content-information > div > div > ul {
+    list-style: none;
+    padding: 0rem;
+}
+
+.region-choice > div > ul > li:not(.region_first_li) {
+    float: left;
+    background-color: #D8D8D8;
+    color: #585858;
+    margin: 0.5rem;
+    padding: 0.3rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.region_first_li {
+    float: left;
+    background-color: #D8D8D8;
+    color: #585858;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+    padding: 0.3rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.ad-category > div > ul > li:not(.category-first-li) {
+    float: left;
+    background-color: #D8D8D8;
+    color: #585858;
+    margin: 0.5rem;
+    padding: 0.3rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.category-first-li {
+    float: left;
+    background-color: #D8D8D8;
+    color: #585858;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+    padding: 0.3rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.media-url {
+    height: 2.5rem;
+    width: 77%;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #2E2E2E;
+    display: inline-block !important;
+}
+
+.media-url-input {
+    border: none !important;
+    margin-top: 0rem !important;
+    height: 2.3rem !important;
+    margin-left: 0.5rem;
+    width: 86% !important;
+    padding-left: 0rem !important;
+    font-size: 1rem;
+}
+
+.media-url-input:focus {
+    outline: none;
+}
+
+.https-span {
+    margin-top: 0.4rem;
+}
+
+textarea {
+    outline: none;
+}
+
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.save-button {
+    height: 2.7rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.region-selected {
+    background-color: #2E9AFE !important;
+    color: #FFFFFF !important;
+}
+
+.ad-category-selected {
+    background-color: #2E9AFE !important;
+    color: #FFFFFF !important;
 }

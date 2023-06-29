@@ -32,12 +32,16 @@ body {
 
 .ad-slide-left > div > img {
 	width: 100%;
-	border-radius: 30px;
+	border-radius: 10px;
 }
 
 .ri-arrow-left-s-fill, .ri-arrow-right-s-fill {
-	font-size: 3rem;
+	font-size: 2rem;
 	color: #FFFFFF;
+	background: #585858;
+	border-radius: 15px;
+	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
 .ad-slide-left-area {
@@ -87,17 +91,16 @@ body {
 	list-style: none;
 	background-color: #F2F2F2;
 	padding: 2rem;
-	border-radius: 2rem;
+	border-radius: 10px;
 	text-align: center;
+	width: 92%;
+	margin-left: 1rem;
 }
 
 .icon-category-area > ul > li {
 	width: 80px;
 	float: left;
-}
-
-.icon-category-area > ul > li:not(:first-of-type) {
-	margin-left: 3rem;
+	margin-left: 2.3rem;
 }
 
 .icon-category-title {
@@ -107,6 +110,7 @@ body {
 	font-weight: 400;
 	padding-left: 1rem;
 	margin-top: 4rem;
+	font-weight: 500;
 }
 
 .icon-category-instagram-span {
@@ -173,15 +177,21 @@ body {
 	font-size: 3.4rem;
 }
 
+/* 현수막 로고 */
+.ri-flag-fill {
+	display: block;
+	font-size: 3.4rem;
+}
+
 /* 부류 검색창 */
 .category-search {
 	border: 0px;
 	outline: 0px;
 	height: 45px;
-	font-size: 1rem;
 	padding-left: 20px;
-	font-size: 1.5rem;
-	border-radius: 15px;
+	font-size: 1.2rem;
+	border-radius: 10px;
+	width: 15.5rem;
 }
 
 .category-search-area {
@@ -189,7 +199,7 @@ body {
 	margin-top: 9.5rem;
 	margin-left: 25%;
 	width: 315px;
-	border-radius: 15px;
+	border-radius: 10px;
 	display: flex;
 	align-items: center;
 	font-size: 1.5rem;
@@ -209,12 +219,12 @@ body {
 	background-color: #2E9AFE;
 	margin-left: 0.5rem;
 	padding: 5px 10px 5px 10px;
-	border-radius: 20px;
+	border-radius: 10px;
 	color: #FFFFFF;
 }
 
 .category-search-example > ul > li:first-child {
-	margin-left: 1.4rem;
+	margin-left: 1.2rem;
 }
 
 /* 인기있는 sns 광고매체 */
@@ -418,7 +428,7 @@ body {
 	background-color: #00BFFF;
 	border: 1px solid #00BFFF;
 	color: #FFFFFF;
-	border-radius: 15px;
+	border-radius: 10px;
 }
 
 /* 애드인 마케팅 방법 */

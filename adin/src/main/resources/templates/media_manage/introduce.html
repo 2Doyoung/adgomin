@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드인 - 계정설정(내정보)</title>
+    <link rel="stylesheet" th:href="@{/css/media_manage/media_manage.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/media_manage/introduce.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let sessionLoginUser = [[${session.LOGIN_USER}]];
+
+    if(sessionLoginUser == null) {
+        window.location.href = "/";
+    }
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+   <div class="user-wrap">
+       <div class="user-main-title">광고매체 관리</div>
+       <div class="user-sub-wrap">
+           <div class="user-sub-menu">
+               <ul>
+                   <li style="font-weight: bolder">
+                       광고매체 소개
+                   </li>
+                   <li id="register">
+                       광고매체 등록
+                   </li>
+               </ul>
+           </div>
+           <div class="user-sub-main">
+                <div class="user-sub-main-title">
+                    광고매체 소개
+                </div>
+                <div class="user-sub-main-content">
+                    <div class="user-sub-main-content-sub">
+                        <img th:if="${session.LOGIN_USER != null}" th:src="@{/profile/image (email=${session.LOGIN_USER.getEmail()})}">
+                        <div>
+                            <label for="profileImg">
+                                <div class="profile_change">프로필 변경</div>
+                            </label>
+                            <input type="file" class="profile_img" name="profile_img" id="profileImg">
+                            <span id="extSpan">확장자 : png, jpg, jpeg</span>
+                        </div>
+                    </div>
+                    <div class="user-sub-main-content-information">
+                        <div>
+                            <label>닉네임</label>
+                            <span id="nicknameSpan">한글/영문/숫자 조합/2~18자 이하</span>
+                            <div>
+                                <input type="text" id="nickname" th:value="${nickname}">
+                            </div>
+                        </div>
+                        <div>
+                            <label>소개</label>
+                            <span>광고매체 소개를 입력해 주세요.</span><span id="introduceLength"> (0 / 255)</span>
+                            <div>
+                                <textarea id="mediaIntroduce" spellcheck="false"></textarea>
+                            </div>
+                        </div>
+                        <div class="region-choice">
+                            <label>지역</label>
+                            <span>서비스 지역을 선택해 주세요.(다중 선택 가능)</span>
+                            <div>
+                                <ul>
+                                    <li class="region_first_li region-category">전국</li>
+                                    <li class="region-category">서울</li>
+                                    <li class="region-category">인천</li>
+                                    <li class="region-category">부산</li>
+                                    <li class="region-category">대전</li>
+                                    <li class="region-category">광주</li>
+                                    <li class="region-category">대구</li>
+                                    <li class="region-category">울산</li>
+                                    <li class="region-category">경기</li><br>
+                                    <li class="region_first_li region-category">강원</li>
+                                    <li class="region-category">충북</li>
+                                    <li class="region-category">충남</li>
+                                    <li class="region-category">전북</li>
+                                    <li class="region-category">전남</li>
+                                    <li class="region-category">경북</li>
+                                    <li class="region-category">경남</li>
+                                    <li class="region-category">제주</li>
+                                    <li class="region-category">세종</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="ad-category">
+                            <label>광고분야</label>
+                            <span id="adCategorySpan">최대 3개</span>
+                            <div>
+                                <ul>
+                                    <li class="category-first-li ad-category-list">게임</li>
+                                    <li class="ad-category-list">먹방</li>
+                                    <li class="ad-category-list">어플</li>
+                                    <li class="ad-category-list">병원</li>
+                                    <li class="ad-category-list">음식점</li>
+                                    <li class="ad-category-list">화장품</li>
+                                    <li class="ad-category-list">학원</li>
+                                    <li class="ad-category-list">식품</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <label>광고매체 URL</label>
+                            <div class="media-url" id="mediaUrl">
+                                <span class="https-span">https://</span>
+                                <input class="media-url-input" type="text" placeholder="ex) www.youtube.com/@myadin">
+                            </div>
+                            <input type="button" class="save-button" id="saveButton" value="저장하기">
+                        </div>
+                    </div>
+                </div>
+           </div>
+       </div>
+   </div>
+<div class="modal-bg" id="modalBg">
+    <div class="modal-body">
+        <div id="modalTitle"></div>
+        <div class="modal-check-div" id="modalCheck">
+            <i class="ri-checkbox-circle-line"></i>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

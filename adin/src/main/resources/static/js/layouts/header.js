@@ -132,7 +132,7 @@ if(userSetting != null) {
 
 if(mediaManage != null) {
 	mediaManage.addEventListener("click", () => {
-		window.location.href = "/mediaManage/introduce"
+		window.location.href = "/media"
 	});
 }
 
