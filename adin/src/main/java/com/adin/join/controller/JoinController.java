@@ -2,17 +2,13 @@ package com.adin.join.controller;
 
 import com.adin.join.entity.JoinEntity;
 import com.adin.join.service.JoinService;
+import com.adin.media.service.MediaService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,10 +17,12 @@ import javax.servlet.http.HttpSession;
 @Controller(value = "com.adin.join.controller.JoinController")
 public class JoinController {
     private final JoinService joinService;
+    private final MediaService mediaService;
 
     @Autowired
-    public JoinController(JoinService joinService) {
+    public JoinController(JoinService joinService, MediaService mediaService) {
         this.joinService = joinService;
+        this.mediaService = mediaService;
     }
 
     @GetMapping(value = "/join")
@@ -47,9 +45,13 @@ public class JoinController {
     public String postJoin(JoinEntity joinEntity) {
         JSONObject responseObject = new JSONObject();
         Enum<?> result = this.joinService.join(joinEntity);
+        if("success".equals(result.name().toLowerCase())) {
+            responseObject.put("email", joinEntity.getEmail());
+            responseObject.put("certified", joinEntity.getCertified());
+
+            result = this.mediaService.insertMediaIntroduce(joinEntity);
+        }
         responseObject.put("result", result.name().toLowerCase());
-        responseObject.put("email", joinEntity.getEmail());
-        responseObject.put("certified", joinEntity.getCertified());
 
         return responseObject.toString();
     }

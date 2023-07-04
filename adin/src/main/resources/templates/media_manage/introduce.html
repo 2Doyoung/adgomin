@@ -17,10 +17,15 @@
     if(sessionLoginUser == null) {
         window.location.href = "/";
     }
+
+    let getRegionSelected = [[${region}]];
+    let getAdCategorySelected = [[${adCategory}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
+<div class="top-title">
+    <div class="user-main-title">광고매체 관리</div>
+</div>
    <div class="user-wrap">
-       <div class="user-main-title">광고매체 관리</div>
        <div class="user-sub-wrap">
            <div class="user-sub-menu">
                <ul>
@@ -52,14 +57,14 @@
                             <label>닉네임</label>
                             <span id="nicknameSpan">한글/영문/숫자 조합/2~18자 이하</span>
                             <div>
-                                <input type="text" id="nickname" th:value="${nickname}">
+                                <input type="text" id="nickname" th:value="${nickname}" spellcheck="false">
                             </div>
                         </div>
                         <div>
                             <label>소개</label>
                             <span>광고매체 소개를 입력해 주세요.</span><span id="introduceLength"> (0 / 255)</span>
                             <div>
-                                <textarea id="mediaIntroduce" spellcheck="false"></textarea>
+                                <textarea id="mediaIntroduce" spellcheck="false" th:text="${mediaIntroduce}"></textarea>
                             </div>
                         </div>
                         <div class="region-choice">
@@ -108,7 +113,7 @@
                             <label>광고매체 URL</label>
                             <div class="media-url" id="mediaUrl">
                                 <span class="https-span">https://</span>
-                                <input class="media-url-input" type="text" placeholder="ex) www.youtube.com/@myadin">
+                                <input class="media-url-input" id="mediaUrlInput" type="text" placeholder="ex) www.youtube.com/@myadin" th:value="${mediaUrl}">
                             </div>
                             <input type="button" class="save-button" id="saveButton" value="저장하기">
                         </div>

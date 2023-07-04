@@ -6,6 +6,8 @@ const regionCategory = document.getElementsByClassName("region-category");
 const adCategoryList = document.getElementsByClassName("ad-category-list");
 const mediaIntroduce = document.getElementById("mediaIntroduce");
 
+const modalCheck = document.getElementById("modalCheck");
+
 /**
  * 이벤트 함수
  */
@@ -25,6 +27,45 @@ saveButton.addEventListener("click", () => {
         adCategorySpan.style.color = "#BDBDBD";
     }
 
+    if(!(nicknameSpan.style.color == 'rgb(255, 0, 64)')) {
+        let mediaIntroduce = document.getElementById("mediaIntroduce").value;
+        let regionSelected = document.getElementsByClassName("region-selected");
+        let regionSelectedText = "";
+        let adCategorySelected = document.getElementsByClassName("ad-category-selected");
+        let adCategorySelectedText = "";
+        let mediaUrl = document.getElementById("mediaUrlInput").value;
+
+        const formData = new FormData();
+
+        formData.append("nickname", nickname);
+        formData.append("mediaIntroduce", mediaIntroduce);
+
+        for(let i = 0; i < regionSelected.length; i++) {
+            if(i == regionSelected.length - 1) {
+                regionSelectedText += regionSelected[i].innerText
+            } else if(!(i == regionSelected.length - 1)) {
+                regionSelectedText += regionSelected[i].innerText + ","
+            } else {
+
+            }
+        }
+
+        for(let i = 0; i < adCategorySelected.length; i++) {
+            if(i == adCategorySelected.length - 1) {
+                adCategorySelectedText += adCategorySelected[i].innerText
+            } else if(!(i == adCategorySelected.length - 1)) {
+                adCategorySelectedText += adCategorySelected[i].innerText + ","
+            } else {
+
+            }
+        }
+
+        formData.append("region", regionSelectedText);
+        formData.append("adCategory", adCategorySelectedText);
+        formData.append("mediaUrl", mediaUrl);
+
+        xhr("/media/introduce", formData, "PATCH", "mediaIntroduce");
+    }
 })
 
 for(let i = 0; i < regionCategory.length; i++) {
@@ -90,15 +131,49 @@ mediaIntroduce.addEventListener("keyup", () => {
     introduceLength.innerText = " (" +  mediaIntroduceLength + " / 255)";
 })
 
+modalCheck.addEventListener("click", () => {
+    window.location.href = "/media";
+})
+
 /**
  * 사용자 함수
  */
+let introduceLength = document.getElementById("introduceLength");
+let mediaIntroduceValue = mediaIntroduce.value;
+let mediaIntroduceLength = mediaIntroduceValue.length;
 
+introduceLength.innerText = " (" +  mediaIntroduceLength + " / 255)";
+
+let getRegionSelectedArray = getRegionSelected.split(",");
+let getRegionCategory = document.getElementsByClassName("region-category");
+for(let i = 0; i < getRegionCategory.length; i++) {
+    for(let j = 0; j < getRegionSelectedArray.length; j++) {
+        if(getRegionCategory[i].innerText == getRegionSelectedArray[j]) {
+            getRegionCategory[i].classList.add("region-selected")
+        }
+    }
+}
+
+let getAdCategorySelectedArray = getAdCategorySelected.split(",");
+let getAdCategoryList = document.getElementsByClassName("ad-category-list");
+for(let i = 0; i < getAdCategoryList.length; i++) {
+    for(let j = 0; j < getAdCategorySelectedArray.length; j++) {
+        if(getAdCategoryList[i].innerText == getAdCategorySelectedArray[j]) {
+            getAdCategoryList[i].classList.add("ad-category-selected")
+        }
+    }
+}
 /**
  * XMLHttpRequest 성공 함수
  */
 let successXhr = (responseObject, flag) => {
+    if(flag === "mediaIntroduce") {
+        let modalBg = document.getElementById("modalBg");
+        let modalTitle = document.getElementById("modalTitle");
 
+        modalBg.style.display = "block";
+        modalTitle.innerText = "광고매체 소개 변경이 완료되었습니다.";
+    }
 }
 
 /**
