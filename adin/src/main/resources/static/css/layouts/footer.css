@@ -39,6 +39,7 @@ footer {
 .footer-left > .privacy-area {
     margin-top: 6rem;
     margin-left: 1rem;
+    color: #303441;
 }
 
 .footer-right {
@@ -49,6 +50,7 @@ footer {
 
 .footer-right > ul {
     font-weight: 500;
+    color: #303441;
 }
 
 .footer-right > ul > li {

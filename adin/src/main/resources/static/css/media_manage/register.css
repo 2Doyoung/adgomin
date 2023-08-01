@@ -21,7 +21,7 @@ body {
 
 .user-wrap {
     margin: auto 17%;
-    height: 900px;
+    height: 2500px;
 }
 
 .user-main-title {
@@ -37,14 +37,14 @@ body {
 
 .user-sub-menu {
     width: 20%;
-    height: 900px;
+    height: 2500px;
     display: inline-block;
     border-right: 1px solid #ccc;
 }
 
 .user-sub-main {
     width: 78%;
-    height: 900px;
+    height: 2500px;
     display: inline-block;
 }
 
@@ -70,17 +70,19 @@ body {
 }
 
 .user-sub-main-content {
-    height: 670px;
+    height: 1050px;
     border-radius: 10px;
 }
 
 .user-sub-password-change-content {
     height: 350px;
+    border: 1px solid #ccc;
     border-radius: 10px;
 }
 
 .user-sub-secession-content {
     height: 600px;
+    border: 1px solid #ccc;
     border-radius: 10px;
 }
 
@@ -89,7 +91,6 @@ body {
     height: 10rem;
     margin: 3rem 1rem 0 3rem;
     border-radius: 30px;
-    object-fit: contain;
 }
 
 .user-sub-main-content-sub {
@@ -170,7 +171,7 @@ body {
 
 .user-sub-main-content-information > div > div > input[type=password] {
     height: 2.5rem;
-    width: 42rem;
+    width: 77%;
     margin-top: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -183,7 +184,6 @@ body {
     margin-left: 3rem;
     font-size: 1.4rem;
     margin-top: 2rem;
-    color: #303441;
 }
 
 .user-secession-reason {
@@ -199,7 +199,7 @@ body {
 }
 
 .user-secession-notice {
-    width: 43.2rem;
+    width: 77.5%;
     height: 200px;
     margin-left: 3rem;
     margin-top: 3rem;
@@ -209,12 +209,12 @@ body {
 
 .user-secession-password > input[type=password] {
     height: 2.5rem;
-    width: 42rem;
+    width: 75%;
     margin-top: 0.5rem;
     border-radius: 5px;
     font-size: 1rem;
     padding-left: 1rem;
-    color: #303441;
+    color: #2E2E2E;
     margin-left: 3rem;
     border: 1px solid #ccc;
 }
@@ -287,7 +287,7 @@ body {
 }
 
 .modal-body > div {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-top: 0.5rem;
 }
 
@@ -326,4 +326,142 @@ body {
 
 .user_phone_readonly:focus {
     outline: none;
+}
+
+.user-sub-main-content-information > div > div > textarea {
+    height: 10rem;
+    width: 42rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    color: #303441;
+    resize: none;
+}
+
+.user-sub-main-content-information > div > div > ul {
+    list-style: none;
+    padding: 0rem;
+}
+
+.region-choice > div > ul > li:not(.region_first_li) {
+    float: left;
+    background-color: #D8D8D8;
+    color: #585858;
+    margin: 0.5rem;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.region_first_li {
+    float: left;
+    background-color: #D8D8D8;
+    color: #585858;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.ad-category > div > ul > li:not(.category-first-li) {
+    float: left;
+    background-color: #F2F2F2;
+    color: #585858;
+    margin: 0.5rem;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.category-first-li {
+    float: left;
+    background-color: #F2F2F2;
+    color: #303441;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.media-url {
+    height: 2.5rem;
+    width: 77%;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #2E2E2E;
+    display: inline-block !important;
+}
+
+.media-url-input {
+    border: none !important;
+    margin-top: 0rem !important;
+    height: 2.3rem !important;
+    margin-left: 0.5rem;
+    width: 86% !important;
+    padding-left: 0rem !important;
+    font-size: 1rem;
+}
+
+.media-url-input:focus {
+    outline: none;
+}
+
+.https-span {
+    margin-top: 0.4rem;
+}
+
+textarea {
+    outline: none;
+}
+
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.save-button {
+    height: 2.7rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.region-selected {
+    background-color: #2E9AFE !important;
+    color: #FFFFFF !important;
+}
+
+.ad-category-selected {
+    background-color: #2E9AFE !important;
+    color: #FFFFFF !important;
+}
+
+.ck-editor__editable {
+    width: 42rem;
+    height: 60rem;
+}
+
+.media-detail-explanation {
+    margin-bottom: 1rem;
+}
+
+.thumbnail {
+    width: 20rem;
+    height: 13rem;
+    background-color: #F2F2F2;
 }

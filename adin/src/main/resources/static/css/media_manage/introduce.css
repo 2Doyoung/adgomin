@@ -46,7 +46,6 @@ body {
     width: 78%;
     height: 1300px;
     display: inline-block;
-    border-right: 1px solid #ccc;
 }
 
 .user-sub-menu > ul {
@@ -57,6 +56,7 @@ body {
 .user-sub-menu > ul > li {
     padding-bottom: 1rem;
     cursor: pointer;
+    color: #303441;
 }
 
 .user-sub-main-title {
@@ -66,6 +66,7 @@ body {
     padding-bottom: 1rem;
     margin-top: 1rem;
     margin-left: 3rem;
+    color: #303441;
 }
 
 .user-sub-main-content {
@@ -90,6 +91,7 @@ body {
     height: 10rem;
     margin: 3rem 1rem 0 3rem;
     border-radius: 30px;
+    object-fit: contain;
 }
 
 .user-sub-main-content-sub {
@@ -131,18 +133,19 @@ body {
     display: block;
     margin-top: 0.5rem;
     font-weight: 500;
+    color: #303441;
 }
 
 .user-sub-main-content-information > div > div > input[type=text] {
     height: 2.5rem;
-    width: 77%;
+    width: 42rem;
     margin-bottom: 1rem;
     margin-top: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
     padding-left: 1rem;
-    color: #2E2E2E;
+    color: #303441;
 }
 
 .user-sub-main-content-information > div > div > input[type=button] {
@@ -328,7 +331,7 @@ body {
 
 .user-sub-main-content-information > div > div > textarea {
     height: 10rem;
-    width: 77%;
+    width: 42rem;
     margin-bottom: 1rem;
     margin-top: 0.5rem;
     border: 1px solid #ccc;
@@ -336,7 +339,7 @@ body {
     font-size: 1rem;
     padding-left: 1rem;
     padding-top: 1rem;
-    color: #2E2E2E;
+    color: #303441;
     resize: none;
 }
 
@@ -347,8 +350,8 @@ body {
 
 .region-choice > div > ul > li:not(.region_first_li) {
     float: left;
-    background-color: #D8D8D8;
-    color: #585858;
+    background-color: #F2F2F2;
+    color: #303441;
     margin: 0.5rem;
     padding: 0.3rem 1rem;
     border-radius: 3px;
@@ -357,8 +360,8 @@ body {
 
 .region_first_li {
     float: left;
-    background-color: #D8D8D8;
-    color: #585858;
+    background-color: #F2F2F2;
+    color: #303441;
     margin: 0.5rem 0.5rem 0.5rem 0rem;
     padding: 0.3rem 1rem;
     border-radius: 3px;
@@ -367,8 +370,8 @@ body {
 
 .ad-category > div > ul > li:not(.category-first-li) {
     float: left;
-    background-color: #D8D8D8;
-    color: #585858;
+    background-color: #F2F2F2;
+    color: #303441;
     margin: 0.5rem;
     padding: 0.3rem 1rem;
     border-radius: 3px;
@@ -377,8 +380,8 @@ body {
 
 .category-first-li {
     float: left;
-    background-color: #D8D8D8;
-    color: #585858;
+    background-color: #F2F2F2;
+    color: #303441;
     margin: 0.5rem 0.5rem 0.5rem 0rem;
     padding: 0.3rem 1rem;
     border-radius: 3px;
@@ -387,7 +390,7 @@ body {
 
 .media-url {
     height: 2.5rem;
-    width: 77%;
+    width: 42rem;
     margin-bottom: 1rem;
     margin-top: 0.5rem;
     border: 1px solid #ccc;
@@ -403,7 +406,7 @@ body {
     margin-top: 0rem !important;
     height: 2.3rem !important;
     margin-left: 0.5rem;
-    width: 86% !important;
+    width: 37rem !important;
     padding-left: 0rem !important;
     font-size: 1rem;
 }
@@ -447,4 +450,13 @@ textarea {
 .ad-category-selected {
     background-color: #2E9AFE !important;
     color: #FFFFFF !important;
+}
+
+.ck-editor__editable {
+    width: 42rem;
+    height: 60rem;
+}
+
+.media-detail-explanation {
+    margin-bottom: 1rem;
 }

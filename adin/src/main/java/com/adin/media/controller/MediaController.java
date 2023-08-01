@@ -41,7 +41,7 @@ public class MediaController {
                 }
             }
         } else if("mediaRegister".equals(manage)) {
-
+            modelAndView =  new ModelAndView("media_manage/register");
         }
 
         return  modelAndView;

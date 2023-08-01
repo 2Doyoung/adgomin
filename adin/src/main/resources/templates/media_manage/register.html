@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드인 - 계정설정(내정보)</title>
+    <link rel="stylesheet" th:href="@{/css/media_manage/register.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/media_manage/register.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let sessionLoginUser = [[${session.LOGIN_USER}]];
+
+    if(sessionLoginUser == null) {
+        window.location.href = "/";
+    }
+
+    let getRegionSelected = [[${region}]];
+    let getAdCategorySelected = [[${adCategory}]];
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<div class="top-title">
+    <div class="user-main-title">광고매체 관리</div>
+</div>
+   <div class="user-wrap">
+       <div class="user-sub-wrap">
+           <div class="user-sub-menu">
+               <ul>
+                   <li id="introduce">
+                       광고매체 소개
+                   </li>
+                   <li style="font-weight: bolder">
+                       광고매체 등록
+                   </li>
+               </ul>
+           </div>
+           <div class="user-sub-main">
+                <div class="user-sub-main-title">
+                    광고매체 등록
+                </div>
+                <div class="user-sub-main-content">
+                    <div class="user-sub-main-content-information">
+                        <div>
+                            <label>제목</label>
+                            <span id="nicknameSpan">5~30 이하로 작성하는 것이 가독성을 향상시킵니다.</span>
+                            <div>
+                                <input type="text" id="nickname" th:value="${nickname}" spellcheck="false" placeholder="광고매체를 한 번에 알아볼 수 있는 제목을 입력해 보세요!">
+                            </div>
+                        </div>
+                        <div class="ad-category">
+                            <label>카테고리</label>
+                            <div>
+                                <ul>
+                                    <li class="category-first-li ad-category-list">유튜브</li>
+                                    <li class="ad-category-list">인스타그램</li>
+                                    <li class="ad-category-list">페이스북</li>
+                                    <li class="ad-category-list">블로그</li>
+                                    <li class="ad-category-list">지하철</li>
+                                    <li class="ad-category-list">버스</li>
+                                    <li class="ad-category-list">옥외광고</li><br>
+                                    <li class="category-first-li ad-category-list">영화관</li>
+                                    <li class="ad-category-list">현수막</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <label>광고매체 요약</label>
+                            <span>광고매체 소개 가장 위에 보여집니다. 광고매체에 대해 간단하게 요약해주세요.</span>
+                            <div>
+                                <textarea spellcheck="false" placeholder="ex) 게임방송부터 먹방까지 120만 유튜버 애드인입니다."></textarea>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="media-detail-explanation">광고매체 상세 설명</label>
+                            <div>
+                                <textarea id="editor" spellcheck="false"></textarea>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="thumbnail">
+
+                            </div>
+                            <label for="profileImg">
+                                <div class="profile_change">프로필 변경</div>
+                            </label>
+                            <input type="file" class="profile_img" name="profile_img" id="profileImg">
+                            <span id="extSpan">
+                                확장자 : png, jpg, jpeg<br>
+                                이미지 크기 : 1200 x 781(px)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+           </div>
+       </div>
+   </div>
+<div class="modal-bg" id="modalBg">
+    <div class="modal-body">
+        <div id="modalTitle"></div>
+        <div class="modal-check-div" id="modalCheck">
+            <i class="ri-checkbox-circle-line"></i>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

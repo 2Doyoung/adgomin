@@ -1,16 +1,37 @@
 /**
  * 전역변수
  */
+const register = document.getElementById("register");
 const saveButton = document.getElementById("saveButton");
 const regionCategory = document.getElementsByClassName("region-category");
 const adCategoryList = document.getElementsByClassName("ad-category-list");
 const mediaIntroduce = document.getElementById("mediaIntroduce");
+const profileImg = document.getElementById("profileImg");
 
 const modalCheck = document.getElementById("modalCheck");
 
 /**
  * 이벤트 함수
  */
+register.addEventListener("click", () => {
+    window.location.href = "/media?manage=mediaRegister";
+})
+
+profileImg.addEventListener("change", () => {
+    let ext = profileImg.value.slice(profileImg.value.lastIndexOf(".") + 1).toLowerCase();
+
+    if(!(ext == "jpg" || ext == "png" || ext == "jpeg")) {
+        let extSpan = document.getElementById("extSpan");
+        extSpan.style.color = "#FF0040";
+    } else {
+        const formData = new FormData();
+
+        formData.append("profileFile", profileImg.files[0]);
+
+        xhr("/change/profileImg", formData, "PATCH", "changeProfileImg");
+    }
+})
+
 saveButton.addEventListener("click", () => {
     let nickname = document.getElementById("nickname").value;
     let nicknameSpan = document.getElementById("nicknameSpan");
@@ -173,6 +194,12 @@ let successXhr = (responseObject, flag) => {
 
         modalBg.style.display = "block";
         modalTitle.innerText = "광고매체 소개 변경이 완료되었습니다.";
+    } else if(flag === "changeProfileImg") {
+        let modalBg = document.getElementById("modalBg");
+        let modalTitle = document.getElementById("modalTitle");
+
+        modalBg.style.display = "block";
+        modalTitle.innerText = "프로필 변경이 완료되었습니다.";
     }
 }
 
