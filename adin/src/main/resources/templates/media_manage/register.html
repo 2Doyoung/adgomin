@@ -74,24 +74,38 @@
                                 <textarea spellcheck="false" placeholder="ex) 게임방송부터 먹방까지 120만 유튜버 애드인입니다."></textarea>
                             </div>
                         </div>
-                        <div>
+                        <div class="ck-editor-div">
                             <label class="media-detail-explanation">광고매체 상세 설명</label>
                             <div>
                                 <textarea id="editor" spellcheck="false"></textarea>
                             </div>
                         </div>
                         <div>
-                            <div class="thumbnail">
-
+                            <label>광고매체 썸네일</label>
+                            <div class="thumbnail-div">
+                                <div class="thumbnail">
+                                    <img th:src="@{/images/logo.png}">
+                                </div>
+                                <div class="thumbnail-change-div">
+                                    <label for="profileImg">
+                                        <div class="profile_change">썸네일 변경</div>
+                                    </label>
+                                    <input type="file" class="profile_img" name="profile_img" id="profileImg">
+                                    <span id="extSpan">
+                                        확장자 : png, jpg, jpeg<br>
+                                        &nbsp;이미지 크기 : 1200 x 781(px)
+                                    </span>
+                                </div>
                             </div>
-                            <label for="profileImg">
-                                <div class="profile_change">프로필 변경</div>
-                            </label>
-                            <input type="file" class="profile_img" name="profile_img" id="profileImg">
-                            <span id="extSpan">
-                                확장자 : png, jpg, jpeg<br>
-                                이미지 크기 : 1200 x 781(px)
-                            </span>
+                        </div>
+                        <div>
+                            <label>가격설정</label>
+                            <div class="currency-div">
+                                <input type="text" class="currency-input" spellcheck="false">
+                                <span class="currency-symbol">원</span>
+                            </div>
+                            <input type="button" class="save-button" value="임시저장">
+                            <input type="button" class="submit-button" value="제출하기">
                         </div>
                     </div>
                 </div>

@@ -528,3 +528,9 @@ ul {
 	font-weight: 500;
 	color: #303441;
 }
+
+.subway-logo {
+	width: 2.75rem;
+	display: block;
+	margin-left: 1.2rem;
+}
