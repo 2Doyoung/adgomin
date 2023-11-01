@@ -46,9 +46,9 @@
                     <div class="user-sub-main-content-information">
                         <div>
                             <label>제목</label>
-                            <span id="nicknameSpan">5~30 이하로 작성하는 것이 가독성을 향상시킵니다.</span>
+                            <span id="titleSpan">5~30 이하로 작성하는 것이 가독성을 향상시킵니다.</span>
                             <div>
-                                <input type="text" id="nickname" th:value="${nickname}" spellcheck="false" placeholder="광고매체를 한 번에 알아볼 수 있는 제목을 입력해 보세요!">
+                                <input type="text" id="title" spellcheck="false" placeholder="광고매체를 한 번에 알아볼 수 있는 제목을 입력해 보세요!">
                             </div>
                         </div>
                         <div class="ad-category">
@@ -69,9 +69,9 @@
                         </div>
                         <div>
                             <label>광고매체 요약</label>
-                            <span>광고매체 소개 가장 위에 보여집니다. 광고매체에 대해 간단하게 요약해주세요.</span>
+                            <span>광고매체 소개 가장 위에 보여집니다. 광고매체에 대해 간단하게 요약해주세요.</span><span id="summaryLength"> (0 / 255)</span>
                             <div>
-                                <textarea spellcheck="false" placeholder="ex) 게임방송부터 먹방까지 120만 유튜버 애드인입니다."></textarea>
+                                <textarea id="mediaSummary" spellcheck="false" placeholder="ex) 게임방송부터 먹방까지 120만 유튜버 애드인입니다."></textarea>
                             </div>
                         </div>
                         <div class="ck-editor-div">
@@ -104,7 +104,7 @@
                                 <input type="text" class="currency-input" spellcheck="false">
                                 <span class="currency-symbol">원</span>
                             </div>
-                            <input type="button" class="save-button" value="임시저장">
+                            <input type="button" class="save-button" id="tempSaveButton" value="임시저장">
                             <input type="button" class="submit-button" value="제출하기">
                         </div>
                     </div>

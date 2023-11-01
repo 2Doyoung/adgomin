@@ -2,12 +2,62 @@
  * 전역변수
  */
 const introduce = document.getElementById("introduce");
+const tempSaveButton = document.getElementById("tempSaveButton");
+const adCategoryList = document.getElementsByClassName("ad-category-list");
+const mediaSummary = document.getElementById("mediaSummary");
 
 /**
  * 이벤트 함수
  */
 introduce.addEventListener("click", () => {
     window.location.href = "/media";
+})
+
+tempSaveButton.addEventListener("click", () => {
+    let title = document.getElementById("title").value;
+    let titleSpan = document.getElementById("titleSpan");
+
+    if(title.length < 5 || title.length > 30) {
+        titleSpan.style.color = "#FF0040";
+        document.getElementById("title").focus();
+    } else if(title.length >= 5 && title.length <= 30) {
+        titleSpan.style.color = "#BDBDBD";
+    }
+})
+
+for(let i = 0; i < adCategoryList.length; i++) {
+    adCategoryList[i].addEventListener("click", () => {
+        if(document.getElementsByClassName("ad-category-selected").length > 0) {
+            let adCategorySpan = document.getElementById("adCategorySpan");
+            if(adCategoryList[i].classList.contains("ad-category-selected")) {
+                adCategoryList[i].classList.remove("ad-category-selected");
+
+                adCategorySpan.style.color = "#BDBDBD";
+            } else if(!adCategoryList[i].classList.contains("ad-category-selected")) {
+                adCategorySpan.style.color = "#FF0040";
+            }
+        } else if(!(document.getElementsByClassName("ad-category-selected").length > 0)) {
+
+            if(adCategoryList[i].classList.contains("ad-category-selected")) {
+                adCategoryList[i].classList.remove("ad-category-selected");
+            } else {
+                adCategoryList[i].classList.add("ad-category-selected");
+            }
+        }
+    })
+}
+
+mediaSummary.addEventListener("keyup", () => {
+    let summaryLength = document.getElementById("summaryLength");
+    let mediaSummaryValue = mediaSummary.value;
+    let mediaSummaryLength = mediaSummaryValue.length;
+
+    if(mediaSummaryLength > 255) {
+        mediaSummary.value = mediaSummaryValue.substr(0, 255);
+        mediaSummaryLength = mediaSummary.value.length;
+    }
+
+    summaryLength.innerText = " (" + mediaSummaryLength + " / 255)";
 })
 /**
  * 사용자 함수
