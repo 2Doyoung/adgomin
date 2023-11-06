@@ -532,3 +532,8 @@ textarea {
     font-size: 1rem;
     cursor: pointer;
 }
+
+.ad-category-focus {
+    caret-color: transparent;
+    border: none;
+}

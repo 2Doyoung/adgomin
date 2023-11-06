@@ -10,6 +10,13 @@
             (#{email})
     </insert>
 
+    <insert id="insertMediaRegister" parameterType="com.adin.join.entity.JoinEntity">
+        INSERT INTO adin_media_register
+            (email)
+        VALUES
+            (#{email})
+    </insert>
+
     <update id="mediaIntroduce" parameterType="com.adin.media.entity.MediaIntroduceEntity">
         UPDATE
             adin_media_introduce
@@ -31,4 +38,47 @@
         WHERE 1=1
           AND email = #{email}
     </select>
+
+    <select id="getMediaRegister" resultType="com.adin.media.entity.MediaRegisterEntity">
+        SELECT
+            media_order as mediaOrder
+            ,ad_detail_category as adDetailCategory
+            ,media_title as mediaTitle
+            ,media_summary as mediaSummary
+            ,media_detail_explain as mediaDetailExplain
+            ,thumbnail_img_nm as thumbnailImgNm
+            ,thumbnail_origin_file_nm as thumbnailOriginFileNm
+            ,thumbnail_img_file_path as thumbnailImgFilePath
+            ,media_price as mediaPrice
+        FROM adin_media_register
+        WHERE 1=1
+          AND email = #{email}
+          AND media_order = (
+              SELECT
+                    MAX(media_order)
+              FROM adin_media_register
+              WHERE email = #{email}
+          )
+    </select>
+
+    <update id="mediaRegister" parameterType="com.adin.media.entity.MediaIntroduceEntity">
+        UPDATE
+            adin_media_register
+        SET ad_detail_category = #{adDetailCategory}
+          ,media_title = #{mediaTitle}
+          ,media_summary = #{mediaSummary}
+          ,media_detail_explain = #{mediaDetailExplain}
+          ,media_price = #{mediaPrice}
+        WHERE 1=1
+          AND email = #{email}
+          AND media_order = (
+            SELECT
+                max_media_order
+            FROM
+            (SELECT
+                MAX(media_order) AS max_media_order
+            FROM adin_media_register
+            WHERE email = #{email}) AS sub
+          )
+    </update>
 </mapper>

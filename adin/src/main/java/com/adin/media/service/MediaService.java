@@ -4,6 +4,7 @@ import com.adin.enums.CommonResult;
 import com.adin.join.entity.JoinEntity;
 import com.adin.join.vo.JoinVO;
 import com.adin.media.entity.MediaIntroduceEntity;
+import com.adin.media.entity.MediaRegisterEntity;
 import com.adin.media.mapper.MediaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,16 @@ public class MediaService {
         this.mediaMapper = mediaMapper;
     }
 
-    public Enum<?> insertMediaIntroduce(JoinEntity joinEntity) {
-        return this.mediaMapper.insertMediaIntroduce(joinEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    public Enum<?> insertMediaEmail(JoinEntity joinEntity) {
+        int result = 0;
+        int result1 = this.mediaMapper.insertMediaIntroduce(joinEntity);
+        int result2 = this.mediaMapper.insertMediaRegister(joinEntity);
+
+        if(result1 > 0 && result2 > 0) {
+            result = 1;
+        }
+
+        return result > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
     public Enum<?> mediaIntroduce(MediaIntroduceEntity mediaIntroduceEntity) {
@@ -29,5 +38,13 @@ public class MediaService {
 
     public MediaIntroduceEntity getMediaIntroduce(String email) {
         return this.mediaMapper.getMediaIntroduce(email);
+    }
+
+    public MediaRegisterEntity getMediaRegister(String email) {
+        return this.mediaMapper.getMediaRegister(email);
+    }
+
+    public Enum<?> mediaRegister(MediaRegisterEntity mediaRegisterEntity) {
+        return this.mediaMapper.mediaRegister(mediaRegisterEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 }

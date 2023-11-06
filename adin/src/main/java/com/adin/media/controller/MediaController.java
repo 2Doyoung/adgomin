@@ -3,6 +3,7 @@ package com.adin.media.controller;
 import com.adin.join.entity.JoinEntity;
 import com.adin.join.vo.JoinVO;
 import com.adin.media.entity.MediaIntroduceEntity;
+import com.adin.media.entity.MediaRegisterEntity;
 import com.adin.media.service.MediaService;
 import com.adin.user.service.UserService;
 import org.json.simple.JSONObject;
@@ -42,6 +43,18 @@ public class MediaController {
             }
         } else if("mediaRegister".equals(manage)) {
             modelAndView =  new ModelAndView("media_manage/register");
+            if(joinVO != null) {
+                MediaRegisterEntity mediaRegisterEntity = this.mediaService.getMediaRegister(joinVO.getEmail());
+                modelAndView.addObject("mediaOrder", mediaRegisterEntity.getMediaOrder());
+                modelAndView.addObject("adDetailCategory", mediaRegisterEntity.getAdDetailCategory());
+                modelAndView.addObject("mediaTitle", mediaRegisterEntity.getMediaTitle());
+                modelAndView.addObject("mediaSummary", mediaRegisterEntity.getMediaSummary());
+                modelAndView.addObject("mediaDetailExplain", mediaRegisterEntity.getMediaDetailExplain());
+                modelAndView.addObject("thumbnailImgNm", mediaRegisterEntity.getThumbnailImgNm());
+                modelAndView.addObject("thumbnailOriginFileNm", mediaRegisterEntity.getThumbnailOriginFileNm());
+                modelAndView.addObject("thumbnailImgFilePath", mediaRegisterEntity.getThumbnailImgFilePath());
+                modelAndView.addObject("mediaPrice", mediaRegisterEntity.getMediaPrice());
+            }
         }
 
         return  modelAndView;
@@ -59,6 +72,17 @@ public class MediaController {
         if("success".equals(result.name().toLowerCase())) {
             result = this.mediaService.mediaIntroduce(mediaIntroduceEntity);
         }
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
+
+    @PatchMapping("/media/register")
+    @ResponseBody
+    public String mediaRegister(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MediaRegisterEntity mediaRegisterEntity) {
+        JSONObject responseObject = new JSONObject();
+        mediaRegisterEntity.setEmail(joinVO.getEmail());
+        Enum<?> result = this.mediaService.mediaRegister(mediaRegisterEntity);
         responseObject.put("result", result.name().toLowerCase());
 
         return responseObject.toString();

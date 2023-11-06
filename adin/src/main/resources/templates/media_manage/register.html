@@ -19,8 +19,7 @@
         window.location.href = "/";
     }
 
-    let getRegionSelected = [[${region}]];
-    let getAdCategorySelected = [[${adCategory}]];
+    let getMediaDetailExplain = [[${mediaDetailExplain}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <div class="top-title">
@@ -53,6 +52,8 @@
                         </div>
                         <div class="ad-category">
                             <label>카테고리</label>
+                            <span id="adCategorySpan">하나의 카테고리를 선택해주세요.</span>
+                            <input type="text" class="ad-category-focus" id="adCategoryFocus" readonly>
                             <div>
                                 <ul>
                                     <li class="category-first-li ad-category-list">유튜브</li>
@@ -77,7 +78,7 @@
                         <div class="ck-editor-div">
                             <label class="media-detail-explanation">광고매체 상세 설명</label>
                             <div>
-                                <textarea id="editor" spellcheck="false"></textarea>
+                                <textarea id="editor" spellcheck="false" th:text="${mediaDetailExplain}"></textarea>
                             </div>
                         </div>
                         <div>
@@ -101,7 +102,7 @@
                         <div>
                             <label>가격설정</label>
                             <div class="currency-div">
-                                <input type="text" class="currency-input" spellcheck="false">
+                                <input type="text" class="currency-input" spellcheck="false" id="mediaPrice">
                                 <span class="currency-symbol">원</span>
                             </div>
                             <input type="button" class="save-button" id="tempSaveButton" value="임시저장">

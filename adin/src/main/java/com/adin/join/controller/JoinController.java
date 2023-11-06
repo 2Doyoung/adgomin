@@ -49,7 +49,8 @@ public class JoinController {
             responseObject.put("email", joinEntity.getEmail());
             responseObject.put("certified", joinEntity.getCertified());
 
-            result = this.mediaService.insertMediaIntroduce(joinEntity);
+            result = this.mediaService.insertMediaEmail(joinEntity);
+
         }
         responseObject.put("result", result.name().toLowerCase());
 
