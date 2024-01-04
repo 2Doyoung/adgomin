@@ -130,7 +130,7 @@ body {
 
 .user-sub-main-content-information > div > label {
     display: block;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     font-weight: 500;
     color: #303441;
 }
@@ -451,11 +451,6 @@ textarea {
     color: #FFFFFF !important;
 }
 
-.ck-editor__editable {
-    width: 42rem;
-    height: 60rem;
-}
-
 .media-detail-explanation {
     margin-bottom: 1rem;
 }
@@ -463,11 +458,8 @@ textarea {
 .thumbnail {
     width: 20rem;
     height: 13rem;
-    background-color: #F2F2F2;
-}
-
-.ck-editor-div {
-    margin-bottom: 1.5rem;
+    overflow: hidden;
+    position: relative;
 }
 
 .thumbnail-div {
@@ -488,8 +480,12 @@ textarea {
 
 .thumbnail > img {
     width: 100%;
-    height: 100%;
+    height: auto;
     border: 1px solid #D8D8D8;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .currency-div {
@@ -506,7 +502,7 @@ textarea {
 
 .currency-input {
     border: none;
-    height: 2.4rem;
+    height: 2.3rem;
     margin: 0;
     padding-right: 1rem;
     text-align: right;
@@ -536,4 +532,42 @@ textarea {
 .ad-category-focus {
     caret-color: transparent;
     border: none;
+}
+
+.ql-toolbar .ql-formats {
+    border-right: 1px solid #ccc;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+
+.ql-container {
+    width: 43.3rem;
+    height: 60rem !important;
+}
+
+.ql-toolbar {
+    width: 43.3rem;
+}
+
+.ql-editor > p {
+    font-size: 20px;
+    color: #495057;
+}
+
+.ql-editor > ul > li {
+    font-size: 18px;
+    color: #495057;
+}
+
+.ql-editor > .ql-video {
+    width: 38rem;
+    height: 20rem;
+}
+
+.ql-editor > h1 {
+    color: #303441;
+}
+
+.ql-editor > p > br {
+    display: none;
 }

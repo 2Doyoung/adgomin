@@ -6,8 +6,11 @@ const tempSaveButton = document.getElementById("tempSaveButton");
 const adCategoryList = document.getElementsByClassName("ad-category-list");
 const mediaSummary = document.getElementById("mediaSummary");
 const mediaPrice = document.getElementById("mediaPrice");
+const thumbnailImg = document.getElementById("thumbnailImg");
 
-let editor;
+let thumbnailImgSave;
+
+let quill;
 
 /**
  * 이벤트 함수
@@ -41,7 +44,7 @@ tempSaveButton.addEventListener("click", () => {
         let title = document.getElementById("title").value;
         let adCategorySelected = document.getElementsByClassName("ad-category-selected")[0].innerText;
         let mediaSummary = document.getElementById("mediaSummary").value;
-        let editorData = editor.getData();
+        let editorHtml = quill.root.innerHTML;
         let mediaPrice = document.getElementById("mediaPrice").value;
 
         const formData = new FormData();
@@ -49,10 +52,10 @@ tempSaveButton.addEventListener("click", () => {
         formData.append("mediaTitle", title);
         formData.append("adDetailCategory", adCategorySelected);
         formData.append("mediaSummary", mediaSummary);
-        formData.append("mediaDetailExplain", editorData);
+        formData.append("mediaDetailExplain", editorHtml);
         formData.append("mediaPrice", mediaPrice);
 
-        xhr("/media/register", formData, "PATCH", "mediaRegister");
+        xhr("/media/register", formData, "PATCH", "mediaRegisterTempSave");
     }
 })
 
@@ -96,23 +99,94 @@ mediaPrice.addEventListener("keyup", (e) =>{
         mediaPrice.value = formatValue;
     }
 })
+
+modalCheck.addEventListener("click", () => {
+    window.location.href = "/media?manage=mediaRegister";
+})
+
+thumbnailImg.addEventListener("change", (e) => {
+    let ext = thumbnailImg.value.slice(thumbnailImg.value.lastIndexOf(".") + 1).toLowerCase();
+    let extSpan = document.getElementById("extSpan");
+
+    if(!(ext == "jpg" || ext == "png" || ext == "jpeg")) {
+        extSpan.style.color = "#FF0040";
+    } else {
+        extSpan.style.color = "#BDBDBD";
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const thumbnailBasicImg = document.getElementsByClassName("thumbnailBasicImg")[0];
+            const thumbnailChange = document.getElementsByClassName("thumbnailChange")[0];
+            const img = document.createElement('img');
+            img.classList.add("thumbnailChange");
+            img.setAttribute('src', e.target.result);
+            if(thumbnailBasicImg != undefined) {
+                document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailBasicImg);
+            } else if(thumbnailChange != undefined) {
+                document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailChange);
+            }
+            document.getElementsByClassName("thumbnail")[0].appendChild(img);
+        }
+
+        reader.readAsDataURL(e.target.files[0]);
+
+        thumbnailImgSave = e.target.files[0];
+    }
+})
 /**
  * 사용자 함수
  */
+let toolbarOptions =
+    [
+        ['bold', 'italic', 'underline', 'strike'],
+        ["link", "image", "video"],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{ 'align': [] }],
+    ];
 
-ClassicEditor.create(document.querySelector('#editor'))
-    .then(newEditor => {
-        editor = newEditor;
-    })
-    .catch(error => {
-        console.error( error );
-    });
+quill = new Quill('#editor', {
+    theme: 'snow',
+    modules: {
+        clipboard: {
+            matchers: [['p', function(node, delta) {
+                return delta;
+            }]]
+        },
+        toolbar: toolbarOptions,
+    }
+});
 
+
+let htmlContent = getMediaDetailExplain
+let Delta = Quill.import('delta');
+let delta = new Delta().insert(htmlContent);
+quill.clipboard.dangerouslyPasteHTML(htmlContent);
+
+let getAdCategoryList = document.getElementsByClassName("ad-category-list");
+for(let i = 0; i < getAdCategoryList.length; i++) {
+    if(getAdCategoryList[i].innerText == getAdDetailCategorySelected) {
+        getAdCategoryList[i].classList.add("ad-category-selected");
+    }
+}
 /**
  * XMLHttpRequest 성공 함수
  */
 let successXhr = (responseObject, flag) => {
+    if(flag == "mediaRegisterTempSave") {
+        const formData = new FormData();
+        if(thumbnailImgSave != undefined) {
+            formData.append("thumbnail", thumbnailImgSave);
+        }
 
+        xhr("/change/thumbnail", formData, "PATCH", "thumbnailChange");
+    } else if(flag == "thumbnailChange") {
+        let modalBg = document.getElementById("modalBg");
+        let modalTitle = document.getElementById("modalTitle");
+
+        modalBg.style.display = "block";
+        modalTitle.innerText = "광고매체 등록이 임시저장되었습니다.";
+    }
 }
 
 /**

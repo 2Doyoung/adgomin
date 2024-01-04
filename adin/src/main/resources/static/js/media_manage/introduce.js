@@ -165,25 +165,30 @@ let mediaIntroduceLength = mediaIntroduceValue.length;
 
 introduceLength.innerText = " (" +  mediaIntroduceLength + " / 255)";
 
-let getRegionSelectedArray = getRegionSelected.split(",");
-let getRegionCategory = document.getElementsByClassName("region-category");
-for(let i = 0; i < getRegionCategory.length; i++) {
-    for(let j = 0; j < getRegionSelectedArray.length; j++) {
-        if(getRegionCategory[i].innerText == getRegionSelectedArray[j]) {
-            getRegionCategory[i].classList.add("region-selected")
+if(getRegionSelected != null) {
+    let getRegionSelectedArray = getRegionSelected.split(",");
+    let getRegionCategory = document.getElementsByClassName("region-category");
+    for(let i = 0; i < getRegionCategory.length; i++) {
+        for(let j = 0; j < getRegionSelectedArray.length; j++) {
+            if(getRegionCategory[i].innerText == getRegionSelectedArray[j]) {
+                getRegionCategory[i].classList.add("region-selected")
+            }
         }
     }
 }
 
-let getAdCategorySelectedArray = getAdCategorySelected.split(",");
-let getAdCategoryList = document.getElementsByClassName("ad-category-list");
-for(let i = 0; i < getAdCategoryList.length; i++) {
-    for(let j = 0; j < getAdCategorySelectedArray.length; j++) {
-        if(getAdCategoryList[i].innerText == getAdCategorySelectedArray[j]) {
-            getAdCategoryList[i].classList.add("ad-category-selected")
+if(getAdCategorySelected != null) {
+    let getAdCategorySelectedArray = getAdCategorySelected.split(",");
+    let getAdCategoryList = document.getElementsByClassName("ad-category-list");
+    for(let i = 0; i < getAdCategoryList.length; i++) {
+        for(let j = 0; j < getAdCategorySelectedArray.length; j++) {
+            if(getAdCategoryList[i].innerText == getAdCategorySelectedArray[j]) {
+                getAdCategoryList[i].classList.add("ad-category-selected")
+            }
         }
     }
 }
+
 /**
  * XMLHttpRequest 성공 함수
  */

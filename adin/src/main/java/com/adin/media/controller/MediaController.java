@@ -7,9 +7,21 @@ import com.adin.media.entity.MediaRegisterEntity;
 import com.adin.media.service.MediaService;
 import com.adin.user.service.UserService;
 import org.json.simple.JSONObject;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller(value = "com.adin.media.controller.MediaController")
 public class MediaController {
@@ -86,5 +98,43 @@ public class MediaController {
         responseObject.put("result", result.name().toLowerCase());
 
         return responseObject.toString();
+    }
+
+    @PatchMapping("/change/thumbnail")
+    @ResponseBody
+    public String changeThumbnail(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MultipartFile thumbnail, MediaRegisterEntity mediaRegisterEntity) {
+        JSONObject responseObject = new JSONObject();
+        mediaRegisterEntity.setEmail(joinVO.getEmail());
+        Enum<?> result = this.mediaService.changeThumbnail(thumbnail, mediaRegisterEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
+
+    @GetMapping("/thumbnail/image")
+    public ResponseEntity<Resource> thumbnailImage(@RequestParam(value = "email") String email) {
+        MediaRegisterEntity mediaRegisterEntity = this.mediaService.thumbnailImage(email);
+        String filePath = null;
+
+        if(mediaRegisterEntity != null) {
+            filePath = mediaRegisterEntity.getThumbnailImgFilePath() + "/" + mediaRegisterEntity.getThumbnailImgNm();
+        } else if(mediaRegisterEntity == null) {
+            ClassLoader classLoader = getClass().getClassLoader();
+            File file = new File(classLoader.getResource("static/images/media-register-thumbnail.png").getFile());
+            filePath = file.getAbsolutePath();
+        }
+
+        Resource resource = new FileSystemResource(filePath);
+
+        HttpHeaders header = new HttpHeaders();
+        Path path = null;
+        try {
+            path = Paths.get(filePath);
+            header.add("Content-type", Files.probeContentType(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
     }
 }

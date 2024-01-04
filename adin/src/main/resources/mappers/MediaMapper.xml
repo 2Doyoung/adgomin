@@ -12,9 +12,49 @@
 
     <insert id="insertMediaRegister" parameterType="com.adin.join.entity.JoinEntity">
         INSERT INTO adin_media_register
-            (email)
+            (email, media_detail_explain, media_price)
         VALUES
-            (#{email})
+            (#{email}, '<![CDATA[<h1>광고매체 적합한 광고 🔈</h1>
+<h3> </h3>
+<span>광고매체에 어울리는 광고들을 기재해주세요.</span><h3> </h3>
+<ul>
+	<li>병원 광고</li>
+	<li>제품 광고</li>
+	<li>음식점 광고</li>
+</ul>
+<h3> </h3>
+<s style="color: #e9ecef;">
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+</s>
+<h3> </h3>
+<h3> </h3>
+<h1>광고매체 소개 💬</h1>
+<h3> </h3>
+<h2>이력</h2>
+<h3> </h3>
+<span>광고매체 카테고리와 관련이 있는 이력을 적어주세요.</span><h3> </h3>
+<span>광고주들은 이력을 보고 광고매체에 신뢰를 가집니다.</span><h3> </h3>
+<ul>
+	<li>이력사항 기재</li>
+</ul>
+<h3> </h3>
+<h3> </h3>
+<h2>이미지</h2>
+<h3> </h3>
+<span>지금까지 광고를 했던 사진들을 올려주세요.</span><h3> </h3>
+<span>광고주들은 사진을 보고 어떻게 광고가 되는지 확인할 수 있습니다.</span><h3> </h3>
+<img src="http://localhost:8080/images/media-register-image-guide.png">
+<h3> </h3>
+<h3> </h3>
+<h2>동영상</h2>
+<h3> </h3>
+<span>광고를 진행했던 대표 동영상 하나를 올려주세요.</span><h3> </h3>
+<span>동영상이 없는 광고매체는 생략을 하셔도 됩니다.</span><h3> </h3>
+<img src="http://localhost:8080/images/media-register-video-guide.png">]]>', 0)
     </insert>
 
     <update id="mediaIntroduce" parameterType="com.adin.media.entity.MediaIntroduceEntity">
@@ -81,4 +121,42 @@
             WHERE email = #{email}) AS sub
           )
     </update>
+
+    <update id="changeThumbnail" parameterType="com.adin.media.entity.MediaIntroduceEntity">
+        UPDATE
+            adin_media_register
+        SET thumbnail_img_nm = #{thumbnailImgNm}
+          ,thumbnail_origin_file_nm = #{thumbnailOriginFileNm}
+          ,thumbnail_img_file_path = #{thumbnailImgFilePath}
+        WHERE 1=1
+          AND email = #{email}
+          AND media_order = (
+            SELECT
+                max_media_order
+            FROM
+                (SELECT
+                     MAX(media_order) AS max_media_order
+                 FROM adin_media_register
+                 WHERE email = #{email}) AS sub
+          )
+    </update>
+
+    <select id="thumbnailImage" resultType="com.adin.media.entity.MediaRegisterEntity">
+        SELECT
+            thumbnail_img_nm AS thumbnailImgNm
+             ,thumbnail_origin_file_nm AS thumbnailOriginFileNm
+             ,thumbnail_img_file_path AS thumbnailImgFilePath
+        FROM adin_media_register
+        WHERE 1=1
+          AND email = #{email}
+          AND media_order = (
+            SELECT
+                max_media_order
+            FROM
+                (SELECT
+                     MAX(media_order) AS max_media_order
+                 FROM adin_media_register
+                 WHERE email = #{email}) AS sub
+        )
+    </select>
 </mapper>

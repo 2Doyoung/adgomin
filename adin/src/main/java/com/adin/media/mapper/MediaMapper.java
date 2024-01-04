@@ -1,6 +1,7 @@
 package com.adin.media.mapper;
 
 import com.adin.join.entity.JoinEntity;
+import com.adin.join.vo.JoinVO;
 import com.adin.media.entity.MediaIntroduceEntity;
 import com.adin.media.entity.MediaRegisterEntity;
 import org.apache.ibatis.annotations.Mapper;
@@ -21,4 +22,8 @@ public interface MediaMapper {
     MediaRegisterEntity getMediaRegister(@Param(value = "email") String email);
 
     int mediaRegister(MediaRegisterEntity mediaRegisterEntity);
+
+    int changeThumbnail(MediaRegisterEntity mediaRegisterEntity);
+
+    MediaRegisterEntity thumbnailImage(@Param(value = "email") String email);
 }

@@ -9,6 +9,12 @@ import com.adin.media.mapper.MediaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.UUID;
 
 @Service(value = "com.adin.media.service.MediaService")
 @Transactional
@@ -46,5 +52,35 @@ public class MediaService {
 
     public Enum<?> mediaRegister(MediaRegisterEntity mediaRegisterEntity) {
         return this.mediaMapper.mediaRegister(mediaRegisterEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
+
+    public Enum<?> changeThumbnail(MultipartFile thumbnail, MediaRegisterEntity mediaRegisterEntity) {
+        String path = "../thumbnail/" + mediaRegisterEntity.getEmail();
+
+        String originalFilename = thumbnail.getOriginalFilename();
+        String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
+        String storeFilename = UUID.randomUUID() + "." + extension;
+
+        File file = new File(path);
+
+        if(!file.exists()) {
+            file.mkdirs();
+        }
+
+        try {
+            Path absolutePath = Paths.get(path  + "/" + storeFilename).toAbsolutePath();
+            thumbnail.transferTo(absolutePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        mediaRegisterEntity.setThumbnailOriginFileNm(thumbnail.getOriginalFilename());
+        mediaRegisterEntity.setThumbnailImgNm(storeFilename);
+        mediaRegisterEntity.setThumbnailImgFilePath(path);
+
+        return this.mediaMapper.changeThumbnail(mediaRegisterEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
+
+    public MediaRegisterEntity thumbnailImage(String email) {
+        return this.mediaMapper.thumbnailImage(email);
     }
 }
