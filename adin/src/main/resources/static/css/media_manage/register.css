@@ -130,7 +130,7 @@ body {
 
 .user-sub-main-content-information > div > label {
     display: block;
-    margin-top: 1rem;
+    margin-top: 2rem;
     font-weight: 500;
     color: #303441;
 }
@@ -570,4 +570,14 @@ textarea {
 
 .ql-editor > p > br {
     display: none;
+}
+
+.ql-editing {
+    margin-top: 0px !important;
+    left: 0px !important;
+    top: 0px !important;
+}
+
+.thumbnail-label {
+    margin-top: 4rem !important;
 }

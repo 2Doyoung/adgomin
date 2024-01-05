@@ -47,6 +47,7 @@
 <h3> </h3>
 <span>지금까지 광고를 했던 사진들을 올려주세요.</span><h3> </h3>
 <span>광고주들은 사진을 보고 어떻게 광고가 되는지 확인할 수 있습니다.</span><h3> </h3>
+<span>최대 3개가 적당하며 다른 사진은 포트폴리오에 올리실 수 있습니다.</span><h3> </h3>
 <img src="http://localhost:8080/images/media-register-image-guide.png">
 <h3> </h3>
 <h3> </h3>
@@ -90,6 +91,7 @@
             ,thumbnail_origin_file_nm as thumbnailOriginFileNm
             ,thumbnail_img_file_path as thumbnailImgFilePath
             ,media_price as mediaPrice
+            ,media_submit_status as mediaSubmitStatus
         FROM adin_media_register
         WHERE 1=1
           AND email = #{email}
@@ -109,6 +111,7 @@
           ,media_summary = #{mediaSummary}
           ,media_detail_explain = #{mediaDetailExplain}
           ,media_price = #{mediaPrice}
+          ,media_submit_status = #{mediaSubmitStatus}
         WHERE 1=1
           AND email = #{email}
           AND media_order = (

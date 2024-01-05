@@ -24,6 +24,7 @@
     let getMediaDetailExplain = [[${mediaDetailExplain}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" id="mediaSubmitStatus" th:value="${mediaSubmitStatus}">
 <div class="top-title">
     <div class="user-main-title">광고매체 관리</div>
 </div>
@@ -84,13 +85,13 @@
                             </div>
                         </div>
                         <div>
-                            <label>광고매체 썸네일</label>
+                            <label class="thumbnail-label">광고매체 썸네일</label>
                             <div class="thumbnail-div">
                                 <div class="thumbnail">
                                     <img class="thumbnailBasicImg" th:if="${session.LOGIN_USER != null}" th:src="@{/thumbnail/image (email=${session.LOGIN_USER.getEmail()})}">
                                 </div>
                                 <div class="thumbnail-change-div">
-                                    <label for="thumbnailImg">
+                                    <label for="thumbnailImg" id="thumbnailImgLabel">
                                         <div class="profile_change">썸네일 변경</div>
                                     </label>
                                     <input type="file" class="profile_img" name="profile_img" id="thumbnailImg">
@@ -102,12 +103,12 @@
                         </div>
                         <div>
                             <label>가격설정</label>
-                            <div class="currency-div">
+                            <div class="currency-div" id="currencyDiv">
                                 <input type="text" class="currency-input" spellcheck="false" id="mediaPrice" th:value="${mediaPrice}">
                                 <span class="currency-symbol">원</span>
                             </div>
                             <input type="button" class="save-button" id="tempSaveButton" value="임시저장">
-                            <input type="button" class="submit-button" value="제출하기">
+                            <input type="button" class="submit-button" id="submitButton" value="제출하기">
                         </div>
                     </div>
                 </div>

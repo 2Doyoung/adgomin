@@ -66,6 +66,7 @@ public class MediaController {
                 modelAndView.addObject("thumbnailOriginFileNm", mediaRegisterEntity.getThumbnailOriginFileNm());
                 modelAndView.addObject("thumbnailImgFilePath", mediaRegisterEntity.getThumbnailImgFilePath());
                 modelAndView.addObject("mediaPrice", mediaRegisterEntity.getMediaPrice());
+                modelAndView.addObject("mediaSubmitStatus", mediaRegisterEntity.getMediaSubmitStatus());
             }
         }
 

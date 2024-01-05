@@ -3,10 +3,13 @@
  */
 const introduce = document.getElementById("introduce");
 const tempSaveButton = document.getElementById("tempSaveButton");
+const submitButton = document.getElementById("submitButton");
 const adCategoryList = document.getElementsByClassName("ad-category-list");
 const mediaSummary = document.getElementById("mediaSummary");
 const mediaPrice = document.getElementById("mediaPrice");
 const thumbnailImg = document.getElementById("thumbnailImg");
+
+const mediaSubmitStatus = document.getElementById("mediaSubmitStatus").value;
 
 let thumbnailImgSave;
 
@@ -20,58 +23,34 @@ introduce.addEventListener("click", () => {
 })
 
 tempSaveButton.addEventListener("click", () => {
-    let title = document.getElementById("title").value;
-    let titleSpan = document.getElementById("titleSpan");
+    tempSaveAndSubmit("mediaRegisterTempSave");
+})
 
-    let adCategorySelected = document.getElementsByClassName("ad-category-selected");
-    let adCategorySpan = document.getElementById("adCategorySpan");
+submitButton.addEventListener("click", () => {
+    if(mediaSubmitStatus == "N") {
+        tempSaveAndSubmit("mediaRegisterSubmit");
+    } else if(mediaSubmitStatus == "I") {
 
-    if(title.length < 5 || title.length > 30) {
-        titleSpan.style.color = "#FF0040";
-        document.getElementById("title").focus();
-    } else if(title.length >= 5 && title.length <= 30) {
-        titleSpan.style.color = "#BDBDBD";
-    }
-
-    if(adCategorySelected[0] == undefined) {
-        adCategorySpan.style.color = "#FF0040";
-        document.getElementById("adCategoryFocus").focus();
-    } else {
-        adCategorySpan.style.color = "#BDBDBD";
-    }
-
-    if(!(titleSpan.style.color == 'rgb(255, 0, 64)') && !(adCategorySpan.style.color == 'rgb(255, 0, 64)')) {
-        let title = document.getElementById("title").value;
-        let adCategorySelected = document.getElementsByClassName("ad-category-selected")[0].innerText;
-        let mediaSummary = document.getElementById("mediaSummary").value;
-        let editorHtml = quill.root.innerHTML;
-        let mediaPrice = document.getElementById("mediaPrice").value;
-
-        const formData = new FormData();
-
-        formData.append("mediaTitle", title);
-        formData.append("adDetailCategory", adCategorySelected);
-        formData.append("mediaSummary", mediaSummary);
-        formData.append("mediaDetailExplain", editorHtml);
-        formData.append("mediaPrice", mediaPrice);
-
-        xhr("/media/register", formData, "PATCH", "mediaRegisterTempSave");
     }
 })
 
 for(let i = 0; i < adCategoryList.length; i++) {
     adCategoryList[i].addEventListener("click", () => {
-        if(document.getElementsByClassName("ad-category-selected").length > 0) {
-            if(adCategoryList[i].classList.contains("ad-category-selected")) {
-                adCategoryList[i].classList.remove("ad-category-selected");
-            }
-        } else if(!(document.getElementsByClassName("ad-category-selected").length > 0)) {
+        if(mediaSubmitStatus == "N") {
+            if(document.getElementsByClassName("ad-category-selected").length > 0) {
+                if(adCategoryList[i].classList.contains("ad-category-selected")) {
+                    adCategoryList[i].classList.remove("ad-category-selected");
+                }
+            } else if(!(document.getElementsByClassName("ad-category-selected").length > 0)) {
 
-            if(adCategoryList[i].classList.contains("ad-category-selected")) {
-                adCategoryList[i].classList.remove("ad-category-selected");
-            } else {
-                adCategoryList[i].classList.add("ad-category-selected");
+                if(adCategoryList[i].classList.contains("ad-category-selected")) {
+                    adCategoryList[i].classList.remove("ad-category-selected");
+                } else {
+                    adCategoryList[i].classList.add("ad-category-selected");
+                }
             }
+        } else if(mediaSubmitStatus == "I") {
+
         }
     })
 }
@@ -157,11 +136,12 @@ quill = new Quill('#editor', {
     }
 });
 
-
 let htmlContent = getMediaDetailExplain
 let Delta = Quill.import('delta');
 let delta = new Delta().insert(htmlContent);
 quill.clipboard.dangerouslyPasteHTML(htmlContent);
+
+document.getElementById("title").focus();
 
 let getAdCategoryList = document.getElementsByClassName("ad-category-list");
 for(let i = 0; i < getAdCategoryList.length; i++) {
@@ -169,23 +149,113 @@ for(let i = 0; i < getAdCategoryList.length; i++) {
         getAdCategoryList[i].classList.add("ad-category-selected");
     }
 }
+
+const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
+    let title = document.getElementById("title").value;
+    let titleSpan = document.getElementById("titleSpan");
+
+    let adCategorySelected = document.getElementsByClassName("ad-category-selected");
+    let adCategorySpan = document.getElementById("adCategorySpan");
+
+    if(title.length < 5 || title.length > 30) {
+        titleSpan.style.color = "#FF0040";
+        document.getElementById("title").focus();
+    } else if(title.length >= 5 && title.length <= 30) {
+        titleSpan.style.color = "#BDBDBD";
+    }
+
+    if(adCategorySelected[0] == undefined) {
+        adCategorySpan.style.color = "#FF0040";
+        document.getElementById("adCategoryFocus").focus();
+    } else {
+        adCategorySpan.style.color = "#BDBDBD";
+    }
+
+    if(!(titleSpan.style.color == 'rgb(255, 0, 64)') && !(adCategorySpan.style.color == 'rgb(255, 0, 64)')) {
+        let title = document.getElementById("title").value;
+        let adCategorySelected = document.getElementsByClassName("ad-category-selected")[0].innerText;
+        let mediaSummary = document.getElementById("mediaSummary").value;
+        let editorHtml = quill.root.innerHTML;
+        let mediaPrice = document.getElementById("mediaPrice").value;
+
+        const formData = new FormData();
+
+        formData.append("mediaTitle", title);
+        formData.append("adDetailCategory", adCategorySelected);
+        formData.append("mediaSummary", mediaSummary);
+        formData.append("mediaDetailExplain", editorHtml);
+        formData.append("mediaPrice", mediaPrice);
+        if(mediaRegisterTempSaveOrSubmit == "mediaRegisterTempSave") {
+            formData.append("mediaSubmitStatus", "N");
+        } else if(mediaRegisterTempSaveOrSubmit == "mediaRegisterSubmit") {
+            formData.append("mediaSubmitStatus", "I");
+        }
+
+        xhr("/media/register", formData, "PATCH", mediaRegisterTempSaveOrSubmit);
+    }
+}
+
+const thumbnailTempSaveAndSubmit = (thumbnailChangeTempSaveAndSubmit, modalTitleInnerText) => {
+    const formData = new FormData();
+
+    if(thumbnailImgSave != undefined) {
+        formData.append("thumbnail", thumbnailImgSave);
+        xhr("/change/thumbnail", formData, "PATCH", thumbnailChangeTempSaveAndSubmit);
+    } else {
+        modalFunction(modalTitleInnerText);
+    }
+}
+
+const modalFunction = (modalTitleInnerText) => {
+    let modalBg = document.getElementById("modalBg");
+    let modalTitle = document.getElementById("modalTitle");
+
+    modalBg.style.display = "block";
+    modalTitle.innerText = modalTitleInnerText;
+}
+
+if(mediaSubmitStatus == "I") {
+    let title = document.getElementById("title");
+    let mediaSummary = document.getElementById("mediaSummary");
+    let mediaPrice = document.getElementById("mediaPrice");
+    let currencyDiv = document.getElementById("currencyDiv");
+    let thumbnailImgLabel = document.getElementById("thumbnailImgLabel");
+    let tempSaveButton = document.getElementById("tempSaveButton");
+    let submitButton = document.getElementById("submitButton");
+
+    title.readOnly = true;
+    title.style.background = "#D8D8D8"
+
+    mediaSummary.readOnly = true;
+    mediaSummary.style.background = "#D8D8D8";
+
+    mediaPrice.readOnly = true;
+    mediaPrice.style.background = "#D8D8D8";
+    currencyDiv.style.background = "#D8D8D8";
+
+    thumbnailImgLabel.setAttribute("for", "");
+
+    tempSaveButton.style.visibility = "hidden";
+
+    submitButton.value = "심사중";
+
+    quill = new Quill('#editor', {
+        readOnly : true,
+    });
+}
+
 /**
  * XMLHttpRequest 성공 함수
  */
 let successXhr = (responseObject, flag) => {
     if(flag == "mediaRegisterTempSave") {
-        const formData = new FormData();
-        if(thumbnailImgSave != undefined) {
-            formData.append("thumbnail", thumbnailImgSave);
-        }
-
-        xhr("/change/thumbnail", formData, "PATCH", "thumbnailChange");
-    } else if(flag == "thumbnailChange") {
-        let modalBg = document.getElementById("modalBg");
-        let modalTitle = document.getElementById("modalTitle");
-
-        modalBg.style.display = "block";
-        modalTitle.innerText = "광고매체 등록이 임시저장되었습니다.";
+        thumbnailTempSaveAndSubmit("thumbnailChangeTempSave", "광고매체 등록이 임시저장되었습니다.");
+    } else if(flag == "mediaRegisterSubmit") {
+        thumbnailTempSaveAndSubmit("thumbnailChangeSubmit", "광고매체가 정상적으로 제출되었습니다.");
+    } else if(flag == "thumbnailChangeTempSave") {
+        modalFunction("광고매체 등록이 임시저장되었습니다.");
+    } else if(flag == "thumbnailChangeSubmit") {
+        modalFunction("광고매체가 정상적으로 제출되었습니다.");
     }
 }
 

@@ -15,6 +15,8 @@ const userSetting = document.getElementById("userSetting");
 const passwordFind = document.getElementById("passwordFind");
 
 const mediaManage = document.getElementById("mediaManage");
+
+const adminAllManage = document.getElementById("adminAllManage");
 /**
  * 이벤트 함수
  */
@@ -136,6 +138,11 @@ if(mediaManage != null) {
 	});
 }
 
+if(adminAllManage != null) {
+	adminAllManage.addEventListener("click", () => {
+		window.location.href = "/admin"
+	});
+}
 /**
  * 사용자 함수
  */
