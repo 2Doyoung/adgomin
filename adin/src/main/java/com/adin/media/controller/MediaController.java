@@ -7,6 +7,7 @@ import com.adin.media.entity.MediaRegisterEntity;
 import com.adin.media.service.MediaService;
 import com.adin.user.service.UserService;
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -29,7 +30,7 @@ public class MediaController {
     private final MediaService mediaService;
 
     private final UserService userService;
-
+    @Autowired
     public MediaController(MediaService mediaService, UserService userService) {
         this.mediaService = mediaService;
         this.userService = userService;

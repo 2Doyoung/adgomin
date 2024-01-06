@@ -12,7 +12,7 @@
 
     <insert id="insertMediaRegister" parameterType="com.adin.join.entity.JoinEntity">
         INSERT INTO adin_media_register
-            (email, media_detail_explain, media_price)
+            (email, media_detail_explain, media_price, create_dt, modify_dt)
         VALUES
             (#{email}, '<![CDATA[<h1>광고매체 적합한 광고 🔈</h1>
 <h3> </h3>
@@ -55,7 +55,7 @@
 <h3> </h3>
 <span>광고를 진행했던 대표 동영상 하나를 올려주세요.</span><h3> </h3>
 <span>동영상이 없는 광고매체는 생략을 하셔도 됩니다.</span><h3> </h3>
-<img src="http://localhost:8080/images/media-register-video-guide.png">]]>', 0)
+<img src="http://localhost:8080/images/media-register-video-guide.png">]]>', 0, now(), now())
     </insert>
 
     <update id="mediaIntroduce" parameterType="com.adin.media.entity.MediaIntroduceEntity">
@@ -112,6 +112,10 @@
           ,media_detail_explain = #{mediaDetailExplain}
           ,media_price = #{mediaPrice}
           ,media_submit_status = #{mediaSubmitStatus}
+          ,modify_dt = now()
+          <if test='mediaSubmitStatus == "I"'>
+                ,submit_dt = now()
+          </if>
         WHERE 1=1
           AND email = #{email}
           AND media_order = (

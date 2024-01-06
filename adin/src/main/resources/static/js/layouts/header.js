@@ -140,7 +140,7 @@ if(mediaManage != null) {
 
 if(adminAllManage != null) {
 	adminAllManage.addEventListener("click", () => {
-		window.location.href = "/admin"
+		window.location.href = "/admin?page=1"
 	});
 }
 /**

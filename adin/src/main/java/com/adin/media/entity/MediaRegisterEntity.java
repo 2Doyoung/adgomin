@@ -1,5 +1,7 @@
 package com.adin.media.entity;
 
+import java.util.Date;
+
 public class MediaRegisterEntity {
     private int mediaOrder;
     private String email;
@@ -12,6 +14,33 @@ public class MediaRegisterEntity {
     private String thumbnailImgFilePath;
     private String mediaPrice;
     private String mediaSubmitStatus;
+    private Date createDt;
+    private Date modifyDt;
+    private Date submitDt;
+
+    public Date getCreateDt() {
+        return createDt;
+    }
+
+    public void setCreateDt(Date createDt) {
+        this.createDt = createDt;
+    }
+
+    public Date getModifyDt() {
+        return modifyDt;
+    }
+
+    public void setModifyDt(Date modifyDt) {
+        this.modifyDt = modifyDt;
+    }
+
+    public Date getSubmitDt() {
+        return submitDt;
+    }
+
+    public void setSubmitDt(Date submitDt) {
+        this.submitDt = submitDt;
+    }
 
     public String getMediaSubmitStatus() {
         return mediaSubmitStatus;

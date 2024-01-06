@@ -1,0 +1,600 @@
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.user-footer {
+    border: 0.5px solid #D9D9D9;
+    margin: 0;
+}
+
+.top-title {
+    background-color: #9FADBD;
+    color: #FFFFFF;
+}
+
+.user-wrap {
+    margin: auto 17%;
+    height: 1300px;
+}
+
+.user-main-title {
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    font-weight: 500;
+    margin: auto 17%;
+}
+
+.user-sub-wrap {
+    display: flex;
+}
+
+.user-sub-menu {
+    width: 20%;
+    height: 1300px;
+    display: inline-block;
+    border-right: 1px solid #ccc;
+}
+
+.user-sub-main {
+    width: 78%;
+    height: 1300px;
+    display: inline-block;
+}
+
+.user-sub-menu > ul {
+    list-style: none;
+    padding: 1rem;
+}
+
+.user-sub-menu > ul > li {
+    padding-bottom: 1rem;
+    cursor: pointer;
+    color: #303441;
+}
+
+.user-sub-main-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: 3rem;
+    color: #303441;
+}
+
+.user-sub-main-content {
+    height: 1050px;
+    border-radius: 10px;
+}
+
+.user-sub-password-change-content {
+    height: 350px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.user-sub-secession-content {
+    height: 600px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.user-sub-main-content > div > img {
+    width: 10rem;
+    height: 10rem;
+    margin: 3rem 1rem 0 3rem;
+    border-radius: 30px;
+    object-fit: contain;
+}
+
+.user-sub-main-content-sub {
+    display: flex;
+}
+
+.user-sub-main-content-sub > div {
+    padding-top: 7rem;
+}
+
+.profile_change {
+    display: block;
+    width: 6rem;
+    height: 2rem;
+    background-color: #A4A4A4;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    padding-top: 0.3rem;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.user-sub-main-content-sub > div > span {
+    margin-left: 0.3rem;
+    color: #BDBDBD;
+    font-size: 0.9rem;
+}
+
+.user-sub-main-content-information {
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.user-sub-main-content-information > div > label {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: #303441;
+}
+
+.user-sub-main-content-information > div > div > input[type=text] {
+    height: 2.5rem;
+    width: 42rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #303441;
+}
+
+.user-sub-main-content-information > div > div > input[type=button] {
+    height: 2.7rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.user-sub-main-content-information > div > div {
+    display: flex;
+}
+
+.user-sub-main-content-information > div > span {
+    font-size: 0.9rem;
+    color: #BDBDBD;
+}
+
+.user-sub-main-content-information > div > div > input[type=password] {
+    height: 2.5rem;
+    width: 77%;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #2E2E2E;
+}
+
+.user-secession-sub-title {
+    margin-left: 3rem;
+    font-size: 1.4rem;
+    margin-top: 2rem;
+}
+
+.user-secession-reason {
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.user-secession-reason > label {
+    display: block;
+    margin-top: 1rem;
+    color: #585858;
+    font-size: 0.9rem;
+}
+
+.user-secession-notice {
+    width: 77.5%;
+    height: 200px;
+    margin-left: 3rem;
+    margin-top: 3rem;
+    border-radius: 10px;
+    background-color: #D8D8D8;
+}
+
+.user-secession-password > input[type=password] {
+    height: 2.5rem;
+    width: 75%;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #2E2E2E;
+    margin-left: 3rem;
+    border: 1px solid #ccc;
+}
+
+.user-secession-password > input[type=button] {
+    height: 2.7rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #FFFFFF;
+    background-color: #DF013A;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+}
+
+.email_readonly:focus {
+    outline: none;
+}
+
+.profile_img {
+    display: none;
+}
+
+.nickname_change {
+    cursor: pointer;
+}
+
+.password-change-error {
+    color: #FF402B !important;
+    display: none;
+}
+
+.password-change-check-error {
+    color: #FF402B !important;
+    display: none;
+}
+
+.password-present-error {
+    color: #FF402B !important;
+    display: none;
+}
+
+.password-change-button {
+    cursor: pointer;
+}
+
+.modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.modal-body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 100px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.modal-body > div {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.modal-body > input {
+    height: 2.5rem;
+    width: 4.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 1.5rem;
+}
+
+.ri-checkbox-circle-line {
+    vertical-align: bottom;
+    color: #81BEF7;
+    font-size: 3rem;
+}
+
+.modal-check-div {
+    margin-top: 1rem !important;
+    cursor: pointer;
+}
+
+.secessionButton {
+    cursor: pointer;
+}
+
+.password-present-error-secession {
+    color: #FF402B !important;
+    margin-left: 3.5rem;
+    display: none;
+    font-size: 0.9rem;
+}
+
+.user_phone_readonly:focus {
+    outline: none;
+}
+
+.user-sub-main-content-information > div > div > textarea {
+    height: 10rem;
+    width: 42rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    padding-top: 1rem;
+    color: #303441;
+    resize: none;
+}
+
+.user-sub-main-content-information > div > div > ul {
+    list-style: none;
+    padding: 0rem;
+}
+
+.region-choice > div > ul > li:not(.region_first_li) {
+    float: left;
+    background-color: #F2F2F2;
+    color: #303441;
+    margin: 0.5rem;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.region_first_li {
+    float: left;
+    background-color: #F2F2F2;
+    color: #303441;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.ad-category > div > ul > li:not(.category-first-li) {
+    float: left;
+    background-color: #F2F2F2;
+    color: #303441;
+    margin: 0.5rem;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.category-first-li {
+    float: left;
+    background-color: #F2F2F2;
+    color: #303441;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.media-url {
+    height: 2.5rem;
+    width: 42rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    padding-left: 1rem;
+    color: #2E2E2E;
+    display: inline-block !important;
+}
+
+.media-url-input {
+    border: none !important;
+    margin-top: 0rem !important;
+    height: 2.3rem !important;
+    margin-left: 0.5rem;
+    width: 37rem !important;
+    padding-left: 0rem !important;
+    font-size: 1rem;
+}
+
+.media-url-input:focus {
+    outline: none;
+}
+
+.https-span {
+    margin-top: 0.4rem;
+}
+
+textarea {
+    outline: none;
+}
+
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.save-button {
+    height: 2.7rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.region-selected {
+    background-color: #2E9AFE !important;
+    color: #FFFFFF !important;
+}
+
+.ad-category-selected {
+    background-color: #2E9AFE !important;
+    color: #FFFFFF !important;
+}
+
+.ck-editor__editable {
+    width: 42rem;
+    height: 60rem;
+}
+
+.media-detail-explanation {
+    margin-bottom: 1rem;
+}
+
+table {
+    background-color: #FFFFFF;
+    border-collapse: collapse;
+    margin-left: 3rem;
+    width: 100%;
+}
+
+th {
+    color: #FFFFFF;
+    background-color: #A4A4A4;
+    font-size: 23px;
+    font-weight: 100;
+    padding: 1rem;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th:first-child {
+    border-top-left-radius: 3px;
+}
+
+th:last-child {
+    border-top-right-radius: 3px;
+    border-right: none;
+}
+
+tr {
+    border-top: 1px solid #C1C3D1;
+    border-bottom-: 1px solid #C1C3D1;
+    color: #666B85;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+tr:hover td {
+    background: #4E5066;
+    color: #FFFFFF;
+    border-top: 1px solid #22262e;
+    cursor: pointer;
+}
+
+tr:first-child {
+    border-top: none;
+}
+
+tr:last-child {
+    border-bottom: none;
+}
+
+tr:nth-child(odd) td {
+    background: #EBEBEB;
+}
+
+tr:nth-child(odd):hover td {
+    background: #4E5066;
+    cursor: pointer;
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 3px;
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 3px;
+}
+
+td {
+    background: #FFFFFF;
+    padding: 1rem;
+    text-align: left;
+    vertical-align: middle;
+    font-weight: 300;
+    font-size: 18px;
+    border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+    border-right: 0px;
+}
+
+th.text-left {
+    text-align: left;
+}
+
+th.text-center {
+    text-align: center;
+}
+
+th.text-right {
+    text-align: right;
+}
+
+td.text-left {
+    text-align: left;
+}
+
+td.text-center {
+    text-align: center;
+}
+
+td.text-right {
+    text-align: right;
+}
+
+.div-paging {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.1rem;
+}
+
+.div-paging > span {
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    margin: 0.25rem;
+    border: 1px solid transparent;
+}
+
+.div-paging > span > a {
+    text-decoration: none;
+    color: inherit;
+    color: #A4A4A4;
+}
+
+.div-paging > span:hover {
+    border: 1px solid #81BEF7;
+    cursor: pointer;
+}
+
+.current-page {
+    background-color: #81BEF7;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.current-page > a {
+    color: #FFFFFF !important;
+}

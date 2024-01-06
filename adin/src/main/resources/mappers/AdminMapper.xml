@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adin.admin.mapper.AdminMapper">
+    <select id="getMediaSubmitList" resultType="com.adin.media.entity.MediaRegisterEntity">
+        SELECT
+            media_order as mediaOrder
+            ,email as email
+            ,media_title as mediaTitle
+            ,media_submit_status as mediaSubmitStatus
+            ,submit_dt as submitDt
+        FROM adin_media_register
+        WHERE 1=1
+        AND media_submit_status = "I"
+        ORDER BY submit_dt
+        LIMIT #{pageStart}, #{perPageNum}
+    </select>
+
+    <select id="getMediaSubmitListCnt" resultType="com.adin.media.vo.MediaRegisterVO">
+        SELECT
+            COUNT(*) AS cnt
+        FROM adin_media_register
+        WHERE 1=1
+          AND media_submit_status = "I"
+    </select>
+</mapper>
