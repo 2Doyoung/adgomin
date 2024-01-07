@@ -2,6 +2,7 @@
  * 전역변수
  */
 const spans = document.querySelectorAll('.div-paging span');
+const submitListTr = document.getElementsByClassName('submit-list-tr');
 
 /**
  * 이벤트 함수
@@ -13,6 +14,14 @@ for (let i = 0; i < spans.length; i++) {
             link.click();
         }
     });
+}
+
+for(let i = 0; i < submitListTr.length; i++) {
+    submitListTr[i].addEventListener("click", (e) => {
+        let mediaOrder = e.target.parentElement.children[0].innerText;
+
+        window.location.href = "/admin/adminSubmitDetail?mediaOrder=" + mediaOrder;
+    })
 }
 /**
  * 사용자 함수

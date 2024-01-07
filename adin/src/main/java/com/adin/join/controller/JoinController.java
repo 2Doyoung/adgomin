@@ -85,7 +85,7 @@ public class JoinController {
         JSONObject responseObject = new JSONObject();
         Enum<?> result = this.joinService.certifiedCheck(email, certified, request);
         if("failure".equals(result.name().toLowerCase())) {
-            return "redirect:http://localhost:8080/errorpage";
+            return "redirect:http://localhost:8080/error";
         }
         responseObject.put("result", result.name().toLowerCase());
 

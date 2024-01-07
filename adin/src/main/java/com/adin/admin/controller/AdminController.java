@@ -58,4 +58,40 @@ public class AdminController {
 
         return  modelAndView;
     }
+
+    @GetMapping(value = "/admin/adminSubmitDetail")
+    public ModelAndView adminSubmitDetail(@RequestParam(value = "mediaOrder", required = false) int mediaOrder, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
+        ModelAndView modelAndView = null;
+        if(joinVO != null) {
+            if(joinVO.getUserType().equals("admin")) {
+                modelAndView = new ModelAndView("admin/admin_submit_detail");
+                MediaRegisterEntity mediaRegisterEntityDetail = this.adminService.getMediaSubmitDetail(mediaOrder);
+                if(mediaRegisterEntityDetail != null) {
+                    modelAndView.addObject("mediaOrder", mediaRegisterEntityDetail.getMediaOrder());
+                    modelAndView.addObject("email", mediaRegisterEntityDetail.getEmail());
+                    modelAndView.addObject("adDetailCategory", mediaRegisterEntityDetail.getAdDetailCategory());
+                    modelAndView.addObject("mediaTitle", mediaRegisterEntityDetail.getMediaTitle());
+                    modelAndView.addObject("mediaSummary", mediaRegisterEntityDetail.getMediaSummary());
+                    modelAndView.addObject("mediaDetailExplain", mediaRegisterEntityDetail.getMediaDetailExplain());
+                    modelAndView.addObject("thumbnailImgNm", mediaRegisterEntityDetail.getThumbnailImgNm());
+                    modelAndView.addObject("thumbnailOriginFileNm", mediaRegisterEntityDetail.getThumbnailOriginFileNm());
+                    modelAndView.addObject("thumbnailImgFilePath", mediaRegisterEntityDetail.getThumbnailImgFilePath());
+                    modelAndView.addObject("mediaPrice", mediaRegisterEntityDetail.getMediaPrice());
+                    modelAndView.addObject("mediaSubmitStatus", mediaRegisterEntityDetail.getMediaSubmitStatus());
+                    modelAndView.addObject("createDt", mediaRegisterEntityDetail.getCreateDt());
+                    modelAndView.addObject("modifyDt", mediaRegisterEntityDetail.getModifyDt());
+                    modelAndView.addObject("submitDt", mediaRegisterEntityDetail.getSubmitDt());
+                } else {
+                    modelAndView = new ModelAndView("error/error");
+                }
+            } else {
+                modelAndView = new ModelAndView("error/error");
+            }
+        } else {
+            modelAndView = new ModelAndView("error/error");
+        }
+
+
+        return  modelAndView;
+    }
 }

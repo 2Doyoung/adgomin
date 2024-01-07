@@ -10,4 +10,6 @@ public interface AdminMapper {
     MediaRegisterEntity[] getMediaSubmitList(@Param(value = "pageStart") int pageStart, @Param(value = "perPageNum") int perPageNum);
 
     MediaRegisterVO getMediaSubmitListCnt();
+
+    MediaRegisterEntity getMediaSubmitDetail(@Param(value = "mediaOrder") int mediaOrder);
 }
