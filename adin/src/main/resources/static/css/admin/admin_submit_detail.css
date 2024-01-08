@@ -612,6 +612,10 @@ td.text-right {
 .user-media-introduce {
     margin-left: 3rem;
     color: #303441;
+    padding: 1rem 2rem;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    margin-bottom: 1rem;
 }
 
 .user-media-introduce > div > label {
@@ -620,4 +624,44 @@ td.text-right {
     font-weight: 600;
     margin-bottom: 1rem;
     font-size: 1.1rem;
+}
+
+.media-introduce {
+    white-space: pre-line;
+    line-height: 2rem;
+}
+
+.region-span {
+    padding: 0.5rem 1rem;
+    background-color: #D8D8D8;
+    border-radius: 5px;
+    margin-right: 1rem;
+    color: #555969;
+}
+
+.ad-category-span {
+    padding: 0.5rem 1rem;
+    background-color: #D8D8D8;
+    border-radius: 5px;
+    margin-right: 1rem;
+    color: #555969;
+}
+
+.media-url-detail {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: #175cbe;
+    color: #175cbe
+}
+
+.label-margin-bottom {
+    margin-bottom: 2rem !important;
+}
+
+.profile-image-detail {
+    width: 10rem;
+    height: 10rem;
+    margin: 3rem 0rem 0rem 0rem;
+    border-radius: 30px;
+    object-fit: contain;
 }

@@ -1,17 +1,41 @@
 /**
  * 전역변수
  */
-const mediaIntroduce = document.getElementById("mediaIntroduce");
+const region = document.getElementById("region");
+const adCategory = document.getElementById("adCategory");
+const mediaUrl = document.getElementById("mediaUrl");
 
 /**
  * 이벤트 함수
  */
-
+mediaUrl.addEventListener("click", () => {
+    window.open("http://" + getMediaUrl, ".blank")
+})
 
 /**
  * 사용자 함수
  */
-mediaIntroduce.innerHTML =
+let regionSplit = getRegion.split(',');
+
+for(let i = 0; i < regionSplit.length; i++) {
+    let spanTag = document.createElement("span");
+    spanTag.append(regionSplit[i]);
+    spanTag.classList.add("region-span")
+
+    region.appendChild(spanTag);
+}
+
+let adCategorySplit = getAdCategory.split(',');
+
+for(let i = 0; i < adCategorySplit.length; i++) {
+    let spanTag = document.createElement("span");
+    spanTag.append(adCategorySplit[i]);
+    spanTag.classList.add("ad-category-span")
+
+    adCategory.appendChild(spanTag);
+}
+
+
 /**
  * XMLHttpRequest 성공 함수
  */

@@ -18,7 +18,11 @@
         window.location.href = "/";
     }
 
-    let mediaIntroduce = [[${mediaIntroduce}]];
+    let getMediaIntroduce = [[${mediaIntroduce}]];
+    let getRegion = [[${region}]];
+    let getAdCategory = [[${adCategory}]];
+    let getMediaUrl = [[${mediaUrl}]]
+
     let getMediaDetailExplain = [[${mediaDetailExplain}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
@@ -43,25 +47,26 @@
             </div>
             <div class="user-sub-main-content">
                 <div class="user-media-introduce">
+                    <img class="profile-image-detail" th:src="@{/profile/image (email=${email})}">
                     <div>
                         <label>광고매체자 닉네임</label>
                         <span th:text="${nickname}"></span>
                     </div>
                     <div>
                         <label>광고매체 소개</label>
-                        <span id="mediaIntroduce"></span>
+                        <span class="media-introduce" th:text="${mediaIntroduce}"></span>
                     </div>
                     <div>
-                        <label>광고매체 지역</label>
-                        <span th:text="${region}"></span>
+                        <label class="label-margin-bottom">광고매체 지역</label>
+                        <span id="region"></span>
                     </div>
                     <div>
-                        <label>광고매체 분야</label>
-                        <span th:text="${adCategory}"></span>
+                        <label class="label-margin-bottom">광고매체 분야</label>
+                        <span id="adCategory"></span>
                     </div>
                     <div>
                         <label>광고매체 URL</label>
-                        <span th:text="${mediaUrl}"></span>
+                        <span th:text="${mediaUrl}" id="mediaUrl" class="media-url-detail"></span>
                     </div>
                 </div>
                 <div class="detail-thumbnail">
