@@ -65,22 +65,27 @@ public class AdminController {
         if(joinVO != null) {
             if(joinVO.getUserType().equals("admin")) {
                 modelAndView = new ModelAndView("admin/admin_submit_detail");
-                MediaRegisterEntity mediaRegisterEntityDetail = this.adminService.getMediaSubmitDetail(mediaOrder);
-                if(mediaRegisterEntityDetail != null) {
-                    modelAndView.addObject("mediaOrder", mediaRegisterEntityDetail.getMediaOrder());
-                    modelAndView.addObject("email", mediaRegisterEntityDetail.getEmail());
-                    modelAndView.addObject("adDetailCategory", mediaRegisterEntityDetail.getAdDetailCategory());
-                    modelAndView.addObject("mediaTitle", mediaRegisterEntityDetail.getMediaTitle());
-                    modelAndView.addObject("mediaSummary", mediaRegisterEntityDetail.getMediaSummary());
-                    modelAndView.addObject("mediaDetailExplain", mediaRegisterEntityDetail.getMediaDetailExplain());
-                    modelAndView.addObject("thumbnailImgNm", mediaRegisterEntityDetail.getThumbnailImgNm());
-                    modelAndView.addObject("thumbnailOriginFileNm", mediaRegisterEntityDetail.getThumbnailOriginFileNm());
-                    modelAndView.addObject("thumbnailImgFilePath", mediaRegisterEntityDetail.getThumbnailImgFilePath());
-                    modelAndView.addObject("mediaPrice", mediaRegisterEntityDetail.getMediaPrice());
-                    modelAndView.addObject("mediaSubmitStatus", mediaRegisterEntityDetail.getMediaSubmitStatus());
-                    modelAndView.addObject("createDt", mediaRegisterEntityDetail.getCreateDt());
-                    modelAndView.addObject("modifyDt", mediaRegisterEntityDetail.getModifyDt());
-                    modelAndView.addObject("submitDt", mediaRegisterEntityDetail.getSubmitDt());
+                MediaRegisterVO mediaRegisterVoDetail = this.adminService.getMediaSubmitDetail(mediaOrder);
+                if(mediaRegisterVoDetail != null) {
+                    modelAndView.addObject("mediaOrder", mediaRegisterVoDetail.getMediaOrder());
+                    modelAndView.addObject("email", mediaRegisterVoDetail.getEmail());
+                    modelAndView.addObject("adDetailCategory", mediaRegisterVoDetail.getAdDetailCategory());
+                    modelAndView.addObject("mediaTitle", mediaRegisterVoDetail.getMediaTitle());
+                    modelAndView.addObject("mediaSummary", mediaRegisterVoDetail.getMediaSummary());
+                    modelAndView.addObject("mediaDetailExplain", mediaRegisterVoDetail.getMediaDetailExplain());
+                    modelAndView.addObject("thumbnailImgNm", mediaRegisterVoDetail.getThumbnailImgNm());
+                    modelAndView.addObject("thumbnailOriginFileNm", mediaRegisterVoDetail.getThumbnailOriginFileNm());
+                    modelAndView.addObject("thumbnailImgFilePath", mediaRegisterVoDetail.getThumbnailImgFilePath());
+                    modelAndView.addObject("mediaPrice", mediaRegisterVoDetail.getMediaPrice());
+                    modelAndView.addObject("mediaSubmitStatus", mediaRegisterVoDetail.getMediaSubmitStatus());
+                    modelAndView.addObject("createDt", mediaRegisterVoDetail.getCreateDt());
+                    modelAndView.addObject("modifyDt", mediaRegisterVoDetail.getModifyDt());
+                    modelAndView.addObject("submitDt", mediaRegisterVoDetail.getSubmitDt());
+                    modelAndView.addObject("nickname", mediaRegisterVoDetail.getNickname());
+                    modelAndView.addObject("mediaIntroduce", mediaRegisterVoDetail.getMediaIntroduce());
+                    modelAndView.addObject("region", mediaRegisterVoDetail.getRegion());
+                    modelAndView.addObject("adCategory", mediaRegisterVoDetail.getAdCategory());
+                    modelAndView.addObject("mediaUrl", mediaRegisterVoDetail.getMediaUrl());
                 } else {
                     modelAndView = new ModelAndView("error/error");
                 }

@@ -24,7 +24,7 @@ public class AdminService {
         return this.adminMapper.getMediaSubmitListCnt();
     }
 
-    public MediaRegisterEntity getMediaSubmitDetail(int mediaOrder) {
+    public MediaRegisterVO getMediaSubmitDetail(int mediaOrder) {
         return this.adminMapper.getMediaSubmitDetail(mediaOrder);
     }
 }

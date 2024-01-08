@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>애드인 - 관리자 전체 관리(광고매체 제출 상세보기)</title>
-    <link rel="stylesheet" th:href="@{/css/admin/admin_submit_list.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/admin_submit_detail.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script defer th:src="@{/js/admin/admin_submit_list.js}"></script>
+    <script defer th:src="@{/js/admin/admin_submit_detail.js}"></script>
     <script defer th:src="@{/js/layouts/header.js}"></script>
 </head>
 <body>
@@ -17,6 +17,9 @@
     if (sessionLoginUser == null) {
         window.location.href = "/";
     }
+
+    let mediaIntroduce = [[${mediaIntroduce}]];
+    let getMediaDetailExplain = [[${mediaDetailExplain}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <div class="top-title">
@@ -39,7 +42,36 @@
                 광고매체 제출 상세보기
             </div>
             <div class="user-sub-main-content">
+                <div class="user-media-introduce">
+                    <div>
+                        <label>광고매체자 닉네임</label>
+                        <span th:text="${nickname}"></span>
+                    </div>
+                    <div>
+                        <label>광고매체 소개</label>
+                        <span id="mediaIntroduce"></span>
+                    </div>
+                    <div>
+                        <label>광고매체 지역</label>
+                        <span th:text="${region}"></span>
+                    </div>
+                    <div>
+                        <label>광고매체 분야</label>
+                        <span th:text="${adCategory}"></span>
+                    </div>
+                    <div>
+                        <label>광고매체 URL</label>
+                        <span th:text="${mediaUrl}"></span>
+                    </div>
+                </div>
+                <div class="detail-thumbnail">
+                    <img th:src="@{/thumbnail/image (email=${email})}">
+                </div>
+                <div class="detail-media-detail-explain">
+                    <div id="editor">
 
+                    </div>
+                </div>
             </div>
         </div>
     </div>

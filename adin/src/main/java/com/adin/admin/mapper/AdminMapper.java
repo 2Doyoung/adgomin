@@ -11,5 +11,5 @@ public interface AdminMapper {
 
     MediaRegisterVO getMediaSubmitListCnt();
 
-    MediaRegisterEntity getMediaSubmitDetail(@Param(value = "mediaOrder") int mediaOrder);
+    MediaRegisterVO getMediaSubmitDetail(@Param(value = "mediaOrder") int mediaOrder);
 }

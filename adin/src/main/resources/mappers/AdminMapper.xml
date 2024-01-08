@@ -25,23 +25,30 @@
           AND media_submit_status = "I"
     </select>
 
-    <select id="getMediaSubmitDetail" resultType="com.adin.media.entity.MediaRegisterEntity">
+    <select id="getMediaSubmitDetail" resultType="com.adin.media.vo.MediaRegisterVO">
         SELECT
-            media_order as mediaOrder
-            ,email as email
-            ,ad_detail_category as adDetailCategory
-            ,media_title as mediaTitle
-            ,media_summary as mediaSummary
-            ,media_detail_explain as mediaDetailExpalin
-            ,thumbnail_img_nm as thumbnailImgNm
-            ,thumbnail_origin_file_nm as thumbnailOriginFileNm
-            ,thumbnail_img_file_path as thumbnailImgFilePath
-            ,media_price as mediaPrice
-            ,media_submit_status as mediaSubmitStatus
-            ,create_dt as createDt
-            ,modify_dt as modifyDt
-            ,submit_dt as submitDt
-        FROM adin_media_register
+            T1.media_order as mediaOrder
+             ,T1.email as email
+             ,T1.ad_detail_category as adDetailCategory
+             ,T1.media_title as mediaTitle
+             ,T1.media_summary as mediaSummary
+             ,T1.media_detail_explain as mediaDetailExplain
+             ,T1.thumbnail_img_nm as thumbnailImgNm
+             ,T1.thumbnail_origin_file_nm as thumbnailOriginFileNm
+             ,T1.thumbnail_img_file_path as thumbnailImgFilePath
+             ,T1.media_price as mediaPrice
+             ,T1.media_submit_status as mediaSubmitStatus
+             ,T1.create_dt as createDt
+             ,T1.modify_dt as modifyDt
+             ,T1.submit_dt as submitDt
+             ,T2.nickname AS nickname
+             ,T3.media_introduce AS mediaIntroduce
+             ,T3.region AS region
+             ,T3.ad_category AS adCategory
+             ,T3.media_url AS mediaUrl
+        FROM adin_media_register T1
+        LEFT JOIN adin_user T2 ON T1.email = T2.email
+        LEFT JOIN adin_media_introduce T3 ON T1.email = T3.email
         WHERE 1=1
         AND media_order = #{mediaOrder}
     </select>
