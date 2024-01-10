@@ -3,16 +3,27 @@ package com.adin.admin.controller;
 import com.adin.admin.service.AdminService;
 import com.adin.common.Criteria;
 import com.adin.common.Paging;
+import com.adin.join.entity.JoinEntity;
 import com.adin.join.vo.JoinVO;
 import com.adin.media.entity.MediaIntroduceEntity;
 import com.adin.media.entity.MediaRegisterEntity;
 import com.adin.media.vo.MediaRegisterVO;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller(value = "com.adin.admin.controller.AdminController")
 public class AdminController {
@@ -26,9 +37,9 @@ public class AdminController {
     @GetMapping(value = "/admin")
     public ModelAndView admin(@RequestParam(value = "manage", required = false) String manage, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, @RequestParam(value = "page", required = false) int page) {
         ModelAndView modelAndView = null;
-        if(manage == null) {
-            if(joinVO != null) {
-                if(joinVO.getUserType().equals("admin")) {
+        if(joinVO != null) {
+            if(joinVO.getUserType().equals("admin")) {
+                if(manage == null) {
                     modelAndView =  new ModelAndView("admin/admin_submit_list");
 
                     MediaRegisterVO mediaRegisterVO = this.adminService.getMediaSubmitListCnt();
@@ -47,14 +58,51 @@ public class AdminController {
                     MediaRegisterEntity[] mediaRegisterEntityList = this.adminService.getMediaSubmitList(pageStart, perPageNum);
                     modelAndView.addObject("mediaRegisterEntityList", mediaRegisterEntityList);
                     modelAndView.addObject("paging", paging);
-                } else {
-                    modelAndView = new ModelAndView("error/error");
+                } else if("mediaUserList".equals(manage)) {
+                    modelAndView =  new ModelAndView("admin/admin_media_user_list");
+
+                    JoinVO joinVO2 = this.adminService.getMediaUserListCnt();
+
+                    int cnt = joinVO2.getCount();
+                    Criteria cri = new Criteria();
+                    cri.setPage(page);
+
+                    Paging paging = new Paging();
+                    paging.setCri(cri);
+                    paging.setTotalCount(cnt);
+
+                    int pageStart = cri.getPageStart();
+                    int perPageNum = cri.getPerPageNum();
+
+                    JoinEntity[] joinEntityList = this.adminService.getMediaUserList(pageStart, perPageNum);
+                    modelAndView.addObject("joinEntityList", joinEntityList);
+                    modelAndView.addObject("paging", paging);
+                } else if("advertiserUserList".equals(manage)) {
+                    modelAndView =  new ModelAndView("admin/admin_advertiser_user_list");
+
+                    JoinVO joinVO2 = this.adminService.getAdvertiserUserListCnt();
+
+                    int cnt = joinVO2.getCount();
+                    Criteria cri = new Criteria();
+                    cri.setPage(page);
+
+                    Paging paging = new Paging();
+                    paging.setCri(cri);
+                    paging.setTotalCount(cnt);
+
+                    int pageStart = cri.getPageStart();
+                    int perPageNum = cri.getPerPageNum();
+
+                    JoinEntity[] joinEntityList = this.adminService.getAdvertiserUserList(pageStart, perPageNum);
+                    modelAndView.addObject("joinEntityList", joinEntityList);
+                    modelAndView.addObject("paging", paging);
                 }
             } else {
                 modelAndView = new ModelAndView("error/error");
             }
+        } else {
+            modelAndView = new ModelAndView("error/error");
         }
-
 
         return  modelAndView;
     }
@@ -98,5 +146,42 @@ public class AdminController {
 
 
         return  modelAndView;
+    }
+
+    @PatchMapping("/admin/judgeComplete")
+    @ResponseBody
+    public String judgeComplete(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MediaRegisterEntity mediaRegisterEntity) {
+        JSONObject responseObject = new JSONObject();
+        Enum<?> result = this.adminService.judgeComplete(mediaRegisterEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
+
+    @GetMapping("/submit/thumbnail/image")
+    public ResponseEntity<Resource> submitThumbnailImage(@RequestParam(value = "mediaOrder") String mediaOrder) {
+        MediaRegisterEntity mediaRegisterEntity = this.adminService.submitThumbnailImage(mediaOrder);
+        String filePath = null;
+
+        if(mediaRegisterEntity != null) {
+            filePath = mediaRegisterEntity.getThumbnailImgFilePath() + "/" + mediaRegisterEntity.getThumbnailImgNm();
+        } else if(mediaRegisterEntity == null) {
+            ClassLoader classLoader = getClass().getClassLoader();
+            File file = new File(classLoader.getResource("static/images/media-register-thumbnail.png").getFile());
+            filePath = file.getAbsolutePath();
+        }
+
+        Resource resource = new FileSystemResource(filePath);
+
+        HttpHeaders header = new HttpHeaders();
+        Path path = null;
+        try {
+            path = Paths.get(filePath);
+            header.add("Content-type", Files.probeContentType(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
     }
 }

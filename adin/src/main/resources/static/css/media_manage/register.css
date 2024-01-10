@@ -460,6 +460,7 @@ textarea {
     height: 13rem;
     overflow: hidden;
     position: relative;
+    border-radius: 5px;
 }
 
 .thumbnail-div {

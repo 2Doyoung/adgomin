@@ -2,12 +2,12 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>애드인 - 관리자 사용자 관리(광고매체 제출 목록)</title>
+    <title>애드인 - 관리자 사용자 관리(광고주 사용자 목록)</title>
     <link rel="stylesheet" th:href="@{/css/admin/admin_submit_list.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script defer th:src="@{/js/admin/admin_submit_list.js}"></script>
+    <script defer th:src="@{/js/admin/admin_advertiser_user_list.js}"></script>
     <script defer th:src="@{/js/layouts/header.js}"></script>
 </head>
 <body>
@@ -26,33 +26,41 @@
     <div class="user-sub-wrap">
         <div class="user-sub-menu">
             <ul>
-                <li style="font-weight: bolder">
+                <li id="submitList">
                     광고매체 제출 목록
                 </li>
                 <li id="mediaUserList">
                     광고매체 사용자 목록
                 </li>
-                <li id="advertiserUserList">
+                <li style="font-weight: bolder">
                     광고주 사용자 목록
                 </li>
             </ul>
         </div>
         <div class="user-sub-main">
             <div class="user-sub-main-title">
-                광고매체 제출 목록
+                광고주 사용자 목록
             </div>
             <div class="user-sub-main-content">
                 <table>
                     <tr>
                         <th>이메일</th>
-                        <th>광고매체 제목</th>
-                        <th>제출 시간</th>
+                        <th>닉네임</th>
+                        <th>마케팅 동의</th>
+                        <th>이메일 인증</th>
+                        <th>사용여부</th>
+                        <th>생성 시간</th>
                     </tr>
-                    <tr th:each="mediaRegister : ${mediaRegisterEntityList}" class="submit-list-tr">
-                        <td th:text="${mediaRegister.mediaOrder}" style="display: none"></td>
-                        <td th:text="${mediaRegister.email}"></td>
-                        <td th:text="${mediaRegister.mediaTitle}"></td>
-                        <td th:text="${#dates.format(mediaRegister.submitDt, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    <tr th:each="userList : ${joinEntityList}" class="submit-list-tr">
+                        <td th:text="${userList.email}"></td>
+                        <td th:text="${userList.nickname}"></td>
+                        <td th:if="${userList.marketingYn == '1'}" th:text="Y"></td>
+                        <td th:if="${userList.marketingYn == '0'}" th:text="N"></td>
+                        <td th:if="${userList.certifiedYn == '1'}" th:text="Y"></td>
+                        <td th:if="${userList.certifiedYn == '0'}" th:text="N"></td>
+                        <td th:if="${userList.useYn == '1'}" th:text="Y"></td>
+                        <td th:if="${userList.useYn == '0'}" th:text="N"></td>
+                        <td th:text="${#dates.format(userList.createDt, 'yyyy-MM-dd HH:mm:ss')}"></td>
                     </tr>
                 </table>
                 <div>

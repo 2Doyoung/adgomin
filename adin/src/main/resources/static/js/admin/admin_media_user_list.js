@@ -1,16 +1,15 @@
 /**
  * 전역변수
  */
-const mediaUserList = document.getElementById("mediaUserList");
+const submitList = document.getElementById("submitList");
 const advertiserUserList = document.getElementById("advertiserUserList");
 const spans = document.querySelectorAll('.div-paging span span');
-const submitListTr = document.getElementsByClassName('submit-list-tr');
 
 /**
  * 이벤트 함수
  */
-mediaUserList.addEventListener("click", () => {
-    window.location.href = "/admin?manage=mediaUserList&page=1"
+submitList.addEventListener("click", () => {
+    window.location.href = "/admin?page=1";
 })
 
 advertiserUserList.addEventListener("click", () => {
@@ -26,12 +25,16 @@ for(let i = 0; i < spans.length; i++) {
     });
 }
 
-for(let i = 0; i < submitListTr.length; i++) {
-    submitListTr[i].addEventListener("click", (e) => {
-        let mediaOrder = e.target.parentElement.children[0].innerText;
+function toggleOptions() {
+    var options = document.getElementById("customSelectMarketing").querySelector(".marketing-options");
+    var computedStyle = window.getComputedStyle(options);
 
-        window.location.href = "/admin/adminSubmitDetail?mediaOrder=" + mediaOrder;
-    })
+    options.style.display = computedStyle.display === "none" ? "block" : "none";
+}
+
+function selectOption(option) {
+    document.getElementById("customSelectMarketing").querySelector(".select-marketing").innerText = option;
+    toggleOptions();
 }
 /**
  * 사용자 함수

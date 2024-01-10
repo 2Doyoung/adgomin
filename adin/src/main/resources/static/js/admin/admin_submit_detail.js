@@ -1,44 +1,119 @@
 /**
  * 전역변수
  */
+const mediaUserList = document.getElementById("mediaUserList");
+const advertiserUserList = document.getElementById("advertiserUserList");
 const region = document.getElementById("region");
 const adCategory = document.getElementById("adCategory");
 const mediaUrl = document.getElementById("mediaUrl");
+const adDetailCategory = document.getElementById("adDetailCategory");
+const judgeCompleteButton = document.getElementById("judgeCompleteButton");
+
+let quill;
 
 /**
  * 이벤트 함수
  */
+mediaUserList.addEventListener("click", () => {
+    window.location.href = "/admin?manage=mediaUserList&page=1"
+})
+
+advertiserUserList.addEventListener("click", () => {
+    window.location.href = "/admin?manage=advertiserUserList&page=1"
+})
+
 mediaUrl.addEventListener("click", () => {
     window.open("http://" + getMediaUrl, ".blank")
+})
+
+judgeCompleteButton.addEventListener("click", () => {
+    let mediaOrder = document.getElementById("mediaOrder").value;
+    let email = document.getElementById("email").value;
+    let editorHtml = quill.root.innerHTML;
+
+    const formData = new FormData();
+
+    formData.append("mediaOrder", mediaOrder);
+    formData.append("email", email);
+    formData.append("mediaDetailExplain", editorHtml);
+    formData.append("mediaSubmitStatus", "Y");
+
+    xhr("/admin/judgeComplete", formData, "PATCH", "adminJudgeComplete");
+})
+
+modalCheck.addEventListener("click", () => {
+    window.location.href = "/admin?page=1";
 })
 
 /**
  * 사용자 함수
  */
+let toolbarOptions =
+    [
+        ['bold', 'italic', 'underline', 'strike'],
+        ["link", "image", "video"],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+        [{ 'align': [] }],
+    ];
+
+quill = new Quill('#editor', {
+    theme: 'snow',
+    modules: {
+        clipboard: {
+            matchers: [['p', function(node, delta) {
+                return delta;
+            }]]
+        },
+        toolbar: toolbarOptions,
+    }
+});
+
+let htmlContent = getMediaDetailExplain
+let Delta = Quill.import('delta');
+let delta = new Delta().insert(htmlContent);
+quill.clipboard.dangerouslyPasteHTML(htmlContent);
+
+document.getElementById("focus").focus();
+
 let regionSplit = getRegion.split(',');
 
 for(let i = 0; i < regionSplit.length; i++) {
-    let spanTag = document.createElement("span");
-    spanTag.append(regionSplit[i]);
-    spanTag.classList.add("region-span")
+    let regionSpanTag = document.createElement("span");
+    regionSpanTag.append(regionSplit[i]);
+    regionSpanTag.classList.add("region-span")
 
-    region.appendChild(spanTag);
+    region.appendChild(regionSpanTag);
 }
 
 let adCategorySplit = getAdCategory.split(',');
 
 for(let i = 0; i < adCategorySplit.length; i++) {
-    let spanTag = document.createElement("span");
-    spanTag.append(adCategorySplit[i]);
-    spanTag.classList.add("ad-category-span")
+    let adCategorySpanTag = document.createElement("span");
+    adCategorySpanTag.append(adCategorySplit[i]);
+    adCategorySpanTag.classList.add("ad-category-span")
 
-    adCategory.appendChild(spanTag);
+    adCategory.appendChild(adCategorySpanTag);
 }
+
+let adDetailCategorySpanTag = document.createElement("span");
+adDetailCategorySpanTag.append(getAdDetailCategory);
+adDetailCategorySpanTag.classList.add("ad-detail-category-span")
+
+adDetailCategory.appendChild(adDetailCategorySpanTag);
 
 
 /**
  * XMLHttpRequest 성공 함수
  */
+let successXhr = (responseObject, flag) => {
+    if(flag == "adminJudgeComplete") {
+        let modalBg = document.getElementById("modalBg");
+        let modalTitle = document.getElementById("modalTitle");
+
+        modalBg.style.display = "block";
+        modalTitle.innerText = "심사가 완료되었습니다.";
+    }
+}
 
 /**
  * XMLHttpRequest default 함수

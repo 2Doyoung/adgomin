@@ -21,7 +21,7 @@ body {
 
 .user-wrap {
     margin: auto 17%;
-    height: 1300px;
+    height: 3150px;
 }
 
 .user-main-title {
@@ -37,7 +37,7 @@ body {
 
 .user-sub-menu {
     width: 20%;
-    height: 1300px;
+    height: 3150px;
     display: inline-block;
     border-right: 1px solid #ccc;
 }
@@ -606,7 +606,6 @@ td.text-right {
     height: 20rem;
     overflow: hidden;
     position: relative;
-    margin-left: 3rem;
 }
 
 .user-media-introduce {
@@ -664,4 +663,115 @@ td.text-right {
     margin: 3rem 0rem 0rem 0rem;
     border-radius: 30px;
     object-fit: contain;
+}
+
+.media-register {
+    margin-left: 3rem;
+    color: #303441;
+    padding: 1rem 2rem;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+}
+
+.detail-thumbnail {
+    border-radius: 5px;
+}
+
+.media-register > div > label {
+    display: block;
+    margin-top: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.ad-detail-category-span {
+    padding: 0.5rem 1rem;
+    background-color: #D8D8D8;
+    border-radius: 5px;
+    margin-right: 1rem;
+    color: #555969;
+}
+
+.media-summary {
+    white-space: pre-line;
+    line-height: 2rem;
+}
+
+.ql-container {
+    width: 43.3rem;
+    height: 60rem !important;
+}
+
+.ql-toolbar {
+    width: 43.3rem;
+}
+
+.ql-editor > p {
+    font-size: 20px;
+    color: #495057;
+}
+
+.ql-editor > ul > li {
+    font-size: 18px;
+    color: #495057;
+}
+
+.ql-editor > .ql-video {
+    width: 38rem;
+    height: 20rem;
+}
+
+.ql-editor > h1 {
+    color: #303441;
+}
+
+.ql-editor > p > br {
+    display: none;
+}
+
+.ql-editing {
+    margin-top: 0px !important;
+    left: 0px !important;
+    top: 0px !important;
+}
+
+.ql-editor {
+    color: #303441;
+}
+
+.ql-editor, .ql-toolbar {
+    background-color: #FFFFFF;
+}
+
+.detail-media-focus {
+    caret-color: transparent;
+    border: none;
+}
+
+.judge-complete-button {
+    height: 2.7rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.judge-refuse-button {
+    height: 2.7rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #DF013A;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 43.5rem;
 }

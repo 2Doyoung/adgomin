@@ -52,4 +52,69 @@
         WHERE 1=1
         AND media_order = #{mediaOrder}
     </select>
+
+    <update id="judgeComplete" parameterType="com.adin.media.entity.MediaIntroduceEntity">
+        UPDATE
+            adin_media_register
+        SET media_detail_explain = #{mediaDetailExplain}
+          ,media_submit_status = #{mediaSubmitStatus}
+        WHERE 1=1
+          AND media_order = #{mediaOrder}
+    </update>
+
+    <select id="submitThumbnailImage" resultType="com.adin.media.entity.MediaRegisterEntity">
+        SELECT
+            thumbnail_img_nm AS thumbnailImgNm
+             ,thumbnail_origin_file_nm AS thumbnailOriginFileNm
+             ,thumbnail_img_file_path AS thumbnailImgFilePath
+        FROM adin_media_register
+        WHERE 1=1
+        AND media_order = #{mediaOrder}
+    </select>
+
+    <select id="getMediaUserListCnt" resultType="com.adin.join.vo.JoinVO">
+        SELECT
+            COUNT(*) AS count
+        FROM adin_user
+        WHERE 1=1
+        AND user_type = "media"
+    </select>
+
+    <select id="getMediaUserList" resultType="com.adin.join.entity.JoinEntity">
+        SELECT
+            email AS email
+            ,nickname AS nickname
+            ,marketing_yn AS marketingYn
+            ,use_yn AS useYn
+            ,certified_yn AS certifiedYn
+            ,create_dt AS createDt
+        FROM adin_user
+        WHERE 1=1
+        AND user_type = "media"
+        ORDER BY create_dt
+        LIMIT #{pageStart}, #{perPageNum}
+    </select>
+
+    <select id="getAdvertiserUserListCnt" resultType="com.adin.join.vo.JoinVO">
+        SELECT
+            COUNT(*) AS count
+        FROM adin_user
+        WHERE 1=1
+        AND user_type = "advertiser"
+    </select>
+
+    <select id="getAdvertiserUserList" resultType="com.adin.join.entity.JoinEntity">
+        SELECT
+            email AS email
+             ,nickname AS nickname
+             ,marketing_yn AS marketingYn
+             ,use_yn AS useYn
+             ,certified_yn AS certifiedYn
+             ,create_dt AS createDt
+        FROM adin_user
+        WHERE 1=1
+          AND user_type = "advertiser"
+        ORDER BY create_dt
+            LIMIT #{pageStart}, #{perPageNum}
+    </select>
 </mapper>

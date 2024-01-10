@@ -47,7 +47,7 @@
 							</div>
 						</div>
 						<div th:if="${session.LOGIN_USER.userType == 'media'}" class="dropdown-sub" id="mediaManage">광고매체 관리</div>
-						<div th:if="${session.LOGIN_USER.userType == 'admin'}" class="dropdown-sub" id="adminAllManage">전체 관리</div>
+						<div th:if="${session.LOGIN_USER.userType == 'admin'}" class="dropdown-sub" id="adminAllManage">사용자 관리</div>
 						<div class="dropdown-sub" id="userSetting">계정설정</div>
 						<div class="dropdown-sub" id="logout">로그아웃</div>
 					</div>
@@ -55,7 +55,13 @@
 			</div>
 		</div>
 		<div class="all-category-area">
-			<span><i class="ri-menu-line"></i> <span class="category-text">전체 카테고리</span><i class="ri-arrow-drop-down-line"></i></span>
+			<span class="category-span">
+				<span class="line-wrap">
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+				</span>
+				<span class="category-text">전체 카테고리</span><i class="category-arrow-icon"></i></span>
 		</div>
 	</header>
 	<div class="login-cover" id="loginCover">

@@ -471,7 +471,7 @@ table {
 th {
     color: #FFFFFF;
     background-color: #A4A4A4;
-    font-size: 23px;
+    font-size: 1rem;
     font-weight: 100;
     padding: 1rem;
     text-align: left;
@@ -496,9 +496,8 @@ tr {
 }
 
 tr:hover td {
-    background: #4E5066;
-    color: #FFFFFF;
-    border-top: 1px solid #22262e;
+    background: #D8D8D8;
+    border-top: 1px solid #E6E6E6;
     cursor: pointer;
 }
 
@@ -511,11 +510,11 @@ tr:last-child {
 }
 
 tr:nth-child(odd) td {
-    background: #EBEBEB;
+    background: #F2F2F2;
 }
 
 tr:nth-child(odd):hover td {
-    background: #4E5066;
+    background: #D8D8D8;
     cursor: pointer;
 }
 
@@ -533,7 +532,7 @@ td {
     text-align: left;
     vertical-align: middle;
     font-weight: 300;
-    font-size: 18px;
+    font-size: 1rem;
     border-right: 1px solid #C1C3D1;
 }
 
@@ -569,22 +568,23 @@ td.text-right {
     text-align: center;
     margin-top: 2rem;
     font-size: 1.1rem;
+    margin-left: 3rem;
 }
 
-.div-paging > span {
+.div-paging > span > span {
     padding: 0.3rem 0.8rem;
     border-radius: 5px;
     margin: 0.25rem;
     border: 1px solid transparent;
 }
 
-.div-paging > span > a {
+.div-paging > span > span > a {
     text-decoration: none;
     color: inherit;
     color: #A4A4A4;
 }
 
-.div-paging > span:hover {
+.div-paging > span > span:hover {
     border: 1px solid #81BEF7;
     cursor: pointer;
 }
@@ -597,4 +597,28 @@ td.text-right {
 
 .current-page > a {
     color: #FFFFFF !important;
+}
+
+.search-option {
+    position: relative;
+    display: inline-block;
+    margin-left: 3rem;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+    width: 6rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    color: #303441;
+    cursor: pointer;
+}
+
+.arrow-icon {
+    position: absolute;
+    left: 5.6rem;
+    top: 0.9rem;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    transform: rotate(135deg);
 }

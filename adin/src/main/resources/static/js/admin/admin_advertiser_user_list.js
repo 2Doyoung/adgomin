@@ -1,21 +1,22 @@
 /**
  * 전역변수
  */
+const submitList = document.getElementById("submitList");
 const mediaUserList = document.getElementById("mediaUserList");
-const advertiserUserList = document.getElementById("advertiserUserList");
 const spans = document.querySelectorAll('.div-paging span span');
 const submitListTr = document.getElementsByClassName('submit-list-tr');
 
 /**
  * 이벤트 함수
  */
+submitList.addEventListener("click", () => {
+    window.location.href = "/admin?page=1";
+})
+
 mediaUserList.addEventListener("click", () => {
     window.location.href = "/admin?manage=mediaUserList&page=1"
 })
 
-advertiserUserList.addEventListener("click", () => {
-    window.location.href = "/admin?manage=advertiserUserList&page=1"
-})
 
 for(let i = 0; i < spans.length; i++) {
     spans[i].addEventListener('click', (e) => {
