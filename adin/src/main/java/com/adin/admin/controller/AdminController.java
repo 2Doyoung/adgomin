@@ -35,7 +35,8 @@ public class AdminController {
     }
 
     @GetMapping(value = "/admin")
-    public ModelAndView admin(@RequestParam(value = "manage", required = false) String manage, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, @RequestParam(value = "page", required = false) int page) {
+    public ModelAndView admin(@RequestParam(value = "manage", required = false) String manage, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, @RequestParam(value = "page", required = false) int page
+            , @RequestParam(value = "marketingYn", required = false) String marketingYn, @RequestParam(value = "certifiedYn", required = false) String certifiedYn, @RequestParam(value = "useYn", required = false) String useYn) {
         ModelAndView modelAndView = null;
         if(joinVO != null) {
             if(joinVO.getUserType().equals("admin")) {
@@ -61,7 +62,11 @@ public class AdminController {
                 } else if("mediaUserList".equals(manage)) {
                     modelAndView =  new ModelAndView("admin/admin_media_user_list");
 
-                    JoinVO joinVO2 = this.adminService.getMediaUserListCnt();
+                    joinVO.setMarketingYn(marketingYn);
+                    joinVO.setCertifiedYn(certifiedYn);
+                    joinVO.setUseYn(useYn);
+
+                    JoinVO joinVO2 = this.adminService.getMediaUserListCnt(joinVO);
 
                     int cnt = joinVO2.getCount();
                     Criteria cri = new Criteria();
@@ -74,9 +79,12 @@ public class AdminController {
                     int pageStart = cri.getPageStart();
                     int perPageNum = cri.getPerPageNum();
 
-                    JoinEntity[] joinEntityList = this.adminService.getMediaUserList(pageStart, perPageNum);
+                    JoinEntity[] joinEntityList = this.adminService.getMediaUserList(pageStart, perPageNum, marketingYn, certifiedYn, useYn);
                     modelAndView.addObject("joinEntityList", joinEntityList);
                     modelAndView.addObject("paging", paging);
+                    modelAndView.addObject("marketingYn", marketingYn);
+                    modelAndView.addObject("certifiedYn", certifiedYn);
+                    modelAndView.addObject("useYn", useYn);
                 } else if("advertiserUserList".equals(manage)) {
                     modelAndView =  new ModelAndView("admin/admin_advertiser_user_list");
 

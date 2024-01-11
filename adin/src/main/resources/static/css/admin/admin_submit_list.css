@@ -612,7 +612,7 @@ td.text-right {
     cursor: pointer;
 }
 
-.arrow-icon {
+.arrow-icon-down {
     position: absolute;
     left: 5.6rem;
     top: 0.9rem;
@@ -621,4 +621,118 @@ td.text-right {
     border-top: 2px solid #ccc;
     border-right: 2px solid #ccc;
     transform: rotate(135deg);
+}
+
+.arrow-icon-up {
+    position: absolute;
+    left: 5.6rem;
+    top: 1.2rem;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    transform: rotate(315deg);
+}
+
+.search-option:hover {
+    border: 1px solid #303441;
+}
+
+.search-div {
+    position: relative;
+}
+
+.search-options {
+    padding: 1rem;
+    background-color: #FFF;
+    width: 14rem;
+    height: 18.5rem;
+    position: absolute;
+    left: 3rem;
+    top: 3rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+    transform-origin: top;
+    transform: scaleY(0);
+}
+
+.search-options-hidden {
+    visibility: hidden;
+}
+
+.search-options-visible {
+    visibility: visible;
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.search-option-hr {
+    border: 0.5px solid #ccc;
+}
+
+.search-options > div > label {
+    color: #303441;
+    font-weight: 500;
+}
+
+.search-options > div > div {
+    color: #585858;
+    font-weight: 400;
+    margin-top: 1rem;
+}
+
+.search-options > div > div > label {
+    color: #585858;
+    font-weight: 400;
+    width: 5rem;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.ri-checkbox-circle-fill {
+    color: #6E6E6E;
+}
+
+.checkbox-div {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.2rem;
+}
+
+.search-option-apply {
+    height: 2.2rem;
+    width: 4.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.check-box-color {
+    color: #00BFFF;
+    transition: color 0.2s ease-out;
+}
+
+.marketing-checkbox-line, .email-checkbox-line, .use-checkbox-line {
+    cursor: pointer;
+}
+
+.search-option-select-clear {
+    height: 2.2rem;
+    width: 4.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #A4A4A4;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 4.7rem;
 }

@@ -19,9 +19,10 @@ public interface AdminMapper {
 
     MediaRegisterEntity submitThumbnailImage(@Param(value = "mediaOrder") String mediaOrder);
 
-    JoinVO getMediaUserListCnt();
+    JoinVO getMediaUserListCnt(JoinVO joinVO);
 
-    JoinEntity[] getMediaUserList(@Param(value = "pageStart") int pageStart, @Param(value = "perPageNum") int perPageNum);
+    JoinEntity[] getMediaUserList(@Param(value = "pageStart") int pageStart, @Param(value = "perPageNum") int perPageNum
+            , @Param(value = "marketingYn") String marketingYn, @Param(value = "certifiedYn") String certifiedYn, @Param(value = "useYn") String useYn);
 
     JoinVO getAdvertiserUserListCnt();
 

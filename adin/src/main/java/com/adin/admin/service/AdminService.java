@@ -51,12 +51,12 @@ public class AdminService {
         return this.adminMapper.submitThumbnailImage(mediaOrder);
     }
 
-    public JoinVO getMediaUserListCnt() {
-        return this.adminMapper.getMediaUserListCnt();
+    public JoinVO getMediaUserListCnt(JoinVO joinVO) {
+        return this.adminMapper.getMediaUserListCnt(joinVO);
     }
 
-    public JoinEntity[] getMediaUserList(int pageStart, int perPageNum) {
-        return this.adminMapper.getMediaUserList(pageStart, perPageNum);
+    public JoinEntity[] getMediaUserList(int pageStart, int perPageNum, String marketingYn, String certifiedYn, String useYn) {
+        return this.adminMapper.getMediaUserList(pageStart, perPageNum, marketingYn, certifiedYn, useYn);
     }
 
     public JoinVO getAdvertiserUserListCnt() {

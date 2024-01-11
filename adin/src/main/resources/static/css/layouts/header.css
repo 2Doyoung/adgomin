@@ -296,7 +296,7 @@ header {
 }
 
 .dropdown-content {
-	display: none;
+	visibility: hidden;
 	position: absolute;
 	background-color: #FFFFFF;
 	min-width: 190px;
@@ -306,10 +306,16 @@ header {
 	top: 43px;
 	border-radius: 3px;
 	border: 1px solid #ccc;
+	opacity: 0;
+	transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+	transform-origin: top;
+	transform: scaleY(0);
 }
 
 .dropdown:hover .dropdown-content {
-	display: block;
+	visibility: visible;
+	opacity: 1;
+	transform: scaleY(1);
 }
 
 .heart-wrap {
@@ -401,7 +407,7 @@ header {
 }
 
 .line:first-child {
-	margin-top: 0.2rem;
+	margin-top: 0.3rem;
 }
 
 .line {

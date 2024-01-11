@@ -78,6 +78,15 @@
         FROM adin_user
         WHERE 1=1
         AND user_type = "media"
+        <if test="marketingYn != null and marketingYn != ''">
+            AND marketing_yn = #{marketingYn}
+        </if>
+        <if test="certifiedYn != null and certifiedYn != ''">
+            AND certified_yn = #{certifiedYn}
+        </if>
+        <if test="useYn != null and useYn != ''">
+            AND use_yn = #{useYn}
+        </if>
     </select>
 
     <select id="getMediaUserList" resultType="com.adin.join.entity.JoinEntity">
@@ -91,6 +100,15 @@
         FROM adin_user
         WHERE 1=1
         AND user_type = "media"
+        <if test="marketingYn != null and marketingYn != ''">
+            AND marketing_yn = #{marketingYn}
+        </if>
+        <if test="certifiedYn != null and certifiedYn != ''">
+            AND certified_yn = #{certifiedYn}
+        </if>
+        <if test="useYn != null and useYn != ''">
+            AND use_yn = #{useYn}
+        </if>
         ORDER BY create_dt
         LIMIT #{pageStart}, #{perPageNum}
     </select>
