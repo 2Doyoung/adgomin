@@ -88,7 +88,11 @@ public class AdminController {
                 } else if("advertiserUserList".equals(manage)) {
                     modelAndView =  new ModelAndView("admin/admin_advertiser_user_list");
 
-                    JoinVO joinVO2 = this.adminService.getAdvertiserUserListCnt();
+                    joinVO.setMarketingYn(marketingYn);
+                    joinVO.setCertifiedYn(certifiedYn);
+                    joinVO.setUseYn(useYn);
+
+                    JoinVO joinVO2 = this.adminService.getAdvertiserUserListCnt(joinVO);
 
                     int cnt = joinVO2.getCount();
                     Criteria cri = new Criteria();
@@ -101,9 +105,12 @@ public class AdminController {
                     int pageStart = cri.getPageStart();
                     int perPageNum = cri.getPerPageNum();
 
-                    JoinEntity[] joinEntityList = this.adminService.getAdvertiserUserList(pageStart, perPageNum);
+                    JoinEntity[] joinEntityList = this.adminService.getAdvertiserUserList(pageStart, perPageNum, marketingYn, certifiedYn, useYn);
                     modelAndView.addObject("joinEntityList", joinEntityList);
                     modelAndView.addObject("paging", paging);
+                    modelAndView.addObject("marketingYn", marketingYn);
+                    modelAndView.addObject("certifiedYn", certifiedYn);
+                    modelAndView.addObject("useYn", useYn);
                 }
             } else {
                 modelAndView = new ModelAndView("error/error");

@@ -24,7 +24,8 @@ public interface AdminMapper {
     JoinEntity[] getMediaUserList(@Param(value = "pageStart") int pageStart, @Param(value = "perPageNum") int perPageNum
             , @Param(value = "marketingYn") String marketingYn, @Param(value = "certifiedYn") String certifiedYn, @Param(value = "useYn") String useYn);
 
-    JoinVO getAdvertiserUserListCnt();
+    JoinVO getAdvertiserUserListCnt(JoinVO joinVO);
 
-    JoinEntity[] getAdvertiserUserList(@Param(value = "pageStart") int pageStart, @Param(value = "perPageNum") int perPageNum);
+    JoinEntity[] getAdvertiserUserList(@Param(value = "pageStart") int pageStart, @Param(value = "perPageNum") int perPageNum
+            , @Param(value = "marketingYn") String marketingYn, @Param(value = "certifiedYn") String certifiedYn, @Param(value = "useYn") String useYn);
 }

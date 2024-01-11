@@ -19,6 +19,9 @@
     }
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" id="marketingYn" th:value="${marketingYn}">
+<input type="hidden" id="certifiedYn" th:value="${certifiedYn}">
+<input type="hidden" id="useYn" th:value="${useYn}">
 <div class="top-title">
     <div class="user-main-title">관리자 사용자 관리</div>
 </div>
@@ -40,6 +43,38 @@
         <div class="user-sub-main">
             <div class="user-sub-main-title">
                 광고주 사용자 목록
+            </div>
+            <div class="search-div">
+                <div class="search-option" id="searchOption">검색 옵션 <span class="arrow-icon arrow-icon-down"></span></div>
+                <div class="search-options search-options-hidden">
+                    <div>
+                        <label>마케팅</label>
+                        <div>
+                            <label class="marketing-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill marketing-checkbox"></i></div> 동의</label>
+                            <label class="marketing-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill marketing-checkbox"></i></div> 비동의</label>
+                        </div>
+                    </div>
+                    <hr class="search-option-hr">
+                    <div>
+                        <label>이메일</label>
+                        <div>
+                            <label class="email-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill email-checkbox"></i></div> 인증</label>
+                            <label class="email-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill email-checkbox"></i></div> 미인증</label>
+                        </div>
+                    </div>
+                    <hr class="search-option-hr">
+                    <div>
+                        <label>사용</label>
+                        <div>
+                            <label class="use-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill use-checkbox"></i></div> 사용중</label>
+                            <label class="use-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill use-checkbox"></i></div> 탈퇴</label>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="button" class="search-option-select-clear" id="selectClear" value="선택해제">
+                        <input type="button" class="search-option-apply" id="apply" value="적용하기">
+                    </div>
+                </div>
             </div>
             <div class="user-sub-main-content">
                 <table>

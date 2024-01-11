@@ -59,11 +59,11 @@ public class AdminService {
         return this.adminMapper.getMediaUserList(pageStart, perPageNum, marketingYn, certifiedYn, useYn);
     }
 
-    public JoinVO getAdvertiserUserListCnt() {
-        return this.adminMapper.getAdvertiserUserListCnt();
+    public JoinVO getAdvertiserUserListCnt(JoinVO joinVO) {
+        return this.adminMapper.getAdvertiserUserListCnt(joinVO);
     }
 
-    public JoinEntity[] getAdvertiserUserList(int pageStart, int perPageNum) {
-        return this.adminMapper.getAdvertiserUserList(pageStart, perPageNum);
+    public JoinEntity[] getAdvertiserUserList(int pageStart, int perPageNum, String marketingYn, String certifiedYn, String useYn) {
+        return this.adminMapper.getAdvertiserUserList(pageStart, perPageNum, marketingYn, certifiedYn, useYn);
     }
 }

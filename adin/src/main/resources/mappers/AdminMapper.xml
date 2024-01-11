@@ -119,6 +119,15 @@
         FROM adin_user
         WHERE 1=1
         AND user_type = "advertiser"
+        <if test="marketingYn != null and marketingYn != ''">
+            AND marketing_yn = #{marketingYn}
+        </if>
+        <if test="certifiedYn != null and certifiedYn != ''">
+            AND certified_yn = #{certifiedYn}
+        </if>
+        <if test="useYn != null and useYn != ''">
+            AND use_yn = #{useYn}
+        </if>
     </select>
 
     <select id="getAdvertiserUserList" resultType="com.adin.join.entity.JoinEntity">
@@ -131,7 +140,16 @@
              ,create_dt AS createDt
         FROM adin_user
         WHERE 1=1
-          AND user_type = "advertiser"
+        AND user_type = "advertiser"
+        <if test="marketingYn != null and marketingYn != ''">
+            AND marketing_yn = #{marketingYn}
+        </if>
+        <if test="certifiedYn != null and certifiedYn != ''">
+            AND certified_yn = #{certifiedYn}
+        </if>
+        <if test="useYn != null and useYn != ''">
+            AND use_yn = #{useYn}
+        </if>
         ORDER BY create_dt
             LIMIT #{pageStart}, #{perPageNum}
     </select>
