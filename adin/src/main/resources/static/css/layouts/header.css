@@ -79,7 +79,7 @@ header {
 	text-align: center;
 	font-size: 1.2rem;
 	margin-top: 2rem;
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
 }
 
 .ri-menu-line {
@@ -423,4 +423,179 @@ header {
 .line-wrap {
 	display: inline-block;
 	vertical-align: middle;
+}
+
+.all-category-cursor {
+	width: 11rem;
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	padding: 0 0 0.5rem 0;
+}
+
+.all-category-dropdown {
+	visibility: hidden;
+	background-color: #FFF;
+	width: 8rem;
+	height: 22.5rem;
+	position: absolute;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
+	border: 1px solid #ccc;
+	left: 1rem;
+	top: 2.5rem;
+	border-radius: 3px;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+
+.all-category-dropdown > div {
+	text-align: left;
+}
+
+.all-category-dropdown > div > label {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: #303441;
+}
+
+.all-category-dropdown > div > div > span {
+	font-size: 0.85rem;
+	display: block;
+	color: #585858;
+	padding: 0.25rem 0;
+}
+
+.all-category-dropdown > div:not(:first-child) {
+	margin-top: 0.5rem;
+}
+
+.all-category-sub-dropdown {
+	visibility: hidden;
+	background-color: #FFF;
+	width: 8rem;
+	height: 22.5rem;
+	position: absolute;
+	box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 10px;
+	border: 1px solid #ccc;
+	left: 11rem;
+	top: 2.5rem;
+	border-radius: 3px;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+}
+
+.all-category-sub-dropdown > div {
+	text-align: left;
+}
+
+.all-category-sub-dropdown > div > label {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: #303441;
+}
+
+.all-category-sub-dropdown > div > div > span {
+	font-size: 0.85rem;
+	display: block;
+	color: #585858;
+	padding: 0.25rem 0;
+}
+
+.all-category-sub-dropdown > div:not(:first-child) {
+	margin-top: 0.5rem;
+}
+
+.all-category-region-dropdown {
+	visibility: hidden;
+	background-color: #FFF;
+	width: 3.5rem;
+	height: 22.5rem;
+	position: absolute;
+	box-shadow: rgba(0, 0, 0, 0.1) 4px 4px 10px;
+	left: 21rem;
+	top: 2.5rem;
+	padding: 0.5rem 1rem;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	cursor: pointer;
+}
+
+.all-category-region-dropdown > div {
+	text-align: left;
+}
+
+.all-category-region-dropdown > div > label {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: #303441;
+}
+
+.all-category-region-dropdown > div > div > span {
+	font-size: 0.85rem;
+	display: block;
+	color: #585858;
+	padding: 0.25rem 0;
+}
+
+.all-category-region-dropdown > div:not(:first-child) {
+	margin-top: 0.5rem;
+}
+
+.all-category-region2-dropdown {
+	visibility: hidden;
+	background-color: #FFF;
+	width: 3rem;
+	height: 22.5rem;
+	position: absolute;
+	box-shadow: rgba(0, 0, 0, 0.1) 10px 4px 10px;
+	left: 26rem;
+	top: 2.5rem;
+	padding: 0.5rem 1rem;
+	border-right: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	cursor: pointer;
+}
+
+.all-category-region2-dropdown > div {
+	text-align: left;
+}
+
+.all-category-region2-dropdown > div > label {
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: #FFF;
+}
+
+.all-category-region2-dropdown > div > div > span {
+	font-size: 0.85rem;
+	display: block;
+	color: #585858;
+	padding: 0.25rem 0;
+}
+
+.all-category-region2-dropdown > div:not(:first-child) {
+	margin-top: 0.5rem;
+}
+
+.all-category-dropdown > div > div > span:hover,
+.all-category-sub-dropdown > div > div > span:hover,
+.all-category-region-dropdown > div > div > span:hover,
+.all-category-region2-dropdown > div > div > span:hover{
+	font-weight: 700;
+	color: #000000;
+}
+
+.all-category-cursor:hover .all-category-dropdown {
+	visibility: visible;
+}
+
+.all-category-dropdown-highlight {
+	font-weight: 700;
+	color: #000000 !important;
 }

@@ -17,6 +17,17 @@ const passwordFind = document.getElementById("passwordFind");
 const mediaManage = document.getElementById("mediaManage");
 
 const adminAllManage = document.getElementById("adminAllManage");
+
+const allCategoryDropdownSpan = document.querySelectorAll('.all-category-dropdown span');
+const allCategorySubDropdownSpan = document.querySelectorAll('.all-category-sub-dropdown span');
+const allCategoryRegionDropdownSpan = document.querySelectorAll('.all-category-region-dropdown span');
+const allCategoryRegion2DropdownSpan = document.querySelectorAll('.all-category-region2-dropdown span');
+
+const allCategoryDropdownWrap = document.getElementById("allCategoryDropdownWrap");
+
+const allCategorySubDropdown = document.getElementById("allCategorySubDropdown");
+const allCategoryRegionDropdown = document.getElementById("allCategoryRegionDropdown");
+const allCategoryRegion2Dropdown = document.getElementById("allCategoryRegion2Dropdown");
 /**
  * 이벤트 함수
  */
@@ -143,6 +154,57 @@ if(adminAllManage != null) {
 		window.location.href = "/admin?page=1"
 	});
 }
+
+for(let i = 0; i < allCategoryDropdownSpan.length; i++) {
+	allCategoryDropdownSpan[i].addEventListener("click", () => {
+		for (let j = 0; j < allCategoryDropdownSpan.length; j++) {
+			if (j !== i) {
+				allCategoryDropdownSpan[j].classList.remove("all-category-dropdown-highlight");
+			}
+		}
+
+		allCategoryDropdownSpan[i].classList.add("all-category-dropdown-highlight");
+
+		allCategorySubDropdown.style.visibility = 'visible';
+	})
+}
+
+for(let i = 0; i < allCategorySubDropdownSpan.length; i++) {
+	allCategorySubDropdownSpan[i].addEventListener("click", () => {
+		for (let j = 0; j < allCategorySubDropdownSpan.length; j++) {
+			if (j !== i) {
+				allCategorySubDropdownSpan[j].classList.remove("all-category-dropdown-highlight");
+			}
+		}
+
+		allCategorySubDropdownSpan[i].classList.add("all-category-dropdown-highlight");
+
+		allCategoryRegionDropdown.style.visibility = 'visible';
+		allCategoryRegion2Dropdown.style.visibility = 'visible';
+	})
+}
+
+allCategoryDropdownWrap.addEventListener("mouseleave", () => {
+	for(let i = 0; i < allCategoryDropdownSpan.length; i++) {
+		allCategoryDropdownSpan[i].classList.remove("all-category-dropdown-highlight");
+	}
+
+	for(let i = 0; i < allCategorySubDropdownSpan.length; i++) {
+		allCategorySubDropdownSpan[i].classList.remove("all-category-dropdown-highlight");
+	}
+
+	for(let i = 0; i < allCategoryRegionDropdownSpan.length; i++) {
+		allCategoryRegionDropdownSpan[i].classList.remove("all-category-dropdown-highlight");
+	}
+
+	for(let i = 0; i < allCategoryRegion2DropdownSpan.length; i++) {
+		allCategoryRegion2DropdownSpan[i].classList.remove("all-category-dropdown-highlight");
+	}
+
+	allCategorySubDropdown.style.visibility = 'hidden';
+	allCategoryRegionDropdown.style.visibility = 'hidden';
+	allCategoryRegion2Dropdown.style.visibility = 'hidden';
+})
 /**
  * 사용자 함수
  */
