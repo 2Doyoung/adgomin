@@ -30,7 +30,8 @@ header {
 
 .header {
 	display: flex;
-	margin: auto 17%;
+	width: 1200px;
+	margin: auto;
 	font-size: 1rem;
 }
 

@@ -2,6 +2,8 @@ package com.adin.main.service;
 
 import com.adin.join.entity.JoinEntity;
 import com.adin.join.vo.JoinVO;
+import com.adin.media.entity.MediaRegisterEntity;
+import com.adin.media.vo.MediaRegisterVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +31,15 @@ public class MainService {
 			HttpSession session = request.getSession();
 			session.setAttribute("LOGIN_USER", joinVO);
 		}
+	}
+
+	public MediaRegisterVO[] popularSnsMedia() {
+		return this.mainMapper.popularSnsMedia();
+	}
+	public MediaRegisterVO[] popularTransportMedia() {
+		return this.mainMapper.popularTransportMedia();
+	}
+	public MediaRegisterVO[] popularOutdoorMedia() {
+		return this.mainMapper.popularOutdoorMedia();
 	}
 }

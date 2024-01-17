@@ -15,4 +15,43 @@
         WHERE 1=1
           AND email = #{email}
     </select>
+
+    <select id="popularSnsMedia" resultType="com.adin.media.vo.MediaRegisterVO">
+        SELECT
+            media_order AS mediaOrder
+            ,media_title AS mediaTitle
+            ,thumbnail_img_nm AS thumbnailImgNm
+            ,thumbnail_origin_file_nm AS thumbnailOriginFileNm
+            ,thumbnail_img_file_path AS thumbnailImgFilePath
+            ,media_price AS mediaPrice
+        FROM adin_media_register
+        WHERE 1=1
+        AND ad_detail_category IN ("유튜브", "인스타그램", "페이스북", "블로그")
+    </select>
+
+    <select id="popularTransportMedia" resultType="com.adin.media.vo.MediaRegisterVO">
+        SELECT
+            media_order AS mediaOrder
+             ,media_title AS mediaTitle
+             ,thumbnail_img_nm AS thumbnailImgNm
+             ,thumbnail_origin_file_nm AS thumbnailOriginFileNm
+             ,thumbnail_img_file_path AS thumbnailImgFilePath
+             ,media_price AS mediaPrice
+        FROM adin_media_register
+        WHERE 1=1
+          AND ad_detail_category IN ("지하철", "버스")
+    </select>
+
+    <select id="popularOutdoorMedia" resultType="com.adin.media.vo.MediaRegisterVO">
+        SELECT
+            media_order AS mediaOrder
+             ,media_title AS mediaTitle
+             ,thumbnail_img_nm AS thumbnailImgNm
+             ,thumbnail_origin_file_nm AS thumbnailOriginFileNm
+             ,thumbnail_img_file_path AS thumbnailImgFilePath
+             ,media_price AS mediaPrice
+        FROM adin_media_register
+        WHERE 1=1
+          AND ad_detail_category IN ("옥외광고", "영화관", "현수막")
+    </select>
 </mapper>

@@ -17,7 +17,8 @@ body {
 }
 
 .ad-slide-area {
-	margin: auto 17%;
+	width: 1200px;
+	margin: auto;
 	display: flex;
 }
 
@@ -83,9 +84,9 @@ body {
 
 /* 아이콘 카테고리 */
 .icon-category-area {
-	margin: auto 13%;
+	width: 1200px;
 	display: flex;
-	margin-top: 2rem;
+	margin: 2rem auto auto;
 }
 
 .icon-category-ul {
@@ -97,7 +98,7 @@ body {
 .icon-category-area > ul > li:not(:first-child) {
 	width: 80px;
 	float: left;
-	margin-left: 0.6rem;
+	margin-left: 1.05rem;
 	padding: 0.5rem 1.2rem;
 	border-radius: 5px;
 	box-shadow: 0 0 2px rgba(0,0,0,.08), 4px 12px 36px rgba(0,0,0,.09);
@@ -108,7 +109,6 @@ body {
 	width: 80px;
 	float: left;
 	padding: 0.5rem 1.2rem;
-	margin-left: 5.5rem;
 	border-radius: 5px;
 	box-shadow: 0 0 2px rgba(0,0,0,.08), 4px 12px 36px rgba(0,0,0,.09);
 	transition: transform 0.3s
@@ -120,12 +120,11 @@ body {
 }
 
 .icon-category-title {
-	margin: auto 17%;
+	width: 1200px;
 	display: flex;
 	font-size: 1.5rem;
 	font-weight: 400;
-	padding-left: 1rem;
-	margin-top: 4rem;
+	margin: 4rem auto auto;
 	font-weight: 500;
 	color: #303441;
 }
@@ -259,95 +258,68 @@ ul {
 }
 
 .popular-sns-title {
-	margin: auto 17%;
+	width: 1200px;
 	display: flex;
 	font-size: 1.5rem;
 	font-weight: 700;
-	padding-left: 1rem;
-	margin-top: 4rem;
+	margin: 4rem auto auto;
 	color: #303441;
 }
 
 .popular-sns-ad {
-	margin: auto 17%;
-	margin-top: 1rem;
+	width: 1200px;
+	overflow: hidden;
+}
+
+.popular-transport-ad {
+	width: 1200px;
+	overflow: hidden;
+}
+
+.popular-outdoor-ad {
+	width: 1200px;
+	overflow: hidden;
 }
 
 .popular-sns-card {
-	display: inline-block;
-	width: 19%;
-	margin-left: 0.1rem;
+	flex: 0 0 auto;
+	width: 14.5rem;
+	margin-left: 0.5rem;
+	margin-top: 0.5rem;
 }
 
-.popular-sns-card:first-child {
-	margin-left: 1rem;
+.popular-transport-card {
+	flex: 0 0 auto;
+	width: 14.5rem;
+	margin-left: 0.5rem;
+	margin-top: 0.5rem;
 }
 
-.popular-sns-thumbnail {
-	background-color: #A4A4A4;
-	height: 160px;
+.popular-outdoor-card {
+	flex: 0 0 auto;
+	width: 14.5rem;
+	margin-left: 0.5rem;
+	margin-top: 0.5rem;
 }
 
 /* 인기있는 대중교통 광고매체 */
 .popular-transport-title {
-	margin: auto 17%;
+	width: 1200px;
 	display: flex;
 	font-size: 1.5rem;
 	font-weight: 700;
-	padding-left: 1rem;
-	margin-top: 4rem;
+	margin: 4rem auto auto;
 	color: #303441;
-}
-
-.popular-transport-ad {
-	margin: auto 17%;
-	margin-top: 1rem;
-}
-
-.popular-transport-card {
-	display: inline-block;
-	width: 19%;
-	margin-left: 0.1rem;
-}
-
-.popular-transport-card:first-child {
-	margin-left: 1rem;
-}
-
-.popular-transport-thumbnail {
-	background-color: #A4A4A4;
-	height: 160px;
 }
 
 /* 인기있는 옥외광 광고매체 */
 .popular-outdoor-title {
-	margin: auto 17%;
+	width: 1200px;
 	display: flex;
 	font-size: 1.5rem;
 	font-weight: 700;
-	padding-left: 1rem;
-	margin-top: 4rem;
+	margin: 4rem auto auto;
 	color: #303441;
-}
-
-.popular-outdoor-ad {
-	margin: auto 17%;
-	margin-top: 1rem;
-}
-
-.popular-outdoor-card {
-	display: inline-block;
-	width: 19%;
-	margin-left: 0.1rem;
-}
-
-.popular-outdoor-card:first-child {
-	margin-left: 1rem;
-}
-
-.popular-outdoor-thumbnail {
-	background-color: #A4A4A4;
-	height: 160px;
 }
 
 /* 인기있는 광고매체 리뷰 */
@@ -531,4 +503,160 @@ ul {
 	width: 2.75rem;
 	display: block;
 	margin-left: 1.2rem;
+}
+
+.main-media-title {
+	margin-top: 1rem;
+	font-size: 0.9rem;
+	color: #2E2E2E;
+	height: 2rem;
+}
+
+.main-media-price {
+	margin-top: 1rem;
+	font-size: 1.3rem;
+	font-weight: 600;
+	color: #2E9AFE;
+	height: 2rem;
+}
+
+.main-thumbnail {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: auto;
+}
+
+.popular-sns-thumbnail {
+	overflow: hidden;
+	position: relative;
+	height: 9rem;
+}
+
+.popular-transport-thumbnail {
+	overflow: hidden;
+	position: relative;
+	height: 9rem;
+}
+
+.popular-outdoor-thumbnail {
+	overflow: hidden;
+	position: relative;
+	height: 9rem;
+}
+
+.popular-sns-ad-wrap {
+	margin: 1rem auto auto;
+	width: 1200px;
+	height: 17rem;
+	position: relative;
+}
+
+.popular-transport-ad-wrap {
+	margin: 1rem auto auto;
+	width: 1200px;
+	height: 17rem;
+	position: relative;
+}
+
+.popular-outdoor-ad-wrap {
+	margin: 1rem auto auto;
+	width: 1200px;
+	height: 17rem;
+	position: relative;
+}
+
+.popular-sns-card-wrap {
+	display: flex;
+	transition: transform 0.3s ease-in-out;
+	margin-left: -0.5rem;
+}
+
+.popular-transport-card-wrap {
+	display: flex;
+	transition: transform 0.3s ease-in-out;
+	margin-left: -0.5rem;
+}
+
+.popular-outdoor-card-wrap {
+	display: flex;
+	transition: transform 0.3s ease-in-out;
+	margin-left: -0.5rem;
+}
+
+.popular-sns-slide-prev {
+	position: absolute;
+	top: 40%;
+	left: -5%;
+}
+
+.popular-transport-slide-prev {
+	position: absolute;
+	top: 40%;
+	left: -5%;
+}
+
+.popular-outdoor-slide-prev {
+	position: absolute;
+	top: 40%;
+	left: -5%;
+}
+
+.popular-sns-slide-next {
+	position: absolute;
+	top: 40%;
+	right: -5%;
+}
+
+.popular-transport-slide-next {
+	position: absolute;
+	top: 40%;
+	right: -5%;
+}
+
+.popular-outdoor-slide-next {
+	position: absolute;
+	top: 40%;
+	right: -5%;
+}
+
+.popular-sns-slide-prev > .ri-arrow-left-s-line, .popular-sns-slide-next > .ri-arrow-right-s-line {
+	font-size: 1.8rem;
+	color: #303441;
+	background: #FFFFFF;
+	border-radius: 15px;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 2px 4px rgba(0 0 0 / 18%);
+	cursor: pointer;
+}
+
+.popular-transport-slide-prev > .ri-arrow-left-s-line, .popular-transport-slide-next > .ri-arrow-right-s-line {
+	font-size: 1.8rem;
+	color: #303441;
+	background: #FFFFFF;
+	border-radius: 15px;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 2px 4px rgba(0 0 0 / 18%);
+	cursor: pointer;
+}
+
+.popular-outdoor-slide-prev > .ri-arrow-left-s-line, .popular-outdoor-slide-next > .ri-arrow-right-s-line {
+	font-size: 1.8rem;
+	color: #303441;
+	background: #FFFFFF;
+	border-radius: 15px;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 2px 4px rgba(0 0 0 / 18%);
+	cursor: pointer;
+}
+
+.card-mouseover {
+	cursor: pointer;
+	transform: scale(1.01, 1.02);
+	transition: transform 0.2s;
 }

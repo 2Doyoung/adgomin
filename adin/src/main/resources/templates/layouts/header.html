@@ -47,7 +47,8 @@
 							</div>
 						</div>
 						<div th:if="${session.LOGIN_USER.userType == 'media'}" class="dropdown-sub" id="mediaManage">광고매체 관리</div>
-						<div th:if="${session.LOGIN_USER.userType == 'admin'}" class="dropdown-sub" id="adminAllManage">사용자 관리</div>
+						<div th:if="${session.LOGIN_USER.userType == 'admin'}" class="dropdown-sub" id="adminUserManage">사용자 관리</div>
+						<div th:if="${session.LOGIN_USER.userType == 'admin'}" class="dropdown-sub" id="adminAdManage">광고 관리</div>
 						<div class="dropdown-sub" id="userSetting">계정설정</div>
 						<div class="dropdown-sub" id="logout">로그아웃</div>
 					</div>

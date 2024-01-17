@@ -16,7 +16,7 @@ const passwordFind = document.getElementById("passwordFind");
 
 const mediaManage = document.getElementById("mediaManage");
 
-const adminAllManage = document.getElementById("adminAllManage");
+const adminUserManage = document.getElementById("adminUserManage");
 
 const allCategoryDropdownSpan = document.querySelectorAll('.all-category-dropdown span');
 const allCategorySubDropdownSpan = document.querySelectorAll('.all-category-sub-dropdown span');
@@ -149,8 +149,8 @@ if(mediaManage != null) {
 	});
 }
 
-if(adminAllManage != null) {
-	adminAllManage.addEventListener("click", () => {
+if(adminUserManage != null) {
+	adminUserManage.addEventListener("click", () => {
 		window.location.href = "/admin?page=1"
 	});
 }
