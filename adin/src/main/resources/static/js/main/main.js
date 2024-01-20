@@ -78,32 +78,38 @@ outdoorPrevButton.addEventListener('click', () => {
 
 
 for(let i = 0; i < popularSnsCard.length; i++) {
+    let popularSnsCardHover = document.getElementsByClassName("popular-sns-card-hover")
+
     popularSnsCard[i].addEventListener("mouseover", () => {
-        popularSnsCard[i].classList.add("card-mouseover");
+        popularSnsCardHover[i].style.visibility = "visible";
     });
 
     popularSnsCard[i].addEventListener("mouseout", () => {
-        popularSnsCard[i].classList.remove("card-mouseover");
+        popularSnsCardHover[i].style.visibility = "hidden";
     });
 }
 
 for(let i = 0; i < popularTransportCard.length; i++) {
+    let popularTransportCardHover = document.getElementsByClassName("popular-transport-card-hover")
+
     popularTransportCard[i].addEventListener("mouseover", () => {
-        popularTransportCard[i].classList.add("card-mouseover");
+        popularTransportCardHover[i].style.visibility = "visible";
     })
 
     popularTransportCard[i].addEventListener("mouseout", () => {
-        popularTransportCard[i].classList.remove("card-mouseover");
+        popularTransportCardHover[i].style.visibility = "hidden";
     })
 }
 
 for(let i = 0; i < popularOutdoorCard.length; i++) {
+    let popularOutdoorCardHover = document.getElementsByClassName("popular-outdoor-card-hover")
+
     popularOutdoorCard[i].addEventListener("mouseover", () => {
-        popularOutdoorCard[i].classList.add("card-mouseover");
+        popularOutdoorCardHover[i].style.visibility = "visible";
     })
 
     popularOutdoorCard[i].addEventListener("mouseout", () => {
-        popularOutdoorCard[i].classList.remove("card-mouseover");
+        popularOutdoorCardHover[i].style.visibility = "hidden";
     })
 }
 /**

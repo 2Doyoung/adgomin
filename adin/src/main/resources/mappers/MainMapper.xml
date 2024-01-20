@@ -24,7 +24,13 @@
             ,thumbnail_origin_file_nm AS thumbnailOriginFileNm
             ,thumbnail_img_file_path AS thumbnailImgFilePath
             ,media_price AS mediaPrice
-        FROM adin_media_register
+            ,ad_detail_category AS adDetailCategory
+            ,T3.nickname AS nickname
+            ,T2.region AS region
+            ,T2.ad_category AS adCategory
+        FROM adin_media_register T1
+        LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adin_user T3 ON T1.email = T3.email
         WHERE 1=1
         AND ad_detail_category IN ("유튜브", "인스타그램", "페이스북", "블로그")
     </select>
@@ -37,7 +43,13 @@
              ,thumbnail_origin_file_nm AS thumbnailOriginFileNm
              ,thumbnail_img_file_path AS thumbnailImgFilePath
              ,media_price AS mediaPrice
-        FROM adin_media_register
+             ,ad_detail_category AS adDetailCategory
+             ,T3.nickname AS nickname
+             ,T2.region AS region
+             ,T2.ad_category AS adCategory
+        FROM adin_media_register T1
+        LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adin_user T3 ON T1.email = T3.email
         WHERE 1=1
           AND ad_detail_category IN ("지하철", "버스")
     </select>
@@ -50,7 +62,13 @@
              ,thumbnail_origin_file_nm AS thumbnailOriginFileNm
              ,thumbnail_img_file_path AS thumbnailImgFilePath
              ,media_price AS mediaPrice
-        FROM adin_media_register
+             ,ad_detail_category AS adDetailCategory
+             ,T3.nickname AS nickname
+             ,T2.region AS region
+             ,T2.ad_category AS adCategory
+        FROM adin_media_register T1
+        LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adin_user T3 ON T1.email = T3.email
         WHERE 1=1
           AND ad_detail_category IN ("옥외광고", "영화관", "현수막")
     </select>

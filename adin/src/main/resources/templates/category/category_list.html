@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드인 - 카테고리</title>
+    <link rel="stylesheet" th:href="@{/css/category/category_list.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/category/category_list.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<div class="category-wrap">
+    <div class="category-sub-wrap">
+        <div class="category-menu">
+            <ul>
+                <li>
+
+                </li>
+            </ul>
+        </div>
+        <div class="category-main">
+
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

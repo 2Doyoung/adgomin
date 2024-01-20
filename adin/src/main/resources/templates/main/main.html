@@ -103,10 +103,18 @@
 							<img class="main-thumbnail" th:src="@{/main/thumbnail/image (thumbnailImgNm=${mediaRegister.thumbnailImgNm}, thumbnailImgFilePath =${mediaRegister.thumbnailImgFilePath})}">
 						</div>
 						<div class="main-media-title" th:text="${mediaRegister.mediaTitle}"></div>
+						<div class="main-media-nickname" th:text="${mediaRegister.nickname}"></div>
 						<div class="main-media-price"><span th:text="${mediaRegister.mediaPrice}"></span><span>원</span></div>
 						<div class="review-star">
 							<i class="ri-star-fill"></i>
 							<div class="review-count">5.0(123)</div>
+						</div>
+						<div class="popular-sns-card-hover">
+							<div class="card-hover-info">
+								<div><span><i class="ri-advertisement-line"> </i></span><span th:text="${mediaRegister.adDetailCategory}"></span></div>
+								<div><span><i class="ri-list-check"></i> </i></span><span th:text="${mediaRegister.adCategory}"></span></div>
+								<div><span><i class="ri-broadcast-fill"></i> </span><span th:text="${mediaRegister.region}"></span></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -123,10 +131,18 @@
 							<img class="main-thumbnail" th:src="@{/main/thumbnail/image (thumbnailImgNm=${mediaRegister.thumbnailImgNm}, thumbnailImgFilePath =${mediaRegister.thumbnailImgFilePath})}">
 						</div>
 						<div class="main-media-title" th:text="${mediaRegister.mediaTitle}"></div>
+						<div class="main-media-nickname" th:text="${mediaRegister.nickname}"></div>
 						<div class="main-media-price"><span th:text="${mediaRegister.mediaPrice}"></span><span>원</span></div>
 						<div class="review-star">
 							<i class="ri-star-fill"></i>
 							<div class="review-count">5.0(123)</div>
+						</div>
+						<div class="popular-transport-card-hover">
+							<div class="card-hover-info">
+								<div><span><i class="ri-advertisement-line"> </i></span><span th:text="${mediaRegister.adDetailCategory}"></span></div>
+								<div><span><i class="ri-list-check"></i> </i></span><span th:text="${mediaRegister.adCategory}"></span></div>
+								<div><span><i class="ri-broadcast-fill"></i> </span><span th:text="${mediaRegister.region}"></span></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -143,10 +159,18 @@
 							<img class="main-thumbnail" th:src="@{/main/thumbnail/image (thumbnailImgNm=${mediaRegister.thumbnailImgNm}, thumbnailImgFilePath =${mediaRegister.thumbnailImgFilePath})}">
 						</div>
 						<div class="main-media-title" th:text="${mediaRegister.mediaTitle}"></div>
+						<div class="main-media-nickname" th:text="${mediaRegister.nickname}"></div>
 						<div class="main-media-price"><span th:text="${mediaRegister.mediaPrice}"></span><span>원</span></div>
 						<div class="review-star">
 							<i class="ri-star-fill"></i>
 							<div class="review-count">5.0(123)</div>
+						</div>
+						<div class="popular-outdoor-card-hover">
+							<div class="card-hover-info">
+								<div><span><i class="ri-advertisement-line"> </i></span><span th:text="${mediaRegister.adDetailCategory}"></span></div>
+								<div><span><i class="ri-list-check"></i> </i></span><span th:text="${mediaRegister.adCategory}"></span></div>
+								<div><span><i class="ri-broadcast-fill"></i> </span><span th:text="${mediaRegister.region}"></span></div>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -281,25 +281,13 @@ ul {
 	overflow: hidden;
 }
 
-.popular-sns-card {
+.popular-sns-card, .popular-transport-card, .popular-outdoor-card {
 	flex: 0 0 auto;
 	width: 14.5rem;
 	margin-left: 0.5rem;
 	margin-top: 0.5rem;
-}
-
-.popular-transport-card {
-	flex: 0 0 auto;
-	width: 14.5rem;
-	margin-left: 0.5rem;
-	margin-top: 0.5rem;
-}
-
-.popular-outdoor-card {
-	flex: 0 0 auto;
-	width: 14.5rem;
-	margin-left: 0.5rem;
-	margin-top: 0.5rem;
+	position: relative;
+	height: 18rem;
 }
 
 /* 인기있는 대중교통 광고매체 */
@@ -508,12 +496,10 @@ ul {
 .main-media-title {
 	margin-top: 1rem;
 	font-size: 0.9rem;
-	color: #2E2E2E;
 	height: 2rem;
 }
 
 .main-media-price {
-	margin-top: 1rem;
 	font-size: 1.3rem;
 	font-weight: 600;
 	color: #2E9AFE;
@@ -655,8 +641,27 @@ ul {
 	cursor: pointer;
 }
 
-.card-mouseover {
+.popular-sns-card, .popular-transport-card, .popular-outdoor-card {
 	cursor: pointer;
-	transform: scale(1.01, 1.02);
-	transition: transform 0.2s;
+}
+
+.popular-sns-card-hover, .popular-transport-card-hover, .popular-outdoor-card-hover{
+	position: absolute;
+	width: 14.5rem;
+	height: 9rem;
+	background-color: #000000;
+	opacity: 0.8;
+	top: 0;
+	color: #FFFFFF;
+	visibility: hidden;
+}
+
+.main-media-nickname {
+	margin-top: 1rem;
+	color: #848484;
+}
+
+.card-hover-info {
+	margin-left: 3rem;
+	margin-top: 2rem;
 }

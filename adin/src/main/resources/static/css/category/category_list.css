@@ -1,0 +1,30 @@
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.category-wrap {
+    width: 1200px;
+    margin: auto;
+}
+
+.category-sub-wrap {
+    height: 50rem;
+    display: flex;
+}
+
+.category-menu {
+    height: 50rem;
+    width: 20rem;
+}
+
+.category-main {
+    width: 55rem;
+    height: 50rem;
+}

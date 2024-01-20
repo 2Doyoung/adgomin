@@ -17,6 +17,7 @@ const passwordFind = document.getElementById("passwordFind");
 const mediaManage = document.getElementById("mediaManage");
 
 const adminUserManage = document.getElementById("adminUserManage");
+const adminAdManage = document.getElementById("adminAdManage");
 
 const allCategoryDropdownSpan = document.querySelectorAll('.all-category-dropdown span');
 const allCategorySubDropdownSpan = document.querySelectorAll('.all-category-sub-dropdown span');
@@ -152,6 +153,12 @@ if(mediaManage != null) {
 if(adminUserManage != null) {
 	adminUserManage.addEventListener("click", () => {
 		window.location.href = "/admin?page=1"
+	});
+}
+
+if(adminAdManage != null) {
+	adminAdManage.addEventListener("click", () => {
+		window.location.href = "/admin/adManage?page=1"
 	});
 }
 
