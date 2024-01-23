@@ -1,6 +1,8 @@
 /**
  * 전역변수
  */
+const allCategory = document.getElementById("allCategory");
+
 const loginBtn = document.getElementById("loginBtn");
 const loginCover = document.getElementById("loginCover");
 const closeBtn = document.getElementById("closeBtn");
@@ -159,6 +161,12 @@ if(adminUserManage != null) {
 if(adminAdManage != null) {
 	adminAdManage.addEventListener("click", () => {
 		window.location.href = "/admin/adManage?page=1"
+	});
+}
+
+if(allCategory != null) {
+	allCategory.addEventListener("click", () => {
+		window.location.href = "/category?media=all"
 	});
 }
 

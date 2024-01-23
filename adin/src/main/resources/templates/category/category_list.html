@@ -11,18 +11,48 @@
     <script defer th:src="@{/js/layouts/header.js}"></script>
 </head>
 <body>
+<script th:inline="javascript">
+    let media = [[${media}]];
+</script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <div class="category-wrap">
     <div class="category-sub-wrap">
         <div class="category-menu">
             <ul>
-                <li>
-
+                <li class="category-li">
+                    <img class="category-img" th:src="@{/images/all-category-icon.png}"><span class="category-list-span all">전체 카테고리</span>
+                </li>
+                <li class="category-li">
+                    <img class="category-img" th:src="@{/images/youtube-icon.png}"><span class="category-list-span youtube">유튜브</span>
+                </li>
+                <li class="category-li">
+                    <img class="category-img" th:src="@{/images/instagram-icon.png}"><span class="category-list-span instagram">인스타그램</span>
+                </li>
+                <li class="category-li">
+                    <img class="category-img" th:src="@{/images/facebook-icon.png}"><span class="category-list-span facebook">페이스북</span>
+                </li>
+                <li class="category-li">
+                    <img class="category-img" th:src="@{/images/blog-icon.png}"><span class="category-list-span blog">블로그</span>
+                </li>
+                <li class="category-li">
+                    <img class="category-img" th:src="@{/images/subway-icon.png}"><span class="category-list-span subway">지하철</span>
+                </li>
+                <li class="category-li">
+                    <img class="category-img" th:src="@{/images/bus-icon.png}"><span class="category-list-span bus">버스</span>
+                </li>
+                <li class="category-li">
+                    <img class="category-img" th:src="@{/images/building-icon.png}"><span class="category-list-span building">옥외광고</span>
+                </li>
+                <li class="category-li">
+                    <img class="category-img" th:src="@{/images/movie-icon.png}"><span class="category-list-span movie">영화관</span>
+                </li>
+                <li class="category-li">
+                    <img class="category-img" th:src="@{/images/flag-icon.png}"><span class="category-list-span flag">현수막</span>
                 </li>
             </ul>
         </div>
         <div class="category-main">
-
+            <div th:text="${mediaKo}"></div>
         </div>
     </div>
 </div>

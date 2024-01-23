@@ -1,7 +1,8 @@
 /**
  * 전역변수
  */
-
+const category = document.getElementsByClassName("category-list-span");
+const categoryLi = document.getElementsByClassName("category-li");
 
 /**
  * 이벤트 함수
@@ -10,6 +11,19 @@
 /**
  * 사용자 함수
  */
+for(let i = 0; i < category.length; i++) {
+    if(category[i].classList.contains(media)) {
+        category[i].style.fontWeight = "600";
+        category[i].style.color = "#303441";
+    }
+}
+
+for(let i = 0; i < categoryLi.length; i++) {
+    categoryLi[i].addEventListener("click", (e) => {
+        let clickMedia = e.currentTarget.querySelector("span").classList[1];
+        window.location.href = "/category?media=" + clickMedia;
+    })
+}
 
 /**
  * XMLHttpRequest 성공 함수
