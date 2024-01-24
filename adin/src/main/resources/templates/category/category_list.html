@@ -12,7 +12,9 @@
 </head>
 <body>
 <script th:inline="javascript">
-    let media = [[${media}]];
+    let adDetailCategory = [[${adDetailCategory}]];
+    let adCategory = [[${adCategory}]];
+    let region = [[${region}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <div class="category-wrap">
@@ -52,7 +54,57 @@
             </ul>
         </div>
         <div class="category-main">
-            <div th:text="${mediaKo}"></div>
+            <div th:text="${adDetailCategoryKo}" class="category-main-title"></div>
+            <div class="search-div">
+                <div class="ad-category-option" id="adCategoryOption">분야 <span class="arrow-icon arrow-icon-down"></span></div>
+                <div class="ad-category-options ad-category-options-hidden">
+                    <div>
+                        <label class="ad-category-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill ad-category-checkbox" data-parent="game"></i></div> 게임</label>
+                        <label class="ad-category-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill ad-category-checkbox" data-parent="mukbang"></i></div> 먹방</label>
+                        <label class="ad-category-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill ad-category-checkbox" data-parent="app"></i></div> 어플</label>
+                        <label class="ad-category-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill ad-category-checkbox" data-parent="hospital"></i></div> 병원</label>
+                        <label class="ad-category-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill ad-category-checkbox" data-parent="restaurant"></i></div> 음식점</label>
+                        <label class="ad-category-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill ad-category-checkbox" data-parent="cosmetics"></i></div> 화장품</label>
+                        <label class="ad-category-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill ad-category-checkbox" data-parent="academy"></i></div> 학원</label>
+                        <label class="ad-category-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill ad-category-checkbox" data-parent="food"></i></div> 식품</label>
+                        <label class="ad-category-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill ad-category-checkbox" data-parent="product"></i></div> 제품</label>
+                    </div>
+                    <hr class="ad-category-options-hr">
+                    <div>
+                        <input type="button" class="ad-category-option-apply" id="adCategoryApply" value="적용하기">
+                    </div>
+                </div>
+                <div class="region-option" id="regionOption">지역 <span class="arrow-icon arrow-icon-down"></span></div>
+                <div class="region-options region-options-hidden">
+                    <div>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Seoul"></i></div> 서울</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Incheon"></i></div> 인천</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Busan"></i></div> 부산</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Daejeon"></i></div> 대전</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Gwangju"></i></div> 광주</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Daegu"></i></div> 대구</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Ulsan"></i></div> 울산</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Gyeonggi"></i></div> 경기</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Gangwon"></i></div> 강원</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Chungbuk"></i></div> 충북</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Chungnam"></i></div> 충남</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Jeonbuk"></i></div> 전북</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Jeonnam"></i></div> 전남</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Gyeongbuk"></i></div> 경북</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Gyeongnam"></i></div> 경남</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Jeju"></i></div> 제주</label>
+                        <label class="region-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill region-checkbox" data-parent="Sejong"></i></div> 세종</label>
+                    </div>
+                    <hr class="region-options-hr">
+                    <div>
+                        <input type="button" class="region-option-apply" id="regionApply" value="적용하기">
+                    </div>
+                </div>
+                <div class="select-category-region">
+                    <div th:text="${adCategoryKo}" class="select-ad-category"></div>
+                    <div th:text="${regionKo}" class="select-region"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

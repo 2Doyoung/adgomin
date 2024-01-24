@@ -14,36 +14,100 @@ public class CategoryController {
     }
 
     @GetMapping(value = "/category")
-    public ModelAndView getJoin(@RequestParam(value = "media", required = false) String media, @RequestParam(value = "adCategory", required = false) String adCategory, @RequestParam(value = "region", required = false) String region) {
+    public ModelAndView getJoin(@RequestParam(value = "adDetailCategory", required = false) String adDetailCategory, @RequestParam(value = "adCategory", required = false) String adCategory, @RequestParam(value = "region", required = false) String region) {
         ModelAndView modelAndView = new ModelAndView("category/category_list");
 
-        String mediaKo = "";
-        if("all".equals(media)) {
-            mediaKo = "전체 카테고리";
-        } else if("youtube".equals(media)) {
-            mediaKo = "유튜브";
-        } else if("instagram".equals(media)) {
-            mediaKo = "인스타그램";
-        } else if("facebook".equals(media)) {
-            mediaKo = "페이스북";
-        } else if("instagram".equals(media)) {
-            mediaKo = "인스타그램";
-        } else if("blog".equals(media)) {
-            mediaKo = "블로그";
-        } else if("subway".equals(media)) {
-            mediaKo = "지하철";
-        } else if("bus".equals(media)) {
-            mediaKo = "버스";
-        } else if("building".equals(media)) {
-            mediaKo = "옥외광고";
-        } else if("movie".equals(media)) {
-            mediaKo = "영화관";
-        } else if("flag".equals(media)) {
-            mediaKo = "현수막";
+        String adDetailCategoryKo = "";
+        String adCategoryKo = "";
+        String regionKo = "";
+
+        if("all".equals(adDetailCategory)) {
+            adDetailCategoryKo = "전체 카테고리";
+        } else if("youtube".equals(adDetailCategory)) {
+            adDetailCategoryKo = "유튜브";
+        } else if("instagram".equals(adDetailCategory)) {
+            adDetailCategoryKo = "인스타그램";
+        } else if("facebook".equals(adDetailCategory)) {
+            adDetailCategoryKo = "페이스북";
+        } else if("instagram".equals(adDetailCategory)) {
+            adDetailCategoryKo = "인스타그램";
+        } else if("blog".equals(adDetailCategory)) {
+            adDetailCategoryKo = "블로그";
+        } else if("subway".equals(adDetailCategory)) {
+            adDetailCategoryKo = "지하철";
+        } else if("bus".equals(adDetailCategory)) {
+            adDetailCategoryKo = "버스";
+        } else if("building".equals(adDetailCategory)) {
+            adDetailCategoryKo = "옥외광고";
+        } else if("movie".equals(adDetailCategory)) {
+            adDetailCategoryKo = "영화관";
+        } else if("flag".equals(adDetailCategory)) {
+            adDetailCategoryKo = "현수막";
+        } else {
+            modelAndView = new ModelAndView("error/error");
         }
 
-        modelAndView.addObject("mediaKo", mediaKo);
-        modelAndView.addObject("media", media);
+        if("game".equals(adCategory)) {
+            adCategoryKo = "게임";
+        } else if("mukbang".equals(adCategory)) {
+            adCategoryKo = "먹방";
+        } else if("app".equals(adCategory)) {
+            adCategoryKo = "어플";
+        } else if("hospital".equals(adCategory)) {
+            adCategoryKo = "병원";
+        } else if("restaurant".equals(adCategory)) {
+            adCategoryKo = "음식점";
+        } else if("cosmetics".equals(adCategory)) {
+            adCategoryKo = "화장품";
+        } else if("academy".equals(adCategory)) {
+            adCategoryKo = "학원";
+        } else if("food".equals(adCategory)) {
+            adCategoryKo = "식품";
+        } else if("product".equals(adCategory)) {
+            adCategoryKo = "제품";
+        }
+
+        if("Seoul".equals(region)) {
+            regionKo = "서울";
+        } else if("Incheon".equals(region)) {
+            regionKo = "인천";
+        } else if("Busan".equals(region)) {
+            regionKo = "부산";
+        } else if("Daejeon".equals(region)) {
+            regionKo = "대전";
+        } else if("Gwangju".equals(region)) {
+            regionKo = "광주";
+        } else if("Daegu".equals(region)) {
+            regionKo = "대구";
+        } else if("Ulsan".equals(region)) {
+            regionKo = "울산";
+        } else if("Gyeonggi".equals(region)) {
+            regionKo = "경기";
+        } else if("Gangwon".equals(region)) {
+            regionKo = "강원";
+        } else if("Chungbuk".equals(region)) {
+            regionKo = "충북";
+        } else if("Chungnam".equals(region)) {
+            regionKo = "충남";
+        } else if("Jeonbuk".equals(region)) {
+            regionKo = "전북";
+        } else if("Jeonnam".equals(region)) {
+            regionKo = "전남";
+        } else if("Gyeongbuk".equals(region)) {
+            regionKo = "경북";
+        } else if("Gyeongnam".equals(region)) {
+            regionKo = "경남";
+        } else if("Jeju".equals(region)) {
+            regionKo = "제주";
+        } else if("Sejong".equals(region)) {
+            regionKo = "세종";
+        }
+
+        modelAndView.addObject("adDetailCategoryKo", adDetailCategoryKo);
+        modelAndView.addObject("adCategoryKo", adCategoryKo);
+        modelAndView.addObject("regionKo", regionKo);
+
+        modelAndView.addObject("adDetailCategory", adDetailCategory);
         modelAndView.addObject("adCategory", adCategory);
         modelAndView.addObject("region", region);
 

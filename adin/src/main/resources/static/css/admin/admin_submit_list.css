@@ -603,7 +603,7 @@ td.text-right {
     position: relative;
     display: inline-block;
     margin-left: 3rem;
-    padding: 10px;
+    padding: 5px 10px;
     border: 1px solid #CCCCCC;
     width: 6rem;
     border-radius: 5px;
@@ -615,7 +615,7 @@ td.text-right {
 .arrow-icon-down {
     position: absolute;
     left: 5.6rem;
-    top: 0.9rem;
+    top: 0.6rem;
     width: 8px;
     height: 8px;
     border-top: 2px solid #ccc;
@@ -626,7 +626,7 @@ td.text-right {
 .arrow-icon-up {
     position: absolute;
     left: 5.6rem;
-    top: 1.2rem;
+    top: 0.9rem;
     width: 8px;
     height: 8px;
     border-top: 2px solid #ccc;

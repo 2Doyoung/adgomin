@@ -166,7 +166,7 @@ if(adminAdManage != null) {
 
 if(allCategory != null) {
 	allCategory.addEventListener("click", () => {
-		window.location.href = "/category?media=all"
+		window.location.href = "/category?adDetailCategory=all"
 	});
 }
 

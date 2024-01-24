@@ -26,7 +26,7 @@ body {
 
 .category-menu {
     height: 50rem;
-    width: 20rem;
+    width: 14rem;
 }
 
 .category-main {
@@ -69,5 +69,162 @@ body {
 
 .category-menu > ul > li:hover {
     font-weight: 500;
+    cursor: pointer;
+}
+
+.category-main-title {
+    margin-top: 2.4rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #343A40;
+}
+
+.ad-category-option, .region-option {
+    position: relative;
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #CCCCCC;
+    width: 4rem;
+    border-radius: 5px;
+    color: #303441;
+    cursor: pointer;
+    margin-top: 2rem;
+    margin-right: 0.5rem;
+}
+
+.arrow-icon-down {
+    position: absolute;
+    left: 3.6rem;
+    top: 0.7rem;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    transform: rotate(135deg);
+}
+
+.arrow-icon-up {
+    position: absolute;
+    left: 3.6rem;
+    top: 1rem;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    transform: rotate(315deg);
+}
+
+.ad-category-option:hover, .region-option:hover {
+    border: 1px solid #303441;
+}
+
+.ad-category-checkbox-line. region-checkbox-line {
+    cursor: pointer;
+}
+
+.checkbox-div {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.2rem;
+}
+
+.ri-checkbox-circle-fill {
+    color: #6E6E6E;
+}
+
+.ad-category-options {
+    padding: 1rem;
+    background-color: #FFF;
+    width: 10.5rem;
+    height: 24rem;
+    position: absolute;
+    left: 0rem;
+    top: 5rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+    transform-origin: top;
+    transform: scaleY(0);
+}
+
+.region-options {
+    padding: 1rem;
+    background-color: #FFF;
+    width: 12.5rem;
+    height: 24rem;
+    position: absolute;
+    left: 6rem;
+    top: 5rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+    transform-origin: top;
+    transform: scaleY(0);
+}
+
+
+.search-div {
+    position: relative;
+}
+
+.ad-category-options > div > label, .region-options > div > label {
+    color: #585858;
+    font-weight: 400;
+    width: 5rem;
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.ad-category-options-hidden, .region-options-hidden {
+    visibility: hidden;
+}
+
+.ad-category-options-visible, .region-options-visible {
+    visibility: visible;
+    opacity: 1;
+    transform: scaleY(1);
+}
+
+.ad-category-option-apply {
+    height: 2.2rem;
+    width: 4.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 6rem;
+}
+
+.region-option-apply {
+    height: 2.2rem;
+    width: 4.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-left: 8rem;
+}
+
+.ad-category-options-hr, .region-options-hr {
+    border: 0.5px solid #ccc;
+}
+
+.check-box-color {
+    color: #00BFFF;
+    transition: color 0.2s ease-out;
+}
+
+.ad-category-checkbox-line, .region-checkbox-line {
     cursor: pointer;
 }
