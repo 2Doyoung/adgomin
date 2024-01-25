@@ -5,6 +5,7 @@ const category = document.getElementsByClassName("category-list-span");
 const categoryLi = document.getElementsByClassName("category-li");
 const adCategoryOption = document.getElementById("adCategoryOption");
 const regionOption = document.getElementById("regionOption");
+const orderOption = document.getElementById("orderOption");
 
 const adCategoryCheckboxLine = document.getElementsByClassName("ad-category-checkbox-line");
 const adCategoryCheckbox = document.getElementsByClassName("ad-category-checkbox");
@@ -15,13 +16,19 @@ const regionCheckbox = document.getElementsByClassName("region-checkbox");
 const adCategoryApply = document.getElementById("adCategoryApply");
 const regionApply = document.getElementById("regionApply");
 
+const selectAdCategoryClose = document.getElementById("selectAdCategoryClose");
+const selectRegionClose = document.getElementById("selectRegionClose");
+
+const orderCheckboxLine = document.getElementsByClassName("order-checkbox-line");
+const orderCheckbox = document.getElementsByClassName("order-checkbox");
+
 /**
  * 이벤트 함수
  */
 for(let i = 0; i < categoryLi.length; i++) {
     categoryLi[i].addEventListener("click", (e) => {
         let clickAdDetailCategory = e.currentTarget.querySelector("span").classList[1];
-        window.location.href = "/category?adDetailCategory=" + clickAdDetailCategory;
+        window.location.href = "/category?order=" + order + "&adDetailCategory=" + clickAdDetailCategory;
     })
 }
 
@@ -32,11 +39,19 @@ adCategoryOption.addEventListener("click", () => {
     let arrowIcon1 = document.getElementsByClassName("arrow-icon")[1];
     let regionOptions = document.getElementsByClassName("region-options")[0];
 
-    if(arrowIcon1.classList.contains("arrow-icon-up")) {
+    let arrowIcon2 = document.getElementsByClassName("arrow-icon")[2];
+    let orderOptions = document.getElementsByClassName("order-options")[0];
+
+    if(arrowIcon1.classList.contains("arrow-icon-up") || arrowIcon2.classList.contains("arrow-icon-up-order")) {
         arrowIcon1.classList.remove("arrow-icon-up");
         arrowIcon1.classList.add("arrow-icon-down");
         regionOptions.classList.remove("region-options-visible");
         regionOptions.classList.add("region-options-hidden");
+
+        arrowIcon2.classList.remove("arrow-icon-up-order");
+        arrowIcon2.classList.add("arrow-icon-down-order");
+        orderOptions.classList.remove("order-options-visible");
+        orderOptions.classList.add("order-options-hidden");
     }
 
     if(arrowIcon.classList.contains("arrow-icon-down")) {
@@ -59,11 +74,19 @@ regionOption.addEventListener("click", () => {
     let arrowIcon1 = document.getElementsByClassName("arrow-icon")[0];
     let adCategoryOptions = document.getElementsByClassName("ad-category-options")[0];
 
-    if(arrowIcon1.classList.contains("arrow-icon-up")) {
+    let arrowIcon2 = document.getElementsByClassName("arrow-icon")[2];
+    let orderOptions = document.getElementsByClassName("order-options")[0];
+
+    if(arrowIcon1.classList.contains("arrow-icon-up") || arrowIcon2.classList.contains("arrow-icon-up-order")) {
         arrowIcon1.classList.remove("arrow-icon-up");
         arrowIcon1.classList.add("arrow-icon-down");
         adCategoryOptions.classList.remove("ad-category-options-visible");
         adCategoryOptions.classList.add("ad-category-options-hidden");
+
+        arrowIcon2.classList.remove("arrow-icon-up-order");
+        arrowIcon2.classList.add("arrow-icon-down-order");
+        orderOptions.classList.remove("order-options-visible");
+        orderOptions.classList.add("order-options-hidden");
     }
 
     if(arrowIcon.classList.contains("arrow-icon-down")) {
@@ -79,7 +102,42 @@ regionOption.addEventListener("click", () => {
     }
 })
 
-for (let i = 0; i < adCategoryCheckboxLine.length; i++) {
+orderOption.addEventListener("click", () => {
+    let arrowIcon = document.getElementsByClassName("arrow-icon")[2];
+    let orderOptions = document.getElementsByClassName("order-options")[0];
+
+    let arrowIcon1 = document.getElementsByClassName("arrow-icon")[0];
+    let adCategoryOptions = document.getElementsByClassName("ad-category-options")[0];
+
+    let arrowIcon2 = document.getElementsByClassName("arrow-icon")[1];
+    let regionOptions = document.getElementsByClassName("region-options")[0];
+
+    if(arrowIcon1.classList.contains("arrow-icon-up") || arrowIcon2.classList.contains("arrow-icon-up")) {
+        arrowIcon1.classList.remove("arrow-icon-up");
+        arrowIcon1.classList.add("arrow-icon-down");
+        adCategoryOptions.classList.remove("ad-category-options-visible");
+        adCategoryOptions.classList.add("ad-category-options-hidden");
+
+        arrowIcon2.classList.remove("arrow-icon-up");
+        arrowIcon2.classList.add("arrow-icon-down");
+        regionOptions.classList.remove("region-options-visible");
+        regionOptions.classList.add("region-options-hidden");
+    }
+
+    if(arrowIcon.classList.contains("arrow-icon-down-order")) {
+        arrowIcon.classList.remove("arrow-icon-down-order");
+        arrowIcon.classList.add("arrow-icon-up-order");
+        orderOptions.classList.remove("order-options-hidden");
+        orderOptions.classList.add("order-options-visible");
+    } else if(arrowIcon.classList.contains("arrow-icon-up-order")) {
+        arrowIcon.classList.remove("arrow-icon-up-order");
+        arrowIcon.classList.add("arrow-icon-down-order");
+        orderOptions.classList.remove("order-options-visible");
+        orderOptions.classList.add("order-options-hidden");
+    }
+})
+
+for(let i = 0; i < adCategoryCheckboxLine.length; i++) {
     adCategoryCheckboxLine[i].addEventListener("click", () => {
         for (let j = 0; j < adCategoryCheckboxLine.length; j++) {
             if (j !== i) {
@@ -91,7 +149,7 @@ for (let i = 0; i < adCategoryCheckboxLine.length; i++) {
     });
 }
 
-for (let i = 0; i < regionCheckboxLine.length; i++) {
+for(let i = 0; i < regionCheckboxLine.length; i++) {
     regionCheckboxLine[i].addEventListener("click", () => {
         for (let j = 0; j < regionCheckboxLine.length; j++) {
             if (j !== i) {
@@ -103,6 +161,14 @@ for (let i = 0; i < regionCheckboxLine.length; i++) {
     });
 }
 
+for(let i = 0; i < orderCheckboxLine.length; i++) {
+    orderCheckboxLine[i].addEventListener("click", (e) => {
+        order = e.target.children[0].children[0].dataset.parent;
+
+        window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region;
+    })
+}
+
 adCategoryApply.addEventListener("click", () => {
     for(let i = 0; i < adCategoryCheckbox.length; i++) {
         if(adCategoryCheckbox[i].classList.contains("check-box-color")) {
@@ -110,7 +176,7 @@ adCategoryApply.addEventListener("click", () => {
         }
     }
 
-    window.location.href = "/category?adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region;
+    window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region;
 })
 
 regionApply.addEventListener("click", () => {
@@ -120,9 +186,20 @@ regionApply.addEventListener("click", () => {
         }
     }
 
-    window.location.href = "/category?adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region;
+    window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region;
 })
 
+if(selectAdCategoryClose != null) {
+    selectAdCategoryClose.addEventListener("click", () => {
+        window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=null" + "&region=" + region;
+    })
+}
+
+if(selectRegionClose != null) {
+    selectRegionClose.addEventListener("click", () => {
+        window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=null";
+    })
+}
 /**
  * 사용자 함수
  */
@@ -133,7 +210,23 @@ for(let i = 0; i < category.length; i++) {
     }
 }
 
+for(let i = 0; i < adCategoryCheckbox.length; i++) {
+    if(adCategory === adCategoryCheckbox[i].dataset.parent) {
+        adCategoryCheckbox[i].classList.add("check-box-color");
+    }
+}
 
+for(let i = 0; i < regionCheckbox.length; i++) {
+    if(region === regionCheckbox[i].dataset.parent) {
+        regionCheckbox[i].classList.add("check-box-color");
+    }
+}
+
+for(let i = 0; i < orderCheckbox.length; i++) {
+    if(order === orderCheckbox[i].dataset.parent) {
+        orderCheckbox[i].classList.add("check-box-color");
+    }
+}
 
 /**
  * XMLHttpRequest 성공 함수

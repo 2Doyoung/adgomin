@@ -12,6 +12,7 @@
 </head>
 <body>
 <script th:inline="javascript">
+    let order = [[${order}]];
     let adDetailCategory = [[${adDetailCategory}]];
     let adCategory = [[${adCategory}]];
     let region = [[${region}]];
@@ -101,9 +102,21 @@
                     </div>
                 </div>
                 <div class="select-category-region">
-                    <div th:text="${adCategoryKo}" class="select-ad-category"></div>
-                    <div th:text="${regionKo}" class="select-region"></div>
+                    <span class="select-ad-category" th:if="${adCategoryKo != ''}"><div th:text="${adCategoryKo}"></div><span class="select-close" id="selectAdCategoryClose"></span></span>
+                    <span class="select-region" th:if="${regionKo != ''}"><div th:text="${regionKo}"></div><span class="select-close" id="selectRegionClose"></span></span>
                 </div>
+                <div class="order-option" id="orderOption"><span th:text="${orderKo}"></span><span class="arrow-icon arrow-icon-down-order"></span></div>
+                <div class="order-options order-options-hidden">
+                    <div>
+                        <label class="order-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill order-checkbox" data-parent="recommend"></i></div> 추천순</label>
+                        <label class="order-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill order-checkbox" data-parent="popular"></i></div> 인기순</label>
+                        <label class="order-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill order-checkbox" data-parent="rating"></i></div> 평점순</label>
+                        <label class="order-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill order-checkbox" data-parent="recent"></i></div> 최신순</label>
+                    </div>
+                </div>
+            </div>
+            <div>
+
             </div>
         </div>
     </div>

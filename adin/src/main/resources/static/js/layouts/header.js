@@ -1,7 +1,7 @@
 /**
  * 전역변수
  */
-const allCategory = document.getElementById("allCategory");
+const allCategoryClick = document.getElementsByClassName("all-category-click");
 
 const loginBtn = document.getElementById("loginBtn");
 const loginCover = document.getElementById("loginCover");
@@ -34,6 +34,12 @@ const allCategoryRegion2Dropdown = document.getElementById("allCategoryRegion2Dr
 /**
  * 이벤트 함수
  */
+for(let i = 0; i < allCategoryClick.length; i++) {
+	allCategoryClick[i].addEventListener("click", () => {
+		window.location.href = "/category?order=recommend&adDetailCategory=all"
+	})
+}
+
 if(loginBtn != null) {
 	loginBtn.addEventListener("click", () => {
 		loginCover.style.display = "flex";
@@ -161,12 +167,6 @@ if(adminUserManage != null) {
 if(adminAdManage != null) {
 	adminAdManage.addEventListener("click", () => {
 		window.location.href = "/admin/adManage?page=1"
-	});
-}
-
-if(allCategory != null) {
-	allCategory.addEventListener("click", () => {
-		window.location.href = "/category?adDetailCategory=all"
 	});
 }
 

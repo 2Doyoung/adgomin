@@ -30,7 +30,7 @@ body {
 }
 
 .category-main {
-    width: 55rem;
+    width: 61rem;
     height: 50rem;
 }
 
@@ -90,6 +90,7 @@ body {
     cursor: pointer;
     margin-top: 2rem;
     margin-right: 0.5rem;
+    font-size: 0.95rem;
 }
 
 .arrow-icon-down {
@@ -114,18 +115,18 @@ body {
     transform: rotate(315deg);
 }
 
-.ad-category-option:hover, .region-option:hover {
+.ad-category-option:hover, .region-option:hover, .order-option:hover {
     border: 1px solid #303441;
 }
 
-.ad-category-checkbox-line. region-checkbox-line {
+.ad-category-checkbox-line .region-checkbox-line, .order-checkbox-line {
     cursor: pointer;
 }
 
 .checkbox-div {
     display: inline-block;
     vertical-align: middle;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .ri-checkbox-circle-fill {
@@ -136,7 +137,7 @@ body {
     padding: 1rem;
     background-color: #FFF;
     width: 10.5rem;
-    height: 24rem;
+    height: 13rem;
     position: absolute;
     left: 0rem;
     top: 5rem;
@@ -146,13 +147,14 @@ body {
     transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
     transform-origin: top;
     transform: scaleY(0);
+    z-index: 1;
 }
 
 .region-options {
     padding: 1rem;
     background-color: #FFF;
-    width: 12.5rem;
-    height: 24rem;
+    width: 10.5rem;
+    height: 21rem;
     position: absolute;
     left: 6rem;
     top: 5rem;
@@ -162,6 +164,7 @@ body {
     transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
     transform-origin: top;
     transform: scaleY(0);
+    z-index: 1;
 }
 
 
@@ -172,13 +175,14 @@ body {
 .ad-category-options > div > label, .region-options > div > label {
     color: #585858;
     font-weight: 400;
-    width: 5rem;
+    width: 4rem;
     display: inline-block;
     margin-right: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
+    font-size: 0.9rem;
 }
 
-.ad-category-options-hidden, .region-options-hidden {
+.ad-category-options-hidden, .region-options-hidden, .order-options-hidden {
     visibility: hidden;
 }
 
@@ -189,31 +193,31 @@ body {
 }
 
 .ad-category-option-apply {
-    height: 2.2rem;
-    width: 4.5rem;
+    height: 2rem;
+    width: 4rem;
     border: none;
     border-radius: 5px;
     color: #FFFFFF;
     background-color: #81BEF7;
     margin-top: 0.5rem;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.9rem;
     cursor: pointer;
-    margin-left: 6rem;
+    margin-left: 6.5rem;
 }
 
 .region-option-apply {
-    height: 2.2rem;
-    width: 4.5rem;
+    height: 2rem;
+    width: 4rem;
     border: none;
     border-radius: 5px;
     color: #FFFFFF;
     background-color: #81BEF7;
     margin-top: 0.5rem;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 0.9rem;
     cursor: pointer;
-    margin-left: 8rem;
+    margin-left: 6.5rem;
 }
 
 .ad-category-options-hr, .region-options-hr {
@@ -227,4 +231,102 @@ body {
 
 .ad-category-checkbox-line, .region-checkbox-line {
     cursor: pointer;
+}
+
+.select-category-region, .select-ad-category, .select-region {
+    display: inline-block;
+}
+
+.select-ad-category, .select-region {
+    color: #303441;
+    padding: 6px 10px;
+    background-color: #E6E6E6;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    margin-right: 0.5rem;
+}
+
+.select-ad-category > div, .select-region > div {
+    display: inline-block;
+}
+
+.select-close {
+    display:inline-block;
+    cursor: pointer;
+}
+
+.select-close:after {
+    display: inline-block;
+    content: "\00d7";
+    font-size: 15px;
+    margin-left: 0.5rem;
+}
+
+.order-option {
+    position: relative;
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #CCCCCC;
+    width: 4rem;
+    border-radius: 5px;
+    color: #303441;
+    cursor: pointer;
+    margin-top: 2rem;
+    float: right;
+    font-size: 0.95rem;
+}
+
+.arrow-icon-down-order {
+    position: absolute;
+    left: 3.9rem;
+    top: 0.7rem;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    transform: rotate(135deg);
+}
+
+.arrow-icon-up-order {
+    position: absolute;
+    left: 3.9rem;
+    top: 1rem;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    transform: rotate(315deg);
+}
+
+.order-options {
+    padding: 1rem;
+    background-color: #FFF;
+    width: 5.5rem;
+    height: 8rem;
+    position: absolute;
+    left: 53.5rem;
+    top: 5rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 10px;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+    transform-origin: top;
+    transform: scaleY(0);
+    z-index: 1;
+}
+
+.order-options > div > label {
+    color: #585858;
+    font-weight: 400;
+    width: 5rem;
+    display: inline-block;
+    margin-right: 1rem;
+    margin-bottom: 0.2rem;
+    font-size: 0.9rem;
+}
+
+.order-options-visible {
+    visibility: visible;
+    opacity: 1;
+    transform: scaleY(1);
 }

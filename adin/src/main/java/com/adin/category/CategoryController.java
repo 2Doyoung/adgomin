@@ -14,12 +14,27 @@ public class CategoryController {
     }
 
     @GetMapping(value = "/category")
-    public ModelAndView getJoin(@RequestParam(value = "adDetailCategory", required = false) String adDetailCategory, @RequestParam(value = "adCategory", required = false) String adCategory, @RequestParam(value = "region", required = false) String region) {
+    public ModelAndView getJoin(@RequestParam(value = "order", required = false) String order, @RequestParam(value = "adDetailCategory", required = false) String adDetailCategory, @RequestParam(value = "adCategory", required = false) String adCategory, @RequestParam(value = "region", required = false) String region) {
         ModelAndView modelAndView = new ModelAndView("category/category_list");
 
+        String orderKo = "";
         String adDetailCategoryKo = "";
         String adCategoryKo = "";
         String regionKo = "";
+
+        if("".equals(order)) {
+            orderKo = "추천순";
+        } else if("recommend".equals(order)) {
+            orderKo = "추천순";
+        } else if("popular".equals(order)) {
+            orderKo = "인기순";
+        } else if("rating".equals(order)) {
+            orderKo = "평점순";
+        } else if("recent".equals(order)) {
+            orderKo = "최신순";
+        } else {
+            orderKo = "추천순";
+        }
 
         if("all".equals(adDetailCategory)) {
             adDetailCategoryKo = "전체 카테고리";
@@ -103,10 +118,12 @@ public class CategoryController {
             regionKo = "세종";
         }
 
+        modelAndView.addObject("orderKo", orderKo);
         modelAndView.addObject("adDetailCategoryKo", adDetailCategoryKo);
         modelAndView.addObject("adCategoryKo", adCategoryKo);
         modelAndView.addObject("regionKo", regionKo);
 
+        modelAndView.addObject("order", order);
         modelAndView.addObject("adDetailCategory", adDetailCategory);
         modelAndView.addObject("adCategory", adCategory);
         modelAndView.addObject("region", region);
