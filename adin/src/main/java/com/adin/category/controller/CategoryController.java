@@ -132,6 +132,8 @@ public class CategoryController {
         modelAndView.addObject("adCategory", adCategory);
         modelAndView.addObject("region", region);
 
+        modelAndView.addObject("categoryList", categoryList);
+
         return  modelAndView;
     }
 }

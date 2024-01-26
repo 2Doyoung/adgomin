@@ -20,7 +20,7 @@ body {
 }
 
 .category-sub-wrap {
-    height: 50rem;
+    height: 134rem;
     display: flex;
 }
 
@@ -329,4 +329,81 @@ body {
     visibility: visible;
     opacity: 1;
     transform: scaleY(1);
+}
+
+.category-list-wrap {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    column-gap: 16px;
+    row-gap: 18px;
+}
+
+.category-card {
+    width: 14.5rem;
+    margin-top: 0.5rem;
+    position: relative;
+    height: 18rem;
+    float: left;
+    cursor: pointer;
+}
+
+.category-thumbnail {
+    overflow: hidden;
+    position: relative;
+    height: 9rem;
+}
+
+.category-thumbnail-img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+}
+
+.category-title {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    height: 2rem;
+}
+
+.category-nickname {
+    margin-top: 1rem;
+    color: #848484;
+}
+
+.category-price {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2E9AFE;
+    height: 2rem;
+}
+
+.ri-star-fill {
+    color: #FFD400;
+    vertical-align: middle;
+}
+
+.review-count {
+    display: inline-block;
+    font-size: 0.8rem;
+}
+
+.category-card-hover {
+    position: absolute;
+    width: 14.5rem;
+    height: 9rem;
+    background-color: #000000;
+    opacity: 0.8;
+    top: 0;
+    color: #FFFFFF;
+    visibility: hidden;
+}
+
+.card-hover-info {
+    margin-left: 3rem;
+    margin-top: 2rem;
 }

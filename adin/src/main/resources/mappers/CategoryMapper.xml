@@ -22,5 +22,6 @@
         AND ad_detail_category LIKE CONCAT('%', #{adDetailCategoryKo}, '%')
         AND T2.ad_category LIKE CONCAT('%', #{adCategoryKo}, '%')
         AND (T2.region LIKE CONCAT('%', #{regionKo}, '%') OR T2.region = '전국')
+        LIMIT 0, 24
     </select>
 </mapper>

@@ -116,7 +116,25 @@
                 </div>
             </div>
             <div class="category-list-wrap">
-
+                <div th:each="category : ${categoryList}" class="category-card">
+                    <div class="category-thumbnail">
+                        <img class="category-thumbnail-img" th:src="@{/main/thumbnail/image (thumbnailImgNm=${category.thumbnailImgNm}, thumbnailImgFilePath =${category.thumbnailImgFilePath})}">
+                    </div>
+                    <div class="category-title" th:text="${category.mediaTitle}"></div>
+                    <div class="category-nickname" th:text="${category.nickname}"></div>
+                    <div class="category-price"><span th:text="${category.mediaPrice}"></span><span>원</span></div>
+                    <div class="review-star">
+                        <i class="ri-star-fill"></i>
+                        <div class="review-count">5.0(123)</div>
+                    </div>
+                    <div class="category-card-hover">
+                        <div class="card-hover-info">
+                            <div><span><i class="ri-advertisement-line"> </i></span><span th:text="${category.adDetailCategory}"></span></div>
+                            <div><span><i class="ri-list-check"></i> </i></span><span th:text="${category.adCategory}"></span></div>
+                            <div><span><i class="ri-broadcast-fill"></i> </span><span th:text="${category.region}"></span></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

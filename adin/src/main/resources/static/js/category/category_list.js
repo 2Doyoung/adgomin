@@ -22,6 +22,8 @@ const selectRegionClose = document.getElementById("selectRegionClose");
 const orderCheckboxLine = document.getElementsByClassName("order-checkbox-line");
 const orderCheckbox = document.getElementsByClassName("order-checkbox");
 
+const categoryCard = document.getElementsByClassName("category-card");
+
 /**
  * 이벤트 함수
  */
@@ -199,6 +201,18 @@ if(selectRegionClose != null) {
     selectRegionClose.addEventListener("click", () => {
         window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=null";
     })
+}
+
+for(let i = 0; i < categoryCard.length; i++) {
+    let categoryCardHover = document.getElementsByClassName("category-card-hover");
+
+    categoryCard[i].addEventListener("mouseover", () => {
+        categoryCardHover[i].style.visibility = "visible";
+    });
+
+    categoryCard[i].addEventListener("mouseout", () => {
+        categoryCardHover[i].style.visibility = "hidden";
+    });
 }
 /**
  * 사용자 함수
