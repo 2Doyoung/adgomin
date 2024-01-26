@@ -33,6 +33,7 @@
         LEFT JOIN adin_user T3 ON T1.email = T3.email
         WHERE 1=1
         AND ad_detail_category IN ("유튜브", "인스타그램", "페이스북", "블로그")
+        LIMIT 0, 10
     </select>
 
     <select id="popularTransportMedia" resultType="com.adin.media.vo.MediaRegisterVO">
@@ -51,7 +52,8 @@
         LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
         LEFT JOIN adin_user T3 ON T1.email = T3.email
         WHERE 1=1
-          AND ad_detail_category IN ("지하철", "버스")
+        AND ad_detail_category IN ("지하철", "버스")
+        LIMIT 0, 10
     </select>
 
     <select id="popularOutdoorMedia" resultType="com.adin.media.vo.MediaRegisterVO">
@@ -70,6 +72,7 @@
         LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
         LEFT JOIN adin_user T3 ON T1.email = T3.email
         WHERE 1=1
-          AND ad_detail_category IN ("옥외광고", "영화관", "현수막")
+        AND ad_detail_category IN ("옥외광고", "영화관", "현수막")
+        LIMIT 0, 10
     </select>
 </mapper>

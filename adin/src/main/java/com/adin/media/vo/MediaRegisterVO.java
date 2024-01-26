@@ -10,6 +10,7 @@ public class MediaRegisterVO extends MediaRegisterEntity {
     private String adCategory;
     private String mediaUrl;
 
+
     public String getMediaIntroduce() {
         return mediaIntroduce;
     }

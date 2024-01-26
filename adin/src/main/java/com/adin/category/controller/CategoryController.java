@@ -1,5 +1,7 @@
-package com.adin.category;
+package com.adin.category.controller;
 
+import com.adin.category.service.CategoryService;
+import com.adin.media.vo.MediaRegisterVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -117,6 +119,8 @@ public class CategoryController {
         } else if("Sejong".equals(region)) {
             regionKo = "세종";
         }
+
+        MediaRegisterVO[] categoryList = this.categoryService.categoryList(order, adDetailCategoryKo, adCategoryKo, regionKo);
 
         modelAndView.addObject("orderKo", orderKo);
         modelAndView.addObject("adDetailCategoryKo", adDetailCategoryKo);

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adin.category.mapper.CategoryMapper">
+    <select id="categoryList" resultType="com.adin.media.vo.MediaRegisterVO">
+        SELECT
+            media_order AS mediaOrder
+             ,media_title AS mediaTitle
+             ,thumbnail_img_nm AS thumbnailImgNm
+             ,thumbnail_origin_file_nm AS thumbnailOriginFileNm
+             ,thumbnail_img_file_path AS thumbnailImgFilePath
+             ,media_price AS mediaPrice
+             ,ad_detail_category AS adDetailCategory
+             ,T3.nickname AS nickname
+             ,T2.region AS region
+             ,T2.ad_category AS adCategory
+        FROM adin_media_register T1
+        LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adin_user T3 ON T1.email = T3.email
+        WHERE 1=1
+        AND ad_detail_category LIKE CONCAT('%', #{adDetailCategoryKo}, '%')
+        AND T2.ad_category LIKE CONCAT('%', #{adCategoryKo}, '%')
+        AND (T2.region LIKE CONCAT('%', #{regionKo}, '%') OR T2.region = '전국')
+    </select>
+</mapper>
