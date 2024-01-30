@@ -3,6 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.adin.category.mapper.CategoryMapper">
+    <select id="categoryCnt" resultType="com.adin.media.vo.MediaRegisterVO">
+        SELECT
+            COUNT(*) AS cnt
+        FROM adin_media_register T1
+                 LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
+                 LEFT JOIN adin_user T3 ON T1.email = T3.email
+        WHERE 1=1
+          AND ad_detail_category LIKE CONCAT('%', #{adDetailCategoryKo}, '%')
+          AND T2.ad_category LIKE CONCAT('%', #{adCategoryKo}, '%')
+          AND (T2.region LIKE CONCAT('%', #{regionKo}, '%') OR T2.region = '전국')
+    </select>
+
     <select id="categoryList" resultType="com.adin.media.vo.MediaRegisterVO">
         SELECT
             media_order AS mediaOrder
@@ -22,6 +34,6 @@
         AND ad_detail_category LIKE CONCAT('%', #{adDetailCategoryKo}, '%')
         AND T2.ad_category LIKE CONCAT('%', #{adCategoryKo}, '%')
         AND (T2.region LIKE CONCAT('%', #{regionKo}, '%') OR T2.region = '전국')
-        LIMIT 0, 24
+        LIMIT #{pageStart}, #{perPageNum}
     </select>
 </mapper>

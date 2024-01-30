@@ -36,7 +36,7 @@ const allCategoryRegion2Dropdown = document.getElementById("allCategoryRegion2Dr
  */
 for(let i = 0; i < allCategoryClick.length; i++) {
 	allCategoryClick[i].addEventListener("click", () => {
-		window.location.href = "/category?order=recommend&adDetailCategory=all"
+		window.location.href = "/category?order=recommend&adDetailCategory=all&page=1"
 	})
 }
 

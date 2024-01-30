@@ -1,6 +1,8 @@
 package com.adin.category.controller;
 
 import com.adin.category.service.CategoryService;
+import com.adin.common.CategoryCriteria;
+import com.adin.common.CategoryPaging;
 import com.adin.media.vo.MediaRegisterVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +18,8 @@ public class CategoryController {
     }
 
     @GetMapping(value = "/category")
-    public ModelAndView getJoin(@RequestParam(value = "order", required = false) String order, @RequestParam(value = "adDetailCategory", required = false) String adDetailCategory, @RequestParam(value = "adCategory", required = false) String adCategory, @RequestParam(value = "region", required = false) String region) {
+    public ModelAndView getJoin(@RequestParam(value = "order", required = false) String order, @RequestParam(value = "adDetailCategory", required = false) String adDetailCategory
+            , @RequestParam(value = "adCategory", required = false) String adCategory, @RequestParam(value = "region", required = false) String region, @RequestParam(value = "page", required = false) int page) {
         ModelAndView modelAndView = new ModelAndView("category/category_list");
 
         String orderKo = "";
@@ -120,7 +123,20 @@ public class CategoryController {
             regionKo = "세종";
         }
 
-        MediaRegisterVO[] categoryList = this.categoryService.categoryList(order, adDetailCategoryKo, adCategoryKo, regionKo);
+        MediaRegisterVO categoryCnt = this.categoryService.categoryCnt(order, adDetailCategoryKo, adCategoryKo, regionKo);
+
+        int cnt = categoryCnt.getCnt();
+        CategoryCriteria cri = new CategoryCriteria();
+        cri.setPage(page);
+
+        CategoryPaging paging = new CategoryPaging();
+        paging.setCri(cri);
+        paging.setTotalCount(cnt);
+
+        int pageStart = cri.getPageStart();
+        int perPageNum = cri.getPerPageNum();
+
+        MediaRegisterVO[] categoryList = this.categoryService.categoryList(order, adDetailCategoryKo, adCategoryKo, regionKo, pageStart, perPageNum);
 
         modelAndView.addObject("orderKo", orderKo);
         modelAndView.addObject("adDetailCategoryKo", adDetailCategoryKo);
@@ -133,6 +149,8 @@ public class CategoryController {
         modelAndView.addObject("region", region);
 
         modelAndView.addObject("categoryList", categoryList);
+
+        modelAndView.addObject("paging", paging);
 
         return  modelAndView;
     }

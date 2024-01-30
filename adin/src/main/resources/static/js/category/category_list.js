@@ -24,16 +24,11 @@ const orderCheckbox = document.getElementsByClassName("order-checkbox");
 
 const categoryCard = document.getElementsByClassName("category-card");
 
+const spans = document.querySelectorAll('.div-paging span span');
+
 /**
  * 이벤트 함수
  */
-for(let i = 0; i < categoryLi.length; i++) {
-    categoryLi[i].addEventListener("click", (e) => {
-        let clickAdDetailCategory = e.currentTarget.querySelector("span").classList[1];
-        window.location.href = "/category?order=" + order + "&adDetailCategory=" + clickAdDetailCategory;
-    })
-}
-
 adCategoryOption.addEventListener("click", () => {
     let arrowIcon = document.getElementsByClassName("arrow-icon")[0];
     let adCategoryOptions = document.getElementsByClassName("ad-category-options")[0];
@@ -163,11 +158,18 @@ for(let i = 0; i < regionCheckboxLine.length; i++) {
     });
 }
 
+for(let i = 0; i < categoryLi.length; i++) {
+    categoryLi[i].addEventListener("click", (e) => {
+        let clickAdDetailCategory = e.currentTarget.querySelector("span").classList[1];
+        window.location.href = "/category?order=" + order + "&adDetailCategory=" + clickAdDetailCategory + "&page=1";
+    })
+}
+
 for(let i = 0; i < orderCheckboxLine.length; i++) {
     orderCheckboxLine[i].addEventListener("click", (e) => {
         order = e.target.children[0].children[0].dataset.parent;
 
-        window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region;
+        window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region + "&page=1";
     })
 }
 
@@ -178,7 +180,7 @@ adCategoryApply.addEventListener("click", () => {
         }
     }
 
-    window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region;
+    window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region + "&page=1";
 })
 
 regionApply.addEventListener("click", () => {
@@ -188,18 +190,18 @@ regionApply.addEventListener("click", () => {
         }
     }
 
-    window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region;
+    window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region + "&page=1";
 })
 
 if(selectAdCategoryClose != null) {
     selectAdCategoryClose.addEventListener("click", () => {
-        window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=null" + "&region=" + region;
+        window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=null" + "&region=" + region + "&page=1";
     })
 }
 
 if(selectRegionClose != null) {
     selectRegionClose.addEventListener("click", () => {
-        window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=null";
+        window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=null" + "&page=1";
     })
 }
 
@@ -212,6 +214,15 @@ for(let i = 0; i < categoryCard.length; i++) {
 
     categoryCard[i].addEventListener("mouseout", () => {
         categoryCardHover[i].style.visibility = "hidden";
+    });
+}
+
+for(let i = 0; i < spans.length; i++) {
+    spans[i].addEventListener('click', (e) => {
+        let link = e.target.querySelector('a');
+        if (link) {
+            link.click();
+        }
     });
 }
 /**

@@ -135,15 +135,15 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="div-paging">
+            </div>
+            <div>
+                <div class="div-paging">
                         <span th:if="${paging.totalCount > 0}">
-                            <span th:if="${paging.cri.page > 1}"><a th:href="@{/admin(page=${paging.cri.page - 1})}">이전페이지</a></span>
-                            <span th:each="num : ${#numbers.sequence((paging.startPage), (paging.endPage))}" th:class="${num == paging.cri.page} ? 'current-page' : ''"><a th:text="${num}" th:href="@{/admin(page=${num})}"></a></span>
-                            <span th:if="${paging.cri.page < 1.0 * paging.totalCount / paging.cri.perPageNum}"><a th:href="@{/admin(page=${paging.cri.page + 1})}">다음페이지</a></span>
+                            <span th:if="${paging.cri.page > 1}"><a th:href="@{/category(order=${order}, adDetailCategory=${adDetailCategory}, adCategory=${adCategory}, region=${region}, page=${paging.cri.page - 1})}">이전페이지</a></span>
+                            <span th:each="num : ${#numbers.sequence((paging.startPage), (paging.endPage))}" th:class="${num == paging.cri.page} ? 'current-page' : ''"><a th:text="${num}" th:href="@{/category(order=${order}, adDetailCategory=${adDetailCategory}, adCategory=${adCategory}, region=${region}, page=${num})}"></a></span>
+                            <span th:if="${paging.cri.page < 1.0 * paging.totalCount / paging.cri.perPageNum}"><a th:href="@{/category(order=${order}, adDetailCategory=${adDetailCategory}, adCategory=${adCategory}, region=${region}, page=${paging.cri.page + 1})}">다음페이지</a></span>
                         </span>
-                        <span th:unless="${paging.totalCount > 0}"></span>
-                    </div>
+                    <span th:unless="${paging.totalCount > 0}"></span>
                 </div>
             </div>
         </div>
