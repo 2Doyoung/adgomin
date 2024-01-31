@@ -31,6 +31,9 @@ const allCategoryDropdownWrap = document.getElementById("allCategoryDropdownWrap
 const allCategorySubDropdown = document.getElementById("allCategorySubDropdown");
 const allCategoryRegionDropdown = document.getElementById("allCategoryRegionDropdown");
 const allCategoryRegion2Dropdown = document.getElementById("allCategoryRegion2Dropdown");
+
+const dropdownRegion = document.getElementsByClassName("dropdown-region");
+
 /**
  * 이벤트 함수
  */
@@ -220,6 +223,18 @@ allCategoryDropdownWrap.addEventListener("mouseleave", () => {
 	allCategoryRegionDropdown.style.visibility = 'hidden';
 	allCategoryRegion2Dropdown.style.visibility = 'hidden';
 })
+
+for(let i = 0; i < dropdownRegion.length; i++) {
+	dropdownRegion[i].addEventListener("click", (e) => {
+		let allCategoryDropdownHighlight = document.getElementsByClassName("all-category-dropdown-highlight");
+
+		let adDetailCategory = allCategoryDropdownHighlight[0].dataset.parent;
+		let adCategory = allCategoryDropdownHighlight[1].dataset.parent;
+		let region = e.target.dataset.parent;
+
+		window.location.href = "/category?order=recommend" + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region + "&page=1";
+	})
+}
 /**
  * 사용자 함수
  */
