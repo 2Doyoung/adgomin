@@ -18,7 +18,7 @@ public class CategoryController {
     }
 
     @GetMapping(value = "/category")
-    public ModelAndView getJoin(@RequestParam(value = "order", required = false) String order, @RequestParam(value = "adDetailCategory", required = false) String adDetailCategory
+    public ModelAndView category(@RequestParam(value = "order", required = false) String order, @RequestParam(value = "adDetailCategory", required = false) String adDetailCategory
             , @RequestParam(value = "adCategory", required = false) String adCategory, @RequestParam(value = "region", required = false) String region, @RequestParam(value = "page", required = false) int page) {
         ModelAndView modelAndView = new ModelAndView("category/category_list");
 
