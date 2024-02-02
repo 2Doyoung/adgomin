@@ -80,6 +80,12 @@ outdoorPrevButton.addEventListener('click', () => {
 for(let i = 0; i < popularSnsCard.length; i++) {
     let popularSnsCardHover = document.getElementsByClassName("popular-sns-card-hover")
 
+    popularSnsCard[i].addEventListener("click", (e) => {
+        let mediaOrder = e.currentTarget.dataset.parent;
+
+
+    })
+
     popularSnsCard[i].addEventListener("mouseover", () => {
         popularSnsCardHover[i].style.visibility = "visible";
     });

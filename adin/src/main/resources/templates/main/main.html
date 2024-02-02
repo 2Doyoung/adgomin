@@ -98,7 +98,7 @@
 		<div class="popular-sns-ad-wrap">
 			<div class="popular-sns-ad">
 				<div class="popular-sns-card-wrap" id="snsSlider">
-					<div th:each="mediaRegister : ${mediaRegisterSns}" class="popular-sns-card">
+					<div th:each="mediaRegister : ${mediaRegisterSns}" class="popular-sns-card" th:data-parent="${mediaRegister.mediaOrder}">
 						<div class="popular-sns-thumbnail">
 							<img class="main-thumbnail" th:src="@{/main/thumbnail/image (thumbnailImgNm=${mediaRegister.thumbnailImgNm}, thumbnailImgFilePath =${mediaRegister.thumbnailImgFilePath})}">
 						</div>
@@ -126,7 +126,7 @@
 		<div class="popular-transport-ad-wrap">
 			<div class="popular-transport-ad">
 				<div class="popular-transport-card-wrap" id="transportSlider">
-					<div th:each="mediaRegister : ${mediaRegisterTransport}" class="popular-transport-card">
+					<div th:each="mediaRegister : ${mediaRegisterTransport}" class="popular-transport-card" th:data-parent="${mediaRegister.mediaOrder}">
 						<div class="popular-transport-thumbnail">
 							<img class="main-thumbnail" th:src="@{/main/thumbnail/image (thumbnailImgNm=${mediaRegister.thumbnailImgNm}, thumbnailImgFilePath =${mediaRegister.thumbnailImgFilePath})}">
 						</div>
@@ -154,7 +154,7 @@
 		<div class="popular-outdoor-ad-wrap">
 			<div class="popular-outdoor-ad">
 				<div class="popular-outdoor-card-wrap" id="outdoorSlider">
-					<div th:each="mediaRegister : ${mediaRegisterOutdoor}" class="popular-outdoor-card">
+					<div th:each="mediaRegister : ${mediaRegisterOutdoor}" class="popular-outdoor-card" th:data-parent="${mediaRegister.mediaOrder}">
 						<div class="popular-outdoor-thumbnail">
 							<img class="main-thumbnail" th:src="@{/main/thumbnail/image (thumbnailImgNm=${mediaRegister.thumbnailImgNm}, thumbnailImgFilePath =${mediaRegister.thumbnailImgFilePath})}">
 						</div>

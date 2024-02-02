@@ -18,8 +18,10 @@ public class PostController {
     }
 
     @GetMapping(value = "/post")
-    public ModelAndView post() {
+    public ModelAndView post(@RequestParam(value = "mediaOrder", required = false) String mediaOrder) {
         ModelAndView modelAndView = new ModelAndView("post/post");
+
+        MediaRegisterVO getPost = this.postService.getPost(mediaOrder);
 
         return  modelAndView;
     }
