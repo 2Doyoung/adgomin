@@ -3,5 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.adin.post.mapper.PostMapper">
-
+    <select id="getPost" resultType="com.adin.media.vo.MediaRegisterVO">
+        SELECT
+            T1.ad_detail_category AS adDetailCategory
+             ,T1.media_title AS mediaTitle
+             ,T1.media_summary AS mediaSummary
+             ,T1.media_detail_explain AS mediaDetailExplain
+             ,T1.thumbnail_img_nm AS thumbnailImgNm
+             ,T1.thumbnail_origin_file_nm AS thumbnailOriginFileNm
+             ,T1.thumbnail_img_file_path AS thumbnailImgFilePath
+             ,T1.media_price AS mediaPrice
+             ,T2.media_introduce AS mediaIntroduce
+             ,T3.nickname AS nickname
+        FROM adin_media_register T1
+        LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adin_user T3 ON T1.email = T3.email
+        WHERE 1=1
+        AND T1.media_order = #{mediaOrder};
+    </select>
 </mapper>

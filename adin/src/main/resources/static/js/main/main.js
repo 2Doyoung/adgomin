@@ -83,7 +83,7 @@ for(let i = 0; i < popularSnsCard.length; i++) {
     popularSnsCard[i].addEventListener("click", (e) => {
         let mediaOrder = e.currentTarget.dataset.parent;
 
-
+        window.location.href = "/post?mediaOrder=" + mediaOrder;
     })
 
     popularSnsCard[i].addEventListener("mouseover", () => {

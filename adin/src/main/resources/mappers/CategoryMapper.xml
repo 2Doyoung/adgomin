@@ -7,12 +7,13 @@
         SELECT
             COUNT(*) AS cnt
         FROM adin_media_register T1
-                 LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
-                 LEFT JOIN adin_user T3 ON T1.email = T3.email
+        LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adin_user T3 ON T1.email = T3.email
         WHERE 1=1
-          AND ad_detail_category LIKE CONCAT('%', #{adDetailCategoryKo}, '%')
-          AND T2.ad_category LIKE CONCAT('%', #{adCategoryKo}, '%')
-          AND (T2.region LIKE CONCAT('%', #{regionKo}, '%') OR T2.region = '전국')
+        AND ad_detail_category LIKE CONCAT('%', #{adDetailCategoryKo}, '%')
+        AND T2.ad_category LIKE CONCAT('%', #{adCategoryKo}, '%')
+        AND (T2.region LIKE CONCAT('%', #{regionKo}, '%') OR T2.region = '전국')
+        AND T1.media_submit_status = 'Y'
     </select>
 
     <select id="categoryList" resultType="com.adin.media.vo.MediaRegisterVO">
@@ -34,6 +35,7 @@
         AND ad_detail_category LIKE CONCAT('%', #{adDetailCategoryKo}, '%')
         AND T2.ad_category LIKE CONCAT('%', #{adCategoryKo}, '%')
         AND (T2.region LIKE CONCAT('%', #{regionKo}, '%') OR T2.region = '전국')
+        AND T1.media_submit_status = 'Y'
         LIMIT #{pageStart}, #{perPageNum}
     </select>
 </mapper>
