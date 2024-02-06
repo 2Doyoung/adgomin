@@ -1,10 +1,35 @@
 /**
  * 전역변수
  */
+const region = document.getElementById("region");
+const adCategory = document.getElementById("adCategory");
 
 /**
  * 사용자 함수
  */
+document.title = "애드인 - " + mediaTitle;
+
+let regionSplit = getRegion.split(",");
+
+for(let i = 0; i < regionSplit.length; i++) {
+    let regionSpanTag = document.createElement("span");
+
+    regionSpanTag.append(regionSplit[i]);
+    regionSpanTag.classList.add("region-span");
+
+    region.appendChild(regionSpanTag);
+}
+
+let adCategorySplit = getAdCategory.split(",");
+
+for(let i = 0; i < adCategorySplit.length; i++) {
+    let adCategorySpanTag = document.createElement("span");
+
+    adCategorySpanTag.append(adCategorySplit[i]);
+    adCategorySpanTag.classList.add("ad-category-span");
+
+    adCategory.appendChild(adCategorySpanTag);
+}
 
 /**
  * XMLHttpRequest 성공 함수

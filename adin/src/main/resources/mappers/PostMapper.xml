@@ -14,7 +14,10 @@
              ,T1.thumbnail_img_file_path AS thumbnailImgFilePath
              ,T1.media_price AS mediaPrice
              ,T2.media_introduce AS mediaIntroduce
+             ,T2.region AS region
+             ,T2.ad_category AS adCategory
              ,T3.nickname AS nickname
+             ,T3.email AS email
         FROM adin_media_register T1
         LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
         LEFT JOIN adin_user T3 ON T1.email = T3.email

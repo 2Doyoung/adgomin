@@ -338,7 +338,7 @@ header {
 	height: 3rem;
 	border-radius: 10px;
 	margin-top: 0.2rem;
-	object-fit: contain;
+	object-fit: cover;
 }
 
 .profile-nickname {
