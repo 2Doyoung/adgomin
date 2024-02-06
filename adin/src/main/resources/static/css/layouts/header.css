@@ -224,10 +224,10 @@ header {
 }
 
 .login-box-hr {
-	width: 80%;
+	width: 21rem;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
-	border: 0.1px solid #BDBDBD;
+	border-width: 1px 0 0 0;
 }
 
 .login-box-signup-button {

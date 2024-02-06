@@ -512,7 +512,9 @@ ul {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	height: auto;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
 }
 
 .popular-sns-thumbnail {
@@ -654,6 +656,7 @@ ul {
 	top: 0;
 	color: #FFFFFF;
 	visibility: hidden;
+	border-radius: 10px;
 }
 
 .main-media-nickname {

@@ -593,17 +593,18 @@ td.text-right {
 
 .detail-thumbnail > img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border: 1px solid #D8D8D8;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    object-fit: cover;
 }
 
 .detail-thumbnail {
-    width: 35rem;
-    height: 20rem;
+    width: 31rem;
+    height: 20.2rem;
     overflow: hidden;
     position: relative;
 }
@@ -662,7 +663,7 @@ td.text-right {
     height: 10rem;
     margin: 3rem 0rem 0rem 0rem;
     border-radius: 30px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .media-register {
@@ -674,7 +675,7 @@ td.text-right {
 }
 
 .detail-thumbnail {
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .media-register > div > label {

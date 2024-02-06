@@ -484,12 +484,14 @@ textarea {
 
 .thumbnail > img {
     width: 100%;
-    height: auto;
+    height: 100%;
     border: 1px solid #D8D8D8;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 .currency-div {
