@@ -4,6 +4,12 @@
 const region = document.getElementById("region");
 const adCategory = document.getElementById("adCategory");
 
+const mediaDetailExplain = document.getElementById("mediaDetailExplain");
+
+/**
+ * 이벤트 함수
+ */
+
 /**
  * 사용자 함수
  */

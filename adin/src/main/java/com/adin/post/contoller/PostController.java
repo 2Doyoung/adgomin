@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.DecimalFormat;
+
 @Controller(value = "com.adin.post.controller.PostController")
 public class PostController {
     private final PostService postService;
@@ -21,6 +23,12 @@ public class PostController {
 
         MediaRegisterVO getPost = this.postService.getPost(mediaOrder);
 
+        String mediaPriceReplace = getPost.getMediaPrice().replaceAll(",", "");
+        int fiveMonthMediaPrice = Integer.parseInt(mediaPriceReplace) / 5;
+
+        DecimalFormat df = new DecimalFormat("###,###");
+        String fiveMonthMediaPriceFormat = df.format(fiveMonthMediaPrice);
+
         modelAndView.addObject("adDetailCategory", getPost.getAdDetailCategory());
         modelAndView.addObject("mediaTitle", getPost.getMediaTitle());
         modelAndView.addObject("mediaSummary", getPost.getMediaSummary());
@@ -34,6 +42,7 @@ public class PostController {
         modelAndView.addObject("adCategory", getPost.getAdCategory());
         modelAndView.addObject("nickname", getPost.getNickname());
         modelAndView.addObject("email", getPost.getEmail());
+        modelAndView.addObject("fiveMonthMediaPriceFormat", fiveMonthMediaPriceFormat);
 
         return  modelAndView;
     }
