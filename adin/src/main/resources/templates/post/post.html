@@ -15,6 +15,7 @@
     let mediaTitle = [[${mediaTitle}]];
     let getAdCategory = [[${adCategory}]];
     let getRegion = [[${region}]];
+    let mediaDetailExplain = [[${mediaDetailExplain}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
     <div class="post-wrap">
@@ -34,37 +35,42 @@
                     <div class="review-user-count">리뷰 123건</div>
                 </div>
                 <div class="post-tap">
-                    <span class="post-tap-list">광고매체 요약</span>
-                    <span class="post-tap-list">광고매체 설명</span>
+                    <span class="post-tap-list active" data-target="#mediaSummary">광고매체 요약</span>
+                    <span class="post-tap-list" data-target="#mediaDetailExplain">광고매체 설명</span>
                     <span class="post-tap-list">포트폴리오</span>
                     <span class="post-tap-list">리뷰</span>
                 </div>
-                <div>
-                    <div id="mediaDetailExplain"></div>
+                <div class="media-summary-wrap" id="mediaSummary">
+                    <div class="media-summary-div" th:text="${mediaSummary}"></div>
+                </div>
+                <div class="media-detail-explain-wrap" id="mediaDetailExplain">
+                    <div class="media-detail-explain-div" id="mediaDetailExplainDiv"></div>
                 </div>
             </div>
             <div class="post-information">
-                <div class="post-media-introduce">
-                    <div class="post-price" th:text="${mediaPrice}"></div><span class="won">원</span>
-                    <div><span class="five-month-price">월 <span th:text="${fiveMonthMediaPriceFormat}"></span>원</span> <span class="five-month">5개월 할부 시</span></div>
-                </div>
-                <div class="introduce">
-                    <div class="introduce-profile">
-                        <img th:src="@{/profile/image (email=${email})}">
+                <div class="post-information-wrap">
+                    <div class="post-media-introduce">
+                        <div class="post-price" th:text="${mediaPrice}"></div><span class="won">원</span>
+                        <div><span class="five-month-price">월 <span th:text="${fiveMonthMediaPriceFormat}"></span>원</span> <span class="five-month">5개월 할부 시</span></div>
                     </div>
-                    <span class="introduce-nickname" th:text="${nickname}"></span>
-                </div>
-                <div class="media-introduce-wrap">
-                    <div class="introduce-category">
-                        <span id="region" class="introduce-region"></span>
-                        <span id="adCategory" class="introduce-ad-category"></span>
+                    <div class="introduce">
+                        <div class="introduce-profile">
+                            <img th:src="@{/profile/image (email=${email})}">
+                        </div>
+                        <span class="introduce-nickname" th:text="${nickname}"></span>
                     </div>
-                    <input type="button" class="conversation-button" value="문의하기">
-                    <div class="introduce-introduce-wrap">
-                        <label>광고매체 소개</label>
-                        <div class="introduce-introduce" th:text="${mediaIntroduce}"></div>
+                    <div class="media-introduce-wrap">
+                        <div class="introduce-category">
+                            <span id="region" class="introduce-region"></span>
+                            <span id="adCategory" class="introduce-ad-category"></span>
+                        </div>
+                        <input type="button" class="conversation-button" value="문의하기">
+                        <div class="introduce-introduce-wrap">
+                            <label>광고매체 소개</label>
+                            <div class="introduce-introduce" th:text="${mediaIntroduce}"></div>
+                        </div>
+                        <div class="media-introduce-all-page"><span class="media-introduce-all-page-span">광고매체 소개 전체보기<i class="ri-arrow-right-s-line"></i></span></div>
                     </div>
-                    <div class="media-introduce-all-page"><span class="media-introduce-all-page-span">광고매체 소개 전체보기<i class="ri-arrow-right-s-line"></i></span></div>
                 </div>
             </div>
         </div>

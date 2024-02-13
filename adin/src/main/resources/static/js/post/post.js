@@ -4,16 +4,61 @@
 const region = document.getElementById("region");
 const adCategory = document.getElementById("adCategory");
 
-const mediaDetailExplain = document.getElementById("mediaDetailExplain");
+const mediaDetailExplainDiv = document.getElementById("mediaDetailExplainDiv");
+
+const tabs = document.querySelectorAll('.post-tap-list');
 
 /**
  * 이벤트 함수
  */
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-target');
+        const targetSection = document.querySelector(targetId);
 
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const postTapHeight = document.querySelector('.post-tap').offsetHeight;
+
+        window.scrollTo({
+            top: targetSection.offsetTop - headerHeight - postTapHeight,
+            behavior: 'auto'
+        });
+    });
+});
+
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+
+    // 헤더의 높이를 가져옵니다.
+    const headerHeight = document.querySelector('header').offsetHeight;
+
+    // post-tap의 높이를 가져옵니다.
+    const postTapHeight = document.querySelector('.post-tap').offsetHeight;
+
+    // 각 탭의 위치와 스크롤 위치를 비교하여 활성화된 탭을 결정합니다.
+    tabs.forEach(tab => {
+        const targetId = tab.getAttribute('data-target');
+        const section = document.querySelector(targetId);
+
+        // 요소가 존재하는 경우에만 처리합니다.
+        if (section) {
+            const sectionTop = section.offsetTop - headerHeight - postTapHeight;
+
+            if (scrollPosition >= sectionTop) {
+                // 현재 스크롤 위치가 해당 섹션의 상단 위치보다 크거나 같으면
+                // 해당 탭에 활성화 클래스를 추가합니다.
+                tabs.forEach(tab => tab.classList.remove('active'));
+                tab.classList.add('active');
+            }
+        }
+    });
+});
 /**
  * 사용자 함수
  */
 document.title = "애드인 - " + mediaTitle;
+
+mediaDetailExplainDiv.innerHTML = mediaDetailExplain;
 
 let regionSplit = getRegion.split(",");
 

@@ -229,16 +229,96 @@ body {
     height: 3.5rem;
     width: 43rem;
     display: flex;
+    position: sticky;
+    top: 9.4rem;
 }
 
 .post-tap-list {
     display: inline-block;
     font-size: 1rem;
     font-weight: 500;
-    color: #303441;
+    color: #555969;
     width: 11rem;
     text-align: center;
     padding-top: 1rem;
     border-right: 1px solid #ccc;
     background-color: #fafafa;
+    height: 2.5rem;
+}
+
+.media-summary-wrap {
+    width: 43rem;
+    white-space: pre-line;
+    margin-top: 1rem;
+    color: #495057;
+    font-size: 0.95rem;
+}
+
+.media-detail-explain-wrap {
+    width: 43rem;
+    color: #303441;
+}
+
+.media-detail-explain-div > p {
+    margin: 0;
+    height: 0;
+}
+
+.media-detail-explain-div > h1, .media-detail-explain-div > h3, .media-detail-explain-div > h2 {
+    margin: 0;
+}
+
+.media-detail-explain-div > h1 {
+    font-size: 1.5rem;
+}
+
+.media-detail-explain-div > h2 {
+    font-size: 1.3rem;
+}
+
+.media-detail-explain-div > p > s, .media-detail-explain-div > h3 > s {
+    display: ruby-text;
+}
+
+.media-detail-explain-div > h3 > img, .media-detail-explain-div > p > img {
+    width: 43rem;
+}
+
+.media-detail-explain-div > ul {
+    border: 1px solid #D8D8D8;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.media-detail-explain-div > ul > li {
+    margin-left: 1rem;
+    color: #495057;
+    font-weight: 500;
+}
+
+.media-summary-div {
+    border: 1px solid #0A122A;
+    line-height: 2rem;
+    padding: 1rem 0rem 1rem 2rem;
+    background-color: #0A122A;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.media-detail-explain-div > .ql-video {
+    width: 43rem;
+    height: 23rem;
+}
+
+.post-information-wrap {
+    position: sticky;
+    top: 11.5rem;
+}
+
+.active {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    color: #000000;
 }
