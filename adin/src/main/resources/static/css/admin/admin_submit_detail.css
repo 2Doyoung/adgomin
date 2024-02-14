@@ -21,14 +21,15 @@ body {
 
 .user-wrap {
     margin: auto 17%;
-    height: 3150px;
+    height: 3200px;
 }
 
 .user-main-title {
     font-size: 1.5rem;
     padding: 1rem 0;
     font-weight: 500;
-    margin: auto 17%;
+    margin: auto;
+    width: 1200px;
 }
 
 .user-sub-wrap {
@@ -36,8 +37,8 @@ body {
 }
 
 .user-sub-menu {
-    width: 20%;
-    height: 3150px;
+    width: 14rem;
+    height: 3200px;
     display: inline-block;
     border-right: 1px solid #ccc;
 }
@@ -50,7 +51,8 @@ body {
 
 .user-sub-menu > ul {
     list-style: none;
-    padding: 1rem;
+    padding: 0;
+    margin: 2rem 0 0;
 }
 
 .user-sub-menu > ul > li {
