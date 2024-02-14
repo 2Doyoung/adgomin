@@ -20,7 +20,8 @@ body {
 }
 
 .user-wrap {
-    margin: auto 17%;
+    margin: auto;
+    width: 1200px;
     height: 3200px;
 }
 
@@ -776,5 +777,5 @@ td.text-right {
     font-weight: 500;
     font-size: 1rem;
     cursor: pointer;
-    margin-left: 43.5rem;
+    margin-left: 45rem;
 }
