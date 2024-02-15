@@ -31,6 +31,7 @@
         FROM adin_user
         WHERE 1=1
         AND email = #{email}
+        GROUP BY user_order, email
     </select>
 
     <select id="certifiedCheck" resultType="com.adin.join.vo.JoinVO">
@@ -47,6 +48,7 @@
         WHERE 1=1
         AND email = #{email}
         AND certified = #{certified}
+        GROUP BY user_order, email
     </select>
 
     <update id="certifiedUpdate" parameterType="com.adin.join.entity.JoinEntity">

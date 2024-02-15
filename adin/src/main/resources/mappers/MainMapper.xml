@@ -14,6 +14,7 @@
         FROM adin_user
         WHERE 1=1
         AND email = #{email}
+        GROUP BY user_order, email
     </select>
 
     <select id="popularSnsMedia" resultType="com.adin.media.vo.MediaRegisterVO">
