@@ -25,7 +25,7 @@ import java.nio.charset.StandardCharsets;
 
 @Controller(value = "com.adin.email.controller.EmailController")
 public class EmailController {
-    @Autowired
+
     private final EmailService emailService;
 
     @Autowired
