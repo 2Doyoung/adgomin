@@ -9,7 +9,15 @@ public class MediaRegisterVO extends MediaRegisterEntity {
     private String region;
     private String adCategory;
     private String mediaUrl;
+    private String userOrder;
 
+    public String getUserOrder() {
+        return userOrder;
+    }
+
+    public void setUserOrder(String userOrder) {
+        this.userOrder = userOrder;
+    }
 
     public String getMediaIntroduce() {
         return mediaIntroduce;

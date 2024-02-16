@@ -18,6 +18,7 @@
     let mediaDetailExplain = [[${mediaDetailExplain}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" id="userOrder" th:value="${userOrder}">
     <div class="post-wrap">
         <div class="post-top-wrap">
             <div>
@@ -57,7 +58,7 @@
                         <div class="introduce-profile">
                             <img th:src="@{/profile/image (email=${email})}">
                         </div>
-                        <span class="introduce-nickname" th:text="${nickname}"></span>
+                        <span class="introduce-nickname" th:text="${nickname}" id="nickname"></span>
                     </div>
                     <div class="media-introduce-wrap">
                         <div class="introduce-category">
@@ -69,7 +70,7 @@
                             <label>광고매체 소개</label>
                             <div class="introduce-introduce" th:text="${mediaIntroduce}"></div>
                         </div>
-                        <div class="media-introduce-all-page"><span class="media-introduce-all-page-span">광고매체 소개 전체보기<i class="ri-arrow-right-s-line"></i></span></div>
+                        <div class="media-introduce-all-page"><span class="media-introduce-all-page-span" id="introduceAllPage">광고매체 소개 전체보기<i class="ri-arrow-right-s-line"></i></span></div>
                     </div>
                 </div>
             </div>

@@ -42,6 +42,7 @@ public class PostController {
         modelAndView.addObject("adCategory", getPost.getAdCategory());
         modelAndView.addObject("nickname", getPost.getNickname());
         modelAndView.addObject("email", getPost.getEmail());
+        modelAndView.addObject("userOrder", getPost.getUserOrder());
         modelAndView.addObject("fiveMonthMediaPriceFormat", fiveMonthMediaPriceFormat);
 
         return  modelAndView;

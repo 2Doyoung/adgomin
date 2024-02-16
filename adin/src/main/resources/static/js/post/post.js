@@ -8,9 +8,21 @@ const mediaDetailExplainDiv = document.getElementById("mediaDetailExplainDiv");
 
 const tabs = document.querySelectorAll('.post-tap-list');
 
+const nickname = document.getElementById("nickname");
+const introduceAllPage = document.getElementById("introduceAllPage");
+const userOrder = document.getElementById("userOrder");
+
 /**
  * 이벤트 함수
  */
+nickname.addEventListener("click", () => {
+    window.open("http://localhost:8080/introduce/" + userOrder.value);
+})
+
+introduceAllPage.addEventListener("click", () => {
+    window.open("http://localhost:8080/introduce/" + userOrder.value);
+})
+
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
         const targetId = tab.getAttribute('data-target');
@@ -47,6 +59,7 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
 /**
  * 사용자 함수
  */

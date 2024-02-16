@@ -3,5 +3,19 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.adin.introduce.mapper.IntroduceMapper">
-
+    <select id="getIntroduce" resultType="com.adin.media.vo.MediaIntroduceVO">
+        SELECT
+            T1.email
+            ,T1.media_introduce AS mediaIntroduce
+            ,T1.region AS region
+            ,T1.ad_category AS adCategory
+            ,T1.media_url AS mediaUrl
+            ,T2.nickname AS nickname
+            ,T2.profile_img_nm AS profileImgNm
+            ,T2.profile_origin_file_nm AS profileOriginFileNm
+            ,T2.profile_img_file_path AS profileImgFilePath
+        FROM adin_media_introduce T1
+        LEFT JOIN adin_user T2 ON T1.email = T2.email
+        WHERE T2.user_order = #{userOrder}
+    </select>
 </mapper>

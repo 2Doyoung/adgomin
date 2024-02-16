@@ -16,7 +16,18 @@
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <div class="introduce-wrap">
+    <div class="introduce-profile-wrap">
+        <div class="profile-div">
+            <img th:src="@{/profile/image (email=${email})}">
+        </div>
+        <div class="nickname-div">
+            <span th:text="${nickname}"></span>
+        </div>
+        <input type="button" class="conversation-button" value="문의하기">
+    </div>
+    <div class="introduce-main-wrap">
 
+    </div>
 </div>
 <hr class="user-footer">
 <th:block th:replace="~{layouts/footer :: body}"></th:block>
