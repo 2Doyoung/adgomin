@@ -12,7 +12,9 @@
 </head>
 <body>
 <script th:inline="javascript">
-
+    let getRegion = [[${region}]];
+    let getAdCategory = [[${adCategory}]];
+    let getMediaUrl = [[${mediaUrl}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <div class="introduce-wrap">
@@ -23,6 +25,15 @@
         <div class="nickname-div">
             <span th:text="${nickname}"></span>
         </div>
+        <div class="review-star">
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <div class="review-count"> 5.0</div>
+            <div class="review-user-count">(123)</div>
+        </div>
         <input type="button" class="conversation-button" value="문의하기">
     </div>
     <div class="introduce-main-wrap">
@@ -31,6 +42,24 @@
             <span class="introduce-tap-list">포트폴리오</span>
             <span class="introduce-tap-list">리뷰</span>
             <span class="introduce-tap-list">광고매체</span>
+        </div>
+        <div class="media-introduce-wrap">
+            <div>
+                <label class="introduce-label">소개</label>
+                <div class="media-introduce-div" th:text="${mediaIntroduce}"></div>
+            </div>
+            <div>
+                <label class="introduce-label">광고매체 지역</label>
+                <div id="region" class="region-div"></div>
+            </div>
+            <div>
+                <label class="introduce-label">광고매체 분야</label>
+                <div id="adCategory" class="ad-category-div"></div>
+            </div>
+            <div>
+                <label class="introduce-label">광고매체 URL</label>
+                <div th:text="${mediaUrl}" id="mediaUrl" class="media-url-detail"></div>
+            </div>
         </div>
     </div>
 </div>

@@ -65,10 +65,14 @@ body {
 }
 
 .introduce-tap {
-    margin-top: 1rem;
     padding-left: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #e4e5ed;
+    position: sticky;
+    top: 9.4rem;
+    margin-bottom: 1rem;
+    background-color: #FFFFFF;
+    padding-top: 1rem;
 }
 
 .introduce-tap-list {
@@ -81,4 +85,78 @@ body {
     color: #000000;
     font-weight: 500;
     border-bottom: 2px solid #000000;
+}
+
+.media-introduce-div {
+    white-space: pre-line;
+    color: #495057;
+    margin-left: 3rem;
+    margin-top: 1rem;
+    line-height: 1.5rem;
+}
+
+.introduce-label {
+    margin-left: 3rem;
+    font-weight: 600;
+    color: #303441;
+    font-size: 1.2rem;
+}
+
+.media-introduce-wrap > div {
+    margin-bottom: 5rem;
+}
+
+.region-span {
+    padding: 0.5rem 1rem;
+    background-color: #D8D8D8;
+    border-radius: 5px;
+    margin-right: 1rem;
+    color: #555969;
+}
+
+.ad-category-span {
+    padding: 0.5rem 1rem;
+    background-color: #D8D8D8;
+    border-radius: 5px;
+    margin-right: 1rem;
+    color: #555969;
+}
+
+.media-url-detail {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: #175cbe;
+    color: #175cbe;
+    margin-left: 3rem;
+    margin-top: 1rem;
+}
+
+.region-div, .ad-category-div {
+    margin-left: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.ri-star-fill {
+    color: #FFD400;
+}
+
+.review-count {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    vertical-align: text-top;
+}
+
+.review-user-count {
+    display: inline-block;
+    font-size: 0.9rem;
+    vertical-align: text-top;
+}
+
+.review-star {
+    margin-left: 4.5rem;
+    margin-top: 1rem;
+    color: #727585;
 }
