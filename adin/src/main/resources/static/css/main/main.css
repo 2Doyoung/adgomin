@@ -246,6 +246,7 @@ ul {
 	padding: 5px 10px 5px 10px;
 	border-radius: 5px;
 	color: #FFFFFF;
+	cursor: pointer;
 }
 
 .category-search-example > ul > li:first-child {
@@ -667,4 +668,8 @@ ul {
 .card-hover-info {
 	margin-left: 3rem;
 	margin-top: 2rem;
+}
+
+.category-search-second-ul > li {
+	margin-top: 1rem;
 }

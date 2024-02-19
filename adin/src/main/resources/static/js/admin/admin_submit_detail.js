@@ -75,24 +75,28 @@ quill.clipboard.dangerouslyPasteHTML(htmlContent);
 
 document.getElementById("focus").focus();
 
-let regionSplit = getRegion.split(',');
+if(getRegion != null) {
+    let regionSplit = getRegion.split(',');
 
-for(let i = 0; i < regionSplit.length; i++) {
-    let regionSpanTag = document.createElement("span");
-    regionSpanTag.append(regionSplit[i]);
-    regionSpanTag.classList.add("region-span")
+    for(let i = 0; i < regionSplit.length; i++) {
+        let regionSpanTag = document.createElement("span");
+        regionSpanTag.append(regionSplit[i]);
+        regionSpanTag.classList.add("region-span")
 
-    region.appendChild(regionSpanTag);
+        region.appendChild(regionSpanTag);
+    }
 }
 
-let adCategorySplit = getAdCategory.split(',');
+if(getAdCategory != null) {
+    let adCategorySplit = getAdCategory.split(',');
 
-for(let i = 0; i < adCategorySplit.length; i++) {
-    let adCategorySpanTag = document.createElement("span");
-    adCategorySpanTag.append(adCategorySplit[i]);
-    adCategorySpanTag.classList.add("ad-category-span")
+    for(let i = 0; i < adCategorySplit.length; i++) {
+        let adCategorySpanTag = document.createElement("span");
+        adCategorySpanTag.append(adCategorySplit[i]);
+        adCategorySpanTag.classList.add("ad-category-span")
 
-    adCategory.appendChild(adCategorySpanTag);
+        adCategory.appendChild(adCategorySpanTag);
+    }
 }
 
 let adDetailCategorySpanTag = document.createElement("span");

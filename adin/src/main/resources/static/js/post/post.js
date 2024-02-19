@@ -89,6 +89,18 @@ for(let i = 0; i < adCategorySplit.length; i++) {
     adCategory.appendChild(adCategorySpanTag);
 }
 
+let paragraphs = document.getElementsByTagName("p");
+
+for(let i = 0; i < paragraphs.length; i++) {
+    let children = paragraphs[i].childNodes;
+    for(let j = 0; j < children.length; j++) {
+        if (children[j].nodeName === "BR") {
+            paragraphs[i].classList.add("p-br");
+            break;
+        }
+    }
+}
+
 /**
  * XMLHttpRequest 성공 함수
  */

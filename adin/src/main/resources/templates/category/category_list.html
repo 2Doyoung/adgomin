@@ -116,7 +116,7 @@
                 </div>
             </div>
             <div class="category-list-wrap">
-                <div th:each="category : ${categoryList}" class="category-card">
+                <div th:each="category : ${categoryList}" class="category-card" th:data-parent="${category.mediaOrder}">
                     <div class="category-thumbnail">
                         <img class="category-thumbnail-img" th:src="@{/main/thumbnail/image (thumbnailImgNm=${category.thumbnailImgNm}, thumbnailImgFilePath =${category.thumbnailImgFilePath})}">
                     </div>

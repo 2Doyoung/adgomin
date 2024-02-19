@@ -31,6 +31,10 @@ let outdoorCurrentIndex = 0;
 const popularSnsCard = document.getElementsByClassName("popular-sns-card");
 const popularTransportCard = document.getElementsByClassName("popular-transport-card");
 const popularOutdoorCard = document.getElementsByClassName("popular-outdoor-card");
+
+const categorySearchLi = document.getElementsByClassName("category-search-li");
+const iconCategoryLi = document.getElementsByClassName("icon-category-li");
+
 /**
  * 이벤트 함수
  */
@@ -116,6 +120,22 @@ for(let i = 0; i < popularOutdoorCard.length; i++) {
 
     popularOutdoorCard[i].addEventListener("mouseout", () => {
         popularOutdoorCardHover[i].style.visibility = "hidden";
+    })
+}
+
+for(let i = 0; i < categorySearchLi.length; i++) {
+    categorySearchLi[i].addEventListener("click", (e) => {
+        let adCategory = e.currentTarget.dataset.parent;
+
+        window.location.href = "/category?order=recommend&adDetailCategory=all&adCategory=" + adCategory + "&region=null&page=1"
+    })
+}
+
+for(let i = 0; i < iconCategoryLi.length; i++) {
+    iconCategoryLi[i].addEventListener("click", (e) => {
+        let adDetailCategory = e.currentTarget.dataset.parent;
+
+        window.location.href = "/category?order=recommend&adDetailCategory=" + adDetailCategory + "&page=1";
     })
 }
 /**

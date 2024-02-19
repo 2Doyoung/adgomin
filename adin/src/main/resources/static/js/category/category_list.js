@@ -167,7 +167,7 @@ for(let i = 0; i < categoryLi.length; i++) {
 
 for(let i = 0; i < orderCheckboxLine.length; i++) {
     orderCheckboxLine[i].addEventListener("click", (e) => {
-        order = e.target.children[0].children[0].dataset.parent;
+        order = e.currentTarget.children[0].children[0].dataset.parent;
 
         window.location.href = "/category?order=" + order + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region + "&page=1";
     })
@@ -207,6 +207,12 @@ if(selectRegionClose != null) {
 
 for(let i = 0; i < categoryCard.length; i++) {
     let categoryCardHover = document.getElementsByClassName("category-card-hover");
+
+    categoryCard[i].addEventListener("click", (e) => {
+        let mediaOrder = e.currentTarget.dataset.parent;
+
+        window.location.href = "/post?mediaOrder=" + mediaOrder;
+    })
 
     categoryCard[i].addEventListener("mouseover", () => {
         categoryCardHover[i].style.visibility = "visible";

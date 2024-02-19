@@ -261,7 +261,6 @@ body {
 
 .media-detail-explain-div > p {
     margin: 0;
-    height: 0;
 }
 
 .media-detail-explain-div > h1, .media-detail-explain-div > h3, .media-detail-explain-div > h2 {
@@ -280,7 +279,7 @@ body {
     display: ruby-text;
 }
 
-.media-detail-explain-div > h3 > img, .media-detail-explain-div > p > img {
+.media-detail-explain-div > h3 > img, .media-detail-explain-div > p > img, .media-detail-explain-div > img {
     width: 43rem;
 }
 
@@ -321,4 +320,8 @@ body {
     background-color: #FFFFFF;
     border-bottom: 1px solid #FFFFFF;
     color: #000000;
+}
+
+.p-br {
+    height: 0;
 }

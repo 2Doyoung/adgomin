@@ -29,26 +29,18 @@
 					</div>
 					<div class="category-search-example">
 						<ul>
-							<li>
-								# 게임
-							</li>
-							<li>
-								# 제품
-							</li>
-							<li>
-								# 음식점
-							</li>
-							<li>
-								# 병원
-							</li>
-							<li>
-								# 어플
-							</li>
+							<li class="category-search-li" data-parent="game"># 게임</li>
+							<li class="category-search-li" data-parent="mukbang"># 먹방</li>
+							<li class="category-search-li" data-parent="app"># 어플</li>
+							<li class="category-search-li" data-parent="hospital"># 병원</li>
+							<li class="category-search-li" data-parent="restaurant"># 음식점</li>
 						</ul>
-					</div>
-					<div class="category-search-area">
-						<input type="text" class="category-search" placeholder="카테고리를 검색해보세요.">
-						<i class="ri-search-line"></i>
+						<ul class="category-search-second-ul">
+							<li class="category-search-li" data-parent="cosmetics"># 화장품</li>
+							<li class="category-search-li" data-parent="academy"># 학원</li>
+							<li class="category-search-li" data-parent="food"># 식품</li>
+							<li class="category-search-li" data-parent="product"># 제품</li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -56,39 +48,39 @@
 		<div class="icon-category-title">원하는 광고매체를 찾아보세요 🔍</div>
 		<div class="icon-category-area">
 			<ul class="icon-category-ul">
-				<li>
+				<li class="icon-category-li" data-parent="youtube">
 					<img class="blog-logo" th:src="@{/images/youtube-icon.png}">
 					<span class="icon-category-youtube-span">유튜브</span>
 				</li>
-				<li class="icon-category-instagram-li">
+				<li class="icon-category-instagram-li icon-category-li" data-parent="instagram">
 					<img class="blog-logo" th:src="@{/images/instagram-icon.png}">
 					<span class="icon-category-instagram-span">인스타그램</span>
 				</li>
-				<li>
+				<li class="icon-category-li" data-parent="facebook">
 					<img class="blog-logo" th:src="@{/images/facebook-icon.png}">
 					<span class="icon-category-facebook-span">페이스북</span>
 				</li>
-				<li>
+				<li class="icon-category-li" data-parent="blog">
 					<img class="blog-logo" th:src="@{/images/blog-icon.png}">
 					<span class="icon-category-blog-span">블로그</span>
 				</li>
-				<li>
+				<li class="icon-category-li" data-parent="subway">
 					<img class="blog-logo" th:src="@{/images/subway-icon.png}">
 					<span class="icon-category-subway-span">지하철</span>
 				</li>
-				<li>
+				<li class="icon-category-li" data-parent="bus">
 					<img class="blog-logo" th:src="@{/images/bus-icon.png}">
 					<span class="icon-category-bus-span">버스</span>
 				</li>
-				<li>
+				<li class="icon-category-li" data-parent="building">
 					<img class="blog-logo" th:src="@{/images/building-icon.png}">
 					<span class="icon-category-outdoor-span">옥외광고</span>
 				</li>
-				<li>
+				<li class="icon-category-li" data-parent="movie">
 					<img class="blog-logo" th:src="@{/images/movie-icon.png}">
 					<span class="icon-category-movie-span">영화관</span>
 				</li>
-				<li>
+				<li class="icon-category-li" data-parent="flag">
 					<img class="blog-logo" th:src="@{/images/flag-icon.png}">
 					<span class="icon-category-movie-span">현수막</span>
 				</li>
