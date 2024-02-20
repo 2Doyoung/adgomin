@@ -102,6 +102,12 @@ for(let i = 0; i < popularSnsCard.length; i++) {
 for(let i = 0; i < popularTransportCard.length; i++) {
     let popularTransportCardHover = document.getElementsByClassName("popular-transport-card-hover")
 
+    popularTransportCard[i].addEventListener("click", (e) => {
+        let mediaOrder = e.currentTarget.dataset.parent;
+
+        window.location.href = "/post?mediaOrder=" + mediaOrder;
+    })
+
     popularTransportCard[i].addEventListener("mouseover", () => {
         popularTransportCardHover[i].style.visibility = "visible";
     })
@@ -113,6 +119,12 @@ for(let i = 0; i < popularTransportCard.length; i++) {
 
 for(let i = 0; i < popularOutdoorCard.length; i++) {
     let popularOutdoorCardHover = document.getElementsByClassName("popular-outdoor-card-hover")
+
+    popularOutdoorCard[i].addEventListener("click", (e) => {
+        let mediaOrder = e.currentTarget.dataset.parent;
+
+        window.location.href = "/post?mediaOrder=" + mediaOrder;
+    })
 
     popularOutdoorCard[i].addEventListener("mouseover", () => {
         popularOutdoorCardHover[i].style.visibility = "visible";

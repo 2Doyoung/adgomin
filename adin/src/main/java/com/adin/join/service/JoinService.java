@@ -63,7 +63,7 @@ public class JoinService {
         loginLogEntity.setEmail(joinEntity.getEmail());
         loginLogEntity.setLoginTime(new Date());
 
-        if(joinVO.getCount() == 0) {
+        if(joinVO == null) {
             loginLogEntity.setStatus("EMAIL_NOT_EXIST");
             this.joinMapper.insertLoginLog(loginLogEntity);
             return CommonResult.EMAIL_NOT_EXIST;

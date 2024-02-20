@@ -47,6 +47,7 @@
 							</div>
 						</div>
 						<div th:if="${session.LOGIN_USER.userType == 'media'}" class="dropdown-sub" id="mediaManage">광고매체 관리</div>
+						<div th:if="${session.LOGIN_USER.userType == 'media'}" class="dropdown-sub" id="portfolio">포트폴리오 관리</div>
 						<div th:if="${session.LOGIN_USER.userType == 'admin'}" class="dropdown-sub" id="adminUserManage">사용자 관리</div>
 						<div th:if="${session.LOGIN_USER.userType == 'admin'}" class="dropdown-sub" id="adminAdManage">광고 관리</div>
 						<div class="dropdown-sub" id="userSetting">계정설정</div>
@@ -89,7 +90,7 @@
 							<div>
 								<span data-parent="building">옥외광고</span>
 								<span data-parent="movie">영화관</span>
-								<span data-parent="flag">현수</span>
+								<span data-parent="flag">현수막</span>
 							</div>
 						</div>
 					</div>
