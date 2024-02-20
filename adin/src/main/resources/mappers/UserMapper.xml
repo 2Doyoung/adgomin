@@ -39,15 +39,18 @@
           AND email = #{email}
     </update>
 
-    <delete id="userSecession" parameterType="com.adin.join.vo.JoinVO">
-        DELETE FROM adin_user
-        WHERE email = #{email}
-    </delete>
+    <update id="userSecession" parameterType="com.adin.join.vo.JoinVO">
+        UPDATE
+            adin_user
+        SET use_yn = '0'
+        WHERE 1=1
+        AND email = #{email}
+    </update>
 
     <insert id="userSecessionReason" parameterType="com.adin.user.entity.SecessionReasonEntity">
         INSERT INTO adin_secession_reason
-        (reason, email)
+        (reason, email, create_dt, modify_dt)
         VALUES
-            (#{reason}, #{email})
+            (#{reason}, #{email}, now(), now())
     </insert>
 </mapper>

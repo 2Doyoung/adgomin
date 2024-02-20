@@ -34,6 +34,8 @@ const allCategoryRegion2Dropdown = document.getElementById("allCategoryRegion2Dr
 
 const dropdownRegion = document.getElementsByClassName("dropdown-region");
 
+const portfolio = document.getElementById("portfolio");
+
 /**
  * 이벤트 함수
  */
@@ -234,6 +236,12 @@ for(let i = 0; i < dropdownRegion.length; i++) {
 
 		window.location.href = "/category?order=recommend" + "&adDetailCategory=" + adDetailCategory + "&adCategory=" + adCategory + "&region=" + region + "&page=1";
 	})
+}
+
+if(portfolio != null) {
+	portfolio.addEventListener("click", () => {
+		window.location.href = "/portfolio";
+	});
 }
 /**
  * 사용자 함수
