@@ -28,7 +28,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-@Controller
+@Controller(value = "com.adin.main.controller.MainController")
 public class MainController {
 	private static final String COOKIE = "adinEncryptionCookie";
 	private static final String SALT = "adinEncryptionSalt";

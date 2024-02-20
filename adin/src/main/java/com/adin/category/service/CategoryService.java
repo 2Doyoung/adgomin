@@ -3,6 +3,7 @@ package com.adin.category.service;
 import com.adin.category.mapper.CategoryMapper;
 import com.adin.join.vo.JoinVO;
 import com.adin.media.vo.MediaRegisterVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class CategoryService {
     private final CategoryMapper categoryMapper;
 
+    @Autowired
     public CategoryService(CategoryMapper categoryMapper) {
         this.categoryMapper = categoryMapper;
     }

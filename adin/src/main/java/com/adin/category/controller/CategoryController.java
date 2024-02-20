@@ -4,6 +4,7 @@ import com.adin.category.service.CategoryService;
 import com.adin.common.CategoryCriteria;
 import com.adin.common.CategoryPaging;
 import com.adin.media.vo.MediaRegisterVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class CategoryController {
     private final CategoryService categoryService;
 
+    @Autowired
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }

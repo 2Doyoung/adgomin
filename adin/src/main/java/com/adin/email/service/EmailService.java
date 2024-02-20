@@ -1,6 +1,7 @@
 package com.adin.email.service;
 
 import com.adin.email.mapper.EmailMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ public class EmailService {
 
     private JavaMailSender javaMailSender;
 
+    @Autowired
     public EmailService(EmailMapper emailMapper, JavaMailSender javaMailSender) {
         this.emailMapper = emailMapper;
         this.javaMailSender = javaMailSender;
