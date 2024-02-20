@@ -5,9 +5,9 @@
 <mapper namespace="com.adin.media.mapper.MediaMapper">
     <insert id="insertMediaIntroduce" parameterType="com.adin.join.entity.JoinEntity">
         INSERT INTO adin_media_introduce
-            (email)
+            (email, create_dt, modify_dt)
         VALUES
-            (#{email})
+            (#{email}, NOW(), NOW())
     </insert>
 
     <insert id="insertMediaRegister" parameterType="com.adin.join.entity.JoinEntity">
@@ -65,6 +65,7 @@
         ,region = #{region}
         ,ad_category = #{adCategory}
         ,media_url = #{mediaUrl}
+        ,modify_dt = NOW()
         WHERE 1=1
           AND email = #{email}
     </update>

@@ -43,6 +43,7 @@
         UPDATE
             adin_user
         SET use_yn = '0'
+        ,modify_dt = now()
         WHERE 1=1
         AND email = #{email}
     </update>
