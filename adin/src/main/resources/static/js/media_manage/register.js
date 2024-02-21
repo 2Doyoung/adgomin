@@ -42,7 +42,6 @@ for(let i = 0; i < adCategoryList.length; i++) {
                     adCategoryList[i].classList.remove("ad-category-selected");
                 }
             } else if(!(document.getElementsByClassName("ad-category-selected").length > 0)) {
-
                 if(adCategoryList[i].classList.contains("ad-category-selected")) {
                     adCategoryList[i].classList.remove("ad-category-selected");
                 } else {

@@ -38,28 +38,33 @@
             <div class="portfolio-sub-main-content-information">
                 <div>
                     <label>제목</label>
+                    <span id="titleSpan">포트폴리오 제목을 입력해주세요.</span><span id="titleLength"> (0 / 30)</span>
                     <div>
-                        <input type="text" spellcheck="false" placeholder="포트폴리오 제목">
+                        <input type="text" id="portfolioTitle" spellcheck="false" placeholder="포트폴리오 제목">
                     </div>
                 </div>
                 <div class="ad-detail-category">
                     <label>카테고리</label>
+                    <span id="adDetailCategorySpan">광고를 진행했던 카테고리를 선택해주세요.</span>
+                    <input type="text" class="ad-detail-category-focus" id="adDetailCategoryFocus" readonly>
                     <div>
                         <ul>
                             <li class="ad-detail-category-first-li ad-detail-category-list">유튜브</li>
-                            <li class="ad-category-list">인스타그램</li>
-                            <li class="ad-category-list">페이스북</li>
-                            <li class="ad-category-list">블로그</li>
-                            <li class="ad-category-list">지하철</li>
-                            <li class="ad-category-list">버스</li>
-                            <li class="ad-category-list">옥외광고</li><br>
-                            <li class="ad-detail-category-first-li ad-category-list">영화관</li>
-                            <li class="ad-category-list">현수막</li>
+                            <li class="ad-detail-category-list">인스타그램</li>
+                            <li class="ad-detail-category-list">페이스북</li>
+                            <li class="ad-detail-category-list">블로그</li>
+                            <li class="ad-detail-category-list">지하철</li>
+                            <li class="ad-detail-category-list">버스</li>
+                            <li class="ad-detail-category-list">옥외광고</li><br>
+                            <li class="ad-detail-category-first-li ad-detail-category-list">영화관</li>
+                            <li class="ad-detail-category-list">현수막</li>
                         </ul>
                     </div>
                 </div>
                 <div class="ad-category">
                     <label>광고분야</label>
+                    <span id="adCategorySpan">광고를 진행했던 광고분야를 선택해주세요.</span>
+                    <input type="text" class="ad-category-focus" id="adCategoryFocus" readonly>
                     <div>
                         <ul>
                             <li class="category-first-li ad-category-list">게임</li>
@@ -76,6 +81,8 @@
                 </div>
                 <div class="region-choice">
                     <label>지역</label>
+                    <span id="regionSpan">광고를 진행했던 지역을 선택해주세요.</span>
+                    <input type="text" class="region-focus" id="regionFocus" readonly>
                     <div>
                         <ul>
                             <li class="region_first_li region-category">전국</li>
@@ -100,7 +107,7 @@
                     </div>
                 </div>
                 <div>
-                    <label class="thumbnail-label">포트폴리오 메인 이미지</label>
+                    <label class="thumbnail-label">포트폴리오 메인 이미지(필수)</label>
                     <div class="thumbnail-div">
                         <div class="thumbnail">
                             <img class="thumbnailBasicImg" th:if="${session.LOGIN_USER != null}" th:src="@{/thumbnail/image (email=${session.LOGIN_USER.getEmail()})}">
@@ -117,7 +124,7 @@
                     </div>
                 </div>
                 <div>
-                    <label class="detail-img-label">포트폴리오 상세 이미지</label>
+                    <label class="detail-img-label">포트폴리오 상세 이미지(1개 필수)</label>
                     <div class="detail-img-div">
                         <div class="detail-img-change-div">
                             <label for="detailImg">
@@ -130,7 +137,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="button" class="save-button" value="등록완료">
+                <input type="button" class="save-button" id="saveButton" value="등록완료">
             </div>
         </div>
     </div>
