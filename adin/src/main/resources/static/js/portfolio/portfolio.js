@@ -8,6 +8,10 @@ const adDetailCategoryList = document.getElementsByClassName("ad-detail-category
 const adCategoryList = document.getElementsByClassName("ad-category-list");
 const regionCategory = document.getElementsByClassName("region-category");
 
+const thumbnailImg = document.getElementById("thumbnailImg");
+
+let thumbnailImgSave;
+
 /**
  * 이벤트 함수
  */
@@ -23,6 +27,10 @@ saveButton.addEventListener("click", () => {
 
     let regionSelected = document.getElementsByClassName("region-selected");
     let regionSpan = document.getElementById("regionSpan");
+
+    let thumbnailImg = document.getElementById("thumbnailImg");
+    let thumbnailSpan = document.getElementById("thumbnailSpan");
+    let extSpan = document.getElementById("extSpan");
 
     if(portfolioTitle.length < 1) {
         titleSpan.style.color = "#FF0040";
@@ -50,6 +58,12 @@ saveButton.addEventListener("click", () => {
         document.getElementById("regionFocus").focus();
     } else {
         regionSpan.style.color = "#BDBDBD";
+    }
+
+    if(thumbnailImg.value == '' || extSpan.style.color == 'rgb(255, 0, 64)') {
+        thumbnailSpan.style.color = "#FF0040";
+    } else {
+        thumbnailSpan.style.color = "#BDBDBD";
     }
 })
 portfolioTitle.addEventListener("keyup", () => {
@@ -112,6 +126,37 @@ for(let i = 0; i < regionCategory.length; i++) {
         }
     })
 }
+
+thumbnailImg.addEventListener("change", (e) => {
+    let ext = thumbnailImg.value.slice(thumbnailImg.value.lastIndexOf(".") + 1).toLowerCase();
+    let extSpan = document.getElementById("extSpan");
+
+    if(!(ext == "jpg" || ext == "png" || ext == "jpeg")) {
+        extSpan.style.color = "#FF0040";
+    } else {
+        extSpan.style.color = "#BDBDBD";
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const thumbnailBasicImg = document.getElementsByClassName("thumbnailBasicImg")[0];
+            const thumbnailChange = document.getElementsByClassName("thumbnailChange")[0];
+            const img = document.createElement('img');
+            img.classList.add("thumbnailChange");
+            img.setAttribute('src', e.target.result);
+            if(thumbnailBasicImg != undefined) {
+                document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailBasicImg);
+            } else if(thumbnailChange != undefined) {
+                document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailChange);
+            }
+            document.getElementsByClassName("thumbnail")[0].appendChild(img);
+        }
+
+        reader.readAsDataURL(e.target.files[0]);
+
+        thumbnailImgSave = e.target.files[0];
+    }
+})
 /**
  * 사용자 함수
  */

@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div>
-                    <label class="thumbnail-label">포트폴리오 메인 이미지(필수)</label>
+                    <label class="thumbnail-label">포트폴리오 메인 이미지<span id="thumbnailSpan">(필수)</span></label>
                     <div class="thumbnail-div">
                         <div class="thumbnail">
                             <img class="thumbnailBasicImg" th:if="${session.LOGIN_USER != null}" th:src="@{/thumbnail/image (email=${session.LOGIN_USER.getEmail()})}">
