@@ -14,7 +14,6 @@ const mediaSubmitStatus = document.getElementById("mediaSubmitStatus").value;
 let thumbnailImgSave;
 
 let quill;
-
 /**
  * 이벤트 함수
  */
@@ -88,6 +87,21 @@ thumbnailImg.addEventListener("change", (e) => {
 
     if(!(ext == "jpg" || ext == "png" || ext == "jpeg")) {
         extSpan.style.color = "#FF0040";
+
+        const thumbnailBasicImg = document.getElementsByClassName("thumbnailBasicImg")[0];
+        const thumbnailChange = document.getElementsByClassName("thumbnailChange")[0];
+
+        const img = document.createElement('img');
+        img.classList.add("thumbnailBasicImg");
+        img.setAttribute('src', '/images/media-register-thumbnail.png');
+
+        if(thumbnailBasicImg != undefined) {
+            document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailBasicImg);
+        } else if(thumbnailChange != undefined) {
+            document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailChange);
+        }
+
+        document.getElementsByClassName("thumbnail")[0].appendChild(img);
     } else {
         extSpan.style.color = "#BDBDBD";
 
@@ -156,6 +170,8 @@ const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
     let adCategorySelected = document.getElementsByClassName("ad-category-selected");
     let adCategorySpan = document.getElementById("adCategorySpan");
 
+    let extSpan = document.getElementById("extSpan");
+
     if(title.length < 5 || title.length > 30) {
         titleSpan.style.color = "#FF0040";
         document.getElementById("title").focus();
@@ -170,7 +186,7 @@ const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
         adCategorySpan.style.color = "#BDBDBD";
     }
 
-    if(!(titleSpan.style.color == 'rgb(255, 0, 64)') && !(adCategorySpan.style.color == 'rgb(255, 0, 64)')) {
+    if(!(titleSpan.style.color == 'rgb(255, 0, 64)') && !(adCategorySpan.style.color == 'rgb(255, 0, 64)') && !(extSpan.style.color == 'rgb(255, 0, 64)')) {
         let title = document.getElementById("title").value;
         let adCategorySelected = document.getElementsByClassName("ad-category-selected")[0].innerText;
         let mediaSummary = document.getElementById("mediaSummary").value;
