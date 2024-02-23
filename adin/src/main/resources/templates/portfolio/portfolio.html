@@ -47,7 +47,7 @@
                     <label>카테고리</label>
                     <span id="adDetailCategorySpan">광고를 진행했던 카테고리를 선택해주세요.</span>
                     <input type="text" class="ad-detail-category-focus" id="adDetailCategoryFocus" readonly>
-                    <div>
+                    <div class="display-flex">
                         <ul>
                             <li class="ad-detail-category-first-li ad-detail-category-list">유튜브</li>
                             <li class="ad-detail-category-list">인스타그램</li>
@@ -65,7 +65,7 @@
                     <label>광고분야</label>
                     <span id="adCategorySpan">광고를 진행했던 광고분야를 선택해주세요.</span>
                     <input type="text" class="ad-category-focus" id="adCategoryFocus" readonly>
-                    <div>
+                    <div class="display-flex">
                         <ul>
                             <li class="category-first-li ad-category-list">게임</li>
                             <li class="ad-category-list">먹방</li>
@@ -83,7 +83,7 @@
                     <label>지역</label>
                     <span id="regionSpan">광고를 진행했던 지역을 선택해주세요.</span>
                     <input type="text" class="region-focus" id="regionFocus" readonly>
-                    <div>
+                    <div class="display-flex">
                         <ul>
                             <li class="region_first_li region-category">전국</li>
                             <li class="region-category">서울</li>
@@ -108,9 +108,9 @@
                 </div>
                 <div>
                     <label class="thumbnail-label">포트폴리오 메인 이미지<span id="thumbnailSpan">(필수)</span></label>
-                    <div class="thumbnail-div">
+                    <div class="thumbnail-div display-flex">
                         <div class="thumbnail">
-                            <img class="thumbnailBasicImg" th:if="${session.LOGIN_USER != null}" th:src="@{/thumbnail/image (email=${session.LOGIN_USER.getEmail()})}">
+                            <img class="thumbnailBasicImg" th:src="@{/images/media-register-thumbnail.png}">
                         </div>
                         <div class="thumbnail-change-div">
                             <label for="thumbnailImg" id="thumbnailImgLabel">
@@ -128,13 +128,14 @@
                     <div class="detail-img-div">
                         <div class="detail-img-change-div">
                             <label for="detailImg">
-                                <div class="detail-img-change">이미지 추가</div>
+                                <div class="detail-img-change">이미지 추가</div><span class="file-count" id="fileCount"> (0 / 5)</span>
                             </label>
-                            <input type="file" class="profile_img" name="profile_img" id="detailImg">
+                            <input type="file" class="profile_img" name="profile_img" id="detailImg" multiple>
                             <span>
                                 확장자 : png, jpg, jpeg
                             </span>
                         </div>
+                        <div class="details" id="details"></div>
                     </div>
                 </div>
                 <input type="button" class="save-button" id="saveButton" value="등록완료">

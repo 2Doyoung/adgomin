@@ -10,7 +10,11 @@ const regionCategory = document.getElementsByClassName("region-category");
 
 const thumbnailImg = document.getElementById("thumbnailImg");
 
+const detailImg = document.getElementById("detailImg");
+
 let thumbnailImgSave;
+
+let currentCount = 0;
 
 /**
  * 이벤트 함수
@@ -130,11 +134,28 @@ for(let i = 0; i < regionCategory.length; i++) {
 thumbnailImg.addEventListener("change", (e) => {
     let ext = thumbnailImg.value.slice(thumbnailImg.value.lastIndexOf(".") + 1).toLowerCase();
     let extSpan = document.getElementById("extSpan");
+    let thumbnailSpan = document.getElementById("thumbnailSpan");
 
     if(!(ext == "jpg" || ext == "png" || ext == "jpeg")) {
         extSpan.style.color = "#FF0040";
+
+        const thumbnailBasicImg = document.getElementsByClassName("thumbnailBasicImg")[0];
+        const thumbnailChange = document.getElementsByClassName("thumbnailChange")[0];
+
+        const img = document.createElement('img');
+        img.classList.add("thumbnailBasicImg");
+        img.setAttribute('src', '/images/media-register-thumbnail.png');
+
+        if(thumbnailBasicImg != undefined) {
+            document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailBasicImg);
+        } else if(thumbnailChange != undefined) {
+            document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailChange);
+        }
+
+        document.getElementsByClassName("thumbnail")[0].appendChild(img);
     } else {
         extSpan.style.color = "#BDBDBD";
+        thumbnailSpan.style.color = "#BDBDBD";
 
         const reader = new FileReader();
 
@@ -157,6 +178,55 @@ thumbnailImg.addEventListener("change", (e) => {
         thumbnailImgSave = e.target.files[0];
     }
 })
+
+detailImg.addEventListener("change", () => {
+    const files = document.getElementById('detailImg').files;
+    const thumbnailsContainer = document.getElementById('details');
+    const maxFiles = 5;
+    const fileCount = document.getElementById("fileCount");
+
+    currentCount += files.length;
+
+    if (currentCount > maxFiles) {
+        return;
+    }
+
+    fileCount.innerText = " (" +  currentCount + " / 5)";
+
+    for(let i = 0; i < files.length; i++) {
+        const file = files[i];
+        if (!file.type.match('image.*')) {
+            continue;
+        }
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const thumbnailContainer = document.createElement('div');
+            const thumbnailImg = document.createElement('img');
+            const deleteButton = document.createElement('button');
+
+            thumbnailImg.src = e.target.result;
+
+            thumbnailContainer.classList.add('detail-container');
+            thumbnailImg.classList.add('detail-img');
+            deleteButton.classList.add('delete-btn');
+            deleteButton.innerHTML = '<i class="ri-delete-bin-fill"></i>';
+            deleteButton.addEventListener('click', () => {
+                thumbnailsContainer.removeChild(thumbnailContainer);
+                currentCount--;
+
+                document.getElementById('fileCount').textContent = `${currentCount} / ${maxFiles}`;
+            });
+
+            thumbnailContainer.appendChild(thumbnailImg);
+            thumbnailContainer.appendChild(deleteButton);
+            thumbnailsContainer.appendChild(thumbnailContainer);
+        };
+
+        reader.readAsDataURL(file);
+    }
+})
+
 /**
  * 사용자 함수
  */
