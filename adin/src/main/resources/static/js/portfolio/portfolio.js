@@ -16,6 +16,8 @@ let thumbnailImgSave;
 
 let currentCount = 0;
 
+let detailImgArr = [];
+
 /**
  * 이벤트 함수
  */
@@ -35,6 +37,9 @@ saveButton.addEventListener("click", () => {
     let thumbnailImg = document.getElementById("thumbnailImg");
     let thumbnailSpan = document.getElementById("thumbnailSpan");
     let extSpan = document.getElementById("extSpan");
+
+    let detailSpan = document.getElementById("detailSpan");
+    let details = document.getElementById("details");
 
     if(portfolioTitle.length < 1) {
         titleSpan.style.color = "#FF0040";
@@ -68,6 +73,12 @@ saveButton.addEventListener("click", () => {
         thumbnailSpan.style.color = "#FF0040";
     } else {
         thumbnailSpan.style.color = "#BDBDBD";
+    }
+
+    if(details.innerHTML == '') {
+        detailSpan.style.color = "#FF0040";
+    } else {
+        detailSpan.style.color = "#BDBDBD";
     }
 })
 portfolioTitle.addEventListener("keyup", () => {
@@ -191,13 +202,13 @@ detailImg.addEventListener("change", () => {
         return;
     }
 
-    fileCount.innerText = " (" +  currentCount + " / 5)";
-
     for(let i = 0; i < files.length; i++) {
         const file = files[i];
         if (!file.type.match('image.*')) {
+            currentCount--;
             continue;
         }
+        fileCount.innerText = " (" +  currentCount + " / 5)";
         const reader = new FileReader();
 
         reader.onload = (e) => {
@@ -210,12 +221,20 @@ detailImg.addEventListener("change", () => {
             thumbnailContainer.classList.add('detail-container');
             thumbnailImg.classList.add('detail-img');
             deleteButton.classList.add('delete-btn');
-            deleteButton.innerHTML = '<i class="ri-delete-bin-fill"></i>';
-            deleteButton.addEventListener('click', () => {
+            deleteButton.innerHTML = '<i class="ri-delete-bin-fill" data-parent="' + file.lastModified + '"></i>';
+            deleteButton.addEventListener('click', (e) => {
+                let lastModified = e.currentTarget.children[0].dataset.parent;
+
+                for(let i = 0; i < detailImgArr.length; i++) {
+                    if(detailImgArr[i].lastModified == lastModified) {
+                        detailImgArr.splice(i, 1);
+                    }
+                }
+
                 thumbnailsContainer.removeChild(thumbnailContainer);
                 currentCount--;
 
-                document.getElementById('fileCount').textContent = `${currentCount} / ${maxFiles}`;
+                fileCount.innerText = " (" +  currentCount + " / 5)";
             });
 
             thumbnailContainer.appendChild(thumbnailImg);
@@ -223,8 +242,10 @@ detailImg.addEventListener("change", () => {
             thumbnailsContainer.appendChild(thumbnailContainer);
         };
 
+        detailImgArr.push(file);
         reader.readAsDataURL(file);
     }
+    document.getElementById("detailImg").value = "";
 })
 
 /**

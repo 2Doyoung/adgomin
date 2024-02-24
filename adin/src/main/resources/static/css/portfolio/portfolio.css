@@ -339,6 +339,7 @@ body {
     color: #FFFFFF;
     cursor: pointer;
     border-radius: 0px 5px 0px 5px;
+    padding-top: 0.2rem;
 }
 
 .details {
