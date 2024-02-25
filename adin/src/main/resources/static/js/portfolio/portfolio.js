@@ -12,6 +12,8 @@ const thumbnailImg = document.getElementById("thumbnailImg");
 
 const detailImg = document.getElementById("detailImg");
 
+const modalCheck = document.getElementById("modalCheck");
+
 let thumbnailImgSave;
 
 let currentCount = 0;
@@ -79,6 +81,24 @@ saveButton.addEventListener("click", () => {
         detailSpan.style.color = "#FF0040";
     } else {
         detailSpan.style.color = "#BDBDBD";
+    }
+
+    if(!(titleSpan.style.color == 'rgb(255, 0, 64)') && !(adDetailCategorySpan.style.color == 'rgb(255, 0, 64)')
+        && !(adCategorySpan.style.color == 'rgb(255, 0, 64)') && !(regionSpan.style.color == 'rgb(255, 0, 64)')
+        && !(thumbnailSpan.style.color == 'rgb(255, 0, 64)') && !(detailSpan.style.color == 'rgb(255, 0, 64)')) {
+        let portfolioTitle = document.getElementById("portfolioTitle").value;
+        let adDetailCategorySelected = document.getElementsByClassName("ad-detail-category-selected")[0].innerText;
+        let adCategorySelected = document.getElementsByClassName("ad-category-selected")[0].innerText;
+        let regionSelected = document.getElementsByClassName("region-selected")[0].innerText;
+
+        const formData = new FormData();
+
+        formData.append("portfolioTitle", portfolioTitle);
+        formData.append("portfolioAdDetailCategory", adDetailCategorySelected);
+        formData.append("portfolioAdCategory", adCategorySelected);
+        formData.append("portfolioRegion", regionSelected);
+
+        xhr("/portfolio/register", formData, "POST", "portfolioRegister");
     }
 })
 portfolioTitle.addEventListener("keyup", () => {
@@ -248,6 +268,10 @@ detailImg.addEventListener("change", () => {
     document.getElementById("detailImg").value = "";
 })
 
+modalCheck.addEventListener("click", () => {
+    window.location.href = "/portfolio";
+})
+
 /**
  * 사용자 함수
  */
@@ -256,7 +280,13 @@ detailImg.addEventListener("change", () => {
  * XMLHttpRequest 성공 함수
  */
 let successXhr = (responseObject, flag) => {
+    if(flag == "portfolioRegister") {
+        let modalBg = document.getElementById("modalBg");
+        let modalTitle = document.getElementById("modalTitle");
 
+        modalBg.style.display = "block";
+        modalTitle.innerText = "포트폴리오 등록이 완료되었습니다.";
+    }
 }
 
 /**

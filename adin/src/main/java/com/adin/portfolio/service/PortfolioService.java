@@ -1,5 +1,8 @@
 package com.adin.portfolio.service;
 
+import com.adin.enums.CommonResult;
+import com.adin.media.entity.MediaRegisterEntity;
+import com.adin.portfolio.entity.PortfolioEntity;
 import com.adin.portfolio.mapper.PortfolioMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,5 +16,9 @@ public class PortfolioService {
     @Autowired
     public PortfolioService(PortfolioMapper portfolioMapper) {
         this.portfolioMapper = portfolioMapper;
+    }
+
+    public Enum<?> portfolioRegister(PortfolioEntity portfolioEntity) {
+        return this.portfolioMapper.portfolioRegister(portfolioEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 }

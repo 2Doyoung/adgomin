@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adin.portfolio.mapper.PortfolioMapper">
+    <update id="portfolioRegister" parameterType="com.adin.portfolio.entity.PortfolioEntity">
+        INSERT INTO adin_portfolio
+            (email, portfolio_title, portfolio_ad_detail_category, portfolio_ad_category, portfolio_region, create_dt, modify_dt)
+        VALUES
+            (#{email}, #{portfolioTitle}, #{portfolioAdDetailCategory}, #{portfolioAdCategory}, #{portfolioRegion}, NOW(), NOW())
+    </update>
+</mapper>

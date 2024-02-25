@@ -11,6 +11,8 @@ const thumbnailImg = document.getElementById("thumbnailImg");
 
 const mediaSubmitStatus = document.getElementById("mediaSubmitStatus").value;
 
+const modalCheck = document.getElementById("modalCheck");
+
 let thumbnailImgSave;
 
 let quill;
