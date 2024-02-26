@@ -25,4 +25,22 @@
         WHERE 1=1
         AND T1.media_order = #{mediaOrder};
     </select>
+
+    <select id="getPortfolio" resultType="com.adin.portfolio.entity.PortfolioEntity">
+        SELECT
+            portfolio_order AS portfolioOrder
+             ,email AS email
+             ,portfolio_title AS portfolioTitle
+             ,portfolio_ad_detail_category AS portfolioAdDetailCategory
+             ,portfolio_ad_category AS portfolioAdCategory
+             ,portfolio_region AS portfolioRegion
+             ,main_img_nm AS mainImgNm
+             ,main_origin_file_nm AS mainOriginFileNm
+             ,main_img_file_path AS mainImgFilePath
+             ,create_dt AS createDt
+             ,modify_dt AS modifyDt
+        FROM adin_portfolio
+        WHERE 1=1
+        AND email = #{email};
+    </select>
 </mapper>

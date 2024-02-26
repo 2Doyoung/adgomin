@@ -238,12 +238,13 @@ body {
     font-size: 1rem;
     font-weight: 500;
     color: #555969;
-    width: 11rem;
+    width: 100%;
     text-align: center;
     padding-top: 1rem;
     border-right: 1px solid #ccc;
     background-color: #fafafa;
     height: 2.5rem;
+    cursor: pointer;
 }
 
 .media-summary-wrap {
@@ -284,9 +285,10 @@ body {
 }
 
 .media-detail-explain-div > ul {
-    border: 1px solid #D8D8D8;
+    border: 1px solid #F2F2F2;
     padding: 2rem;
     border-radius: 10px;
+    background-color: #F2F2F2;
 }
 
 .media-detail-explain-div > ul > li {
@@ -324,4 +326,47 @@ body {
 
 .p-br {
     height: 0;
+}
+
+.portfolio-list-wrap {
+    width: 43rem;
+    height: 17rem;
+    position: relative;
+}
+
+.portfolio-list {
+    width: 43rem;
+    overflow: hidden;
+}
+
+.portfolio-card-wrap {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    margin-left: -0.5rem;
+}
+
+.portfolio-card {
+    flex: 0 0 auto;
+    width: 21.3rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    position: relative;
+    height: 16rem;
+}
+
+.portfolio-thumbnail {
+    overflow: hidden;
+    position: relative;
+    height: 13.8rem;
+}
+
+.portfolio-thumbnail-img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }

@@ -1,6 +1,7 @@
 package com.adin.post.service;
 
 import com.adin.media.vo.MediaRegisterVO;
+import com.adin.portfolio.entity.PortfolioEntity;
 import com.adin.post.mapper.PostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,5 +19,9 @@ public class PostService {
 
     public MediaRegisterVO getPost(String mediaOrder) {
         return this.postMapper.getPost(mediaOrder);
+    }
+
+    public PortfolioEntity[] getPortfolio(String email) {
+        return this.postMapper.getPortfolio(email);
     }
 }

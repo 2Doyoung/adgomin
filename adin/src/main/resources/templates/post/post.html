@@ -38,7 +38,7 @@
                 <div class="post-tap">
                     <span class="post-tap-list active" data-target="#mediaSummary">광고매체 요약</span>
                     <span class="post-tap-list" data-target="#mediaDetailExplain">광고매체 설명</span>
-                    <span class="post-tap-list">포트폴리오</span>
+                    <span class="post-tap-list" data-target="#portfolioSection">포트폴리오</span>
                     <span class="post-tap-list">리뷰</span>
                 </div>
                 <div class="media-summary-wrap" id="mediaSummary">
@@ -46,6 +46,20 @@
                 </div>
                 <div class="media-detail-explain-wrap" id="mediaDetailExplain">
                     <div class="media-detail-explain-div" id="mediaDetailExplainDiv"></div>
+                </div>
+                <div class="portfolio-list-wrap" id="portfolioSection">
+                    <div class="portfolio-list">
+                        <div class="portfolio-card-wrap" id="portfolioSlider">
+                            <div class="portfolio-card" th:each="portfolio : ${getPortfolio}">
+                                <div class="portfolio-thumbnail">
+                                    <img class="portfolio-thumbnail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${portfolio.mainImgNm}, mainImgFilePath =${portfolio.mainImgFilePath})}">
+                                </div>
+                                <div th:text="${portfolio.portfolioTitle}"></div>
+                            </div>
+                        </div>
+                        <div class="slide-prev" id="portfolioPrevButton"><i class="ri-arrow-left-s-line"></i></div>
+                        <div class="slide-next" id="portfolioNextButton"><i class="ri-arrow-right-s-line"></i></div>
+                    </div>
                 </div>
             </div>
             <div class="post-information">
