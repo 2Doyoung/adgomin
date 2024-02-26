@@ -286,7 +286,12 @@ let successXhr = (responseObject, flag) => {
         formData.append("thumbnail", thumbnailImgSave);
         xhr("/portfolio/change/thumbnail", formData, "PATCH", "thumbnailChange");
     } else if(flag == "thumbnailChange") {
+        const formData = new FormData();
 
+        for(let i = 0; i < detailImgArr.length; i++) {
+            formData.append('detailImgArr', detailImgArr[i]);
+        }
+        xhr("/portfolio/detail/img", formData, "POST", "detailImgChange");
     } else if(flag == "detailImgChange") {
         let modalBg = document.getElementById("modalBg");
         let modalTitle = document.getElementById("modalTitle");

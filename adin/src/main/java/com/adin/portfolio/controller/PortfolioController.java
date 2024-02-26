@@ -4,6 +4,7 @@ import com.adin.join.vo.JoinVO;
 import com.adin.media.entity.MediaRegisterEntity;
 import com.adin.media.vo.MediaIntroduceVO;
 import com.adin.portfolio.entity.PortfolioEntity;
+import com.adin.portfolio.entity.PortfolioImgEntity;
 import com.adin.portfolio.service.PortfolioService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,17 @@ public class PortfolioController {
         JSONObject responseObject = new JSONObject();
         portfolioEntity.setEmail(joinVO.getEmail());
         Enum<?> result = this.portfolioService.portfolioChangeThumbnail(thumbnail, portfolioEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
+
+    @PostMapping("/portfolio/detail/img")
+    @ResponseBody
+    public String portfolioDetailImg(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MultipartFile[] detailImgArr, PortfolioImgEntity portfolioImgEntity) {
+        JSONObject responseObject = new JSONObject();
+        portfolioImgEntity.setEmail(joinVO.getEmail());
+        Enum<?> result = this.portfolioService.portfolioDetailImg(detailImgArr, portfolioImgEntity);
         responseObject.put("result", result.name().toLowerCase());
 
         return responseObject.toString();
