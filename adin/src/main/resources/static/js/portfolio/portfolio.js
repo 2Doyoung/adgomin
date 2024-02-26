@@ -281,6 +281,13 @@ modalCheck.addEventListener("click", () => {
  */
 let successXhr = (responseObject, flag) => {
     if(flag == "portfolioRegister") {
+        const formData = new FormData();
+
+        formData.append("thumbnail", thumbnailImgSave);
+        xhr("/portfolio/change/thumbnail", formData, "PATCH", "thumbnailChange");
+    } else if(flag == "thumbnailChange") {
+
+    } else if(flag == "detailImgChange") {
         let modalBg = document.getElementById("modalBg");
         let modalTitle = document.getElementById("modalTitle");
 

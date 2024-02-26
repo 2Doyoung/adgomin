@@ -9,4 +9,23 @@
         VALUES
             (#{email}, #{portfolioTitle}, #{portfolioAdDetailCategory}, #{portfolioAdCategory}, #{portfolioRegion}, NOW(), NOW())
     </update>
+
+    <update id="changeThumbnail" parameterType="com.adin.media.entity.MediaIntroduceEntity">
+        UPDATE
+            adin_media_register
+        SET thumbnail_img_nm = #{thumbnailImgNm}
+          ,thumbnail_origin_file_nm = #{thumbnailOriginFileNm}
+          ,thumbnail_img_file_path = #{thumbnailImgFilePath}
+        WHERE 1=1
+          AND email = #{email}
+          AND media_order = (
+            SELECT
+                max_media_order
+            FROM
+                (SELECT
+                     MAX(media_order) AS max_media_order
+                 FROM adin_media_register
+                 WHERE email = #{email}) AS sub
+        )
+    </update>
 </mapper>

@@ -9,6 +9,7 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller(value = "com.adin.portfolio.controller.PortfolioController")
@@ -22,7 +23,7 @@ public class PortfolioController {
 
     @GetMapping(value = "/portfolio")
     public ModelAndView portfolio(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
-        ModelAndView modelAndView = modelAndView = new ModelAndView("portfolio/portfolio");;
+        ModelAndView modelAndView = new ModelAndView("portfolio/portfolio");;
 
         return  modelAndView;
     }
@@ -33,6 +34,17 @@ public class PortfolioController {
         JSONObject responseObject = new JSONObject();
         portfolioEntity.setEmail(joinVO.getEmail());
         Enum<?> result = this.portfolioService.portfolioRegister(portfolioEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
+
+    @PatchMapping("/portfolio/change/thumbnail")
+    @ResponseBody
+    public String portfolioChangeThumbnail(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MultipartFile thumbnail, PortfolioEntity portfolioEntity) {
+        JSONObject responseObject = new JSONObject();
+        portfolioEntity.setEmail(joinVO.getEmail());
+        Enum<?> result = this.portfolioService.portfolioChangeThumbnail(thumbnail, portfolioEntity);
         responseObject.put("result", result.name().toLowerCase());
 
         return responseObject.toString();
