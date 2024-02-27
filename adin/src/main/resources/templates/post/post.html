@@ -48,13 +48,15 @@
                     <div class="media-detail-explain-div" id="mediaDetailExplainDiv"></div>
                 </div>
                 <div class="portfolio-list-wrap" id="portfolioSection">
+                    <div class="portfolio-label">포트폴리오</div>
+                    <div class="all-portfolio">전체 포트폴리오<i class="ri-arrow-right-s-line"></i></div>
                     <div class="portfolio-list">
                         <div class="portfolio-card-wrap" id="portfolioSlider">
-                            <div class="portfolio-card" th:each="portfolio : ${getPortfolio}">
+                            <div class="portfolio-card" th:each="portfolio : ${getPortfolio}" th:data-parent="${portfolio.getPortfolioOrder()}">
                                 <div class="portfolio-thumbnail">
                                     <img class="portfolio-thumbnail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${portfolio.mainImgNm}, mainImgFilePath =${portfolio.mainImgFilePath})}">
                                 </div>
-                                <div th:text="${portfolio.portfolioTitle}"></div>
+                                <div class="portfolio-title" th:text="${portfolio.portfolioTitle}"></div>
                             </div>
                         </div>
                         <div class="slide-prev" id="portfolioPrevButton"><i class="ri-arrow-left-s-line"></i></div>
@@ -66,7 +68,6 @@
                 <div class="post-information-wrap">
                     <div class="post-media-introduce">
                         <div class="post-price" th:text="${mediaPrice}"></div><span class="won">원</span>
-                        <div><span class="five-month-price">월 <span th:text="${fiveMonthMediaPriceFormat}"></span>원</span> <span class="five-month">5개월 할부 시</span></div>
                     </div>
                     <div class="introduce">
                         <div class="introduce-profile">

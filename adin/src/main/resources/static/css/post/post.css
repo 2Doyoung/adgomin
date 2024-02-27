@@ -62,7 +62,6 @@ body {
     border-radius: 5px 5px 0 0;
     padding-left: 1.5rem;
     padding-top: 1rem;
-    padding-bottom: 2rem;
 }
 
 .review-star {
@@ -231,6 +230,7 @@ body {
     display: flex;
     position: sticky;
     top: 9.4rem;
+    z-index: 1;
 }
 
 .post-tap-list {
@@ -330,7 +330,6 @@ body {
 
 .portfolio-list-wrap {
     width: 43rem;
-    height: 17rem;
     position: relative;
 }
 
@@ -351,7 +350,6 @@ body {
     margin-left: 0.5rem;
     margin-top: 0.5rem;
     position: relative;
-    height: 16rem;
 }
 
 .portfolio-thumbnail {
@@ -369,4 +367,56 @@ body {
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+.slide-prev {
+    position: absolute;
+    top: 50%;
+    left: -5%;
+}
+
+.slide-next {
+    position: absolute;
+    top: 50%;
+    right: -5%;
+}
+
+.slide-prev > .ri-arrow-left-s-line, .slide-next > .ri-arrow-right-s-line {
+    font-size: 1.8rem;
+    color: #303441;
+    background: #FFFFFF;
+    border-radius: 15px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 2px 4px rgba(0 0 0 / 18%);
+    cursor: pointer;
+}
+
+.portfolio-label {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #343a40;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-title {
+    margin-top: 0.5rem;
+    color: #303441;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    width: 20rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.95rem;
+}
+
+.all-portfolio > .ri-arrow-right-s-line {
+    font-size: 1.3rem;
+}
+
+.all-portfolio {
+    color: #2E64FE;
 }
