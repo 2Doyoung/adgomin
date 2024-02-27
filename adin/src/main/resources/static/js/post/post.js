@@ -142,6 +142,7 @@ if(portfolioSection != null) {
         portfolioSlider.style.transform = 'translateX(' + translateValue + ')';
     }
 }
+
 /**
  * XMLHttpRequest 성공 함수
  */

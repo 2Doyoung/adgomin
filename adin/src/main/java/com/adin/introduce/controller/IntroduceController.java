@@ -1,25 +1,25 @@
 package com.adin.introduce.controller;
 
-import com.adin.common.CategoryCriteria;
-import com.adin.common.CategoryPaging;
 import com.adin.introduce.service.IntroduceService;
-import com.adin.media.entity.MediaIntroduceEntity;
 import com.adin.media.vo.MediaIntroduceVO;
-import com.adin.media.vo.MediaRegisterVO;
+import com.adin.portfolio.entity.PortfolioEntity;
+import com.adin.portfolio.vo.PortfolioVO;
+import com.adin.post.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller(value = "com.adin.introduce.controller.IntroduceController")
 public class IntroduceController {
     private final IntroduceService introduceService;
+    private final PostService postService;
 
     @Autowired
-    public IntroduceController(IntroduceService introduceService) {
+    public IntroduceController(IntroduceService introduceService, PostService postService) {
         this.introduceService = introduceService;
+        this.postService = postService;
     }
 
     @GetMapping(value = "/introduce/{userOrder}")
@@ -27,6 +27,13 @@ public class IntroduceController {
         ModelAndView modelAndView = new ModelAndView("introduce/introduce");
 
         MediaIntroduceVO getIntroduce = this.introduceService.getIntroduce(userOrder);
+
+        PortfolioVO getPortfolioCnt = this.postService.getPortfolioCnt(getIntroduce.getEmail());
+
+        if(getPortfolioCnt.getCount() != 0) {
+            PortfolioEntity[] getPortfolio = this.postService.getPortfolio(getIntroduce.getEmail());
+            modelAndView.addObject("getPortfolio", getPortfolio);
+        }
 
         modelAndView.addObject("email", getIntroduce.getEmail());
         modelAndView.addObject("mediaIntroduce", getIntroduce.getMediaIntroduce());

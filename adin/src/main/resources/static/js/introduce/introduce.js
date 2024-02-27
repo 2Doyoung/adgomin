@@ -5,12 +5,53 @@ const region = document.getElementById("region");
 const adCategory = document.getElementById("adCategory");
 const mediaUrl = document.getElementById("mediaUrl");
 
+const tabs = document.querySelectorAll('.introduce-tap-list');
+
 /**
  * 이벤트 함수
  */
-mediaUrl.addEventListener("click", () => {
-    window.open("http://" + getMediaUrl, ".blank")
-})
+if(mediaUrl != null) {
+    mediaUrl.addEventListener("click", () => {
+        window.open("https://" + getMediaUrl, ".blank")
+    })
+}
+
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-target');
+        const targetSection = document.querySelector(targetId);
+
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const introduceTapHeight = document.querySelector('.introduce-tap-list').offsetHeight;
+
+        window.scrollTo({
+            top: targetSection.offsetTop - headerHeight - introduceTapHeight,
+            behavior: 'auto'
+        });
+    });
+});
+
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+
+    const headerHeight = document.querySelector('header').offsetHeight;
+
+    const introduceTapHeight = document.querySelector('.introduce-tap').offsetHeight;
+
+    tabs.forEach(tab => {
+        const targetId = tab.getAttribute('data-target');
+        const section = document.querySelector(targetId);
+
+        if (section) {
+            const sectionTop = section.offsetTop - headerHeight - introduceTapHeight;
+
+            if (scrollPosition >= sectionTop) {
+                tabs.forEach(tab => tab.classList.remove('active'));
+                tab.classList.add('active');
+            }
+        }
+    });
+});
 
 /**
  * 사용자 함수
@@ -33,6 +74,44 @@ for(let i = 0; i < adCategorySplit.length; i++) {
     adCategorySpanTag.classList.add("ad-category-span")
 
     adCategory.appendChild(adCategorySpanTag);
+}
+
+if(portfolioSection != null) {
+    const portfolioSlider = document.getElementById('portfolioSlider');
+    const portfolioPrevButton = document.getElementById('portfolioPrevButton');
+    const portfolioNextButton = document.getElementById('portfolioNextButton');
+    const portfolioSlide = portfolioSlider.querySelector('.portfolio-card');
+    const portfolioSlideStyles = getComputedStyle(portfolioSlide);
+    const portfolioSlideWidth = portfolioSlide.offsetWidth + parseFloat(portfolioSlideStyles.marginLeft) + parseFloat(portfolioSlideStyles.marginRight);
+    const portfolioSlidesToShow = Math.floor(portfolioSlider.offsetWidth / portfolioSlideWidth);
+    let portfolioCurrentIndex = 0;
+
+    const portfolioCard = document.getElementsByClassName("portfolio-card");
+
+    portfolioNextButton.addEventListener('click', () => {
+        if (portfolioCurrentIndex < portfolioSlider.children.length - portfolioSlidesToShow) {
+            portfolioCurrentIndex++;
+            portfolioUpdateSlider();
+        }
+    });
+
+    portfolioPrevButton.addEventListener('click', () => {
+        if (portfolioCurrentIndex > 0) {
+            portfolioCurrentIndex--;
+            portfolioUpdateSlider();
+        }
+    });
+
+    for(let i = 0; i < portfolioCard.length; i++) {
+        portfolioCard[i].addEventListener("click", (e) => {
+            let portfolioOrder = e.currentTarget.dataset.parent;
+        })
+    }
+
+    let portfolioUpdateSlider = () => {
+        const translateValue = -portfolioCurrentIndex * portfolioSlideWidth + 'px';
+        portfolioSlider.style.transform = 'translateX(' + translateValue + ')';
+    }
 }
 
 /**

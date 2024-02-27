@@ -79,6 +79,7 @@ body {
     margin-left: 1rem;
     padding-bottom: 1rem;
     color: #abb0b5;
+    cursor: pointer;
 }
 
 .active {
@@ -159,4 +160,105 @@ body {
     margin-left: 4.5rem;
     margin-top: 1rem;
     color: #727585;
+}
+
+.portfolio-list-wrap {
+    width: 43rem;
+    position: relative;
+}
+
+.portfolio-list {
+    width: 43rem;
+    overflow: hidden;
+    margin-left: 3rem;
+}
+
+.portfolio-card-wrap {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    margin-left: -0.5rem;
+}
+
+.portfolio-card {
+    flex: 0 0 auto;
+    width: 21.3rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    position: relative;
+}
+
+.portfolio-thumbnail {
+    overflow: hidden;
+    position: relative;
+    height: 13.8rem;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.portfolio-thumbnail-img {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.portfolio-thumbnail-img:hover {
+    transform: scale(1.1);
+}
+
+.slide-prev {
+    position: absolute;
+    top: 50%;
+    left: 2%;
+}
+
+.slide-next {
+    position: absolute;
+    top: 50%;
+    right: -12%;
+}
+
+.slide-prev > .ri-arrow-left-s-line, .slide-next > .ri-arrow-right-s-line {
+    font-size: 1.8rem;
+    color: #303441;
+    background: #FFFFFF;
+    border-radius: 15px;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 2px 4px rgba(0 0 0 / 18%);
+    cursor: pointer;
+}
+
+.portfolio-label {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #343a40;
+    margin-bottom: 0.5rem;
+}
+
+.portfolio-title {
+    margin-top: 0.5rem;
+    color: #303441;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    width: 20rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.95rem;
+}
+
+.all-portfolio > .ri-arrow-right-s-line {
+    font-size: 1.3rem;
+    vertical-align: sub;
+}
+
+.all-portfolio {
+    color: #2E64FE;
+    margin-left: 3rem;
 }
