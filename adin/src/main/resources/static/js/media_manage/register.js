@@ -151,22 +151,22 @@ quill = new Quill('#editor', {
     }
 });
 
-quill.on('text-change', function() {
+quill.on('text-change', () => {
     document.getElementById("quillHtml").value = quill.root.innerHTML;
 });
 
-quill.getModule('toolbar').addHandler('image', function () {
+quill.getModule('toolbar').addHandler('image', () => {
     selectLocalImage();
 });
 
-function selectLocalImage() {
+let selectLocalImage = () => {
     const fileInput = document.createElement('input');
     fileInput.setAttribute('type', 'file');
     console.log("input.type " + fileInput.type);
 
     fileInput.click();
 
-    fileInput.addEventListener("change", function () {  // change 이벤트로 input 값이 바뀌면 실행
+    fileInput.addEventListener("change", () => {  // change 이벤트로 input 값이 바뀌면 실행
         const formData = new FormData();
         const file = fileInput.files[0];
         formData.append('mediaDetailExplanationImage', file);
