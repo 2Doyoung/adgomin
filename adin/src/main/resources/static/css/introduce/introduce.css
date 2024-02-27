@@ -261,4 +261,6 @@ body {
 .all-portfolio {
     color: #2E64FE;
     margin-left: 3rem;
+    cursor: pointer;
+    width: 9rem;
 }

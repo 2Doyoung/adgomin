@@ -1,5 +1,6 @@
 package com.adin.media.controller;
 
+import com.adin.enums.CommonResult;
 import com.adin.join.entity.JoinEntity;
 import com.adin.join.vo.JoinVO;
 import com.adin.media.entity.MediaIntroduceEntity;
@@ -125,6 +126,35 @@ public class MediaController {
             File file = new File(classLoader.getResource("static/images/media-register-thumbnail.png").getFile());
             filePath = file.getAbsolutePath();
         }
+
+        Resource resource = new FileSystemResource(filePath);
+
+        HttpHeaders header = new HttpHeaders();
+        Path path = null;
+        try {
+            path = Paths.get(filePath);
+            header.add("Content-type", Files.probeContentType(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
+    }
+
+    @PostMapping("/media/detail/explanation/image")
+    @ResponseBody
+    public String mediaDetailExplanationImage(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MultipartFile mediaDetailExplanationImage) {
+        JSONObject responseObject = new JSONObject();
+        String path = this.mediaService.mediaDetailExplanationImage(joinVO.getEmail(), mediaDetailExplanationImage);
+        responseObject.put("result", path);
+
+        return responseObject.toString();
+    }
+
+    @GetMapping("/media/detail/image/display")
+    public ResponseEntity<Resource> mediaDetailImageDisplay(@RequestParam(value = "uploadPath") String uploadPath) {
+        String filePath = uploadPath;
+
 
         Resource resource = new FileSystemResource(filePath);
 

@@ -151,6 +151,30 @@ quill = new Quill('#editor', {
     }
 });
 
+quill.on('text-change', function() {
+    document.getElementById("quillHtml").value = quill.root.innerHTML;
+});
+
+quill.getModule('toolbar').addHandler('image', function () {
+    selectLocalImage();
+});
+
+function selectLocalImage() {
+    const fileInput = document.createElement('input');
+    fileInput.setAttribute('type', 'file');
+    console.log("input.type " + fileInput.type);
+
+    fileInput.click();
+
+    fileInput.addEventListener("change", function () {  // change 이벤트로 input 값이 바뀌면 실행
+        const formData = new FormData();
+        const file = fileInput.files[0];
+        formData.append('mediaDetailExplanationImage', file);
+
+        xhr("/media/detail/explanation/image", formData, "POST", "mediaDetailExplanationImage");
+    });
+}
+
 let htmlContent = getMediaDetailExplain
 let Delta = Quill.import('delta');
 let delta = new Delta().insert(htmlContent);
@@ -192,7 +216,7 @@ const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
         let title = document.getElementById("title").value;
         let adCategorySelected = document.getElementsByClassName("ad-category-selected")[0].innerText;
         let mediaSummary = document.getElementById("mediaSummary").value;
-        let editorHtml = quill.root.innerHTML;
+        let quillHtml = document.getElementById("quillHtml").value;
         let mediaPrice = document.getElementById("mediaPrice").value;
 
         const formData = new FormData();
@@ -200,7 +224,7 @@ const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
         formData.append("mediaTitle", title);
         formData.append("adDetailCategory", adCategorySelected);
         formData.append("mediaSummary", mediaSummary);
-        formData.append("mediaDetailExplain", editorHtml);
+        formData.append("mediaDetailExplain", quillHtml);
         formData.append("mediaPrice", mediaPrice);
         if(mediaRegisterTempSaveOrSubmit == "mediaRegisterTempSave") {
             formData.append("mediaSubmitStatus", "N");
@@ -280,7 +304,14 @@ let successXhr = (responseObject, flag) => {
  * XMLHttpRequest default 함수
  */
 let defaultXhr = (responseObject, flag) => {
+    if(flag == "mediaDetailExplanationImage") {
+        const range = quill.getSelection();
 
+        let uploadPath = responseObject["result"];
+        uploadPath = uploadPath.replace(/\\/g, '/');
+
+        quill.insertEmbed(range.index, 'image', "/media/detail/image/display?uploadPath=" + uploadPath);
+    }
 }
 
 /**

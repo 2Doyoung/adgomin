@@ -80,6 +80,29 @@ public class MediaService {
         return this.mediaMapper.changeThumbnail(mediaRegisterEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
+    public String mediaDetailExplanationImage(String email, MultipartFile mediaDetailExplanationImage) {
+        String path = "../explanationImage/" + email;
+
+        String originalFilename = mediaDetailExplanationImage.getOriginalFilename();
+        String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
+        String storeFilename = UUID.randomUUID() + "." + extension;
+
+        File file = new File(path);
+
+        if(!file.exists()) {
+            file.mkdirs();
+        }
+
+        try {
+            Path absolutePath = Paths.get(path  + "/" + storeFilename).toAbsolutePath();
+            mediaDetailExplanationImage.transferTo(absolutePath);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return path + "/" + storeFilename;
+    }
+
     public MediaRegisterEntity thumbnailImage(String email) {
         return this.mediaMapper.thumbnailImage(email);
     }
