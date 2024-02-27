@@ -2,6 +2,7 @@ package com.adin.post.service;
 
 import com.adin.media.vo.MediaRegisterVO;
 import com.adin.portfolio.entity.PortfolioEntity;
+import com.adin.portfolio.vo.PortfolioVO;
 import com.adin.post.mapper.PostMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +24,9 @@ public class PostService {
 
     public PortfolioEntity[] getPortfolio(String email) {
         return this.postMapper.getPortfolio(email);
+    }
+
+    public PortfolioVO getPortfolioCnt(String email) {
+        return this.postMapper.getPortfolioCnt(email);
     }
 }

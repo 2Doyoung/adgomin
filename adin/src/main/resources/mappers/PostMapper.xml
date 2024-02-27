@@ -41,6 +41,15 @@
              ,modify_dt AS modifyDt
         FROM adin_portfolio
         WHERE 1=1
-        AND email = #{email};
+        AND email = #{email}
+        LIMIT 0, 10;
+    </select>
+
+    <select id="getPortfolioCnt" resultType="com.adin.portfolio.vo.PortfolioVO">
+        SELECT
+            COUNT(*) AS COUNT
+        FROM adin_portfolio
+        WHERE 1=1
+          AND email = #{email};
     </select>
 </mapper>

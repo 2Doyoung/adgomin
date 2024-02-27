@@ -2,6 +2,7 @@ package com.adin.post.contoller;
 
 import com.adin.media.vo.MediaRegisterVO;
 import com.adin.portfolio.entity.PortfolioEntity;
+import com.adin.portfolio.vo.PortfolioVO;
 import com.adin.post.service.PostService;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -33,7 +34,12 @@ public class PostController {
 
         MediaRegisterVO getPost = this.postService.getPost(mediaOrder);
 
-        PortfolioEntity[] getPortfolio = this.postService.getPortfolio(getPost.getEmail());
+        PortfolioVO getPortfolioCnt = this.postService.getPortfolioCnt(getPost.getEmail());
+
+        if(getPortfolioCnt.getCount() != 0) {
+            PortfolioEntity[] getPortfolio = this.postService.getPortfolio(getPost.getEmail());
+            modelAndView.addObject("getPortfolio", getPortfolio);
+        }
 
         String mediaPriceReplace = getPost.getMediaPrice().replaceAll(",", "");
         int fiveMonthMediaPrice = Integer.parseInt(mediaPriceReplace) / 5;
@@ -56,8 +62,6 @@ public class PostController {
         modelAndView.addObject("email", getPost.getEmail());
         modelAndView.addObject("userOrder", getPost.getUserOrder());
         modelAndView.addObject("fiveMonthMediaPriceFormat", fiveMonthMediaPriceFormat);
-
-        modelAndView.addObject("getPortfolio", getPortfolio);
 
         return  modelAndView;
     }
