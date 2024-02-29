@@ -63,7 +63,7 @@
             </div>
             <div th:if="${getPortfolio != null}" class="portfolio-list-wrap" id="portfolioSection">
                 <div class="introduce-label">포트폴리오</div>
-                <div class="all-portfolio">전체 포트폴리오<i class="ri-arrow-right-s-line"></i></div>
+                <div class="all-portfolio" id="allPortfolio">전체 포트폴리오<i class="ri-arrow-right-s-line"></i></div>
                 <div class="portfolio-list">
                     <div class="portfolio-card-wrap" id="portfolioSlider">
                         <div class="portfolio-card" th:each="portfolio : ${getPortfolio}" th:data-parent="${portfolio.getPortfolioOrder()}">
