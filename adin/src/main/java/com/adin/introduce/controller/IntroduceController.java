@@ -50,23 +50,11 @@ public class IntroduceController {
 
     @GetMapping(value = "/introduce/all/portfolio/{userOrder}")
     public ModelAndView introduceAllPortfolio(@PathVariable("userOrder") int userOrder) {
-        ModelAndView modelAndView = new ModelAndView("introduce/introduce");
+        ModelAndView modelAndView = new ModelAndView("introduce/all_portfolio");
 
         MediaIntroduceVO getIntroduce = this.introduceService.getIntroduce(userOrder);
 
-        PortfolioVO getPortfolioCnt = this.postService.getPortfolioCnt(getIntroduce.getEmail());
-
-        if(getPortfolioCnt.getCount() != 0) {
-            PortfolioEntity[] getPortfolio = this.postService.getPortfolio(getIntroduce.getEmail());
-            modelAndView.addObject("getPortfolio", getPortfolio);
-        }
-
         modelAndView.addObject("email", getIntroduce.getEmail());
-        modelAndView.addObject("mediaIntroduce", getIntroduce.getMediaIntroduce());
-        modelAndView.addObject("region", getIntroduce.getRegion());
-        modelAndView.addObject("adCategory", getIntroduce.getAdCategory());
-        modelAndView.addObject("mediaUrl", getIntroduce.getMediaUrl());
-        modelAndView.addObject("nickname", getIntroduce.getNickname());
         modelAndView.addObject("profileImgNm", getIntroduce.getProfileImgNm());
         modelAndView.addObject("profileOriginFileNm", getIntroduce.getProfileOriginFileNm());
         modelAndView.addObject("profileImgFilePath", getIntroduce.getProfileImgFilePath());

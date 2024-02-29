@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드인 - 소개</title>
+    <link rel="stylesheet" th:href="@{/css/introduce/all_portfolio.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/introduce/all_portfolio.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+<script th:inline="javascript">
+
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" id="userOrder" th:value="${userOrder}">
+<div class="introduce-wrap">
+    <div class="introduce-profile-wrap">
+        <div class="profile-div">
+            <img th:src="@{/profile/image (email=${email})}">
+        </div>
+        <div class="nickname-div">
+            <span th:text="${nickname}"></span>
+        </div>
+        <div class="review-star">
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <div class="review-count"> 5.0</div>
+            <div class="review-user-count">(123)</div>
+        </div>
+        <input type="button" class="conversation-button" value="문의하기">
+        <div class="introduce-sub-menu">
+            <ul>
+                <li id="introduceHome">
+                    홈
+                </li>
+                <li style="font-weight: bolder">
+                    포트폴리오
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

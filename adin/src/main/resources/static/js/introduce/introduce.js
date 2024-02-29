@@ -88,6 +88,10 @@ if(portfolioSection != null) {
 
     const portfolioCard = document.getElementsByClassName("portfolio-card");
 
+    const allPortfolio = document.getElementById("allPortfolio");
+
+    const menuAllPortfolio = document.getElementById("menuAllPortfolio");
+
     portfolioNextButton.addEventListener('click', () => {
         if (portfolioCurrentIndex < portfolioSlider.children.length - portfolioSlidesToShow) {
             portfolioCurrentIndex++;
@@ -102,9 +106,21 @@ if(portfolioSection != null) {
         }
     });
 
+    allPortfolio.addEventListener("click", () => {
+        const userOrder = document.getElementById("userOrder").value;
+
+        window.location.href = "/introduce/all/portfolio/" + userOrder;
+    })
+
+    menuAllPortfolio.addEventListener("click", () => {
+        const userOrder = document.getElementById("userOrder").value;
+
+        window.location.href = "/introduce/all/portfolio/" + userOrder;
+    })
+
     for(let i = 0; i < portfolioCard.length; i++) {
         portfolioCard[i].addEventListener("click", (e) => {
-            let portfolioOrder = e.currentTarget.dataset.parent;
+            const portfolioOrder = e.currentTarget.dataset.parent;
         })
     }
 

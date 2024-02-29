@@ -17,6 +17,7 @@
     let getMediaUrl = [[${mediaUrl}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" id="userOrder" th:value="${userOrder}">
 <div class="introduce-wrap">
     <div class="introduce-profile-wrap">
         <div class="profile-div">
@@ -35,6 +36,16 @@
             <div class="review-user-count">(123)</div>
         </div>
         <input type="button" class="conversation-button" value="문의하기">
+        <div class="introduce-sub-menu">
+            <ul>
+                <li style="font-weight: bolder">
+                    홈
+                </li>
+                <li id="menuAllPortfolio" th:if="${getPortfolio != null}">
+                    포트폴리오
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="introduce-main-wrap">
         <div class="introduce-tap">
