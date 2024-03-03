@@ -54,7 +54,11 @@ public class IntroduceController {
 
         MediaIntroduceVO getIntroduce = this.introduceService.getIntroduce(userOrder);
 
+        PortfolioEntity[] getPortfolio = this.postService.getPortfolio(getIntroduce.getEmail());
+        modelAndView.addObject("getPortfolio", getPortfolio);
+
         modelAndView.addObject("email", getIntroduce.getEmail());
+        modelAndView.addObject("nickname", getIntroduce.getNickname());
         modelAndView.addObject("profileImgNm", getIntroduce.getProfileImgNm());
         modelAndView.addObject("profileOriginFileNm", getIntroduce.getProfileOriginFileNm());
         modelAndView.addObject("profileImgFilePath", getIntroduce.getProfileImgFilePath());

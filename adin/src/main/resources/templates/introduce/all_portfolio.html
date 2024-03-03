@@ -45,6 +45,23 @@
             </ul>
         </div>
     </div>
+    <div class="all-portfolio-main-wrap">
+        <div class="all-portfolio-main-sub-wrap">
+            <div class="all-portfolio-title">포트폴리오</div>
+            <div class="portfolio-list-wrap">
+                <div class="portfolio-list">
+                    <div class="portfolio-card-wrap">
+                        <div class="portfolio-card" th:each="portfolio : ${getPortfolio}" th:data-parent="${portfolio.getPortfolioOrder()}">
+                            <div class="portfolio-thumbnail">
+                                <img class="portfolio-thumbnail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${portfolio.mainImgNm}, mainImgFilePath =${portfolio.mainImgFilePath})}">
+                            </div>
+                            <div class="portfolio-title" th:text="${portfolio.portfolioTitle}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <hr class="user-footer">
 <th:block th:replace="~{layouts/footer :: body}"></th:block>

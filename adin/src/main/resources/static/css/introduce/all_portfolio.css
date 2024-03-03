@@ -64,80 +64,6 @@ body {
     margin-top: 2rem;
 }
 
-.introduce-tap {
-    padding-left: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #e4e5ed;
-    position: sticky;
-    top: 9.4rem;
-    margin-bottom: 1rem;
-    background-color: #FFFFFF;
-    padding-top: 1rem;
-}
-
-.introduce-tap-list {
-    margin-left: 1rem;
-    padding-bottom: 1rem;
-    color: #abb0b5;
-    cursor: pointer;
-}
-
-.active {
-    color: #000000;
-    font-weight: 500;
-    border-bottom: 2px solid #000000;
-}
-
-.media-introduce-div {
-    white-space: pre-line;
-    color: #495057;
-    margin-left: 3rem;
-    margin-top: 1rem;
-    line-height: 1.5rem;
-}
-
-.introduce-label {
-    margin-left: 3rem;
-    font-weight: 600;
-    color: #303441;
-    font-size: 1.2rem;
-}
-
-.media-introduce-wrap > div {
-    margin-bottom: 5rem;
-}
-
-.region-span {
-    padding: 0.5rem 1rem;
-    background-color: #D8D8D8;
-    border-radius: 5px;
-    margin-right: 1rem;
-    color: #555969;
-}
-
-.ad-category-span {
-    padding: 0.5rem 1rem;
-    background-color: #D8D8D8;
-    border-radius: 5px;
-    margin-right: 1rem;
-    color: #555969;
-}
-
-.media-url-detail {
-    cursor: pointer;
-    text-decoration: underline;
-    text-decoration-color: #175cbe;
-    color: #175cbe;
-    margin-left: 3rem;
-    margin-top: 1rem;
-}
-
-.region-div, .ad-category-div {
-    margin-left: 3rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
 .ri-star-fill {
     color: #FFD400;
 }
@@ -162,109 +88,6 @@ body {
     color: #727585;
 }
 
-.portfolio-list-wrap {
-    width: 43rem;
-    position: relative;
-}
-
-.portfolio-list {
-    width: 43rem;
-    overflow: hidden;
-    margin-left: 3rem;
-}
-
-.portfolio-card-wrap {
-    display: flex;
-    transition: transform 0.3s ease-in-out;
-    margin-left: -0.5rem;
-}
-
-.portfolio-card {
-    flex: 0 0 auto;
-    width: 21.3rem;
-    margin-left: 0.5rem;
-    margin-top: 0.5rem;
-    position: relative;
-}
-
-.portfolio-thumbnail {
-    overflow: hidden;
-    position: relative;
-    height: 13.8rem;
-    transition: transform 0.3s ease-in-out;
-    border-radius: 10px;
-}
-
-.portfolio-thumbnail-img {
-    width: 100%;
-    position: absolute;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    transform: scale(1);
-    transition: transform 0.3s ease-in-out;
-}
-
-.portfolio-thumbnail-img:hover {
-    transform: scale(1.1);
-}
-
-.slide-prev {
-    position: absolute;
-    top: 50%;
-    left: 2%;
-}
-
-.slide-next {
-    position: absolute;
-    top: 50%;
-    right: -12%;
-}
-
-.slide-prev > .ri-arrow-left-s-line, .slide-next > .ri-arrow-right-s-line {
-    font-size: 1.8rem;
-    color: #303441;
-    background: #FFFFFF;
-    border-radius: 15px;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 2px 4px rgba(0 0 0 / 18%);
-    cursor: pointer;
-}
-
-.portfolio-label {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #343a40;
-    margin-bottom: 0.5rem;
-}
-
-.portfolio-title {
-    margin-top: 0.5rem;
-    color: #303441;
-    font-weight: 500;
-    text-overflow: ellipsis;
-    width: 20rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    font-size: 0.95rem;
-}
-
-.all-portfolio > .ri-arrow-right-s-line {
-    font-size: 1.3rem;
-    vertical-align: sub;
-}
-
-.all-portfolio {
-    color: #2E64FE;
-    margin-left: 3rem;
-    cursor: pointer;
-    width: 9rem;
-}
-
 .introduce-sub-menu {
     margin-left: 3.5rem;
 }
@@ -278,4 +101,63 @@ body {
     padding-bottom: 1rem;
     cursor: pointer;
     color: #303441;
+}
+
+.all-portfolio-main-wrap {
+    width: 56rem;
+    height: 45rem;
+}
+
+.all-portfolio-title {
+    margin-left: 3rem;
+    font-weight: 600;
+    color: #303441;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.portfolio-list {
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.portfolio-card {
+    width: 16.3rem;
+}
+
+.portfolio-thumbnail {
+    overflow: hidden;
+    position: relative;
+    height: 10.5rem;
+    border-radius: 10px;
+}
+
+.portfolio-thumbnail-img {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.portfolio-card-wrap {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+    row-gap: 18px;
+}
+
+.portfolio-title {
+    margin-top: 0.5rem;
+    color: #303441;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    width: 16rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.95rem;
 }
