@@ -3,6 +3,8 @@
  */
 const introduceHome = document.getElementById("introduceHome");
 
+const spans = document.querySelectorAll('.div-paging span span');
+
 /**
  * 이벤트 함수
  */
@@ -11,6 +13,15 @@ introduceHome.addEventListener("click", () => {
 
     window.location.href = "/introduce/" + userOrder;
 })
+
+for(let i = 0; i < spans.length; i++) {
+    spans[i].addEventListener('click', (e) => {
+        let link = e.target.querySelector('a');
+        if (link) {
+            link.click();
+        }
+    });
+}
 
 /**
  * 사용자 함수

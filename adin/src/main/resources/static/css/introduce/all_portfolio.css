@@ -161,3 +161,39 @@ body {
     overflow: hidden;
     font-size: 0.95rem;
 }
+
+
+.div-paging {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-paging > span > span {
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    margin: 0.25rem;
+    border: 1px solid transparent;
+}
+
+.div-paging > span > span > a {
+    text-decoration: none;
+    color: inherit;
+    color: #A4A4A4;
+}
+
+.div-paging > span > span:hover {
+    border: 1px solid #81BEF7;
+    cursor: pointer;
+}
+
+.current-page {
+    background-color: #81BEF7;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.current-page > a {
+    color: #FFFFFF !important;
+}
