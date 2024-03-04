@@ -109,13 +109,13 @@ if(portfolioSection != null) {
     allPortfolio.addEventListener("click", () => {
         const userOrder = document.getElementById("userOrder").value;
 
-        window.location.href = "/introduce/all/portfolio/" + userOrder;
+        window.location.href = "/introduce/all/portfolio/" + userOrder + "?page=1";
     })
 
     menuAllPortfolio.addEventListener("click", () => {
         const userOrder = document.getElementById("userOrder").value;
 
-        window.location.href = "/introduce/all/portfolio/" + userOrder;
+        window.location.href = "/introduce/all/portfolio/" + userOrder + "?page=1";
     })
 
     for(let i = 0; i < portfolioCard.length; i++) {

@@ -1,5 +1,7 @@
 package com.adin.introduce.controller;
 
+import com.adin.common.AllPortfolioCriteria;
+import com.adin.common.AllPortfolioPaging;
 import com.adin.introduce.service.IntroduceService;
 import com.adin.media.vo.MediaIntroduceVO;
 import com.adin.portfolio.entity.PortfolioEntity;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller(value = "com.adin.introduce.controller.IntroduceController")
@@ -49,12 +52,25 @@ public class IntroduceController {
     }
 
     @GetMapping(value = "/introduce/all/portfolio/{userOrder}")
-    public ModelAndView introduceAllPortfolio(@PathVariable("userOrder") int userOrder) {
+    public ModelAndView introduceAllPortfolio(@PathVariable("userOrder") int userOrder, @RequestParam(value = "page", required = false) int page) {
         ModelAndView modelAndView = new ModelAndView("introduce/all_portfolio");
 
         MediaIntroduceVO getIntroduce = this.introduceService.getIntroduce(userOrder);
 
-        PortfolioEntity[] getPortfolio = this.postService.getPortfolio(getIntroduce.getEmail());
+        PortfolioVO getPortfolioCnt = this.postService.getPortfolioCnt(getIntroduce.getEmail());
+
+        int cnt = getPortfolioCnt.getCount();
+        AllPortfolioCriteria cri = new AllPortfolioCriteria();
+        cri.setPage(page);
+
+        AllPortfolioPaging paging = new AllPortfolioPaging();
+        paging.setCri(cri);
+        paging.setTotalCount(cnt);
+
+        int pageStart = cri.getPageStart();
+        int perPageNum = cri.getPerPageNum();
+
+        PortfolioEntity[] getPortfolio = this.introduceService.allPortfolio(getIntroduce.getEmail(), pageStart, perPageNum);
         modelAndView.addObject("getPortfolio", getPortfolio);
 
         modelAndView.addObject("email", getIntroduce.getEmail());
@@ -62,6 +78,8 @@ public class IntroduceController {
         modelAndView.addObject("profileImgNm", getIntroduce.getProfileImgNm());
         modelAndView.addObject("profileOriginFileNm", getIntroduce.getProfileOriginFileNm());
         modelAndView.addObject("profileImgFilePath", getIntroduce.getProfileImgFilePath());
+
+        modelAndView.addObject("paging", paging);
 
         return  modelAndView;
     }
