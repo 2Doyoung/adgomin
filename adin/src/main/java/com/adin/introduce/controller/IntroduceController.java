@@ -83,4 +83,19 @@ public class IntroduceController {
 
         return  modelAndView;
     }
+
+    @GetMapping(value = "/introduce/detail/portfolio/{userOrder}/{portfolioOrder}")
+    public ModelAndView introduceDetailPortfolio(@PathVariable("userOrder") int userOrder, @PathVariable("portfolioOrder") int portfolioOrder) {
+        ModelAndView modelAndView = new ModelAndView("introduce/detail_portfolio");
+
+        MediaIntroduceVO getIntroduce = this.introduceService.getIntroduce(userOrder);
+
+        modelAndView.addObject("email", getIntroduce.getEmail());
+        modelAndView.addObject("nickname", getIntroduce.getNickname());
+        modelAndView.addObject("profileImgNm", getIntroduce.getProfileImgNm());
+        modelAndView.addObject("profileOriginFileNm", getIntroduce.getProfileOriginFileNm());
+        modelAndView.addObject("profileImgFilePath", getIntroduce.getProfileImgFilePath());
+
+        return  modelAndView;
+    }
 }

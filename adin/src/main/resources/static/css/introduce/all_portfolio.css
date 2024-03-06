@@ -105,7 +105,7 @@ body {
 
 .all-portfolio-main-wrap {
     width: 56rem;
-    height: 50rem;
+    height: 53rem;
 }
 
 .all-portfolio-title {
@@ -130,6 +130,8 @@ body {
     position: relative;
     height: 10.5rem;
     border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
 }
 
 .portfolio-thumbnail-img {
@@ -139,6 +141,12 @@ body {
     object-fit: cover;
     border-radius: 10px;
     cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.portfolio-thumbnail-img:hover {
+    transform: scale(1.1);
 }
 
 .portfolio-card-wrap {
@@ -146,7 +154,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 16px;
-    row-gap: 18px;
+    row-gap: 35px;
 }
 
 .portfolio-title {
