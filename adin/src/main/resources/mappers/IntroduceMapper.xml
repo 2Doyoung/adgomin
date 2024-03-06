@@ -37,4 +37,19 @@
         AND email = #{email}
         LIMIT #{pageStart}, #{perPageNum}
     </select>
+
+    <select id="getDetailPortfolio" resultType="com.adin.portfolio.vo.PortfolioVO">
+        SELECT
+            portfolio_order AS portfolioOrder
+             ,email AS email
+             ,portfolio_title AS portfolioTitle
+             ,portfolio_ad_detail_category AS portfolioAdDetailCategory
+             ,portfolio_ad_category AS portfolioAdCategory
+             ,portfolio_region AS portfolioRegion
+             ,main_img_nm AS mainImgNm
+             ,main_origin_file_nm AS mainOriginFileNm
+             ,main_img_file_path AS mainImgFilePath
+        FROM adin_portfolio
+        WHERE portfolio_order = #{portfolioOrder}
+    </select>
 </mapper>

@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>애드인 - 소개</title>
-    <link rel="stylesheet" th:href="@{/css/introduce/all_portfolio.css}">
+    <link rel="stylesheet" th:href="@{/css/introduce/detail_portfolio.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script defer th:src="@{/js/introduce/all_portfolio.js}"></script>
+    <script defer th:src="@{/js/introduce/detail_portfolio.js}"></script>
     <script defer th:src="@{/js/layouts/header.js}"></script>
 </head>
 <body>
 <script th:inline="javascript">
-
+    let getPortfolioAdDetailCategory = [[${portfolioAdDetailCategory}]];
+    let getPortfolioAdCategory = [[${portfolioAdCategory}]];
+    let getPortfolioRegion = [[${portfolioRegion}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <input type="hidden" id="userOrder" th:value="${userOrder}">
@@ -45,20 +47,16 @@
             </ul>
         </div>
     </div>
-    <div class="all-portfolio-main-wrap">
-        <div class="all-portfolio-main-sub-wrap">
-            <div class="all-portfolio-title">포트폴리오</div>
-            <div class="portfolio-list-wrap">
-                <div class="portfolio-list">
-                    <div class="portfolio-card-wrap">
-                        <div class="portfolio-card" th:each="portfolio : ${getPortfolio}" th:data-parent="${portfolio.getPortfolioOrder()}">
-                            <div class="portfolio-thumbnail">
-                                <img class="portfolio-thumbnail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${portfolio.mainImgNm}, mainImgFilePath =${portfolio.mainImgFilePath})}">
-                            </div>
-                            <div class="portfolio-title" th:text="${portfolio.portfolioTitle}"></div>
-                        </div>
-                    </div>
-                </div>
+    <div class="detail-portfolio-main-wrap">
+        <div class="detail-portfolio-main-sub-wrap">
+            <div class="detail-portfolio-title" th:text="${portfolioTitle}"></div>
+            <div class="portfolio-thumbnail">
+                <img class="portfolio-thumbnail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${mainImgNm}, mainImgFilePath =${mainImgFilePath})}">
+            </div>
+            <div class="detail-portfolio-relation">
+                <div class="detail-portfolio-div"><span id="portfolioAdDetailCategory"></span></div>
+                <div class="detail-portfolio-div"><span id="portfolioAdCategory"></span></div>
+                <div class="detail-portfolio-div"><span id="portfolioRegion"></span></div>
             </div>
         </div>
     </div>

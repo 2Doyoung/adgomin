@@ -89,12 +89,23 @@ public class IntroduceController {
         ModelAndView modelAndView = new ModelAndView("introduce/detail_portfolio");
 
         MediaIntroduceVO getIntroduce = this.introduceService.getIntroduce(userOrder);
+        PortfolioVO getDetailPortfolio = this.introduceService.getDetailPortfolio(portfolioOrder);
 
         modelAndView.addObject("email", getIntroduce.getEmail());
         modelAndView.addObject("nickname", getIntroduce.getNickname());
         modelAndView.addObject("profileImgNm", getIntroduce.getProfileImgNm());
         modelAndView.addObject("profileOriginFileNm", getIntroduce.getProfileOriginFileNm());
         modelAndView.addObject("profileImgFilePath", getIntroduce.getProfileImgFilePath());
+
+        modelAndView.addObject("portfolioOrder", getDetailPortfolio.getPortfolioOrder());
+        modelAndView.addObject("email", getDetailPortfolio.getEmail());
+        modelAndView.addObject("portfolioTitle", getDetailPortfolio.getPortfolioTitle());
+        modelAndView.addObject("portfolioAdDetailCategory", getDetailPortfolio.getPortfolioAdDetailCategory());
+        modelAndView.addObject("portfolioAdCategory", getDetailPortfolio.getPortfolioAdCategory());
+        modelAndView.addObject("portfolioRegion", getDetailPortfolio.getPortfolioRegion());
+        modelAndView.addObject("mainImgNm", getDetailPortfolio.getMainImgNm());
+        modelAndView.addObject("mainOriginFileNm", getDetailPortfolio.getMainOriginFileNm());
+        modelAndView.addObject("mainImgFilePath", getDetailPortfolio.getMainImgFilePath());
 
         return  modelAndView;
     }
