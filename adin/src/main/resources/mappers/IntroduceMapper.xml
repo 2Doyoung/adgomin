@@ -50,6 +50,20 @@
              ,main_origin_file_nm AS mainOriginFileNm
              ,main_img_file_path AS mainImgFilePath
         FROM adin_portfolio
-        WHERE portfolio_order = #{portfolioOrder}
+        WHERE 1=1
+        AND portfolio_order = #{portfolioOrder}
+    </select>
+
+    <select id="getDetailPortfolioImg" resultType="com.adin.portfolio.entity.PortfolioImgEntity">
+        SELECT
+            portfolio_img_order AS portfolioImgOrder
+             ,portfolio_order AS portfolioOrder
+             ,email AS email
+             ,img_nm AS imgNm
+             ,origin_file_nm AS originFileNm
+             ,img_file_path AS imgFilePath
+        FROM adin_portfolio_img
+        WHERE 1=1
+        AND portfolio_order = #{portfolioOrder}
     </select>
 </mapper>

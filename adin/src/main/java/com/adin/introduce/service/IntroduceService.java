@@ -3,6 +3,7 @@ package com.adin.introduce.service;
 import com.adin.introduce.mapper.IntroduceMapper;
 import com.adin.media.vo.MediaIntroduceVO;
 import com.adin.portfolio.entity.PortfolioEntity;
+import com.adin.portfolio.entity.PortfolioImgEntity;
 import com.adin.portfolio.vo.PortfolioVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,9 @@ public class IntroduceService {
 
     public PortfolioVO getDetailPortfolio(int portfolioOrder) {
         return this.introduceMapper.getDetailPortfolio(portfolioOrder);
+    }
+
+    public PortfolioImgEntity[] getDetailPortfolioImg(int portfolioOrder) {
+        return this.introduceMapper.getDetailPortfolioImg(portfolioOrder);
     }
 }

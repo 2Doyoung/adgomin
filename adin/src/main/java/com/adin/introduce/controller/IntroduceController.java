@@ -5,6 +5,7 @@ import com.adin.common.AllPortfolioPaging;
 import com.adin.introduce.service.IntroduceService;
 import com.adin.media.vo.MediaIntroduceVO;
 import com.adin.portfolio.entity.PortfolioEntity;
+import com.adin.portfolio.entity.PortfolioImgEntity;
 import com.adin.portfolio.vo.PortfolioVO;
 import com.adin.post.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,6 +91,7 @@ public class IntroduceController {
 
         MediaIntroduceVO getIntroduce = this.introduceService.getIntroduce(userOrder);
         PortfolioVO getDetailPortfolio = this.introduceService.getDetailPortfolio(portfolioOrder);
+        PortfolioImgEntity[] getDetailPortfolioImg = this.introduceService.getDetailPortfolioImg(portfolioOrder);
 
         modelAndView.addObject("email", getIntroduce.getEmail());
         modelAndView.addObject("nickname", getIntroduce.getNickname());
@@ -106,6 +108,8 @@ public class IntroduceController {
         modelAndView.addObject("mainImgNm", getDetailPortfolio.getMainImgNm());
         modelAndView.addObject("mainOriginFileNm", getDetailPortfolio.getMainOriginFileNm());
         modelAndView.addObject("mainImgFilePath", getDetailPortfolio.getMainImgFilePath());
+
+        modelAndView.addObject("getDetailPortfolioImg", getDetailPortfolioImg);
 
         return  modelAndView;
     }

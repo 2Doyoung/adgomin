@@ -54,9 +54,16 @@
                 <img class="portfolio-thumbnail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${mainImgNm}, mainImgFilePath =${mainImgFilePath})}">
             </div>
             <div class="detail-portfolio-relation">
-                <div class="detail-portfolio-div"><span id="portfolioAdDetailCategory"></span></div>
-                <div class="detail-portfolio-div"><span id="portfolioAdCategory"></span></div>
-                <div class="detail-portfolio-div"><span id="portfolioRegion"></span></div>
+                <div class="detail-portfolio-div"><span class="detail-portfolio-relation-title">카테고리</span><span id="portfolioAdDetailCategory"></span></div>
+                <div class="detail-portfolio-div"><span class="detail-portfolio-relation-title">광고분야</span><span id="portfolioAdCategory"></span></div>
+                <div class="detail-portfolio-div"><span class="detail-portfolio-relation-title">지역</span><span id="portfolioRegion"></span></div>
+            </div>
+            <div class="portfolio-detail-wrap">
+                <div class="portfolio-detail-card" th:each="detailImg : ${getDetailPortfolioImg}">
+                    <div class="portfolio-detail-img-div">
+                        <img class="portfolio-detail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${detailImg.getImgNm()}, mainImgFilePath =${detailImg.getImgFilePath()})}">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
