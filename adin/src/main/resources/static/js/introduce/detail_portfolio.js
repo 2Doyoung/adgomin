@@ -5,10 +5,58 @@ const portfolioAdDetailCategory = document.getElementById("portfolioAdDetailCate
 const portfolioAdCategory = document.getElementById("portfolioAdCategory");
 const portfolioRegion = document.getElementById("portfolioRegion");
 
+const introduceHome = document.getElementById("introduceHome");
+
+const portfolioSlider = document.getElementById('portfolioSlider');
+const portfolioPrevButton = document.getElementById('portfolioPrevButton');
+const portfolioNextButton = document.getElementById('portfolioNextButton');
+const portfolioSlide = portfolioSlider.querySelector('.portfolio-card');
+const portfolioSlideStyles = getComputedStyle(portfolioSlide);
+const portfolioSlideWidth = portfolioSlide.offsetWidth + parseFloat(portfolioSlideStyles.marginLeft) + parseFloat(portfolioSlideStyles.marginRight);
+const portfolioSlidesToShow = Math.floor(portfolioSlider.offsetWidth / portfolioSlideWidth);
+let portfolioCurrentIndex = 0;
+
+const portfolioCard = document.getElementsByClassName("portfolio-card");
+
+const allPortfolio = document.getElementById("allPortfolio");
+
 /**
  * 이벤트 함수
  */
+introduceHome.addEventListener("click", () => {
+    const userOrder = document.getElementById("userOrder").value;
 
+    window.location.href = "/introduce/" + userOrder;
+})
+
+portfolioNextButton.addEventListener('click', () => {
+    if (portfolioCurrentIndex < portfolioSlider.children.length - portfolioSlidesToShow) {
+        portfolioCurrentIndex++;
+        portfolioUpdateSlider();
+    }
+});
+
+portfolioPrevButton.addEventListener('click', () => {
+    if (portfolioCurrentIndex > 0) {
+        portfolioCurrentIndex--;
+        portfolioUpdateSlider();
+    }
+});
+
+allPortfolio.addEventListener("click", () => {
+    const userOrder = document.getElementById("userOrder").value;
+
+    window.location.href = "/introduce/all/portfolio/" + userOrder + "?page=1";
+})
+
+for(let i = 0; i < portfolioCard.length; i++) {
+    portfolioCard[i].addEventListener("click", (e) => {
+        const userOrder = document.getElementById("userOrder").value
+        const portfolioOrder = e.currentTarget.dataset.parent;
+
+        window.location.href = "/introduce/detail/portfolio/" + userOrder + "/" + portfolioOrder;
+    })
+}
 /**
  * 사용자 함수
  */
@@ -40,6 +88,11 @@ for(let i = 0; i < portfolioRegionSplit.length; i++) {
     regionSpanTag.classList.add("region-span");
 
     portfolioRegion.appendChild(regionSpanTag);
+}
+
+let portfolioUpdateSlider = () => {
+    const translateValue = -portfolioCurrentIndex * portfolioSlideWidth + 'px';
+    portfolioSlider.style.transform = 'translateX(' + translateValue + ')';
 }
 
 /**

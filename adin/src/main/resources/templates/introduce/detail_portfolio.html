@@ -50,8 +50,8 @@
     <div class="detail-portfolio-main-wrap">
         <div class="detail-portfolio-main-sub-wrap">
             <div class="detail-portfolio-title" th:text="${portfolioTitle}"></div>
-            <div class="portfolio-thumbnail">
-                <img class="portfolio-thumbnail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${mainImgNm}, mainImgFilePath =${mainImgFilePath})}">
+            <div class="detail-portfolio-thumbnail">
+                <img class="detail-portfolio-thumbnail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${mainImgNm}, mainImgFilePath =${mainImgFilePath})}">
             </div>
             <div class="detail-portfolio-relation">
                 <div class="detail-portfolio-div"><span class="detail-portfolio-relation-title">카테고리</span><span id="portfolioAdDetailCategory"></span></div>
@@ -63,6 +63,22 @@
                     <div class="portfolio-detail-img-div">
                         <img class="portfolio-detail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${detailImg.getImgNm()}, mainImgFilePath =${detailImg.getImgFilePath()})}">
                     </div>
+                </div>
+            </div>
+            <div class="portfolio-list-wrap" id="portfolioSection">
+                <div class="introduce-label">광고매체의 다른 포트폴리오</div>
+                <div class="all-portfolio" id="allPortfolio">전체 포트폴리오<i class="ri-arrow-right-s-line"></i></div>
+                <div class="portfolio-list">
+                    <div class="portfolio-card-wrap" id="portfolioSlider">
+                        <div class="portfolio-card" th:each="portfolio : ${getPortfolio}" th:data-parent="${portfolio.getPortfolioOrder()}">
+                            <div class="portfolio-thumbnail">
+                                <img class="portfolio-thumbnail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${portfolio.mainImgNm}, mainImgFilePath =${portfolio.mainImgFilePath})}">
+                            </div>
+                            <div class="portfolio-title" th:text="${portfolio.portfolioTitle}"></div>
+                        </div>
+                    </div>
+                    <div class="slide-prev" id="portfolioPrevButton"><i class="ri-arrow-left-s-line"></i></div>
+                    <div class="slide-next" id="portfolioNextButton"><i class="ri-arrow-right-s-line"></i></div>
                 </div>
             </div>
         </div>

@@ -420,8 +420,11 @@ body {
 
 .all-portfolio > .ri-arrow-right-s-line {
     font-size: 1.3rem;
+    vertical-align: sub;
 }
 
 .all-portfolio {
     color: #2E64FE;
+    cursor: pointer;
+    width: 9rem;
 }

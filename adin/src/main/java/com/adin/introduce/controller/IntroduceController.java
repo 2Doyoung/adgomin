@@ -93,6 +93,10 @@ public class IntroduceController {
         PortfolioVO getDetailPortfolio = this.introduceService.getDetailPortfolio(portfolioOrder);
         PortfolioImgEntity[] getDetailPortfolioImg = this.introduceService.getDetailPortfolioImg(portfolioOrder);
 
+        PortfolioEntity[] getPortfolio = this.postService.getPortfolio(getIntroduce.getEmail());
+
+        modelAndView.addObject("getPortfolio", getPortfolio);
+
         modelAndView.addObject("email", getIntroduce.getEmail());
         modelAndView.addObject("nickname", getIntroduce.getNickname());
         modelAndView.addObject("profileImgNm", getIntroduce.getProfileImgNm());

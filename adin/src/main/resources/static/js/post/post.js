@@ -14,6 +14,10 @@ const userOrder = document.getElementById("userOrder");
 
 const portfolioSection = document.getElementById("portfolioSection");
 
+const portfolioCard = document.getElementsByClassName("portfolio-card");
+
+const allPortfolio = document.getElementById("allPortfolio");
+
 /**
  * 이벤트 함수
  */
@@ -63,6 +67,21 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+for(let i = 0; i < portfolioCard.length; i++) {
+    portfolioCard[i].addEventListener("click", (e) => {
+        const userOrder = document.getElementById("userOrder").value
+        const portfolioOrder = e.currentTarget.dataset.parent;
+
+        window.location.href = "/introduce/detail/portfolio/" + userOrder + "/" + portfolioOrder;
+    })
+}
+
+allPortfolio.addEventListener("click", () => {
+    const userOrder = document.getElementById("userOrder").value;
+
+    window.location.href = "/introduce/all/portfolio/" + userOrder + "?page=1";
+})
 
 /**
  * 사용자 함수

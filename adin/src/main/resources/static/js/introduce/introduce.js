@@ -120,7 +120,10 @@ if(portfolioSection != null) {
 
     for(let i = 0; i < portfolioCard.length; i++) {
         portfolioCard[i].addEventListener("click", (e) => {
+            const userOrder = document.getElementById("userOrder").value
             const portfolioOrder = e.currentTarget.dataset.parent;
+
+            window.location.href = "/introduce/detail/portfolio/" + userOrder + "/" + portfolioOrder;
         })
     }
 

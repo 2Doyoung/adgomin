@@ -42,6 +42,7 @@
         FROM adin_portfolio
         WHERE 1=1
         AND email = #{email}
+        ORDER BY create_dt DESC
         LIMIT 0, 10;
     </select>
 
