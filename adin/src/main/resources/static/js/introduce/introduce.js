@@ -22,7 +22,7 @@ tabs.forEach(tab => {
         const targetSection = document.querySelector(targetId);
 
         const headerHeight = document.querySelector('header').offsetHeight;
-        const introduceTapHeight = document.querySelector('.introduce-tap-list').offsetHeight;
+        const introduceTapHeight = document.querySelector('.introduce-tap').offsetHeight;
 
         window.scrollTo({
             top: targetSection.offsetTop - headerHeight - introduceTapHeight,
