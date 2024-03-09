@@ -2,16 +2,16 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.adin.media.mapper.MediaMapper">
-    <insert id="insertMediaIntroduce" parameterType="com.adin.join.entity.JoinEntity">
-        INSERT INTO adin_media_introduce
+<mapper namespace="com.adgomin.media.mapper.MediaMapper">
+    <insert id="insertMediaIntroduce" parameterType="com.adgomin.join.entity.JoinEntity">
+        INSERT INTO adgomin_media_introduce
             (email, create_dt, modify_dt)
         VALUES
             (#{email}, NOW(), NOW())
     </insert>
 
-    <insert id="insertMediaRegister" parameterType="com.adin.join.entity.JoinEntity">
-        INSERT INTO adin_media_register
+    <insert id="insertMediaRegister" parameterType="com.adgomin.join.entity.JoinEntity">
+        INSERT INTO adgomin_media_register
             (email, media_detail_explain, media_price, create_dt, modify_dt)
         VALUES
             (#{email}, '<![CDATA[<h1>광고매체 적합한 광고 🔈</h1>
@@ -58,9 +58,9 @@
         <img src="http://localhost:8080/images/media-register-video-guide.png">]]>', 0, now(), now())
     </insert>
 
-    <update id="mediaIntroduce" parameterType="com.adin.media.entity.MediaIntroduceEntity">
+    <update id="mediaIntroduce" parameterType="com.adgomin.media.entity.MediaIntroduceEntity">
         UPDATE
-            adin_media_introduce
+            adgomin_media_introduce
         SET media_introduce = #{mediaIntroduce}
         ,region = #{region}
         ,ad_category = #{adCategory}
@@ -70,18 +70,18 @@
           AND email = #{email}
     </update>
 
-    <select id="getMediaIntroduce" resultType="com.adin.media.entity.MediaIntroduceEntity">
+    <select id="getMediaIntroduce" resultType="com.adgomin.media.entity.MediaIntroduceEntity">
         SELECT
             media_introduce AS mediaIntroduce
             ,region AS region
             ,ad_category AS adCategory
             ,media_url AS mediaUrl
-        FROM adin_media_introduce
+        FROM adgomin_media_introduce
         WHERE 1=1
           AND email = #{email}
     </select>
 
-    <select id="getMediaRegister" resultType="com.adin.media.entity.MediaRegisterEntity">
+    <select id="getMediaRegister" resultType="com.adgomin.media.entity.MediaRegisterEntity">
         SELECT
             media_order as mediaOrder
             ,ad_detail_category as adDetailCategory
@@ -93,20 +93,20 @@
             ,thumbnail_img_file_path as thumbnailImgFilePath
             ,media_price as mediaPrice
             ,media_submit_status as mediaSubmitStatus
-        FROM adin_media_register
+        FROM adgomin_media_register
         WHERE 1=1
           AND email = #{email}
           AND media_order = (
               SELECT
                     MAX(media_order)
-              FROM adin_media_register
+              FROM adgomin_media_register
               WHERE email = #{email}
           )
     </select>
 
-    <update id="mediaRegister" parameterType="com.adin.media.entity.MediaIntroduceEntity">
+    <update id="mediaRegister" parameterType="com.adgomin.media.entity.MediaIntroduceEntity">
         UPDATE
-            adin_media_register
+            adgomin_media_register
         SET ad_detail_category = #{adDetailCategory}
           ,media_title = #{mediaTitle}
           ,media_summary = #{mediaSummary}
@@ -125,14 +125,14 @@
             FROM
             (SELECT
                 MAX(media_order) AS max_media_order
-            FROM adin_media_register
+            FROM adgomin_media_register
             WHERE email = #{email}) AS sub
           )
     </update>
 
-    <update id="changeThumbnail" parameterType="com.adin.media.entity.MediaIntroduceEntity">
+    <update id="changeThumbnail" parameterType="com.adgomin.media.entity.MediaIntroduceEntity">
         UPDATE
-            adin_media_register
+            adgomin_media_register
         SET thumbnail_img_nm = #{thumbnailImgNm}
           ,thumbnail_origin_file_nm = #{thumbnailOriginFileNm}
           ,thumbnail_img_file_path = #{thumbnailImgFilePath}
@@ -144,17 +144,17 @@
             FROM
                 (SELECT
                      MAX(media_order) AS max_media_order
-                 FROM adin_media_register
+                 FROM adgomin_media_register
                  WHERE email = #{email}) AS sub
           )
     </update>
 
-    <select id="thumbnailImage" resultType="com.adin.media.entity.MediaRegisterEntity">
+    <select id="thumbnailImage" resultType="com.adgomin.media.entity.MediaRegisterEntity">
         SELECT
             thumbnail_img_nm AS thumbnailImgNm
              ,thumbnail_origin_file_nm AS thumbnailOriginFileNm
              ,thumbnail_img_file_path AS thumbnailImgFilePath
-        FROM adin_media_register
+        FROM adgomin_media_register
         WHERE 1=1
           AND email = #{email}
           AND media_order = (
@@ -163,7 +163,7 @@
             FROM
                 (SELECT
                      MAX(media_order) AS max_media_order
-                 FROM adin_media_register
+                 FROM adgomin_media_register
                  WHERE email = #{email}) AS sub
         )
     </select>

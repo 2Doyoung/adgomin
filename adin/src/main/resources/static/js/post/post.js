@@ -86,7 +86,7 @@ allPortfolio.addEventListener("click", () => {
 /**
  * 사용자 함수
  */
-document.title = "애드인 - " + mediaTitle;
+document.title = "애드곰인 - " + mediaTitle;
 
 mediaDetailExplainDiv.innerHTML = mediaDetailExplain;
 

@@ -424,14 +424,14 @@ ul {
 	border-radius: 10px;
 }
 
-/* 애드인 마케팅 방법 */
-.adin-marketing-method-wrap {
+/* 애드곰인 마케팅 방법 */
+.adgomin-marketing-method-wrap {
 	height: 500px;
 	background-color: #E6F0FF;
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
-.adin-marketing-method-title {
+.adgomin-marketing-method-title {
 	text-align: center;
 	font-size: 2rem;
 	font-weight: 700;
@@ -439,50 +439,50 @@ ul {
 	color: #303441;
 }
 
-.adin-marketing-method-title-sub {
+.adgomin-marketing-method-title-sub {
 	font-size: 1rem;
 	color: #6E6E6E;
 }
 
-.adin-marketing-method-content-left {
+.adgomin-marketing-method-content-left {
 	margin-left: 7%;
 	width: 45%;
 	height: 350px;
 	display: inline-block;
 }
 
-.adin-marketing-method-content-right {
+.adgomin-marketing-method-content-right {
 	margin-left: 1%;
 	width: 45%;
 	height: 350px;
 	display: inline-block;
 }
 
-.adin-marketing-method-content-media {
+.adgomin-marketing-method-content-media {
 	background-color: #A4A4A4;
 	width: 90%;
 	height: 280px;
 	margin-bottom: 3%;
 }
 
-.adin-marketing-method-content-advertiser {
+.adgomin-marketing-method-content-advertiser {
 	background-color: #A4A4A4;
 	width: 90%;
 	height: 280px;
 	margin-bottom: 3%;
 }
 
-.adin-marketing-method-content-wrap {
+.adgomin-marketing-method-content-wrap {
 	margin: auto 17%;
 }
 
-.adin-marketing-method-content-media-span {
+.adgomin-marketing-method-content-media-span {
 	font-size: 1.5rem;
 	font-weight: 500;
 	color: #303441;
 }
 
-.adin-marketing-method-content-advertiser-span {
+.adgomin-marketing-method-content-advertiser-span {
 	font-size: 1.5rem;
 	font-weight: 500;
 	color: #303441;

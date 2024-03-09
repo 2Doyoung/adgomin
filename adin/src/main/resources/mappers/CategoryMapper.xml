@@ -2,13 +2,13 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.adin.category.mapper.CategoryMapper">
-    <select id="categoryCnt" resultType="com.adin.media.vo.MediaRegisterVO">
+<mapper namespace="com.adgomin.category.mapper.CategoryMapper">
+    <select id="categoryCnt" resultType="com.adgomin.media.vo.MediaRegisterVO">
         SELECT
             COUNT(*) AS cnt
-        FROM adin_media_register T1
-        LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
-        LEFT JOIN adin_user T3 ON T1.email = T3.email
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adgomin_user T3 ON T1.email = T3.email
         WHERE 1=1
         AND ad_detail_category LIKE CONCAT('%', #{adDetailCategoryKo}, '%')
         AND T2.ad_category LIKE CONCAT('%', #{adCategoryKo}, '%')
@@ -16,7 +16,7 @@
         AND T1.media_submit_status = 'Y'
     </select>
 
-    <select id="categoryList" resultType="com.adin.media.vo.MediaRegisterVO">
+    <select id="categoryList" resultType="com.adgomin.media.vo.MediaRegisterVO">
         SELECT
             media_order AS mediaOrder
              ,media_title AS mediaTitle
@@ -28,9 +28,9 @@
              ,T3.nickname AS nickname
              ,T2.region AS region
              ,T2.ad_category AS adCategory
-        FROM adin_media_register T1
-        LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
-        LEFT JOIN adin_user T3 ON T1.email = T3.email
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adgomin_user T3 ON T1.email = T3.email
         WHERE 1=1
         AND ad_detail_category LIKE CONCAT('%', #{adDetailCategoryKo}, '%')
         AND T2.ad_category LIKE CONCAT('%', #{adCategoryKo}, '%')

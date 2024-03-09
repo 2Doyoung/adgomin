@@ -265,7 +265,7 @@ header {
 .header-after-login {
 	display: flex;
 	align-items: center;
-	width: 265px;
+	width: 270px;
 }
 
 .header-message {

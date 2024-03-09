@@ -2,17 +2,17 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.adin.portfolio.mapper.PortfolioMapper">
-    <update id="portfolioRegister" parameterType="com.adin.portfolio.entity.PortfolioEntity">
-        INSERT INTO adin_portfolio
+<mapper namespace="com.adgomin.portfolio.mapper.PortfolioMapper">
+    <update id="portfolioRegister" parameterType="com.adgomin.portfolio.entity.PortfolioEntity">
+        INSERT INTO adgomin_portfolio
             (email, portfolio_title, portfolio_ad_detail_category, portfolio_ad_category, portfolio_region, create_dt, modify_dt)
         VALUES
             (#{email}, #{portfolioTitle}, #{portfolioAdDetailCategory}, #{portfolioAdCategory}, #{portfolioRegion}, NOW(), NOW())
     </update>
 
-    <update id="portfolioChangeThumbnail" parameterType="com.adin.portfolio.entity.PortfolioEntity">
+    <update id="portfolioChangeThumbnail" parameterType="com.adgomin.portfolio.entity.PortfolioEntity">
         UPDATE
-            adin_portfolio
+            adgomin_portfolio
         SET main_img_nm = #{mainImgNm}
           ,main_origin_file_nm = #{mainOriginFileNm}
           ,main_img_file_path = #{mainImgFilePath}
@@ -24,16 +24,16 @@
             FROM
                 (SELECT
                      MAX(portfolio_order) AS max_portfolio_order
-                 FROM adin_portfolio
+                 FROM adgomin_portfolio
                  WHERE email = #{email}) AS sub
         )
     </update>
 
-    <insert id="portfolioDetailImg" parameterType="com.adin.portfolio.entity.PortfolioImgEntity">
-        INSERT INTO adin_portfolio_img
+    <insert id="portfolioDetailImg" parameterType="com.adgomin.portfolio.entity.PortfolioImgEntity">
+        INSERT INTO adgomin_portfolio_img
         (portfolio_order, email, img_nm, origin_file_nm, img_file_path, create_dt, modify_dt)
         SELECT
-            (SELECT MAX(portfolio_order) FROM adin_portfolio WHERE email = #{email}),
+            (SELECT MAX(portfolio_order) FROM adgomin_portfolio WHERE email = #{email}),
             #{email}, #{imgNm}, #{originFileNm}, #{imgFilePath}, NOW(), NOW();
     </insert>
 </mapper>

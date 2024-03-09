@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.adin.main.mapper.MainMapper" >
-    <select id="setSession" resultType="com.adin.join.vo.JoinVO">
+<mapper namespace="com.adgomin.main.mapper.MainMapper" >
+    <select id="setSession" resultType="com.adgomin.join.vo.JoinVO">
         SELECT
             count(*) AS count
             ,email AS email
@@ -11,13 +11,13 @@
             ,marketing_yn AS marketingYn
             ,use_yn AS useYn
             ,certified_yn AS certifiedYn
-        FROM adin_user
+        FROM adgomin_user
         WHERE 1=1
         AND email = #{email}
         GROUP BY user_order, email
     </select>
 
-    <select id="popularSnsMedia" resultType="com.adin.media.vo.MediaRegisterVO">
+    <select id="popularSnsMedia" resultType="com.adgomin.media.vo.MediaRegisterVO">
         SELECT
             media_order AS mediaOrder
             ,media_title AS mediaTitle
@@ -29,16 +29,16 @@
             ,T3.nickname AS nickname
             ,T2.region AS region
             ,T2.ad_category AS adCategory
-        FROM adin_media_register T1
-        LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
-        LEFT JOIN adin_user T3 ON T1.email = T3.email
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adgomin_user T3 ON T1.email = T3.email
         WHERE 1=1
         AND ad_detail_category IN ("유튜브", "인스타그램", "페이스북", "블로그")
         AND T1.media_submit_status = 'Y'
         LIMIT 0, 10
     </select>
 
-    <select id="popularTransportMedia" resultType="com.adin.media.vo.MediaRegisterVO">
+    <select id="popularTransportMedia" resultType="com.adgomin.media.vo.MediaRegisterVO">
         SELECT
             media_order AS mediaOrder
              ,media_title AS mediaTitle
@@ -50,16 +50,16 @@
              ,T3.nickname AS nickname
              ,T2.region AS region
              ,T2.ad_category AS adCategory
-        FROM adin_media_register T1
-        LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
-        LEFT JOIN adin_user T3 ON T1.email = T3.email
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adgomin_user T3 ON T1.email = T3.email
         WHERE 1=1
         AND ad_detail_category IN ("지하철", "버스")
         AND T1.media_submit_status = 'Y'
         LIMIT 0, 10
     </select>
 
-    <select id="popularOutdoorMedia" resultType="com.adin.media.vo.MediaRegisterVO">
+    <select id="popularOutdoorMedia" resultType="com.adgomin.media.vo.MediaRegisterVO">
         SELECT
             media_order AS mediaOrder
              ,media_title AS mediaTitle
@@ -71,9 +71,9 @@
              ,T3.nickname AS nickname
              ,T2.region AS region
              ,T2.ad_category AS adCategory
-        FROM adin_media_register T1
-        LEFT JOIN adin_media_introduce T2 ON T1.email = T2.email
-        LEFT JOIN adin_user T3 ON T1.email = T3.email
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adgomin_user T3 ON T1.email = T3.email
         WHERE 1=1
         AND ad_detail_category IN ("옥외광고", "영화관", "현수막")
         AND T1.media_submit_status = 'Y'

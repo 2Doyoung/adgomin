@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.adin.introduce.mapper.IntroduceMapper">
-    <select id="getIntroduce" resultType="com.adin.media.vo.MediaIntroduceVO">
+<mapper namespace="com.adgomin.introduce.mapper.IntroduceMapper">
+    <select id="getIntroduce" resultType="com.adgomin.media.vo.MediaIntroduceVO">
         SELECT
             T1.email
             ,T1.media_introduce AS mediaIntroduce
@@ -14,12 +14,12 @@
             ,T2.profile_img_nm AS profileImgNm
             ,T2.profile_origin_file_nm AS profileOriginFileNm
             ,T2.profile_img_file_path AS profileImgFilePath
-        FROM adin_media_introduce T1
-        LEFT JOIN adin_user T2 ON T1.email = T2.email
+        FROM adgomin_media_introduce T1
+        LEFT JOIN adgomin_user T2 ON T1.email = T2.email
         WHERE T2.user_order = #{userOrder}
     </select>
 
-    <select id="allPortfolio" resultType="com.adin.portfolio.entity.PortfolioEntity">
+    <select id="allPortfolio" resultType="com.adgomin.portfolio.entity.PortfolioEntity">
         SELECT
             portfolio_order AS portfolioOrder
              ,email AS email
@@ -32,13 +32,13 @@
              ,main_img_file_path AS mainImgFilePath
              ,create_dt AS createDt
              ,modify_dt AS modifyDt
-        FROM adin_portfolio
+        FROM adgomin_portfolio
         WHERE 1=1
         AND email = #{email}
         LIMIT #{pageStart}, #{perPageNum}
     </select>
 
-    <select id="getDetailPortfolio" resultType="com.adin.portfolio.vo.PortfolioVO">
+    <select id="getDetailPortfolio" resultType="com.adgomin.portfolio.vo.PortfolioVO">
         SELECT
             portfolio_order AS portfolioOrder
              ,email AS email
@@ -49,12 +49,12 @@
              ,main_img_nm AS mainImgNm
              ,main_origin_file_nm AS mainOriginFileNm
              ,main_img_file_path AS mainImgFilePath
-        FROM adin_portfolio
+        FROM adgomin_portfolio
         WHERE 1=1
         AND portfolio_order = #{portfolioOrder}
     </select>
 
-    <select id="getDetailPortfolioImg" resultType="com.adin.portfolio.entity.PortfolioImgEntity">
+    <select id="getDetailPortfolioImg" resultType="com.adgomin.portfolio.entity.PortfolioImgEntity">
         SELECT
             portfolio_img_order AS portfolioImgOrder
              ,portfolio_order AS portfolioOrder
@@ -62,7 +62,7 @@
              ,img_nm AS imgNm
              ,origin_file_nm AS originFileNm
              ,img_file_path AS imgFilePath
-        FROM adin_portfolio_img
+        FROM adgomin_portfolio_img
         WHERE 1=1
         AND portfolio_order = #{portfolioOrder}
     </select>
