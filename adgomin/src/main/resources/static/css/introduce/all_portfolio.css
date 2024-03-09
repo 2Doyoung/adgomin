@@ -1,0 +1,207 @@
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.user-footer {
+    border: 0.5px solid #D9D9D9;
+    margin: 0;
+}
+
+.introduce-wrap {
+    width: 1200px;
+    margin: auto;
+    display: flex;
+}
+
+.introduce-profile-wrap {
+    width: 19rem;
+    background-color: #f8fafc;
+}
+
+.introduce-main-wrap {
+    width: 56rem;
+}
+
+.profile-div {
+    width: 8rem;
+    height: 8rem;
+    margin-left: 5.5rem;
+    margin-top: 3rem;
+}
+
+.profile-div > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.nickname-div {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.conversation-button {
+    background-color: #81BEF7;
+    height: 3rem;
+    border: 1px solid #81BEF7;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: #FFFFFF;
+    width: 15rem;
+    font-weight: 600;
+    margin-left: 2rem;
+    margin-top: 2rem;
+}
+
+.ri-star-fill {
+    color: #FFD400;
+}
+
+.review-count {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    vertical-align: text-top;
+}
+
+.review-user-count {
+    display: inline-block;
+    font-size: 0.9rem;
+    vertical-align: text-top;
+}
+
+.review-star {
+    margin-left: 4.5rem;
+    margin-top: 1rem;
+    color: #727585;
+}
+
+.introduce-sub-menu {
+    margin-left: 3.5rem;
+}
+
+.introduce-sub-menu > ul {
+    padding: 0;
+    margin: 2rem 0 0;
+}
+
+.introduce-sub-menu > ul > li {
+    padding-bottom: 1rem;
+    cursor: pointer;
+    color: #303441;
+}
+
+.all-portfolio-main-wrap {
+    width: 56rem;
+    height: 53rem;
+}
+
+.all-portfolio-title {
+    margin-left: 3rem;
+    font-weight: 600;
+    color: #303441;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.portfolio-list {
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.portfolio-card {
+    width: 16.3rem;
+}
+
+.portfolio-thumbnail {
+    overflow: hidden;
+    position: relative;
+    height: 10.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+}
+
+.portfolio-thumbnail-img {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.portfolio-thumbnail-img:hover {
+    transform: scale(1.1);
+}
+
+.portfolio-card-wrap {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+    row-gap: 35px;
+}
+
+.portfolio-title {
+    margin-top: 0.5rem;
+    color: #303441;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    width: 16rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.95rem;
+}
+
+
+.div-paging {
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-paging > span > span {
+    padding: 0.3rem 0.8rem;
+    border-radius: 5px;
+    margin: 0.25rem;
+    border: 1px solid transparent;
+}
+
+.div-paging > span > span > a {
+    text-decoration: none;
+    color: inherit;
+    color: #A4A4A4;
+}
+
+.div-paging > span > span:hover {
+    border: 1px solid #81BEF7;
+    cursor: pointer;
+}
+
+.current-page {
+    background-color: #81BEF7;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.current-page > a {
+    color: #FFFFFF !important;
+}

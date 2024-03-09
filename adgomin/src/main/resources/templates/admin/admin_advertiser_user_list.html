@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - 관리자 사용자 관리(광고주 사용자 목록)</title>
+    <link rel="stylesheet" th:href="@{/css/admin/admin_submit_list.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/admin/admin_advertiser_user_list.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let sessionLoginUser = [[${session.LOGIN_USER}]];
+
+    if (sessionLoginUser == null) {
+        window.location.href = "/";
+    }
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" id="marketingYn" th:value="${marketingYn}">
+<input type="hidden" id="certifiedYn" th:value="${certifiedYn}">
+<input type="hidden" id="useYn" th:value="${useYn}">
+<div class="top-title">
+    <div class="user-main-title">관리자 사용자 관리</div>
+</div>
+<div class="user-wrap">
+    <div class="user-sub-wrap">
+        <div class="user-sub-menu">
+            <ul>
+                <li id="submitList">
+                    광고매체 제출 목록
+                </li>
+                <li id="mediaUserList">
+                    광고매체 사용자 목록
+                </li>
+                <li style="font-weight: bolder">
+                    광고주 사용자 목록
+                </li>
+            </ul>
+        </div>
+        <div class="user-sub-main">
+            <div class="user-sub-main-title">
+                광고주 사용자 목록
+            </div>
+            <div class="search-div">
+                <div class="search-option" id="searchOption">검색 옵션 <span class="arrow-icon arrow-icon-down"></span></div>
+                <div class="search-options search-options-hidden">
+                    <div>
+                        <label>마케팅</label>
+                        <div>
+                            <label class="marketing-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill marketing-checkbox"></i></div> 동의</label>
+                            <label class="marketing-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill marketing-checkbox"></i></div> 비동의</label>
+                        </div>
+                    </div>
+                    <hr class="search-option-hr">
+                    <div>
+                        <label>이메일</label>
+                        <div>
+                            <label class="email-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill email-checkbox"></i></div> 인증</label>
+                            <label class="email-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill email-checkbox"></i></div> 미인증</label>
+                        </div>
+                    </div>
+                    <hr class="search-option-hr">
+                    <div>
+                        <label>사용</label>
+                        <div>
+                            <label class="use-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill use-checkbox"></i></div> 사용중</label>
+                            <label class="use-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill use-checkbox"></i></div> 탈퇴</label>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="button" class="search-option-select-clear" id="selectClear" value="선택해제">
+                        <input type="button" class="search-option-apply" id="apply" value="적용하기">
+                    </div>
+                </div>
+            </div>
+            <div class="user-sub-main-content">
+                <table>
+                    <tr>
+                        <th>이메일</th>
+                        <th>닉네임</th>
+                        <th>마케팅 동의</th>
+                        <th>이메일 인증</th>
+                        <th>사용여부</th>
+                        <th>생성 시간</th>
+                    </tr>
+                    <tr th:each="userList : ${joinEntityList}" class="submit-list-tr">
+                        <td th:text="${userList.email}"></td>
+                        <td th:text="${userList.nickname}"></td>
+                        <td th:if="${userList.marketingYn == '1'}" th:text="Y"></td>
+                        <td th:if="${userList.marketingYn == '0'}" th:text="N"></td>
+                        <td th:if="${userList.certifiedYn == '1'}" th:text="Y"></td>
+                        <td th:if="${userList.certifiedYn == '0'}" th:text="N"></td>
+                        <td th:if="${userList.useYn == '1'}" th:text="Y"></td>
+                        <td th:if="${userList.useYn == '0'}" th:text="N"></td>
+                        <td th:text="${#dates.format(userList.createDt, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                    </tr>
+                </table>
+                <div>
+                    <div class="div-paging">
+                        <span th:if="${paging.totalCount > 0}">
+                            <span th:if="${paging.cri.page > 1}"><a th:href="@{/admin(manage='advertiserUserList', page=${paging.cri.page - 1})}">이전페이지</a></span>
+                            <span th:each="num : ${#numbers.sequence((paging.startPage), (paging.endPage))}" th:class="${num == paging.cri.page} ? 'current-page' : ''"><a th:text="${num}" th:href="@{/admin(manage='advertiserUserList', page=${num})}"></a></span>
+                            <span th:if="${paging.cri.page < 1.0 * paging.totalCount / paging.cri.perPageNum}"><a th:href="@{/admin(manage='advertiserUserList', page=${paging.cri.page + 1})}">다음페이지</a></span>
+                        </span>
+                        <span th:unless="${paging.totalCount > 0}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-bg" id="modalBg">
+    <div class="modal-body">
+        <div id="modalTitle"></div>
+        <div class="modal-check-div" id="modalCheck">
+            <i class="ri-checkbox-circle-line"></i>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

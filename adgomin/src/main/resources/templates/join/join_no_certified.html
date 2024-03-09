@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - 회원가입</title>
+    <link rel="stylesheet" th:href="@{/css/join/join.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/join/join_no_certified.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let sessionLoginUser = [[${session.LOGIN_USER}]];
+
+    if(sessionLoginUser != null) {
+        window.location.href = "/"
+    }
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+    <input type="hidden" id="email" th:value="${email}">
+    <div class="join-email-wrap">
+        <div class="join-email-title">
+            이메일 인증
+        </div>
+        <div class="join-wrap-sub-email">
+            <div class="email-sub-title"><span>이메일 인증</span>이 완료되지 않았습니다.</div>
+            <div class="email-sub-title"><span>💌인증 메일</span>을 확인해주세요. </div>
+
+            <div class="sub-email">
+                <span>가입시 보내드린 인증 메일을 확인해주세요!!</span></br>
+                <span>이메일을 인증해주시면, 애드곰인 서비스를 모두 이용하실 수</span><br> <span>있습니다.</span></br>
+                <span>메일을 받지 못하셨다면 다시 요청해주세요.</span>
+            </div>
+            <input type="button" class="join-email-request" id="joinEmailRequest" value="이메일 요청">
+        </div>
+    </div>
+<hr class="join-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

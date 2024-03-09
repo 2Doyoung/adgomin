@@ -1,0 +1,548 @@
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.join-wrap {
+    margin: auto 17%;
+    height: 45rem;
+}
+
+.join-wrap-next-step {
+    margin: auto 17%;
+    height: 60rem;
+}
+
+.join-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 5rem;
+    color: #1C1C1C;
+    text-align: center;
+}
+
+.join-title-sub {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    color: #303441;
+    margin-left: 4rem;
+}
+
+.join-service-category {
+    margin-top: 2.5rem;
+    margin-left: 4rem;
+}
+
+.join-service-media, .join-service-advertiser {
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    height: 3rem;
+    width: 30rem;
+    display: inline-block;
+    border: 1px solid #D9D9D9;
+}
+
+.join-service-advertiser {
+    margin-top: 2rem;
+}
+
+.join-footer {
+    border: 0.5px solid #D9D9D9;
+}
+
+.join-service-category-div {
+    font-size: 1.2rem;
+    color: #303441;
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
+}
+
+.ri-check-fill {
+    color: #6E6E6E;
+    vertical-align: middle;
+}
+
+.join-wrap-sub {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 24rem;
+    width: 38rem;
+    margin-left: 26%;
+    margin-top: 2rem;
+}
+
+.join-wrap-sub-next-step {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 750px;
+    width: 37rem;
+    margin-left: 27%;
+    margin-top: 2rem;
+}
+
+.join-service-media > span, .join-service-advertiser > span {
+    margin-left: 0.5rem;
+    color: #6E6E6E;
+}
+
+.join-wrap-id-password {
+    font-size: 1.1rem;
+    color: #303441;
+    margin-left: 4rem;
+    margin-top: 2rem;
+}
+
+.join-wrap-id-password > div {
+    margin-top: 1rem;
+}
+
+.join-wrap-id-password > div > input {
+    width: 28rem;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    padding-left: 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 10px;
+    border: 1px solid #D9D9D9;
+}
+
+.join-wrap-id-password > div > input::placeholder {
+    color: #D8D8D8;
+}
+
+.essential-star {
+    font-size: 0.8rem;
+    color: #2E9AFE;
+}
+
+.ri-checkbox-circle-fill {
+    color: #6E6E6E;
+}
+
+.join-check-box {
+    margin-left: 4rem;
+    margin-top: 2rem;
+}
+
+.all-check {
+    font-size: 1.5rem;
+    color: #303441;
+    cursor: pointer;
+}
+
+.all-check-div {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.8rem;
+}
+
+.check-box-line {
+    width: 86%;
+    margin-left: 0;
+    border: 0.5px solid #D9D9D9;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.check-box-list {
+    color: #6E6E6E;
+    line-height: 1.5rem;
+}
+
+.check-box-list-div {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.3rem;
+}
+
+.essential-type {
+    color: #2E9AFE;
+}
+
+.choice-type {
+    color: #6E6E6E;
+}
+
+.join-complete-button-wrap {
+    margin-left: 4rem;
+    margin-top: 2rem;
+}
+
+.join-complete-button {
+    background-color: #81BEF7;
+    border: 1px solid #81BEF7;
+    width: 29rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.join-complete-button:hover {
+    background-color: #0047AA;
+    transition: background-color 0.2s ease-out;
+}
+
+.check-box-color {
+    color: #00BFFF;
+    transition: color 0.2s ease-out;
+}
+
+.join-service-media:hover {
+    color: #81BEF7;
+    border: 2px solid #81BEF7;
+    margin: -1px;
+    cursor: pointer;
+}
+
+.join-service-media:hover > div  {
+    color: #81BEF7;
+    font-weight: 500;
+}
+
+.join-service-media:hover > div > .ri-check-fill {
+    color: #81BEF7;
+    font-weight: bolder;
+}
+
+.join-service-advertiser:hover {
+    color: #81BEF7;
+    border: 2px solid #81BEF7;
+    margin: 1.95rem -1px -1px -1px;
+    cursor: pointer;
+}
+
+.join-service-advertiser:hover > div  {
+    color: #81BEF7;
+    font-weight: 500;
+}
+
+.join-service-advertiser:hover > div > .ri-check-fill {
+    color: #81BEF7;
+    font-weight: bolder;
+}
+
+.check-box-item-line {
+    cursor: pointer;
+}
+
+.email-error {
+    font-size: 0.9rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    display: none;
+}
+
+.password-error {
+    font-size: 0.9rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    display: none;
+}
+
+.password-check-error {
+    font-size: 0.9rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    display: none;
+}
+
+.check-box-error {
+    font-size: 0.9rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    display: none;
+}
+
+.join-email-wrap {
+    margin: auto 17%;
+    height: 45rem;
+}
+
+.join-email-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 5rem;
+    color: #303441;
+    text-align: center;
+}
+
+.join-wrap-sub-email {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 450px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
+}
+
+.join-wrap-sub-email > .email-sub-title {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #303441;
+    margin-left: 4rem;
+}
+
+.join-wrap-sub-email > .email-sub-title > span{
+    color: #81BEF7;
+    font-weight: 500;
+}
+
+.join-wrap-sub-email > .sub-email {
+    font-size: 1.2rem;
+    margin-left: 4rem;
+    color: #303441;
+}
+
+.sub-email {
+    margin-top: 2rem;
+}
+
+.join-email-home-button {
+    background-color: #81BEF7;
+    border: 1px solid #81BEF7;
+    width: 29rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 4rem;
+    margin-top: 4rem;
+}
+
+.join-email-request {
+    background-color: #81BEF7;
+    border: 1px solid #81BEF7;
+    width: 29rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 4rem;
+    margin-top: 4rem;
+}
+
+.password-find-wrap {
+    margin: auto 17%;
+    height: 45rem;
+}
+
+.password-find-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 5rem;
+    color: #1C1C1C;
+    text-align: center;
+}
+
+.password-find-wrap-sub {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 300px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
+}
+
+.password-find-wrap-sub > .sub-password-find {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #1C1C1C;
+    margin-left: 4rem;
+}
+
+.password-find-wrap-sub > .sub-password-find {
+    font-size: 1.2rem;
+    margin-left: 4rem;
+}
+
+.sub-email {
+    margin-top: 2rem;
+}
+
+.sub-password-find > .password-find-sub-title {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #1C1C1C;
+}
+
+.password-find-email-button {
+    background-color: #81BEF7;
+    border: 1px solid #81BEF7;
+    width: 29rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 4rem;
+    margin-top: 1rem;
+}
+
+.password-find-email {
+    border: 1px solid;
+    border-radius: 0.5rem;
+    width: 27.7rem;
+    height: 2.5rem;
+    margin-left: 4rem;
+    margin-top: 2rem;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+}
+
+.password-check-email-error {
+    font-size: 1rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    margin-left: 4.5rem;
+    display: none;
+}
+
+.password-wrap-sub-email {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 400px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
+}
+
+.password-wrap-sub-email > .email-sub-title {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #1C1C1C;
+    margin-left: 4rem;
+}
+
+.password-wrap-sub-email > .email-sub-title > span{
+    color: #81BEF7;
+    font-weight: 500;
+}
+
+.password-wrap-sub-email > .sub-email {
+    font-size: 1.2rem;
+    margin-left: 4rem;
+}
+
+.password-change-wrap {
+    margin: auto 17%;
+    height: 45rem;
+}
+
+.password-change-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-top: 5rem;
+    color: #1C1C1C;
+    text-align: center;
+}
+
+.password-change-wrap-sub {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 350px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
+}
+
+.password-change {
+    border: 1px solid;
+    border-radius: 0.5rem;
+    width: 27.7rem;
+    height: 2.5rem;
+    margin-left: 4rem;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.password-change-button {
+    background-color: #81BEF7;
+    border: 1px solid #81BEF7;
+    width: 29rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 4rem;
+    margin-top: 2rem;
+}
+
+.password-change-error {
+    font-size: 1rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    margin-left: 4.5rem;
+    display: none;
+}
+
+.password-change-check-error {
+    font-size: 1rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    margin-left: 4.5rem;
+    display: none;
+}
+
+.password-change-check {
+    border: 1px solid;
+    border-radius: 0.5rem;
+    width: 27.7rem;
+    height: 2.5rem;
+    margin-left: 4rem;
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.password-change-wrap-sub > div {
+    margin-top: 1rem;
+}
+
+.password-change-wrap-sub > div > label {
+    margin-left: 4rem;
+    font-size: 1.3rem;
+}
+
+.password-wrap-sub-change {
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    height: 300px;
+    width: 55%;
+    margin-left: 23%;
+    margin-top: 2rem;
+}
+
+.password-wrap-sub-change > .change-sub-title {
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    color: #1C1C1C;
+    margin-left: 4rem;
+}
+
+.password-wrap-sub-change > .change-sub-title > span{
+    color: #81BEF7;
+    font-weight: 500;
+}
+
+.password-wrap-sub-change > .sub-change {
+    font-size: 1.2rem;
+    margin-left: 4rem;
+    margin-top: 1rem;
+}

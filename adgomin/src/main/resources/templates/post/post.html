@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - </title>
+    <link rel="stylesheet" th:href="@{/css/post/post.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/post/post.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let mediaTitle = [[${mediaTitle}]];
+    let getAdCategory = [[${adCategory}]];
+    let getRegion = [[${region}]];
+    let mediaDetailExplain = [[${mediaDetailExplain}]];
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" id="userOrder" th:value="${userOrder}">
+    <div class="post-wrap">
+        <div class="post-top-wrap">
+            <div>
+                <div class="post-thumbnail">
+                    <img class="post-thumbnail-img" th:src="@{/main/thumbnail/image (thumbnailImgNm=${thumbnailImgNm}, thumbnailImgFilePath =${thumbnailImgFilePath})}">
+                </div>
+                <div class="post-title" th:text="${mediaTitle}"></div>
+                <div class="review-star">
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <i class="ri-star-fill"></i>
+                    <div class="review-count">5.0</div>
+                    <div class="review-user-count">리뷰 123건</div>
+                </div>
+                <div class="post-tap">
+                    <span class="post-tap-list active" data-target="#mediaSummary">광고매체 요약</span>
+                    <span class="post-tap-list" data-target="#mediaDetailExplain">광고매체 설명</span>
+                    <span class="post-tap-list" th:if="${getPortfolio != null}" data-target="#portfolioSection">포트폴리오</span>
+                    <span class="post-tap-list">리뷰</span>
+                </div>
+                <div class="media-summary-wrap" id="mediaSummary">
+                    <div class="media-summary-div" th:text="${mediaSummary}"></div>
+                </div>
+                <div class="media-detail-explain-wrap" id="mediaDetailExplain">
+                    <div class="media-detail-explain-div" id="mediaDetailExplainDiv"></div>
+                </div>
+                <div th:if="${getPortfolio != null}" class="portfolio-list-wrap" id="portfolioSection">
+                    <div class="portfolio-label">포트폴리오</div>
+                    <div class="all-portfolio" id="allPortfolio">전체 포트폴리오<i class="ri-arrow-right-s-line"></i></div>
+                    <div class="portfolio-list">
+                        <div class="portfolio-card-wrap" id="portfolioSlider">
+                            <div class="portfolio-card" th:each="portfolio : ${getPortfolio}" th:data-parent="${portfolio.getPortfolioOrder()}">
+                                <div class="portfolio-thumbnail">
+                                    <img class="portfolio-thumbnail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${portfolio.mainImgNm}, mainImgFilePath =${portfolio.mainImgFilePath})}">
+                                </div>
+                                <div class="portfolio-title" th:text="${portfolio.portfolioTitle}"></div>
+                            </div>
+                        </div>
+                        <div class="slide-prev" id="portfolioPrevButton"><i class="ri-arrow-left-s-line"></i></div>
+                        <div class="slide-next" id="portfolioNextButton"><i class="ri-arrow-right-s-line"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="post-information">
+                <div class="post-information-wrap">
+                    <div class="post-media-introduce">
+                        <div class="post-price" th:text="${mediaPrice}"></div><span class="won">원</span>
+                    </div>
+                    <div class="introduce">
+                        <div class="introduce-profile">
+                            <img th:src="@{/profile/image (email=${email})}">
+                        </div>
+                        <span class="introduce-nickname" th:text="${nickname}" id="nickname"></span>
+                    </div>
+                    <div class="media-introduce-wrap">
+                        <div class="introduce-category">
+                            <span id="region" class="introduce-region"></span>
+                            <span id="adCategory" class="introduce-ad-category"></span>
+                        </div>
+                        <input type="button" class="conversation-button" value="문의하기">
+                        <div class="introduce-introduce-wrap">
+                            <label>광고매체 소개</label>
+                            <div class="introduce-introduce" th:text="${mediaIntroduce}"></div>
+                        </div>
+                        <div class="media-introduce-all-page"><span class="media-introduce-all-page-span" id="introduceAllPage">광고매체 소개 전체보기<i class="ri-arrow-right-s-line"></i></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

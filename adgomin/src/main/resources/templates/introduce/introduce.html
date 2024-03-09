@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - 소개</title>
+    <link rel="stylesheet" th:href="@{/css/introduce/introduce.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/introduce/introduce.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let getRegion = [[${region}]];
+    let getAdCategory = [[${adCategory}]];
+    let getMediaUrl = [[${mediaUrl}]];
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" id="userOrder" th:value="${userOrder}">
+<div class="introduce-wrap">
+    <div class="introduce-profile-wrap">
+        <div class="profile-div">
+            <img th:src="@{/profile/image (email=${email})}">
+        </div>
+        <div class="nickname-div">
+            <span th:text="${nickname}"></span>
+        </div>
+        <div class="review-star">
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <div class="review-count"> 5.0</div>
+            <div class="review-user-count">(123)</div>
+        </div>
+        <input type="button" class="conversation-button" value="문의하기">
+        <div class="introduce-sub-menu">
+            <ul>
+                <li style="font-weight: bolder">
+                    홈
+                </li>
+                <li id="menuAllPortfolio" th:if="${getPortfolio != null}">
+                    포트폴리오
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="introduce-main-wrap">
+        <div class="introduce-tap">
+            <span class="introduce-tap-list active" data-target="#introduceSection">소개</span>
+            <span th:if="${getPortfolio != null}" class="introduce-tap-list" data-target="#portfolioSection">포트폴리오</span>
+            <span class="introduce-tap-list">리뷰</span>
+            <span class="introduce-tap-list">광고매체</span>
+        </div>
+        <div class="media-introduce-wrap">
+            <div id="introduceSection">
+                <label class="introduce-label">소개</label>
+                <div class="media-introduce-div" th:text="${mediaIntroduce}"></div>
+            </div>
+            <div>
+                <label class="introduce-label">광고매체 지역</label>
+                <div id="region" class="region-div"></div>
+            </div>
+            <div>
+                <label class="introduce-label">광고매체 분야</label>
+                <div id="adCategory" class="ad-category-div"></div>
+            </div>
+            <div>
+                <label class="introduce-label">광고매체 URL</label>
+                <div th:if="${mediaUrl != ''}" th:text="${mediaUrl}" id="mediaUrl" class="media-url-detail"></div>
+                <div th:if="${mediaUrl == ''}" class="media-url-detail">https://</div>
+            </div>
+            <div th:if="${getPortfolio != null}" class="portfolio-list-wrap" id="portfolioSection">
+                <div class="introduce-label">포트폴리오</div>
+                <div class="all-portfolio" id="allPortfolio">전체 포트폴리오<i class="ri-arrow-right-s-line"></i></div>
+                <div class="portfolio-list">
+                    <div class="portfolio-card-wrap" id="portfolioSlider">
+                        <div class="portfolio-card" th:each="portfolio : ${getPortfolio}" th:data-parent="${portfolio.getPortfolioOrder()}">
+                            <div class="portfolio-thumbnail">
+                                <img class="portfolio-thumbnail-img" th:src="@{/portfolio/thumbnail/image (mainImgNm=${portfolio.mainImgNm}, mainImgFilePath =${portfolio.mainImgFilePath})}">
+                            </div>
+                            <div class="portfolio-title" th:text="${portfolio.portfolioTitle}"></div>
+                        </div>
+                    </div>
+                    <div class="slide-prev" id="portfolioPrevButton"><i class="ri-arrow-left-s-line"></i></div>
+                    <div class="slide-next" id="portfolioNextButton"><i class="ri-arrow-right-s-line"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - 회원가입</title>
+    <link rel="stylesheet" th:href="@{/css/join/join.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/join/next_step.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let sessionLoginUser = [[${session.LOGIN_USER}]];
+
+    if(sessionLoginUser != null) {
+        window.location.href = "/"
+    }
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+    <input type="hidden" id="userType" th:value="${user_type}">
+    <div class="join-wrap-next-step">
+        <div class="join-title">
+            회원가입
+        </div>
+        <div class="join-wrap-sub-next-step">
+            <div class="join-title-sub">애드곰인 서비스를 이용할 계정을 만들어주세요.</div>
+            <div class="join-wrap-id-password">
+                <div>
+                    <label><span class="essential-star">＊</span> 이메일</label><br>
+                    <input type="email" id="email" placeholder="이메일을 입력해 주세요."><br>
+                    <span class="email-error" id="emailError">이메일 형식이 올바르지 않습니다.</span>
+                    <span class="email-error" id="emailDuplicateError">이미 가입된 이메일입니다.</span>
+                </div>
+                <div>
+                    <label><span class="essential-star">＊</span> 비밀번호</label><br>
+                    <input type="password" id="password" placeholder="비밀번호를 입력해 주세요."><br>
+                    <span class="password-error" id="passwordError">8자 이상/영문/숫자/특수문자를 사용해주세요.</span>
+                </div>
+                <div>
+                    <label><span class="essential-star">＊</span> 비밀번호 확인</label><br>
+                    <input type="password" id="passwordCheck" placeholder="비밀번호를 한번 더 입력해 주세요."><br>
+                    <span class="password-check-error" id="passwordCheckError">비밀번호를 확인해주세요.</span>
+                </div>
+            </div>
+            <div class="join-check-box">
+                <div class="all-check" id="allCheck">
+                    <div class="all-check-div"><i class="ri-checkbox-circle-fill" id="allCheckItem"></i></div> 모두 동의
+                    <span class="check-box-error" id="checkBoxError">이용약관 필수에 동의를 하시면 가입이 완료됩니다.</span>
+                </div>
+                <hr class="check-box-line">
+                <div class="check-box-list">
+                    <span class="checkBoxItemLine check-box-item-line"><div class="check-box-list-div"><i class="ri-checkbox-circle-fill checkBoxItem"></i></div> <span class="essential-type">(필수)</span> 서비스 이용약관에 동의합니다.<br></span>
+                    <span class="checkBoxItemLine check-box-item-line"><div class="check-box-list-div"><i class="ri-checkbox-circle-fill checkBoxItem"></i></div> <span class="essential-type">(필수)</span> 개인정보 수집/이용에 동의합니다.<br></span>
+                    <span class="checkBoxItemLine check-box-item-line"><div class="check-box-list-div"><i class="ri-checkbox-circle-fill checkBoxItem"></i></div> <span class="choice-type">(선택)</span> 마케팅 수신 홍보 목적의 개인정보 수집 및 이용에 동의합니다.</span>
+                </div>
+            </div>
+            <div class="join-complete-button-wrap">
+                <input type="button" class="join-complete-button" value="가입하기" id="joinCompleteButton">
+            </div>
+        </div>
+    </div>
+<hr class="join-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

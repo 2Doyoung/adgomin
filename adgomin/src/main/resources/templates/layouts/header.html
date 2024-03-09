@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>ADGOMIN</title>
+	<link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+	<script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+	<header>
+		<div class="header">
+			<div class="header-logo">
+				<a th:href="@{/}" title="메인으로 가기">
+					<span class="logo">ADGOMIN</span>
+				</a>
+			</div>
+			<div class="header-search">
+				<input type="text" class="main-search" placeholder="광고하고 싶은 매체를 검색해보세요.">
+				<i class="ri-search-line"></i>
+			</div>
+			<div class="header-login" th:if="${session.LOGIN_USER == null}">
+				<button class="login-button" id="loginBtn" >로그인</button>
+				<button class="signup-button" id="signupBtn">회원가입</button>
+			</div>
+			<div class="header-after-login" th:if="${session.LOGIN_USER != null}">
+				<div class="all-manage">
+					애드곰인 관리
+				</div>
+				<div class="header-heart">
+					찜
+				</div>
+				<div class="header-message">
+					알림
+				</div>
+				<div class="header-mypage dropdown">
+					프로필
+					<div class="dropdown-content">
+						<div class="profile-wrap">
+							<div class="profile-image">
+								<img th:if="${session.LOGIN_USER != null}" th:src="@{/profile/image (email=${session.LOGIN_USER.getEmail()})}">
+							</div>
+							<div class="profile-nickname-usertype">
+								<div th:text="${session.LOGIN_USER.nickname}" class="profile-nickname"></div>
+								<div th:if="${session.LOGIN_USER.userType == 'media'}" class="profile-usertype">광고매체</div>
+								<div th:if="${session.LOGIN_USER.userType == 'advertiser'}" class="profile-usertype">광고주</div>
+							</div>
+						</div>
+						<div th:if="${session.LOGIN_USER.userType == 'media'}" class="dropdown-sub" id="mediaManage">광고매체 관리</div>
+						<div th:if="${session.LOGIN_USER.userType == 'media'}" class="dropdown-sub" id="portfolio">포트폴리오 관리</div>
+						<div th:if="${session.LOGIN_USER.userType == 'admin'}" class="dropdown-sub" id="adminUserManage">사용자 관리</div>
+						<div th:if="${session.LOGIN_USER.userType == 'admin'}" class="dropdown-sub" id="adminAdManage">광고 관리</div>
+						<div class="dropdown-sub" id="userSetting">계정설정</div>
+						<div class="dropdown-sub" id="logout">로그아웃</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="all-category-area">
+			<div class="all-category-cursor">
+				<div class="all-category-click">
+			<span class="category-span">
+				<span class="line-wrap all-category-click">
+					<span class="line"></span>
+					<span class="line"></span>
+					<span class="line"></span>
+				</span>
+				<span class="category-text all-category-click">전체 카테고리</span><i class="category-arrow-icon all-category-click"></i></span>
+				</div>
+				<div id="allCategoryDropdownWrap">
+					<div class="all-category-dropdown" id="allCategoryDropdown">
+						<div>
+							<label>SNS 광고</label>
+							<div>
+								<span data-parent="youtube">유튜브</span>
+								<span data-parent="instagram">인스타그램</span>
+								<span data-parent="facebook">페이스북</span>
+								<span data-parent="blog">블로그</span>
+							</div>
+						</div>
+						<div>
+							<label>대중교통 광고</label>
+							<div>
+								<span data-parent="bus">버스</span>
+								<span data-parent="subway">지하철</span>
+							</div>
+						</div>
+						<div>
+							<label>기타 광고</label>
+							<div>
+								<span data-parent="building">옥외광고</span>
+								<span data-parent="movie">영화관</span>
+								<span data-parent="flag">현수막</span>
+							</div>
+						</div>
+					</div>
+					<div class="all-category-sub-dropdown" id="allCategorySubDropdown">
+						<div>
+							<label>광고 분야</label>
+							<div>
+								<span data-parent="game">게임</span>
+								<span data-parent="mukbang">먹방</span>
+								<span data-parent="app">어플</span>
+								<span data-parent="hospital">병원</span>
+								<span data-parent="restaurant">음식점</span>
+								<span data-parent="cosmetics">화장품</span>
+								<span data-parent="academy">학원</span>
+								<span data-parent="food">식품</span>
+								<span data-parent="product">제품</span>
+							</div>
+						</div>
+					</div>
+					<div class="all-category-region-dropdown" id="allCategoryRegionDropdown">
+						<div>
+							<label>광고 지역</label>
+							<div>
+								<span class="dropdown-region" data-parent="Seoul">서울</span>
+								<span class="dropdown-region" data-parent="Incheon">인천</span>
+								<span class="dropdown-region" data-parent="Busan">부산</span>
+								<span class="dropdown-region" data-parent="Daejeon">대전</span>
+								<span class="dropdown-region" data-parent="Gwangju">광주</span>
+								<span class="dropdown-region" data-parent="Daegu">대구</span>
+								<span class="dropdown-region" data-parent="Ulsan">울산</span>
+								<span class="dropdown-region" data-parent="Gyeonggi">경기</span>
+								<span class="dropdown-region" data-parent="Gangwon">강원</span>
+								<span class="dropdown-region" data-parent="Chungbuk">충북</span>
+								<span class="dropdown-region" data-parent="Chungnam">충남</span>
+							</div>
+						</div>
+					</div>
+					<div class="all-category-region2-dropdown" id="allCategoryRegion2Dropdown">
+						<div>
+							<label>광고</label>
+							<div>
+								<span class="dropdown-region" data-parent="Jeonbuk">전북</span>
+								<span class="dropdown-region" data-parent="Jeonnam">전남</span>
+								<span class="dropdown-region" data-parent="Gyeongbuk">경북</span>
+								<span class="dropdown-region" data-parent="Gyeongnam">경남</span>
+								<span class="dropdown-region" data-parent="Jeju">제주</span>
+								<span class="dropdown-region" data-parent="Sejong">세종</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="login-cover" id="loginCover">
+		<div class="login-box">
+			<div class="close-btn" id="closeBtn">
+				<i class="ri-close-line"></i>
+			</div>
+			<div class="title">
+				<div class="login-logo">ADGOMIN</div>
+			</div>
+			<input type="email" id="loginBoxEmail" class="email-input" placeholder="이메일을 입력해 주세요." autofocus>
+			<span class="login-box-email-error" id="loginBoxEmailError">이메일을 확인해 주세요.</span>
+			<span class="login-box-email-exist-error" id="loginBoxEmailExistError">가입되어 있지 않은 이메일 입니다.</span>
+			<input type="password" id="loginBoxPassword" class="password-input" placeholder="비밀번호를 입력해 주세요.">
+			<span class="login-box-password-error" id="loginBoxPasswordError">비밀번호를 확인해 주세요.</span>
+			<input type="button" class="login-box-login-button" id="loginBoxLoginButton" value="로그인">
+			<div class="user-service">
+				<input type="checkbox" id="rememberMe" name="rememberMe">
+				<label for="rememberMe">로그인 유지</label>
+				<a class="id-password-find" id="passwordFind">비밀번호 찾기</a>
+			</div>
+			<hr class="login-box-hr">
+			<input type="button" id="loginBoxSignupButton" class="login-box-signup-button" value="애드곰인 회원가입">
+		</div>
+	</div>
+</body>
+</html>

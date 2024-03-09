@@ -1,0 +1,675 @@
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+body {
+	margin: 0;
+}
+
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 유료 광고 */
+.ad-slide-wrap {
+	height: 450px;
+	background-color: #81BEF7;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.ad-slide-area {
+	width: 1200px;
+	margin: auto;
+	display: flex;
+}
+
+.ad-slide-left, .ad-slide-right {
+	display: inline-block;
+}
+
+.ad-slide-left {
+	width: 50%;
+	height: 450px;
+}
+
+.ad-slide-left > div > img {
+	width: 100%;
+	border-radius: 5px;
+}
+
+.ad-slide-left-area > .ri-arrow-left-s-line, .ad-slide-left-area > .ri-arrow-right-s-line {
+	font-size: 1.8rem;
+	color: #303441;
+	background: #FFFFFF;
+	border-radius: 15px;
+	margin-left: 1rem;
+	margin-right: 1rem;
+}
+
+.ad-slide-left-area {
+	display: flex;
+	align-items: center;
+	margin-top: 12%;
+}
+
+.ad-slide-right {
+	width: 50%;
+	height: 450px;
+}
+
+.ad-slide-right > div > span {
+	color: #FFFFFF;
+    font-weight: 500;
+}
+
+.ad-slide-right-span {
+	font-size: 2.1rem;
+	line-height: 3.3rem;
+	margin-top: 11%;
+	margin-left: 25%;
+}
+
+.ad-slide-button {
+	width: 160px;
+	height: 55px;
+	font-size: 1.6rem;
+	background-color: #00BFFF;
+	color: #FFFFFF;
+	border: 1px solid #00BFFF;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 2rem;
+	font-weight: 500;
+	display: block;
+}
+
+/* 아이콘 카테고리 */
+.icon-category-area {
+	width: 1200px;
+	display: flex;
+	margin: 2rem auto auto;
+}
+
+.icon-category-ul {
+	list-style: none;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.icon-category-area > ul > li:not(:first-child) {
+	width: 80px;
+	float: left;
+	margin-left: 1.05rem;
+	padding: 0.5rem 1.2rem;
+	border-radius: 5px;
+	box-shadow: 0 0 2px rgba(0,0,0,.08), 4px 12px 36px rgba(0,0,0,.09);
+	transition: transform 0.3s
+}
+
+.icon-category-area > ul > li:first-child {
+	width: 80px;
+	float: left;
+	padding: 0.5rem 1.2rem;
+	border-radius: 5px;
+	box-shadow: 0 0 2px rgba(0,0,0,.08), 4px 12px 36px rgba(0,0,0,.09);
+	transition: transform 0.3s
+}
+
+.icon-category-area > ul > li:hover {
+	cursor: pointer;
+	transform: translateY(-10px);
+}
+
+.icon-category-title {
+	width: 1200px;
+	display: flex;
+	font-size: 1.5rem;
+	font-weight: 400;
+	margin: 4rem auto auto;
+	font-weight: 500;
+	color: #303441;
+}
+
+.icon-category-instagram-span {
+	display: block;
+}
+
+
+ul {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+/* 유튜브 로고 */
+.ri-youtube-fill {
+	color: #FF0000;
+	vertical-align: middle;
+	font-size: 3.5rem;
+	display: block;
+}
+
+/* 인스타그램 로고 */
+.ri-instagram-line {
+	background: radial-gradient(circle farthest-corner at 32% 106%,#ffe17d 0%,#ffcd69 10%,#fa9137 28%,#eb4141 42%,transparent 82%) , linear-gradient(135deg,#234bd7 12%,#c33cbe 58%);
+	color: #FFFFFF;
+	border-radius: 20%;
+	font-size: 2.7rem;
+}
+
+/* 페이스북 로고 */
+.ri-facebook-circle-fill {
+	color: #1877f2;
+	font-size: 3.46rem;
+	display: block;
+}
+
+/* 블로그 로고 */
+.blog-logo {
+	width: 58%;
+	display: block;
+	margin: 0 auto;
+	margin-top: 8%;
+	margin-bottom: 3.3%;
+	filter: brightness(1.5);
+}
+
+/* 지하철 로고 */
+.ri-subway-fill {
+	display: block;
+	font-size: 3.4rem;
+	color: #848484;
+}
+
+/* 버스 로고 */
+.ri-bus-2-fill {
+	display: block;
+	font-size: 3.4rem;
+	color: #2E9AFE;
+}
+
+/* 옥외광고 로고 */
+.ri-building-fill {
+	display: block;
+	font-size: 3.4rem;
+}
+
+/* 영화관 로고 */
+.ri-movie-2-fill {
+	display: block;
+	font-size: 3.4rem;
+	color: #D8D8D8;
+}
+
+/* 현수막 로고 */
+.ri-flag-fill {
+	display: block;
+	font-size: 3.4rem;
+	color: #FACC2E;
+}
+
+/* 부류 검색창 */
+.category-search {
+	border: 0px;
+	outline: 0px;
+	height: 45px;
+	padding-left: 20px;
+	font-size: 1.2rem;
+	border-radius: 5px;
+	width: 15.5rem;
+	color: #303441;
+}
+
+.category-search-area {
+	background-color: #FFFFFF;
+	margin-top: 9.5rem;
+	margin-left: 25%;
+	width: 315px;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	font-size: 1.5rem;
+	color: #303441;
+}
+
+.category-search-example {
+	margin-left: 15%;
+	margin-top: 6rem;
+}
+
+.category-search-example > ul {
+	list-style: none;
+}
+
+.category-search-example > ul > li {
+	float: left;
+	background-color: #2E9AFE;
+	margin-left: 0.5rem;
+	padding: 5px 10px 5px 10px;
+	border-radius: 5px;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+
+.category-search-example > ul > li:first-child {
+	margin-left: 12%;
+}
+
+/* 인기있는 sns 광고매체 */
+.popular-arrow {
+	font-size: 1.8rem;
+}
+
+.popular-sns-title {
+	width: 1200px;
+	display: flex;
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin: 4rem auto auto;
+	color: #303441;
+}
+
+.popular-sns-ad {
+	width: 1200px;
+	overflow: hidden;
+}
+
+.popular-transport-ad {
+	width: 1200px;
+	overflow: hidden;
+}
+
+.popular-outdoor-ad {
+	width: 1200px;
+	overflow: hidden;
+}
+
+.popular-sns-card, .popular-transport-card, .popular-outdoor-card {
+	flex: 0 0 auto;
+	width: 14.5rem;
+	margin-left: 0.5rem;
+	margin-top: 0.5rem;
+	position: relative;
+	height: 18rem;
+}
+
+/* 인기있는 대중교통 광고매체 */
+.popular-transport-title {
+	width: 1200px;
+	display: flex;
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin: 4rem auto auto;
+	color: #303441;
+}
+
+/* 인기있는 옥외광 광고매체 */
+.popular-outdoor-title {
+	width: 1200px;
+	display: flex;
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin: 4rem auto auto;
+	color: #303441;
+}
+
+/* 인기있는 광고매체 리뷰 */
+.ri-star-fill {
+	color: #FFD400;
+	vertical-align: middle;
+}
+
+.review-count {
+	display: inline-block;
+	font-size: 0.8rem;
+}
+
+/* 성공한 광고 미리보기 */
+.success-ad-preview-wrap{
+	height: 400px;
+	background-color: #E6F0FF;
+	font-family: 'Noto Sans KR', sans-serif;
+	margin-top: 7rem;
+}
+
+.success-ad-preview-title {
+	text-align: center;
+	font-size: 2rem;
+	font-weight: 700;
+	padding: 1rem;
+	color: #303441;
+}
+
+.success-ad-preview-title-sub {
+	font-size: 1rem;
+	color: #6E6E6E;
+}
+
+.success-ad-preview-video {
+	background-color: #A4A4A4;
+	margin-left: 1%;
+	width: 32%;
+	height: 250px;
+	display: inline-block;
+}
+
+.success-ad-preview-video-wrap {
+	margin: auto 17%;
+}
+
+/* 메인페이지 리뷰 리스트*/
+.main-review-list-wrap {
+	height: 600px;
+	margin: auto 17%;
+	display: flex;
+}
+
+.main-review-list-left {
+	display: inline-block;
+	height: 100%;
+	width: 40%;
+}
+
+.main-review-list-right {
+	display: inline-block;
+	height: 100%;
+	width: 59%;
+}
+
+.main-review-list-title {
+	font-size: 2.5rem;
+	margin-left: 9%;
+	margin-top: 30%;
+	font-weight: 500;
+	color: #303441;
+	letter-spacing: -0.1rem;
+}
+
+.main-review-list-title-color {
+	color: #81BEF7;
+}
+
+.main-review-list-title-sub-wrap {
+	margin-top: 1rem;
+}
+
+.main-review-list-title-sub {
+	margin-left: 10%;
+	color: #6E6E6E;
+}
+
+.main-review-list {
+	display: inline-block;
+	width: 100%;
+	margin-top: 8%;
+}
+
+.main-review-list-detail {
+	background-color: #A4A4A4;
+	width: 90%;
+	height: 80px;
+	display: inline-block;
+	margin-left: 8%;
+	margin-top: 2%;
+}
+
+.main-review-list-button {
+	margin-left: 10%;
+	margin-top: 10%;
+	width: 40%;
+	height: 48px;
+	font-size: 1.5rem;
+	font-weight: 500;
+	background-color: #00BFFF;
+	border: 1px solid #00BFFF;
+	color: #FFFFFF;
+	border-radius: 10px;
+}
+
+/* 애드곰인 마케팅 방법 */
+.adgomin-marketing-method-wrap {
+	height: 500px;
+	background-color: #E6F0FF;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.adgomin-marketing-method-title {
+	text-align: center;
+	font-size: 2rem;
+	font-weight: 700;
+	padding: 1rem;
+	color: #303441;
+}
+
+.adgomin-marketing-method-title-sub {
+	font-size: 1rem;
+	color: #6E6E6E;
+}
+
+.adgomin-marketing-method-content-left {
+	margin-left: 7%;
+	width: 45%;
+	height: 350px;
+	display: inline-block;
+}
+
+.adgomin-marketing-method-content-right {
+	margin-left: 1%;
+	width: 45%;
+	height: 350px;
+	display: inline-block;
+}
+
+.adgomin-marketing-method-content-media {
+	background-color: #A4A4A4;
+	width: 90%;
+	height: 280px;
+	margin-bottom: 3%;
+}
+
+.adgomin-marketing-method-content-advertiser {
+	background-color: #A4A4A4;
+	width: 90%;
+	height: 280px;
+	margin-bottom: 3%;
+}
+
+.adgomin-marketing-method-content-wrap {
+	margin: auto 17%;
+}
+
+.adgomin-marketing-method-content-media-span {
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #303441;
+}
+
+.adgomin-marketing-method-content-advertiser-span {
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #303441;
+}
+
+.subway-logo {
+	width: 2.75rem;
+	display: block;
+	margin-left: 1.2rem;
+}
+
+.main-media-title {
+	margin-top: 1rem;
+	font-size: 0.9rem;
+	height: 2rem;
+}
+
+.main-media-price {
+	font-size: 1.3rem;
+	font-weight: 600;
+	color: #2E9AFE;
+	height: 2rem;
+}
+
+.main-thumbnail {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.popular-sns-thumbnail {
+	overflow: hidden;
+	position: relative;
+	height: 9rem;
+}
+
+.popular-transport-thumbnail {
+	overflow: hidden;
+	position: relative;
+	height: 9rem;
+}
+
+.popular-outdoor-thumbnail {
+	overflow: hidden;
+	position: relative;
+	height: 9rem;
+}
+
+.popular-sns-ad-wrap {
+	margin: 1rem auto auto;
+	width: 1200px;
+	height: 17rem;
+	position: relative;
+}
+
+.popular-transport-ad-wrap {
+	margin: 1rem auto auto;
+	width: 1200px;
+	height: 17rem;
+	position: relative;
+}
+
+.popular-outdoor-ad-wrap {
+	margin: 1rem auto auto;
+	width: 1200px;
+	height: 17rem;
+	position: relative;
+}
+
+.popular-sns-card-wrap {
+	display: flex;
+	transition: transform 0.3s ease-in-out;
+	margin-left: -0.5rem;
+}
+
+.popular-transport-card-wrap {
+	display: flex;
+	transition: transform 0.3s ease-in-out;
+	margin-left: -0.5rem;
+}
+
+.popular-outdoor-card-wrap {
+	display: flex;
+	transition: transform 0.3s ease-in-out;
+	margin-left: -0.5rem;
+}
+
+.popular-sns-slide-prev {
+	position: absolute;
+	top: 40%;
+	left: -5%;
+}
+
+.popular-transport-slide-prev {
+	position: absolute;
+	top: 40%;
+	left: -5%;
+}
+
+.popular-outdoor-slide-prev {
+	position: absolute;
+	top: 40%;
+	left: -5%;
+}
+
+.popular-sns-slide-next {
+	position: absolute;
+	top: 40%;
+	right: -5%;
+}
+
+.popular-transport-slide-next {
+	position: absolute;
+	top: 40%;
+	right: -5%;
+}
+
+.popular-outdoor-slide-next {
+	position: absolute;
+	top: 40%;
+	right: -5%;
+}
+
+.popular-sns-slide-prev > .ri-arrow-left-s-line, .popular-sns-slide-next > .ri-arrow-right-s-line {
+	font-size: 1.8rem;
+	color: #303441;
+	background: #FFFFFF;
+	border-radius: 15px;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 2px 4px rgba(0 0 0 / 18%);
+	cursor: pointer;
+}
+
+.popular-transport-slide-prev > .ri-arrow-left-s-line, .popular-transport-slide-next > .ri-arrow-right-s-line {
+	font-size: 1.8rem;
+	color: #303441;
+	background: #FFFFFF;
+	border-radius: 15px;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 2px 4px rgba(0 0 0 / 18%);
+	cursor: pointer;
+}
+
+.popular-outdoor-slide-prev > .ri-arrow-left-s-line, .popular-outdoor-slide-next > .ri-arrow-right-s-line {
+	font-size: 1.8rem;
+	color: #303441;
+	background: #FFFFFF;
+	border-radius: 15px;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 2px 4px rgba(0 0 0 / 18%);
+	cursor: pointer;
+}
+
+.popular-sns-card, .popular-transport-card, .popular-outdoor-card {
+	cursor: pointer;
+}
+
+.popular-sns-card-hover, .popular-transport-card-hover, .popular-outdoor-card-hover{
+	position: absolute;
+	width: 14.5rem;
+	height: 9rem;
+	background-color: #000000;
+	opacity: 0.8;
+	top: 0;
+	color: #FFFFFF;
+	visibility: hidden;
+	border-radius: 10px;
+}
+
+.main-media-nickname {
+	margin-top: 1rem;
+	color: #848484;
+}
+
+.card-hover-info {
+	margin-left: 3rem;
+	margin-top: 2rem;
+}
+
+.category-search-second-ul > li {
+	margin-top: 1rem;
+}

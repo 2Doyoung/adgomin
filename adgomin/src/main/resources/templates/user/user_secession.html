@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - 계정설정(회원 탈퇴)</title>
+    <link rel="stylesheet" th:href="@{/css/user/user.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/user/user_secession.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let sessionLoginUser = [[${session.LOGIN_USER}]];
+
+    if(sessionLoginUser == null) {
+        window.location.href = "/"
+    }
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+    <div class="top-title">
+        <div class="user-main-title">계정 설정</div>
+    </div>
+   <div class="user-wrap">
+       <div class="user-sub-wrap">
+           <div class="user-sub-menu">
+               <ul>
+                   <li id="user">
+                       내 정보
+                   </li>
+                   <li id="userPasswordChange">
+                       비밀번호 변경
+                   </li>
+                   <li style="font-weight: bolder">
+                       회원 탈퇴
+                   </li>
+               </ul>
+           </div>
+           <div class="user-sub-main">
+                <div class="user-sub-main-title">
+                    회원 탈퇴
+                </div>
+                <div class="user-sub-secession-content">
+                    <div class="user-secession-sub-main-content-information">
+                        <div class="user-secession-sub-title">
+                            애드곰인을 탈퇴하는 이유가 무엇인가요?
+                        </div>
+                        <div class="user-secession-reason">
+                            <label><input type="radio" name="secessionReason" value="1" checked> 서비스가 별로에요.</label>
+                            <label><input type="radio" name="secessionReason" value="2"> 이용하고 싶은 서비스가 없어요.</label>
+                            <label><input type="radio" name="secessionReason" value="3"> 오류가 많아요.</label>
+                            <label><input type="radio" name="secessionReason" value="4"> 다른 플랫폼을 찾았어요.</label>
+                            <label><input type="radio" name="secessionReason" value="5"> 혜택이 너무 적어요.</label>
+                        </div>
+                        <div class="user-secession-notice">
+                            탈퇴 안내 사항
+                        </div>
+                        <div class="user-secession-password">
+                            <input type="password" id="password" placeholder="비밀번호를 입력해 주세요.">
+                            <input type="button" class="secessionButton" value="탈퇴하기" id="secessionButton">
+                        </div>
+                        <span class="password-present-error-secession" id="presentPasswordError">비밀번호를 확인해주세요.</span>
+                    </div>
+                </div>
+           </div>
+       </div>
+   </div>
+<div class="modal-bg" id="modalBg">
+    <div class="modal-body">
+        <div id="modalTitle"></div>
+        <div class="modal-check-div" id="modalCheck">
+            <i class="ri-checkbox-circle-line"></i>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>
