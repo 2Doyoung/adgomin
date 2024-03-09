@@ -381,11 +381,12 @@ header {
 	background-color: #E6E6E6;
 }
 
-.adin-manage {
+.all-manage {
 	margin-right: 1.5rem;
 	padding: 0.4rem 0.5rem;
 	border-radius: 10px;
 	color: #303441;
+	cursor: pointer;
 }
 
 .ri-heart-3-line, .ri-notification-2-line, .ri-user-5-line {
