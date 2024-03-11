@@ -39,7 +39,11 @@
                 내 광고매체 관리
             </div>
             <div class="media-manage-sub-main-content-information">
-
+                <div th:each="mediaRegister : ${allMediaRegister}" class="media-manage-card" th:data-parent="${mediaRegister.mediaOrder}">
+                    <div class="media-manage-thumbnail">
+                        <img class="media-manage-thumbnail-img" th:src="@{/manage/thumbnail/image (thumbnailImgNm=${mediaRegister.thumbnailImgNm}, thumbnailImgFilePath =${mediaRegister.thumbnailImgFilePath})}">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
