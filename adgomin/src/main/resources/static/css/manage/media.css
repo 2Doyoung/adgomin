@@ -18,3 +18,59 @@ body {
     background-color: #9FADBD;
     color: #FFFFFF;
 }
+
+.media-manage-main-title {
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    font-weight: 500;
+    margin: auto;
+    width: 1200px;
+}
+
+.media-manage-wrap {
+    margin: auto;
+    width: 1200px;
+}
+
+.media-manage-sub-wrap {
+    display: flex;
+}
+
+.media-manage-sub-menu {
+    width: 14rem;
+    display: inline-block;
+    border-right: 1px solid #ccc;
+}
+
+.media-manage-sub-menu > ul {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+}
+
+.media-manage-sub-menu > ul > li {
+    padding-bottom: 1rem;
+    cursor: pointer;
+    color: #303441;
+}
+
+.media-manage-sub-main {
+    width: 61rem;
+    display: inline-block;
+}
+
+.media-manage-sub-main-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: 3rem;
+    color: #303441;
+}
+
+.media-manage-sub-main-content-information {
+    margin-left: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

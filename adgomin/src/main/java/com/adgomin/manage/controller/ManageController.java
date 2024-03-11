@@ -26,7 +26,7 @@ public class ManageController {
         if("media".equals(manage)) {
             modelAndView =  new ModelAndView("manage/media");
             if(joinVO != null) {
-
+                MediaRegisterEntity[] allMediaRegister = this.manageService.allMediaRegister(joinVO.getEmail());
             }
         }
 
