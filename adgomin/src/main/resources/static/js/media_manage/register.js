@@ -28,7 +28,7 @@ tempSaveButton.addEventListener("click", () => {
 })
 
 submitButton.addEventListener("click", () => {
-    if(mediaSubmitStatus == "N") {
+    if(mediaSubmitStatus == "N" || mediaSubmitStatus == "T") {
         tempSaveAndSubmit("mediaRegisterSubmit");
     } else if(mediaSubmitStatus == "I") {
 
@@ -37,7 +37,7 @@ submitButton.addEventListener("click", () => {
 
 for(let i = 0; i < adCategoryList.length; i++) {
     adCategoryList[i].addEventListener("click", () => {
-        if(mediaSubmitStatus == "N") {
+        if(mediaSubmitStatus == "N" || mediaSubmitStatus == "T") {
             if(document.getElementsByClassName("ad-category-selected").length > 0) {
                 if(adCategoryList[i].classList.contains("ad-category-selected")) {
                     adCategoryList[i].classList.remove("ad-category-selected");
@@ -166,7 +166,7 @@ let selectLocalImage = () => {
 
     fileInput.click();
 
-    fileInput.addEventListener("change", () => {  // change 이벤트로 input 값이 바뀌면 실행
+    fileInput.addEventListener("change", () => {
         const formData = new FormData();
         const file = fileInput.files[0];
         formData.append('mediaDetailExplanationImage', file);
@@ -227,7 +227,7 @@ const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
         formData.append("mediaDetailExplain", quillHtml);
         formData.append("mediaPrice", mediaPrice);
         if(mediaRegisterTempSaveOrSubmit == "mediaRegisterTempSave") {
-            formData.append("mediaSubmitStatus", "N");
+            formData.append("mediaSubmitStatus", "T");
         } else if(mediaRegisterTempSaveOrSubmit == "mediaRegisterSubmit") {
             formData.append("mediaSubmitStatus", "I");
         }
