@@ -36,6 +36,8 @@ const dropdownRegion = document.getElementsByClassName("dropdown-region");
 
 const portfolio = document.getElementById("portfolio");
 
+const adgominManage = document.getElementById("adgominManage");
+
 /**
  * 이벤트 함수
  */
@@ -242,6 +244,12 @@ if(portfolio != null) {
 	portfolio.addEventListener("click", () => {
 		window.location.href = "/portfolio";
 	});
+}
+
+if(adgominManage != null) {
+	adgominManage.addEventListener("click", () => {
+		window.location.href = "/manage?manage=media";
+	})
 }
 /**
  * 사용자 함수
