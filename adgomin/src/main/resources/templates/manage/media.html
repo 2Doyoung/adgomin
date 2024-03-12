@@ -30,7 +30,7 @@
                     내 광고매체 관리
                 </li>
                 <li>
-                    내 포트폴리 관리
+                    내 포트폴리오 관리
                 </li>
             </ul>
         </div>
@@ -42,6 +42,29 @@
                 <div th:each="mediaRegister : ${allMediaRegister}" class="media-manage-card" th:data-parent="${mediaRegister.mediaOrder}">
                     <div class="media-manage-thumbnail">
                         <img class="media-manage-thumbnail-img" th:src="@{/manage/thumbnail/image (thumbnailImgNm=${mediaRegister.thumbnailImgNm}, thumbnailImgFilePath =${mediaRegister.thumbnailImgFilePath})}">
+                    </div>
+                    <div class="media-manage-card-detail">
+                        <div class="media-manage-title">
+                            <span th:text="${mediaRegister.mediaTitle}"></span>
+                        </div>
+                        <div class="media-manage-price">
+                            <span th:text="${mediaRegister.mediaPrice}"></span>
+                            <span>원</span>
+                        </div>
+                        <div class="media-manage-submit-status">
+                            <span th:if="${mediaRegister.mediaSubmitStatus == 'T'}">임시저장</span>
+                            <span th:if="${mediaRegister.mediaSubmitStatus == 'I'}">심사중</span>
+                            <span th:if="${mediaRegister.mediaSubmitStatus == 'C'}">반려</span>
+                            <span th:if="${mediaRegister.mediaSubmitStatus == 'Y'}">정상서비스</span>
+                        </div>
+                        <div class="media-manage-modify-dt">
+                            <span>최근 수정 일자 : </span>
+                            <span th:text="${#dates.format(mediaRegister.modifyDt, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                        </div>
+                    </div>
+                    <div class="media-manage-button">
+                        <input type="button" class="media-manage-update-button" value="광고매체 수정">
+                        <input type="button" class="media-manage-delete-button" value="광고매체 삭제">
                     </div>
                 </div>
             </div>
