@@ -55,7 +55,7 @@
                             <span th:if="${mediaRegister.mediaSubmitStatus == 'T'}">임시저장</span>
                             <span th:if="${mediaRegister.mediaSubmitStatus == 'I'}">심사중</span>
                             <span th:if="${mediaRegister.mediaSubmitStatus == 'C'}">반려</span>
-                            <span th:if="${mediaRegister.mediaSubmitStatus == 'Y'}">정상서비스</span>
+                            <span class="media-manage-y" th:data-parent="${mediaRegister.mediaOrder}" th:if="${mediaRegister.mediaSubmitStatus == 'Y'}">정상서비스(광고매체 보기)</span>
                         </div>
                         <div class="media-manage-modify-dt">
                             <span>최근 수정 일자 : </span>
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="media-manage-button">
-                        <input type="button" class="media-manage-update-button" value="광고매체 수정">
+                        <input type="button" class="media-manage-update-button" value="광고매체 수정" th:data-parent="${mediaRegister.mediaSubmitStatus}">
                         <input type="button" class="media-manage-delete-button" value="광고매체 삭제">
                     </div>
                 </div>

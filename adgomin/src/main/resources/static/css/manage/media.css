@@ -90,7 +90,7 @@ body {
     transform: translate(-50%, -50%);
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 10px 0 0 10px;
 }
 
 .media-manage-card {
@@ -149,4 +149,10 @@ body {
 
 .media-manage-button {
     margin-top: 2rem;
+}
+
+.media-manage-y {
+    color: #2E64FE;
+    cursor: pointer;
+    font-size: 0.95rem;
 }

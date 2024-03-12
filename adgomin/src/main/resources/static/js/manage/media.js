@@ -1,10 +1,29 @@
 /**
  * 전역변수
  */
+const mediaManageY = document.getElementsByClassName("media-manage-y");
+const mediaManageUpdateButton = document.getElementsByClassName("media-manage-update-button");
 
 /**
  * 이벤트 함수
  */
+for(let i = 0; i < mediaManageY.length; i++) {
+    mediaManageY[i].addEventListener("click", (e) => {
+        let mediaOrder = e.currentTarget.dataset.parent;
+
+        window.location.href = "/post?mediaOrder=" + mediaOrder;
+    })
+}
+
+for(let i = 0; i < mediaManageUpdateButton.length; i++) {
+    mediaManageUpdateButton[i].addEventListener("click", (e) => {
+        let mediaSubmitStatus = e.currentTarget.dataset.parent;
+
+        if(mediaSubmitStatus == "T" || mediaSubmitStatus == "I" || mediaSubmitStatus == "C") {
+            window.location.href = "/media?manage=mediaRegister";
+        }
+    })
+}
 
 /**
  * 사용자 함수
