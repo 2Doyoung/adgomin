@@ -4,6 +4,7 @@ import com.adgomin.join.vo.JoinVO;
 import com.adgomin.manage.service.ManageService;
 import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
+import com.adgomin.media.vo.MediaRegisterVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -41,6 +42,24 @@ public class ManageController {
 
                 modelAndView.addObject("allMediaRegister", allMediaRegister);
             }
+        }
+
+        return  modelAndView;
+    }
+
+    @GetMapping(value = "/manage/media/update")
+    public ModelAndView manageUpdate(@RequestParam(value = "mediaOrder", required = false) String mediaOrder, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
+        ModelAndView modelAndView = null;
+        modelAndView =  new ModelAndView("manage/media");
+
+        MediaRegisterVO mediaOrderEmail = this.manageService.mediaOrderEmail(mediaOrder, joinVO.getEmail());
+
+        if(joinVO != null && mediaOrderEmail.getCnt() != 0) {
+            MediaRegisterEntity[] allMediaRegister = this.manageService.allMediaRegister(joinVO.getEmail());
+
+            modelAndView.addObject("allMediaRegister", allMediaRegister);
+        } else {
+            modelAndView =  new ModelAndView("error/error");
         }
 
         return  modelAndView;

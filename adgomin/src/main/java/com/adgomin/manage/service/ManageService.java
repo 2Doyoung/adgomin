@@ -3,6 +3,7 @@ package com.adgomin.manage.service;
 import com.adgomin.manage.mapper.ManageMapper;
 import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
+import com.adgomin.media.vo.MediaRegisterVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,5 +20,9 @@ public class ManageService {
 
     public MediaRegisterEntity[] allMediaRegister(String email) {
         return this.manageMapper.allMediaRegister(email);
+    }
+
+    public MediaRegisterVO mediaOrderEmail(String mediaOrder, String email) {
+        return this.manageMapper.mediaOrderEmail(mediaOrder, email);
     }
 }

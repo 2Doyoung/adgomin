@@ -18,9 +18,12 @@ for(let i = 0; i < mediaManageY.length; i++) {
 for(let i = 0; i < mediaManageUpdateButton.length; i++) {
     mediaManageUpdateButton[i].addEventListener("click", (e) => {
         let mediaSubmitStatus = e.currentTarget.dataset.parent;
+        let mediaOrder = e.currentTarget.dataset.parent2;
 
         if(mediaSubmitStatus == "T" || mediaSubmitStatus == "I" || mediaSubmitStatus == "C") {
             window.location.href = "/media?manage=mediaRegister";
+        } else if(mediaSubmitStatus == "Y") {
+            window.location.href = "/manage/media/update?mediaOrder=" + mediaOrder;
         }
     })
 }
