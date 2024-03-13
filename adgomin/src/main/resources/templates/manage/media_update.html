@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - 광고매체 등록</title>
+    <link rel="stylesheet" th:href="@{/css/media_manage/register.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script defer th:src="@{/js/media_manage/register.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let sessionLoginUser = [[${session.LOGIN_USER}]];
+
+    if(sessionLoginUser == null) {
+        window.location.href = "/";
+    }
+
+    let getAdDetailCategorySelected = [[${adDetailCategory}]];
+    let getMediaDetailExplain = [[${mediaDetailExplain}]];
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" id="mediaSubmitStatus" th:value="${mediaSubmitStatus}">
+<div class="top-title">
+    <div class="user-main-title">광고매체 관리</div>
+</div>
+   <div class="user-wrap">
+       <div class="user-sub-wrap">
+           <div class="user-sub-menu">
+               <ul>
+                   <li id="introduce">
+                       광고매체 소개
+                   </li>
+                   <li style="font-weight: bolder">
+                       광고매체 등록
+                   </li>
+               </ul>
+           </div>
+           <div class="user-sub-main">
+                <div class="user-sub-main-title">
+                    광고매체 등록
+                </div>
+                <div class="user-sub-main-content">
+                    <div class="user-sub-main-content-information">
+                        <div>
+                            <label>제목</label>
+                            <span id="titleSpan">5~30 이하로 작성하는 것이 가독성을 향상시킵니다.</span>
+                            <div>
+                                <input type="text" id="title" th:value="${mediaTitle}" spellcheck="false" placeholder="광고매체를 한 번에 알아볼 수 있는 제목을 입력해 보세요!">
+                            </div>
+                        </div>
+                        <div class="ad-category">
+                            <label>카테고리</label>
+                            <span id="adCategorySpan">하나의 카테고리를 선택해주세요.</span>
+                            <input type="text" class="ad-category-focus" id="adCategoryFocus" readonly>
+                            <div>
+                                <ul>
+                                    <li class="category-first-li ad-category-list">유튜브</li>
+                                    <li class="ad-category-list">인스타그램</li>
+                                    <li class="ad-category-list">페이스북</li>
+                                    <li class="ad-category-list">블로그</li>
+                                    <li class="ad-category-list">지하철</li>
+                                    <li class="ad-category-list">버스</li>
+                                    <li class="ad-category-list">옥외광고</li><br>
+                                    <li class="category-first-li ad-category-list">영화관</li>
+                                    <li class="ad-category-list">현수막</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <label>광고매체 요약</label>
+                            <span>광고매체 소개 가장 위에 보여집니다. 광고매체에 대해 간단하게 요약해주세요.</span><span id="summaryLength"> (0 / 255)</span>
+                            <div>
+                                <textarea id="mediaSummary" th:text="${mediaSummary}" spellcheck="false" placeholder="ex) 게임방송부터 먹방까지 120만 유튜버 애드곰인입니다."></textarea>
+                            </div>
+                        </div>
+                        <div class="ck-editor-div">
+                            <label class="media-detail-explanation">광고매체 상세 설명</label>
+                            <div id="editor">
+
+                            </div>
+                            <input type="hidden" id="quillHtml" name="content">
+                        </div>
+                        <div>
+                            <label class="thumbnail-label">광고매체 썸네일</label>
+                            <div class="thumbnail-div">
+                                <div class="thumbnail">
+                                    <img class="thumbnailBasicImg" th:if="${session.LOGIN_USER != null}" th:src="@{/thumbnail/image (email=${session.LOGIN_USER.getEmail()})}">
+                                </div>
+                                <div class="thumbnail-change-div">
+                                    <label for="thumbnailImg" id="thumbnailImgLabel">
+                                        <div class="profile_change">썸네일 변경</div>
+                                    </label>
+                                    <input type="file" class="profile_img" name="profile_img" id="thumbnailImg">
+                                    <span id="extSpan">
+                                        확장자 : png, jpg, jpeg
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label>가격설정</label>
+                            <div class="currency-div" id="currencyDiv">
+                                <input type="text" class="currency-input" spellcheck="false" id="mediaPrice" th:value="${mediaPrice}">
+                                <span class="currency-symbol">원</span>
+                            </div>
+                            <input type="button" class="save-button" id="tempSaveButton" value="임시저장">
+                            <input type="button" class="submit-button" id="submitButton" value="제출하기">
+                        </div>
+                    </div>
+                </div>
+           </div>
+       </div>
+   </div>
+<div class="modal-bg" id="modalBg">
+    <div class="modal-body">
+        <div id="modalTitle"></div>
+        <div class="modal-check-div" id="modalCheck">
+            <i class="ri-checkbox-circle-line"></i>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

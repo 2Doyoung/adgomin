@@ -50,7 +50,7 @@ public class ManageController {
     @GetMapping(value = "/manage/media/update")
     public ModelAndView manageUpdate(@RequestParam(value = "mediaOrder", required = false) String mediaOrder, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
         ModelAndView modelAndView = null;
-        modelAndView =  new ModelAndView("manage/media");
+        modelAndView =  new ModelAndView("manage/media_update");
 
         MediaRegisterVO mediaOrderEmail = this.manageService.mediaOrderEmail(mediaOrder, joinVO.getEmail());
 
