@@ -1,6 +1,8 @@
 package com.adgomin.portfolio.service;
 
 import com.adgomin.enums.CommonResult;
+import com.adgomin.join.entity.JoinEntity;
+import com.adgomin.join.mapper.JoinMapper;
 import com.adgomin.portfolio.entity.PortfolioEntity;
 import com.adgomin.portfolio.entity.PortfolioImgEntity;
 import com.adgomin.portfolio.mapper.PortfolioMapper;
@@ -19,9 +21,12 @@ import java.util.UUID;
 public class PortfolioService {
     private final PortfolioMapper portfolioMapper;
 
+    private final JoinMapper joinMapper;
+
     @Autowired
-    public PortfolioService(PortfolioMapper portfolioMapper) {
+    public PortfolioService(PortfolioMapper portfolioMapper, JoinMapper joinMapper) {
         this.portfolioMapper = portfolioMapper;
+        this.joinMapper = joinMapper;
     }
 
     public Enum<?> portfolioRegister(PortfolioEntity portfolioEntity) {
@@ -29,7 +34,8 @@ public class PortfolioService {
     }
 
     public Enum<?> portfolioChangeThumbnail(MultipartFile thumbnail, PortfolioEntity portfolioEntity) {
-        String path = "../portfolio/thumbnail/" + portfolioEntity.getEmail();
+        JoinEntity userOrder = this.joinMapper.userOrder(portfolioEntity.getEmail());
+        String path = "../portfolio/thumbnail/" + userOrder.getUserOrder();
 
         String originalFilename = thumbnail.getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
@@ -56,8 +62,9 @@ public class PortfolioService {
 
     public Enum<?> portfolioDetailImg(MultipartFile[] detailImgArr, PortfolioImgEntity portfolioImgEntity) {
         int result = 1;
+        JoinEntity userOrder = this.joinMapper.userOrder(portfolioImgEntity.getEmail());
         for(int i = 0; i < detailImgArr.length; i++) {
-            String path = "../portfolio/details/" + portfolioImgEntity.getEmail();
+            String path = "../portfolio/details/" + userOrder.getUserOrder();
 
             String originalFilename = detailImgArr[i].getOriginalFilename();
             String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
