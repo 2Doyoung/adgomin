@@ -55,7 +55,7 @@
             <input type="text" class="detail-media-focus" id="focus" readonly>
             <div class="user-sub-main-content">
                 <div class="user-media-introduce">
-                    <img class="profile-image-detail" th:src="@{/profile/image (email=${email})}">
+                    <img class="profile-image-detail" th:src="@{/profile/image/{userOrder} (userOrder=${userOrder})}">
                     <div>
                         <label>광고매체자 닉네임</label>
                         <span th:text="${nickname}"></span>

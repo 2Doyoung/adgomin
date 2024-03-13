@@ -28,6 +28,7 @@
     <select id="getMediaSubmitDetail" resultType="com.adgomin.media.vo.MediaRegisterVO">
         SELECT
             T1.media_order as mediaOrder
+             ,T2.user_order as userOrder
              ,T1.email as email
              ,T1.ad_detail_category as adDetailCategory
              ,T1.media_title as mediaTitle

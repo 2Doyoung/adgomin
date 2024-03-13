@@ -38,7 +38,7 @@
 					<div class="dropdown-content">
 						<div class="profile-wrap">
 							<div class="profile-image">
-								<img th:if="${session.LOGIN_USER != null}" th:src="@{/profile/image (email=${session.LOGIN_USER.getEmail()})}">
+								<img th:if="${session.LOGIN_USER != null}" th:src="@{/profile/image/{userOrder} (userOrder=${session.LOGIN_USER.getUserOrder()})}">
 							</div>
 							<div class="profile-nickname-usertype">
 								<div th:text="${session.LOGIN_USER.nickname}" class="profile-nickname"></div>

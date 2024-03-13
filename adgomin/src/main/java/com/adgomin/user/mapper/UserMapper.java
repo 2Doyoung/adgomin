@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper {
     int changeProfileImg(JoinVO joinVO);
 
-    JoinVO profileImage(@Param(value = "email") String email);
+    JoinVO profileImage(@Param(value = "userOrder") int userOrder);
 
     int changeNickname(JoinVO joinVO);
 

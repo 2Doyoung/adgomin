@@ -1,6 +1,8 @@
 package com.adgomin.user.service;
 
 import com.adgomin.enums.CommonResult;
+import com.adgomin.join.entity.JoinEntity;
+import com.adgomin.join.mapper.JoinMapper;
 import com.adgomin.join.vo.JoinVO;
 import com.adgomin.user.entity.SecessionReasonEntity;
 import com.adgomin.user.mapper.UserMapper;
@@ -19,15 +21,19 @@ import java.util.UUID;
 @Transactional
 public class UserService {
     private final UserMapper userMapper;
+    private final JoinMapper joinMapper;
 
     @Autowired
-    public UserService(UserMapper userMapper) { this.userMapper = userMapper; }
+    public UserService(UserMapper userMapper, JoinMapper joinMapper) { this.userMapper = userMapper;
+        this.joinMapper = joinMapper;
+    }
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     public Enum<?> changeProfileImg(JoinVO joinVO, MultipartFile profileFile) {
-        String path = "../profile/" + joinVO.getEmail();
+        JoinEntity userOrder = this.joinMapper.userOrder(joinVO.getEmail());
+        String path = "../profile/" + userOrder.getUserOrder();
 
         String originalFilename = profileFile.getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
@@ -52,8 +58,8 @@ public class UserService {
         return this.userMapper.changeProfileImg(joinVO) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
-    public JoinVO profileImage(String email) {
-        return this.userMapper.profileImage(email);
+    public JoinVO profileImage(int userOrder) {
+        return this.userMapper.profileImage(userOrder);
     }
 
     public Enum<?> changeNickname(JoinVO joinVO) {

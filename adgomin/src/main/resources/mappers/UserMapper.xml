@@ -20,7 +20,7 @@
             ,profile_img_file_path AS profileImgFilePath
         FROM adgomin_user
         WHERE 1=1
-          AND email = #{email}
+          AND user_order = #{userOrder}
     </select>
 
     <update id="changeNickname" parameterType="com.adgomin.join.vo.JoinVO">

@@ -43,7 +43,7 @@
                 </div>
                 <div class="user-sub-main-content">
                     <div class="user-sub-main-content-sub">
-                        <img th:if="${session.LOGIN_USER != null}" th:src="@{/profile/image (email=${session.LOGIN_USER.getEmail()})}">
+                        <img th:if="${session.LOGIN_USER != null}" th:src="@{/profile/image/{userOrder} (userOrder=${session.LOGIN_USER.getUserOrder()})}">
                         <div>
                             <label for="profileImg">
                                 <div class="profile_change">프로필 변경</div>

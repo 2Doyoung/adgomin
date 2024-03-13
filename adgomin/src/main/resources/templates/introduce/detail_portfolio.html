@@ -21,7 +21,7 @@
 <div class="introduce-wrap">
     <div class="introduce-profile-wrap">
         <div class="profile-div">
-            <img th:src="@{/profile/image (email=${email})}">
+            <img th:src="@{/profile/image/{userOrder} (userOrder=${userOrder})}">
         </div>
         <div class="nickname-div">
             <span th:text="${nickname}"></span>

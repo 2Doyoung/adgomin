@@ -71,7 +71,7 @@
                     </div>
                     <div class="introduce">
                         <div class="introduce-profile">
-                            <img th:src="@{/profile/image (email=${email})}">
+                            <img th:src="@{/profile/image/{userOrder} (userOrder=${userOrder})}">
                         </div>
                         <span class="introduce-nickname" th:text="${nickname}" id="nickname"></span>
                     </div>

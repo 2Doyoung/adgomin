@@ -60,9 +60,9 @@ public class UserController {
         return responseObject.toString();
     }
 
-    @GetMapping("/profile/image")
-    public ResponseEntity<Resource> profileImage(@RequestParam(value = "email") String email) {
-        JoinVO joinVO = this.userService.profileImage(email);
+    @GetMapping("/profile/image/{userOrder}")
+    public ResponseEntity<Resource> profileImage(@PathVariable("userOrder") int userOrder) {
+        JoinVO joinVO = this.userService.profileImage(userOrder);
         String filePath = null;
 
         if(joinVO != null) {
