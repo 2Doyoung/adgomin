@@ -2,6 +2,7 @@ package com.adgomin.media.service;
 
 import com.adgomin.enums.CommonResult;
 import com.adgomin.join.entity.JoinEntity;
+import com.adgomin.join.mapper.JoinMapper;
 import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.mapper.MediaMapper;
@@ -20,9 +21,12 @@ import java.util.UUID;
 public class MediaService {
     private final MediaMapper mediaMapper;
 
+    private final JoinMapper joinMapper;
+
     @Autowired
-    public MediaService(MediaMapper mediaMapper) {
+    public MediaService(MediaMapper mediaMapper, JoinMapper joinMapper) {
         this.mediaMapper = mediaMapper;
+        this.joinMapper = joinMapper;
     }
 
     public Enum<?> insertMediaEmail(JoinEntity joinEntity) {
@@ -54,7 +58,8 @@ public class MediaService {
     }
 
     public Enum<?> changeThumbnail(MultipartFile thumbnail, MediaRegisterEntity mediaRegisterEntity) {
-        String path = "../thumbnail/" + mediaRegisterEntity.getEmail();
+        JoinEntity userOrder = this.joinMapper.userOrder(mediaRegisterEntity.getEmail());
+        String path = "../thumbnail/" + userOrder.getUserOrder();
 
         String originalFilename = thumbnail.getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
@@ -80,7 +85,8 @@ public class MediaService {
     }
 
     public String mediaDetailExplanationImage(String email, MultipartFile mediaDetailExplanationImage) {
-        String path = "../explanationImage/" + email;
+        JoinEntity userOrder = this.joinMapper.userOrder(email);
+        String path = "../explanationImage/" + userOrder.getUserOrder();
 
         String originalFilename = mediaDetailExplanationImage.getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);

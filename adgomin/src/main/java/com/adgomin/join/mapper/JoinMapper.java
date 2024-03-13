@@ -21,4 +21,6 @@ public interface JoinMapper {
     int insertLoginLog(LoginLogEntity loginLogEntity);
 
     int passwordChange(JoinEntity joinEntity);
+
+    JoinEntity userOrder(@Param(value = "email") String email);
 }

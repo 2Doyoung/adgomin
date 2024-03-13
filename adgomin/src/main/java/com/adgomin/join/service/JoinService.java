@@ -4,6 +4,7 @@ import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.entity.LoginLogEntity;
 import com.adgomin.join.mapper.JoinMapper;
 import com.adgomin.join.vo.JoinVO;
+import com.adgomin.media.entity.MediaRegisterEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.codec.Hex;
 import org.springframework.security.crypto.encrypt.Encryptors;
@@ -154,5 +155,9 @@ public class JoinService {
         joinEntity.setPassword(encodePassword);
 
         return this.joinMapper.passwordChange(joinEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
+
+    public JoinEntity userOrder(String email) {
+        return this.joinMapper.userOrder(email);
     }
 }

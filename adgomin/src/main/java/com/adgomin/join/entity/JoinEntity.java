@@ -3,6 +3,7 @@ package com.adgomin.join.entity;
 import java.util.Date;
 
 public class JoinEntity {
+    private int userOrder;
     private String email;
     private String password;
     private String nickname;
@@ -18,6 +19,14 @@ public class JoinEntity {
     private String profileImgNm;
     private String profileOriginFileNm;
     private String profileImgFilePath;
+
+    public int getUserOrder() {
+        return userOrder;
+    }
+
+    public void setUserOrder(int userOrder) {
+        this.userOrder = userOrder;
+    }
 
     public String getProfileImgNm() {
         return profileImgNm;

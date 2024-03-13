@@ -73,4 +73,12 @@
         WHERE 1=1
           AND email = #{email}
     </update>
+
+    <select id="userOrder" resultType="com.adgomin.join.entity.JoinEntity">
+        SELECT
+            user_order AS userOrder
+        FROM adgomin_user
+        WHERE 1=1
+        AND email = #{email}
+    </select>
 </mapper>
