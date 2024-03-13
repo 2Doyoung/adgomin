@@ -35,6 +35,7 @@
         FROM adgomin_portfolio
         WHERE 1=1
         AND email = #{email}
+        ORDER BY portfolio_order DESC
         LIMIT #{pageStart}, #{perPageNum}
     </select>
 
