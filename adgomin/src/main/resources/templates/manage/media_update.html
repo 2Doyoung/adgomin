@@ -32,30 +32,28 @@
        <div class="user-sub-wrap">
            <div class="user-sub-menu">
                <ul>
-                   <li id="introduce">
-                       광고매체 소개
-                   </li>
                    <li style="font-weight: bolder">
-                       광고매체 등록
+                       내 광고매체 관리
+                   </li>
+                   <li>
+                       내 포트폴리오 관리
                    </li>
                </ul>
            </div>
            <div class="user-sub-main">
                 <div class="user-sub-main-title">
-                    광고매체 등록
+                    광고매체 수정
                 </div>
                 <div class="user-sub-main-content">
                     <div class="user-sub-main-content-information">
                         <div>
                             <label>제목</label>
-                            <span id="titleSpan">5~30 이하로 작성하는 것이 가독성을 향상시킵니다.</span>
                             <div>
                                 <input type="text" id="title" th:value="${mediaTitle}" spellcheck="false" placeholder="광고매체를 한 번에 알아볼 수 있는 제목을 입력해 보세요!">
                             </div>
                         </div>
                         <div class="ad-category">
                             <label>카테고리</label>
-                            <span id="adCategorySpan">하나의 카테고리를 선택해주세요.</span>
                             <input type="text" class="ad-category-focus" id="adCategoryFocus" readonly>
                             <div>
                                 <ul>

@@ -11,4 +11,6 @@ public interface ManageMapper {
     MediaRegisterEntity[] allMediaRegister(@Param(value = "email") String email);
 
     MediaRegisterVO mediaOrderEmail(@Param(value = "mediaOrder") String mediaOrder, @Param(value = "email") String email);
+
+    MediaRegisterEntity mediaRegisterEntity(@Param(value = "mediaOrder") String mediaOrder);
 }

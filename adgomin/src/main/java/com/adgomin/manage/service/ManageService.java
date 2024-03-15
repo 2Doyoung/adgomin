@@ -25,4 +25,8 @@ public class ManageService {
     public MediaRegisterVO mediaOrderEmail(String mediaOrder, String email) {
         return this.manageMapper.mediaOrderEmail(mediaOrder, email);
     }
+
+    public MediaRegisterEntity mediaRegisterEntity(String mediaOrder) {
+        return this.manageMapper.mediaRegisterEntity(mediaOrder);
+    }
 }

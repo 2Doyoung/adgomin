@@ -55,9 +55,18 @@ public class ManageController {
         MediaRegisterVO mediaOrderEmail = this.manageService.mediaOrderEmail(mediaOrder, joinVO.getEmail());
 
         if(joinVO != null && mediaOrderEmail.getCnt() != 0) {
-            MediaRegisterEntity[] allMediaRegister = this.manageService.allMediaRegister(joinVO.getEmail());
+            MediaRegisterEntity mediaRegisterEntity = this.manageService.mediaRegisterEntity(mediaOrder);
 
-            modelAndView.addObject("allMediaRegister", allMediaRegister);
+            modelAndView.addObject("mediaOrder", mediaRegisterEntity.getMediaOrder());
+            modelAndView.addObject("adDetailCategory", mediaRegisterEntity.getAdDetailCategory());
+            modelAndView.addObject("mediaTitle", mediaRegisterEntity.getMediaTitle());
+            modelAndView.addObject("mediaSummary", mediaRegisterEntity.getMediaSummary());
+            modelAndView.addObject("mediaDetailExplain", mediaRegisterEntity.getMediaDetailExplain());
+            modelAndView.addObject("thumbnailImgNm", mediaRegisterEntity.getThumbnailImgNm());
+            modelAndView.addObject("thumbnailOriginFileNm", mediaRegisterEntity.getThumbnailOriginFileNm());
+            modelAndView.addObject("thumbnailImgFilePath", mediaRegisterEntity.getThumbnailImgFilePath());
+            modelAndView.addObject("mediaPrice", mediaRegisterEntity.getMediaPrice());
+            modelAndView.addObject("mediaSubmitStatus", mediaRegisterEntity.getMediaSubmitStatus());
         } else {
             modelAndView =  new ModelAndView("error/error");
         }
