@@ -162,7 +162,6 @@ quill.getModule('toolbar').addHandler('image', () => {
 let selectLocalImage = () => {
     const fileInput = document.createElement('input');
     fileInput.setAttribute('type', 'file');
-    console.log("input.type " + fileInput.type);
 
     fileInput.click();
 

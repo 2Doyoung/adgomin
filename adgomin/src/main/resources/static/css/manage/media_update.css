@@ -21,7 +21,7 @@ body {
 
 .user-wrap {
     margin: auto;
-    height: 2500px;
+    height: 2300px;
     width: 1200px;
 }
 
@@ -39,14 +39,14 @@ body {
 
 .user-sub-menu {
     width: 14rem;
-    height: 2500px;
+    height: 2300px;
     display: inline-block;
     border-right: 1px solid #ccc;
 }
 
 .user-sub-main {
     width: 61rem;
-    height: 2500px;
+    height: 2300px;
     display: inline-block;
 }
 
@@ -158,7 +158,7 @@ body {
     color: #FFFFFF;
     background-color: #81BEF7;
     margin-top: 0.5rem;
-    margin-left: 0.5rem;
+    margin-left: 1.2rem;
     font-weight: 500;
     font-size: 1rem;
 }
@@ -522,7 +522,7 @@ textarea {
     margin-right: 1rem;
 }
 
-.submit-button {
+.update-button {
     height: 2.7rem;
     width: 6.5rem;
     border: none;
@@ -617,7 +617,17 @@ textarea {
 .media-update-ad-detail-category {
     background-color: #2E9AFE !important;
     color: #FFFFFF !important;
-    margin: 0.5rem 0.5rem 0.5rem 0rem;
     padding: 0.3rem 1rem;
     border-radius: 3px;
+    margin-top: 1.5rem;
+}
+
+.ql-editor img {
+    width: 100%;
+}
+
+.media-update-tip {
+    font-size: 0.95rem;
+    color: #81BEF7;
+    padding-top: 1rem;
 }

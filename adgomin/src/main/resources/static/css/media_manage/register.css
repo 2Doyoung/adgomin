@@ -591,3 +591,7 @@ textarea {
 .ql-editor {
     color: #303441;
 }
+
+.ql-editor img {
+    width: 100%;
+}

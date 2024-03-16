@@ -32,6 +32,28 @@ quill = new Quill('#editor', {
     }
 });
 
+quill.on('text-change', () => {
+    document.getElementById("quillHtml").value = quill.root.innerHTML;
+});
+
+quill.getModule('toolbar').addHandler('image', () => {
+    selectLocalImage();
+});
+
+let selectLocalImage = () => {
+    const fileInput = document.createElement('input');
+    fileInput.setAttribute('type', 'file');
+
+    fileInput.click();
+
+    fileInput.addEventListener("change", () => {
+        const formData = new FormData();
+        const file = fileInput.files[0];
+        formData.append('mediaDetailExplanationImage', file);
+
+        xhr("/media/detail/explanation/image", formData, "POST", "mediaDetailExplanationImage");
+    });
+}
 
 let htmlContent = getMediaDetailExplain
 let Delta = Quill.import('delta');
@@ -51,7 +73,14 @@ let successXhr = (responseObject, flag) => {
  * XMLHttpRequest default 함수
  */
 let defaultXhr = (responseObject, flag) => {
+    if(flag == "mediaDetailExplanationImage") {
+        const range = quill.getSelection();
 
+        let uploadPath = responseObject["result"];
+        uploadPath = uploadPath.replace(/\\/g, '/');
+
+        quill.insertEmbed(range.index, 'image', "/media/detail/image/display?uploadPath=" + uploadPath);
+    }
 }
 
 /**
