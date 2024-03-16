@@ -20,7 +20,7 @@
         window.location.href = "/";
     }
 
-    let getAdDetailCategorySelected = [[${adDetailCategory}]];
+    let getAdDetailCategory = [[${adDetailCategory}]];
     let getMediaDetailExplain = [[${mediaDetailExplain}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
@@ -44,29 +44,20 @@
                 <div class="user-sub-main-title">
                     광고매체 수정
                 </div>
+                <div class="media-update-important">
+                    <i class="ri-error-warning-line"></i><span>정상서비스를 하고 있는 광고매체의 경우 <span class="media-update-important-weight">제목, 카테고리</span>의 수정이 불가능합니다.</span>
+                </div>
                 <div class="user-sub-main-content">
                     <div class="user-sub-main-content-information">
                         <div>
                             <label>제목</label>
-                            <div>
-                                <input type="text" id="title" th:value="${mediaTitle}" spellcheck="false" placeholder="광고매체를 한 번에 알아볼 수 있는 제목을 입력해 보세요!">
-                            </div>
+                            <input type="text" class="ad-category-focus" id="title" readonly>
+                            <div class="media-update-title" th:text="${mediaTitle}"></div>
                         </div>
                         <div class="ad-category">
                             <label>카테고리</label>
-                            <input type="text" class="ad-category-focus" id="adCategoryFocus" readonly>
                             <div>
-                                <ul>
-                                    <li class="category-first-li ad-category-list">유튜브</li>
-                                    <li class="ad-category-list">인스타그램</li>
-                                    <li class="ad-category-list">페이스북</li>
-                                    <li class="ad-category-list">블로그</li>
-                                    <li class="ad-category-list">지하철</li>
-                                    <li class="ad-category-list">버스</li>
-                                    <li class="ad-category-list">옥외광고</li><br>
-                                    <li class="category-first-li ad-category-list">영화관</li>
-                                    <li class="ad-category-list">현수막</li>
-                                </ul>
+                                <span class="media-update-ad-detail-category" id="mediaUpdateAdDetailCategory"></span>
                             </div>
                         </div>
                         <div>
@@ -87,7 +78,7 @@
                             <label class="thumbnail-label">광고매체 썸네일</label>
                             <div class="thumbnail-div">
                                 <div class="thumbnail">
-                                    <img class="thumbnailBasicImg" th:if="${session.LOGIN_USER != null}" th:src="@{/thumbnail/image (email=${session.LOGIN_USER.getEmail()})}">
+                                    <img class="thumbnailBasicImg" th:if="${session.LOGIN_USER != null}" th:src="@{/media/update/thumbnail/image (mediaOrder=${mediaOrder})}">
                                 </div>
                                 <div class="thumbnail-change-div">
                                     <label for="thumbnailImg" id="thumbnailImgLabel">

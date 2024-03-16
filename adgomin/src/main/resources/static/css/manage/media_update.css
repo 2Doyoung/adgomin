@@ -591,3 +591,33 @@ textarea {
 .ql-editor {
     color: #303441;
 }
+
+.media-update-important {
+    margin-left: 3rem;
+    color: rgb(255, 0, 64);
+}
+
+.media-update-important-weight {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.ri-error-warning-line {
+    font-size: 1.4rem;
+    margin-right: 0.5rem;
+    vertical-align: sub;
+}
+
+.media-update-title {
+    font-weight: 600;
+    color: #303441;
+    font-size: 1.5rem;
+}
+
+.media-update-ad-detail-category {
+    background-color: #2E9AFE !important;
+    color: #FFFFFF !important;
+    margin: 0.5rem 0.5rem 0.5rem 0rem;
+    padding: 0.3rem 1rem;
+    border-radius: 3px;
+}

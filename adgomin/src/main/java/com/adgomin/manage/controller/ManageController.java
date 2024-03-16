@@ -99,4 +99,31 @@ public class ManageController {
 
         return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
     }
+
+    @GetMapping("/media/update/thumbnail/image")
+    public ResponseEntity<Resource> mediaUpdateThumbnailImage(@RequestParam(value = "mediaOrder") String mediaOrder) {
+        MediaRegisterEntity mediaRegisterEntity = this.manageService.mediaRegisterEntity(mediaOrder);
+        String filePath = null;
+
+        if(mediaRegisterEntity != null) {
+            filePath = mediaRegisterEntity.getThumbnailImgFilePath() + "/" + mediaRegisterEntity.getThumbnailImgNm();
+        } else if(mediaRegisterEntity == null) {
+            ClassLoader classLoader = getClass().getClassLoader();
+            File file = new File(classLoader.getResource("static/images/media-register-thumbnail.png").getFile());
+            filePath = file.getAbsolutePath();
+        }
+
+        Resource resource = new FileSystemResource(filePath);
+
+        HttpHeaders header = new HttpHeaders();
+        Path path = null;
+        try {
+            path = Paths.get(filePath);
+            header.add("Content-type", Files.probeContentType(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
+    }
 }
