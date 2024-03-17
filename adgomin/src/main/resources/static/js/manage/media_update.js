@@ -2,15 +2,96 @@
  * 전역변수
  */
 const mediaUpdateAdDetailCategory = document.getElementById("mediaUpdateAdDetailCategory");
+const thumbnailImg = document.getElementById("thumbnailImg");
+const updateButton = document.getElementById("updateButton");
+
+let thumbnailImgSave;
+
+let quill;
 
 /**
  * 이벤트 함수
  */
+updateButton.addEventListener("click", () => {
+    let mediaSummary = document.getElementById("mediaSummary").value;
+    let mediaSummarySpan = document.getElementById("mediaSummarySpan");
 
+    if(mediaSummary.length == 0) {
+        mediaSummarySpan.style.color = "#FF0040";
+        document.getElementById("mediaSummary").focus();
+    } else if(mediaSummary.length > 0) {
+        mediaSummarySpan.style.color = "#BDBDBD";
+    }
+})
+
+mediaSummary.addEventListener("keyup", () => {
+    let summaryLength = document.getElementById("summaryLength");
+    let mediaSummaryValue = mediaSummary.value;
+    let mediaSummaryLength = mediaSummaryValue.length;
+
+    if(mediaSummaryLength > 255) {
+        mediaSummary.value = mediaSummaryValue.substr(0, 255);
+        mediaSummaryLength = mediaSummary.value.length;
+    }
+
+    summaryLength.innerText = " (" + mediaSummaryLength + " / 255)";
+})
+
+thumbnailImg.addEventListener("change", (e) => {
+    let ext = thumbnailImg.value.slice(thumbnailImg.value.lastIndexOf(".") + 1).toLowerCase();
+    let extSpan = document.getElementById("extSpan");
+
+    if(!(ext == "jpg" || ext == "png" || ext == "jpeg")) {
+        extSpan.style.color = "#FF0040";
+
+        const thumbnailBasicImg = document.getElementsByClassName("thumbnailBasicImg")[0];
+        const thumbnailChange = document.getElementsByClassName("thumbnailChange")[0];
+
+        const img = document.createElement('img');
+        img.classList.add("thumbnailBasicImg");
+        img.setAttribute('src', '/images/media-register-thumbnail.png');
+
+        if(thumbnailBasicImg != undefined) {
+            document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailBasicImg);
+        } else if(thumbnailChange != undefined) {
+            document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailChange);
+        }
+
+        document.getElementsByClassName("thumbnail")[0].appendChild(img);
+    } else {
+        extSpan.style.color = "#BDBDBD";
+
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+            const thumbnailBasicImg = document.getElementsByClassName("thumbnailBasicImg")[0];
+            const thumbnailChange = document.getElementsByClassName("thumbnailChange")[0];
+            const img = document.createElement('img');
+            img.classList.add("thumbnailChange");
+            img.setAttribute('src', e.target.result);
+            if(thumbnailBasicImg != undefined) {
+                document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailBasicImg);
+            } else if(thumbnailChange != undefined) {
+                document.getElementsByClassName("thumbnail")[0].removeChild(thumbnailChange);
+            }
+            document.getElementsByClassName("thumbnail")[0].appendChild(img);
+        }
+
+        reader.readAsDataURL(e.target.files[0]);
+
+        thumbnailImgSave = e.target.files[0];
+    }
+})
 /**
  * 사용자 함수
  */
 mediaUpdateAdDetailCategory.innerText = getAdDetailCategory;
+
+let summaryLength = document.getElementById("summaryLength");
+let mediaSummaryValue = mediaSummary.value;
+let mediaSummaryLength = mediaSummaryValue.length;
+
+summaryLength.innerText = " (" + mediaSummaryLength + " / 255)";
 
 let toolbarOptions =
     [

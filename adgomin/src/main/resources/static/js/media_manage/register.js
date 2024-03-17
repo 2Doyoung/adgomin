@@ -128,9 +128,16 @@ thumbnailImg.addEventListener("change", (e) => {
         thumbnailImgSave = e.target.files[0];
     }
 })
+
 /**
  * 사용자 함수
  */
+let summaryLength = document.getElementById("summaryLength");
+let mediaSummaryValue = mediaSummary.value;
+let mediaSummaryLength = mediaSummaryValue.length;
+
+summaryLength.innerText = " (" + mediaSummaryLength + " / 255)";
+
 let toolbarOptions =
     [
         ['bold', 'italic', 'underline', 'strike'],
@@ -197,6 +204,9 @@ const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
 
     let extSpan = document.getElementById("extSpan");
 
+    let mediaSummary = document.getElementById("mediaSummary").value;
+    let mediaSummarySpan = document.getElementById("mediaSummarySpan");
+
     if(title.length < 5 || title.length > 30) {
         titleSpan.style.color = "#FF0040";
         document.getElementById("title").focus();
@@ -211,7 +221,14 @@ const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
         adCategorySpan.style.color = "#BDBDBD";
     }
 
-    if(!(titleSpan.style.color == 'rgb(255, 0, 64)') && !(adCategorySpan.style.color == 'rgb(255, 0, 64)') && !(extSpan.style.color == 'rgb(255, 0, 64)')) {
+    if(mediaSummary.length == 0) {
+        mediaSummarySpan.style.color = "#FF0040";
+        document.getElementById("mediaSummary").focus();
+    } else if(mediaSummary.length > 0) {
+        mediaSummarySpan.style.color = "#BDBDBD";
+    }
+
+    if(!(titleSpan.style.color == 'rgb(255, 0, 64)') && !(adCategorySpan.style.color == 'rgb(255, 0, 64)') && !(extSpan.style.color == 'rgb(255, 0, 64)') && !(mediaSummarySpan.style.color == 'rgb(255, 0, 64)')) {
         let title = document.getElementById("title").value;
         let adCategorySelected = document.getElementsByClassName("ad-category-selected")[0].innerText;
         let mediaSummary = document.getElementById("mediaSummary").value;
