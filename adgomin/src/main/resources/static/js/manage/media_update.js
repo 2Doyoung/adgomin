@@ -5,6 +5,8 @@ const mediaUpdateAdDetailCategory = document.getElementById("mediaUpdateAdDetail
 const thumbnailImg = document.getElementById("thumbnailImg");
 const updateButton = document.getElementById("updateButton");
 
+const modalCheck = document.getElementById("modalCheck");
+
 let thumbnailImgSave;
 
 let quill;
@@ -16,11 +18,39 @@ updateButton.addEventListener("click", () => {
     let mediaSummary = document.getElementById("mediaSummary").value;
     let mediaSummarySpan = document.getElementById("mediaSummarySpan");
 
+    let mediaPrice = document.getElementById("mediaPrice").value;
+    let mediaPriceSpan = document.getElementById("mediaPriceSpan");
+
+    let extSpan = document.getElementById("extSpan");
+
     if(mediaSummary.length == 0) {
         mediaSummarySpan.style.color = "#FF0040";
         document.getElementById("mediaSummary").focus();
     } else if(mediaSummary.length > 0) {
         mediaSummarySpan.style.color = "#BDBDBD";
+    }
+
+    if(mediaPrice == '') {
+        mediaPriceSpan.style.color = "#FF0040";
+        document.getElementById("mediaPrice").focus();
+    } else if(mediaPrice != '') {
+        mediaPriceSpan.style.color = "#BDBDBD";
+    }
+
+    if(!(mediaSummarySpan.style.color == 'rgb(255, 0, 64)') && !(mediaPriceSpan.style.color == 'rgb(255, 0, 64)') && !(extSpan.style.color == 'rgb(255, 0, 64)')) {
+        let mediaOrder = document.getElementById("mediaOrder").value;
+        let mediaSummary = document.getElementById("mediaSummary").value;
+        let quillHtml = document.getElementById("quillHtml").value;
+        let mediaPrice = document.getElementById("mediaPrice").value;
+
+        const formData = new FormData();
+
+        formData.append("mediaOrder", mediaOrder);
+        formData.append("mediaSummary", mediaSummary);
+        formData.append("mediaDetailExplain", quillHtml);
+        formData.append("mediaPrice", mediaPrice);
+
+        xhr("/manage/media/update", formData, "PATCH", "manageMediaUpdate");
     }
 })
 
@@ -81,6 +111,10 @@ thumbnailImg.addEventListener("change", (e) => {
 
         thumbnailImgSave = e.target.files[0];
     }
+})
+
+modalCheck.addEventListener("click", () => {
+    window.location.href = "/manage?manage=media";
 })
 /**
  * 사용자 함수
@@ -147,7 +181,29 @@ document.getElementById("title").focus();
  * XMLHttpRequest 성공 함수
  */
 let successXhr = (responseObject, flag) => {
+    const formData = new FormData();
 
+    let mediaOrder = document.getElementById("mediaOrder").value;
+
+    if(flag == "manageMediaUpdate") {
+        if(thumbnailImgSave != undefined) {
+            formData.append("mediaOrder", mediaOrder);
+            formData.append("thumbnail", thumbnailImgSave);
+            xhr("/manage/media/change/thumbnail", formData, "PATCH", "manageMediaChangeThumbnail");
+        } else {
+            let modalBg = document.getElementById("modalBg");
+            let modalTitle = document.getElementById("modalTitle");
+
+            modalBg.style.display = "block";
+            modalTitle.innerText = "광고매체 수정이 완료되었습니다.";
+        }
+    } else if(flag == "manageMediaChangeThumbnail") {
+        let modalBg = document.getElementById("modalBg");
+        let modalTitle = document.getElementById("modalTitle");
+
+        modalBg.style.display = "block";
+        modalTitle.innerText = "광고매체 수정이 완료되었습니다.";
+    }
 }
 
 /**

@@ -5,6 +5,7 @@ import com.adgomin.manage.service.ManageService;
 import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.vo.MediaRegisterVO;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -12,9 +13,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
@@ -125,5 +125,27 @@ public class ManageController {
         }
 
         return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
+    }
+
+    @PatchMapping("/manage/media/update")
+    @ResponseBody
+    public String manageMediaUpdate(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MediaRegisterEntity mediaRegisterEntity) {
+        JSONObject responseObject = new JSONObject();
+        mediaRegisterEntity.setEmail(joinVO.getEmail());
+        Enum<?> result = this.manageService.manageMediaUpdate(mediaRegisterEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
+
+    @PatchMapping("/manage/media/change/thumbnail")
+    @ResponseBody
+    public String manageMediaChangeThumbnail(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MultipartFile thumbnail, MediaRegisterEntity mediaRegisterEntity) {
+        JSONObject responseObject = new JSONObject();
+        mediaRegisterEntity.setEmail(joinVO.getEmail());
+        Enum<?> result = this.manageService.manageMediaChangeThumbnail(thumbnail, mediaRegisterEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
     }
 }

@@ -25,6 +25,7 @@
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <input type="hidden" id="mediaSubmitStatus" th:value="${mediaSubmitStatus}">
+<input type="hidden" id="mediaOrder" th:value="${mediaOrder}">
 <div class="top-title">
     <div class="user-main-title">광고매체 관리</div>
 </div>
@@ -95,7 +96,7 @@
                             <label>가격설정</label>
                             <div class="currency-div" id="currencyDiv">
                                 <input type="text" class="currency-input" spellcheck="false" id="mediaPrice" th:value="${mediaPrice}">
-                                <span class="currency-symbol">원</span>
+                                <span class="currency-symbol" id="mediaPriceSpan">원</span>
                             </div>
                             <div>
                                 <span class="media-update-tip">Tip. 수정 완료 후 모니터링 또는 신고가 접수될 경우, 광고매체가 삭제처리 될 수 있습니다.</span>
