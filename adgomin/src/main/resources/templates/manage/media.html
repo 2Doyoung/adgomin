@@ -64,10 +64,23 @@
                     </div>
                     <div class="media-manage-button">
                         <input type="button" class="media-manage-update-button" value="광고매체 수정" th:data-parent="${mediaRegister.mediaSubmitStatus}" th:data-parent2="${mediaRegister.mediaOrder}">
-                        <input type="button" class="media-manage-delete-button" value="광고매체 삭제">
+                        <input type="button" class="media-manage-delete-button" value="광고매체 삭제" th:data-parent="${mediaRegister.mediaSubmitStatus}" th:data-parent2="${mediaRegister.mediaOrder}">
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div class="modal-bg" id="modalBg">
+    <div class="modal-body">
+        <div class="modal-alert-div">
+            <i class="ri-alert-line"></i>
+        </div>
+        <div class="ask-delete">강의를 삭제하시겠습니까?</div>
+        <div class="alert-delete">삭제된 강의는 복구할 수 없습니다.</div>
+        <div class="modal-check-div" id="modalCheck">
+            <input type="button" class="modal-cancel-button" id="modalCancelButton" value="취소">
+            <input type="button" class="modal-confirm-button" id="modalConfirmButton" value="확인">
         </div>
     </div>
 </div>

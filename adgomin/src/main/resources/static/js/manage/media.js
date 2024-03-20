@@ -3,6 +3,10 @@
  */
 const mediaManageY = document.getElementsByClassName("media-manage-y");
 const mediaManageUpdateButton = document.getElementsByClassName("media-manage-update-button");
+const mediaManageDeleteButton = document.getElementsByClassName("media-manage-delete-button");
+
+const modalCancelButton = document.getElementById("modalCancelButton");
+const modalConfirmButton = document.getElementById("modalConfirmButton");
 
 /**
  * 이벤트 함수
@@ -27,6 +31,25 @@ for(let i = 0; i < mediaManageUpdateButton.length; i++) {
         }
     })
 }
+
+for(let i = 0; i < mediaManageDeleteButton.length; i++) {
+    mediaManageDeleteButton[i].addEventListener("click", (e) => {
+        let mediaSubmitStatus = e.currentTarget.dataset.parent;
+        let mediaOrder = e.currentTarget.dataset.parent2;
+
+        let modalBg = document.getElementById("modalBg");
+
+        modalBg.style.display = "block";
+    })
+}
+
+modalCancelButton.addEventListener("click", () => {
+
+})
+
+modalConfirmButton.addEventListener("click", () => {
+
+})
 
 /**
  * 사용자 함수
