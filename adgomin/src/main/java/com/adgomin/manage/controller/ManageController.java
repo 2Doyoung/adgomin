@@ -148,4 +148,15 @@ public class ManageController {
 
         return responseObject.toString();
     }
+
+    @DeleteMapping("/manage/media/delete/add")
+    @ResponseBody
+    public String manageMediaDeleteAdd(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MultipartFile thumbnail, MediaRegisterEntity mediaRegisterEntity) {
+        JSONObject responseObject = new JSONObject();
+        mediaRegisterEntity.setEmail(joinVO.getEmail());
+        Enum<?> result = this.manageService.manageMediaDeleteAdd(mediaRegisterEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
 }

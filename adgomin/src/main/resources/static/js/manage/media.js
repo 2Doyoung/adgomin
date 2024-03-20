@@ -8,6 +8,11 @@ const mediaManageDeleteButton = document.getElementsByClassName("media-manage-de
 const modalCancelButton = document.getElementById("modalCancelButton");
 const modalConfirmButton = document.getElementById("modalConfirmButton");
 
+const modalCheck2 = document.getElementById("modalCheck2");
+
+let mediaSubmitStatus;
+let mediaOrder;
+
 /**
  * 이벤트 함수
  */
@@ -34,8 +39,8 @@ for(let i = 0; i < mediaManageUpdateButton.length; i++) {
 
 for(let i = 0; i < mediaManageDeleteButton.length; i++) {
     mediaManageDeleteButton[i].addEventListener("click", (e) => {
-        let mediaSubmitStatus = e.currentTarget.dataset.parent;
-        let mediaOrder = e.currentTarget.dataset.parent2;
+        mediaSubmitStatus = e.currentTarget.dataset.parent;
+        mediaOrder = e.currentTarget.dataset.parent2;
 
         let modalBg = document.getElementById("modalBg");
 
@@ -44,11 +49,25 @@ for(let i = 0; i < mediaManageDeleteButton.length; i++) {
 }
 
 modalCancelButton.addEventListener("click", () => {
+    let modalBg = document.getElementById("modalBg");
 
+    modalBg.style.display = "none";
 })
 
 modalConfirmButton.addEventListener("click", () => {
+    if(mediaSubmitStatus == "T" || mediaSubmitStatus == "I" || mediaSubmitStatus == "C") {
+        const formData = new FormData();
 
+        formData.append("mediaOrder", mediaOrder);
+
+        xhr("/manage/media/delete/add", formData, "DELETE", "manageMediaDeleteAdd");
+    } else if(mediaSubmitStatus == "Y") {
+
+    }
+})
+
+modalCheck2.addEventListener("click", () => {
+    window.location.href = "/manage?manage=media";
 })
 
 /**
@@ -59,7 +78,17 @@ modalConfirmButton.addEventListener("click", () => {
  * XMLHttpRequest 성공 함수
  */
 let successXhr = (responseObject, flag) => {
+    if(flag == "manageMediaDeleteAdd") {
+        let modalBg = document.getElementById("modalBg");
 
+        modalBg.style.display = "none";
+
+        let modalBg2 = document.getElementById("modalBg2");
+        let modalTitle = document.getElementById("modalTitle");
+
+        modalBg2.style.display = "block";
+        modalTitle.innerText = "광고매체 삭제가 완료되었습니다.";
+    }
 }
 
 /**

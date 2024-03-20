@@ -71,4 +71,16 @@ public class ManageService {
 
         return this.manageMapper.manageMediaChangeThumbnail(mediaRegisterEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
+
+    public Enum<?> manageMediaDeleteAdd(MediaRegisterEntity mediaRegisterEntity) {
+        int result = 0;
+        int result1 = this.manageMapper.manageMediaDelete(mediaRegisterEntity);
+        int result2 = this.manageMapper.manageMediaAdd(mediaRegisterEntity);
+
+        if(result1 > 0 && result2 > 0) {
+            result = 1;
+        }
+
+        return result > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
 }

@@ -1,5 +1,6 @@
 package com.adgomin.manage.mapper;
 
+import com.adgomin.join.vo.JoinVO;
 import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.vo.MediaRegisterVO;
@@ -17,4 +18,8 @@ public interface ManageMapper {
     int manageMediaUpdate(MediaRegisterEntity mediaRegisterEntity);
 
     int manageMediaChangeThumbnail(MediaRegisterEntity mediaRegisterEntity);
+
+    int manageMediaDelete(MediaRegisterEntity mediaRegisterEntity);
+
+    int manageMediaAdd(MediaRegisterEntity mediaRegisterEntity);
 }
