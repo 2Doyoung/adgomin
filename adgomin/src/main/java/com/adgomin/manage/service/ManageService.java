@@ -83,4 +83,8 @@ public class ManageService {
 
         return result > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
+
+    public Enum<?> manageMediaDelete(MediaRegisterEntity mediaRegisterEntity) {
+        return this.manageMapper.manageMediaDelete(mediaRegisterEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
 }

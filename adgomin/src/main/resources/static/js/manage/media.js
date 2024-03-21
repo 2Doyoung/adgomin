@@ -55,14 +55,14 @@ modalCancelButton.addEventListener("click", () => {
 })
 
 modalConfirmButton.addEventListener("click", () => {
+    const formData = new FormData();
+
+    formData.append("mediaOrder", mediaOrder);
+
     if(mediaSubmitStatus == "T" || mediaSubmitStatus == "I" || mediaSubmitStatus == "C") {
-        const formData = new FormData();
-
-        formData.append("mediaOrder", mediaOrder);
-
         xhr("/manage/media/delete/add", formData, "DELETE", "manageMediaDeleteAdd");
     } else if(mediaSubmitStatus == "Y") {
-
+        xhr("/manage/media/delete", formData, "DELETE", "manageMediaDelete");
     }
 })
 
@@ -79,6 +79,16 @@ modalCheck2.addEventListener("click", () => {
  */
 let successXhr = (responseObject, flag) => {
     if(flag == "manageMediaDeleteAdd") {
+        let modalBg = document.getElementById("modalBg");
+
+        modalBg.style.display = "none";
+
+        let modalBg2 = document.getElementById("modalBg2");
+        let modalTitle = document.getElementById("modalTitle");
+
+        modalBg2.style.display = "block";
+        modalTitle.innerText = "광고매체 삭제가 완료되었습니다.";
+    } else if(flag == "manageMediaDelete") {
         let modalBg = document.getElementById("modalBg");
 
         modalBg.style.display = "none";
