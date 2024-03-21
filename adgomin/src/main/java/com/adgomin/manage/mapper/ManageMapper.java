@@ -4,6 +4,7 @@ import com.adgomin.join.vo.JoinVO;
 import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.vo.MediaRegisterVO;
+import com.adgomin.portfolio.entity.PortfolioEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -22,4 +23,6 @@ public interface ManageMapper {
     int manageMediaDelete(MediaRegisterEntity mediaRegisterEntity);
 
     int manageMediaAdd(MediaRegisterEntity mediaRegisterEntity);
+
+    PortfolioEntity[] allPortfolio(@Param(value = "email") String email);
 }

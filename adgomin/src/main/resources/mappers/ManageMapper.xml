@@ -120,4 +120,21 @@
         <span>동영상이 없는 광고매체는 생략을 하셔도 됩니다.</span><h3> </h3>
         <img src="http://localhost:8080/images/media-register-video-guide.png">]]>', 0, now(), now())
     </insert>
+
+    <select id="allPortfolio" resultType="com.adgomin.portfolio.entity.PortfolioEntity">
+        SELECT
+            portfolio_order AS porfolioOrder
+            ,portfolio_title AS portfolioTitle
+            ,portfolio_ad_detail_category AS portfolioAdDetailCategory
+            ,portfolio_ad_category AS portfolioAdCategory
+            ,portfolio_region AS portfolioRegion
+            ,main_img_nm AS mainImgNm
+            ,main_origin_file_nm AS mainOriginFileNm
+            ,main_img_file_path AS mainimgFilePath
+            ,modify_dt AS modifyDt
+        FROM adgomin_portfolio
+        WHERE 1=1
+        AND email = #{email}
+        ORDER BY portfolio_order DESC
+    </select>
 </mapper>

@@ -5,6 +5,7 @@ import com.adgomin.manage.service.ManageService;
 import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.vo.MediaRegisterVO;
+import com.adgomin.portfolio.entity.PortfolioEntity;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
@@ -41,6 +42,13 @@ public class ManageController {
                 MediaRegisterEntity[] allMediaRegister = this.manageService.allMediaRegister(joinVO.getEmail());
 
                 modelAndView.addObject("allMediaRegister", allMediaRegister);
+            }
+        } else if("portfolio".equals(manage)) {
+            modelAndView =  new ModelAndView("manage/portfolio");
+            if(joinVO != null) {
+                PortfolioEntity[] allPortfolio = this.manageService.allPortfolio(joinVO.getEmail());
+
+                modelAndView.addObject("allPortfolio", allPortfolio);
             }
         }
 

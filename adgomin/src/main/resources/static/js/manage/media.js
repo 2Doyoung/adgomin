@@ -10,12 +10,18 @@ const modalConfirmButton = document.getElementById("modalConfirmButton");
 
 const modalCheck2 = document.getElementById("modalCheck2");
 
+const managePortfolio = document.getElementById("managePortfolio");
+
 let mediaSubmitStatus;
 let mediaOrder;
 
 /**
  * 이벤트 함수
  */
+managePortfolio.addEventListener("click", () => {
+    window.location.href = "/manage?manage=portfolio";
+})
+
 for(let i = 0; i < mediaManageY.length; i++) {
     mediaManageY[i].addEventListener("click", (e) => {
         let mediaOrder = e.currentTarget.dataset.parent;

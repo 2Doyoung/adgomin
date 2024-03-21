@@ -6,6 +6,7 @@ import com.adgomin.join.mapper.JoinMapper;
 import com.adgomin.manage.mapper.ManageMapper;
 import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.vo.MediaRegisterVO;
+import com.adgomin.portfolio.entity.PortfolioEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -86,5 +87,9 @@ public class ManageService {
 
     public Enum<?> manageMediaDelete(MediaRegisterEntity mediaRegisterEntity) {
         return this.manageMapper.manageMediaDelete(mediaRegisterEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
+
+    public PortfolioEntity[] allPortfolio(String email) {
+        return this.manageMapper.allPortfolio(email);
     }
 }

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>애드곰인 - 애드곰인 관리</title>
-    <link rel="stylesheet" th:href="@{/css/manage/media.css}">
+    <link rel="stylesheet" th:href="@{/css/manage/portfolio.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script defer th:src="@{/js/manage/media.js}"></script>
+    <script defer th:src="@{/js/manage/portfolio.js}"></script>
     <script defer th:src="@{/js/layouts/header.js}"></script>
 </head>
 <body>
@@ -26,45 +26,35 @@
     <div class="media-manage-sub-wrap">
         <div class="media-manage-sub-menu">
             <ul>
-                <li style="font-weight: bolder">
+                <li id="manageMedia">
                     내 광고매체 관리
                 </li>
-                <li id="managePortfolio">
+                <li style="font-weight: bolder">
                     내 포트폴리오 관리
                 </li>
             </ul>
         </div>
         <div class="media-manage-sub-main">
             <div class="media-manage-sub-main-title">
-                내 광고매체 관리
+                내 포트폴리오 관리
             </div>
             <div class="media-manage-sub-main-content-information">
-                <div th:each="mediaRegister : ${allMediaRegister}" class="media-manage-card" th:data-parent="${mediaRegister.mediaOrder}">
+                <div th:each="portfolio : ${allPortfolio}" class="media-manage-card" th:data-parent="${portfolio.portfolioOrder}">
                     <div class="media-manage-thumbnail">
-                        <img class="media-manage-thumbnail-img" th:src="@{/manage/thumbnail/image (thumbnailImgNm=${mediaRegister.thumbnailImgNm}, thumbnailImgFilePath =${mediaRegister.thumbnailImgFilePath})}">
+                        <img class="media-manage-thumbnail-img" th:src="@{/manage/thumbnail/image (thumbnailImgNm=${portfolio.mainImgNm}, thumbnailImgFilePath =${portfolio.mainImgFilePath})}">
                     </div>
                     <div class="media-manage-card-detail">
                         <div class="media-manage-title">
-                            <span th:text="${mediaRegister.mediaTitle}"></span>
-                        </div>
-                        <div class="media-manage-price">
-                            <span th:text="${mediaRegister.mediaPrice}"></span>
-                            <span>원</span>
-                        </div>
-                        <div class="media-manage-submit-status">
-                            <span th:if="${mediaRegister.mediaSubmitStatus == 'T'}">임시저장</span>
-                            <span th:if="${mediaRegister.mediaSubmitStatus == 'I'}">심사중</span>
-                            <span th:if="${mediaRegister.mediaSubmitStatus == 'C'}">반려</span>
-                            <span class="media-manage-y" th:data-parent="${mediaRegister.mediaOrder}" th:if="${mediaRegister.mediaSubmitStatus == 'Y'}">정상서비스(광고매체 보기)</span>
+                            <span th:text="${portfolio.portfolioTitle}"></span>
                         </div>
                         <div class="media-manage-modify-dt">
                             <span>최근 수정 일자 : </span>
-                            <span th:text="${#dates.format(mediaRegister.modifyDt, 'yyyy-MM-dd HH:mm:ss')}"></span>
+                            <span th:text="${#dates.format(portfolio.modifyDt, 'yyyy-MM-dd HH:mm:ss')}"></span>
                         </div>
                     </div>
                     <div class="media-manage-button">
-                        <input type="button" class="media-manage-update-button" value="광고매체 수정" th:data-parent="${mediaRegister.mediaSubmitStatus}" th:data-parent2="${mediaRegister.mediaOrder}">
-                        <input type="button" class="media-manage-delete-button" value="광고매체 삭제" th:data-parent="${mediaRegister.mediaSubmitStatus}" th:data-parent2="${mediaRegister.mediaOrder}">
+                        <input type="button" class="media-manage-update-button" value="광고매체 수정" th:data-parent="${portfolio.portfolioOrder}">
+                        <input type="button" class="media-manage-delete-button" value="광고매체 삭제" th:data-parent="${portfolio.portfolioOrder}">
                     </div>
                 </div>
             </div>

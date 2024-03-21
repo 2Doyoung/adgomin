@@ -7,6 +7,8 @@ const updateButton = document.getElementById("updateButton");
 
 const modalCheck = document.getElementById("modalCheck");
 
+const managePortfolio = document.getElementById("managePortfolio");
+
 let thumbnailImgSave;
 
 let quill;
@@ -14,6 +16,10 @@ let quill;
 /**
  * 이벤트 함수
  */
+managePortfolio.addEventListener("click", () => {
+    window.location.href = "/manage?manage=portfolio";
+})
+
 updateButton.addEventListener("click", () => {
     let mediaSummary = document.getElementById("mediaSummary").value;
     let mediaSummarySpan = document.getElementById("mediaSummarySpan");
