@@ -47,6 +47,14 @@
                         <div class="media-manage-title">
                             <span th:text="${portfolio.portfolioTitle}"></span>
                         </div>
+                        <div class="portfolio-category">
+                            <span th:text="${portfolio.portfolioAdCategory}"></span>
+                            <span th:text="${portfolio.portfolioAdDetailCategory}"></span>
+                            <span th:text="${portfolio.portfolioRegion}"></span>
+                        </div>
+                        <div>
+                            <span class="portfolio-post">포트폴리오 보기</span>
+                        </div>
                         <div class="media-manage-modify-dt">
                             <span>최근 수정 일자 : </span>
                             <span th:text="${#dates.format(portfolio.modifyDt, 'yyyy-MM-dd HH:mm:ss')}"></span>
