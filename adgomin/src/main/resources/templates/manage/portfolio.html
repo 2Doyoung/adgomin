@@ -19,6 +19,7 @@
     }
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" id="userOrder" th:value="${userOrder}">
 <div class="top-title">
     <div class="media-manage-main-title">애드곰인 관리</div>
 </div>
@@ -48,12 +49,12 @@
                             <span th:text="${portfolio.portfolioTitle}"></span>
                         </div>
                         <div class="portfolio-category">
-                            <span th:text="${portfolio.portfolioAdCategory}"></span>
                             <span th:text="${portfolio.portfolioAdDetailCategory}"></span>
+                            <span th:text="${portfolio.portfolioAdCategory}"></span>
                             <span th:text="${portfolio.portfolioRegion}"></span>
                         </div>
                         <div>
-                            <span class="portfolio-post">포트폴리오 보기</span>
+                            <span class="portfolio-post" th:data-parent="${portfolio.portfolioOrder}">포트폴리오 보기</span>
                         </div>
                         <div class="media-manage-modify-dt">
                             <span>최근 수정 일자 : </span>
@@ -61,8 +62,8 @@
                         </div>
                     </div>
                     <div class="media-manage-button">
-                        <input type="button" class="media-manage-update-button" value="광고매체 수정" th:data-parent="${portfolio.portfolioOrder}">
-                        <input type="button" class="media-manage-delete-button" value="광고매체 삭제" th:data-parent="${portfolio.portfolioOrder}">
+                        <input type="button" class="portfolio-manage-update-button" value="포트폴리오 수정" th:data-parent="${portfolio.portfolioOrder}">
+                        <input type="button" class="portfolio-manage-delete-button" value="포트폴리오 삭제" th:data-parent="${portfolio.portfolioOrder}">
                     </div>
                 </div>
             </div>

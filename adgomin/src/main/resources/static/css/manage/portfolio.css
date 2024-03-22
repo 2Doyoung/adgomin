@@ -120,9 +120,9 @@ body {
     width: 33rem;
 }
 
-.media-manage-update-button {
+.portfolio-manage-update-button {
     height: 2rem;
-    width: 7.5rem;
+    width: 8.5rem;
     border: none;
     border-radius: 5px;
     color: #FFFFFF;
@@ -134,9 +134,9 @@ body {
     display: block;
 }
 
-.media-manage-delete-button {
+.portfolio-manage-delete-button {
     height: 2rem;
-    width: 7.5rem;
+    width: 8.5rem;
     border: none;
     border-radius: 5px;
     color: #FFFFFF;

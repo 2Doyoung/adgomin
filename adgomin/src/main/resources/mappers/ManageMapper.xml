@@ -123,7 +123,7 @@
 
     <select id="allPortfolio" resultType="com.adgomin.portfolio.entity.PortfolioEntity">
         SELECT
-            portfolio_order AS porfolioOrder
+            portfolio_order AS portfolioOrder
             ,portfolio_title AS portfolioTitle
             ,portfolio_ad_detail_category AS portfolioAdDetailCategory
             ,portfolio_ad_category AS portfolioAdCategory

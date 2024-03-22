@@ -49,6 +49,7 @@ public class ManageController {
                 PortfolioEntity[] allPortfolio = this.manageService.allPortfolio(joinVO.getEmail());
 
                 modelAndView.addObject("allPortfolio", allPortfolio);
+                modelAndView.addObject("userOrder", joinVO.getUserOrder());
             }
         }
 

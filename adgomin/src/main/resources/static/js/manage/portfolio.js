@@ -2,6 +2,7 @@
  * 전역변수
  */
 const manageMedia = document.getElementById("manageMedia");
+const portfolioPost = document.getElementsByClassName("portfolio-post");
 
 /**
  * 이벤트 함수
@@ -9,6 +10,15 @@ const manageMedia = document.getElementById("manageMedia");
 manageMedia.addEventListener("click", () => {
     window.location.href = "/manage?manage=media";
 })
+
+for(let i = 0; i < portfolioPost.length; i++) {
+    portfolioPost[i].addEventListener("click", (e) => {
+        let userOrder = document.getElementById("userOrder").value;
+        let portfolioOrder = e.currentTarget.dataset.parent;
+
+        window.location.href = "/introduce/detail/portfolio/" + userOrder + "/" + portfolioOrder;
+    })
+}
 
 /**
  * 사용자 함수
