@@ -6,6 +6,7 @@ import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.vo.MediaRegisterVO;
 import com.adgomin.portfolio.entity.PortfolioEntity;
+import com.adgomin.portfolio.entity.PortfolioImgEntity;
 import com.adgomin.portfolio.vo.PortfolioVO;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -190,6 +191,7 @@ public class ManageController {
 
         if(joinVO != null && portfolioOrderEmail.getCount() != 0) {
             PortfolioEntity portfolioEntity = this.manageService.portfolioEntity(portfolioOrder);
+            PortfolioImgEntity[] portfolioImgEntity = this.manageService.portfolioImgEntity(portfolioOrder);
 
             modelAndView.addObject("portfolioOrder", portfolioEntity.getPortfolioOrder());
             modelAndView.addObject("email", portfolioEntity.getEmail());
@@ -202,6 +204,8 @@ public class ManageController {
             modelAndView.addObject("mainImgFilePath", portfolioEntity.getMainImgFilePath());
             modelAndView.addObject("createDt", portfolioEntity.getCreateDt());
             modelAndView.addObject("modifyDt", portfolioEntity.getModifyDt());
+
+            modelAndView.addObject("portfolioImgEntity", portfolioImgEntity);
         } else {
             modelAndView =  new ModelAndView("error/error");
         }

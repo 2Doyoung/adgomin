@@ -164,4 +164,19 @@
         WHERE 1=1
         AND portfolio_order = #{portfolioOrder}
     </select>
+
+    <select id="portfolioImgEntity" resultType="com.adgomin.portfolio.entity.PortfolioImgEntity">
+        SELECT
+            portfolio_img_order AS portfolioImgOrder
+            ,portfolio_order AS portfolioOrder
+            ,email AS email
+            ,img_nm AS imgNm
+            ,origin_file_nm AS originFileNm
+            ,img_file_path AS imgFilePath
+            ,create_dt AS createDt
+            ,modify_dt AS modifyDt
+        FROM adgomin_portfolio_img
+        WHERE 1=1
+        AND portfolio_order = #{portfolioOrder}
+    </select>
 </mapper>
