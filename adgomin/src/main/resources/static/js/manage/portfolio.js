@@ -4,6 +4,9 @@
 const manageMedia = document.getElementById("manageMedia");
 const portfolioPost = document.getElementsByClassName("portfolio-post");
 
+const portfolioManageUpdateButton = document.getElementsByClassName("portfolio-manage-update-button");
+const portfolioManageDeleteButton = document.getElementsByClassName("portfolio-manage-delete-button");
+
 /**
  * 이벤트 함수
  */
@@ -17,6 +20,14 @@ for(let i = 0; i < portfolioPost.length; i++) {
         let portfolioOrder = e.currentTarget.dataset.parent;
 
         window.location.href = "/introduce/detail/portfolio/" + userOrder + "/" + portfolioOrder;
+    })
+}
+
+for(let i = 0; i < portfolioManageUpdateButton.length; i++) {
+    portfolioManageUpdateButton[i].addEventListener("click", (e) => {
+        let portfolioOrder = e.currentTarget.dataset.parent;
+
+        window.location.href = "/manage/portfolio/update?portfolioOrder=" + portfolioOrder;
     })
 }
 

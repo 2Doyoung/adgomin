@@ -6,6 +6,7 @@ import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.vo.MediaRegisterVO;
 import com.adgomin.portfolio.entity.PortfolioEntity;
+import com.adgomin.portfolio.vo.PortfolioVO;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
@@ -57,9 +58,9 @@ public class ManageController {
     }
 
     @GetMapping(value = "/manage/media/update")
-    public ModelAndView manageUpdate(@RequestParam(value = "mediaOrder", required = false) String mediaOrder, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
+    public ModelAndView manageMediaUpdate(@RequestParam(value = "mediaOrder", required = false) String mediaOrder, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
         ModelAndView modelAndView = null;
-        modelAndView =  new ModelAndView("manage/media_update");
+        modelAndView = new ModelAndView("manage/media_update");
 
         MediaRegisterVO mediaOrderEmail = this.manageService.mediaOrderEmail(mediaOrder, joinVO.getEmail());
 
@@ -178,5 +179,33 @@ public class ManageController {
         responseObject.put("result", result.name().toLowerCase());
 
         return responseObject.toString();
+    }
+
+    @GetMapping(value = "/manage/portfolio/update")
+    public ModelAndView managePortfolioUpdate(@RequestParam(value = "portfolioOrder", required = false) String portfolioOrder, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
+        ModelAndView modelAndView = null;
+        modelAndView = new ModelAndView("manage/portfolio_update");
+
+        PortfolioVO portfolioOrderEmail = this.manageService.portfolioOrderEmail(portfolioOrder, joinVO.getEmail());
+
+        if(joinVO != null && portfolioOrderEmail.getCount() != 0) {
+            PortfolioEntity portfolioEntity = this.manageService.portfolioEntity(portfolioOrder);
+
+            modelAndView.addObject("portfolioOrder", portfolioEntity.getPortfolioOrder());
+            modelAndView.addObject("email", portfolioEntity.getEmail());
+            modelAndView.addObject("portfolioTitle", portfolioEntity.getPortfolioTitle());
+            modelAndView.addObject("portfolioAdDetailCategory", portfolioEntity.getPortfolioAdDetailCategory());
+            modelAndView.addObject("portfolioAdCategory", portfolioEntity.getPortfolioAdCategory());
+            modelAndView.addObject("portfolioRegion", portfolioEntity.getPortfolioRegion());
+            modelAndView.addObject("mainImgNm", portfolioEntity.getMainImgNm());
+            modelAndView.addObject("mainOriginFileNm", portfolioEntity.getMainOriginFileNm());
+            modelAndView.addObject("mainImgFilePath", portfolioEntity.getMainImgFilePath());
+            modelAndView.addObject("createDt", portfolioEntity.getCreateDt());
+            modelAndView.addObject("modifyDt", portfolioEntity.getModifyDt());
+        } else {
+            modelAndView =  new ModelAndView("error/error");
+        }
+
+        return  modelAndView;
     }
 }

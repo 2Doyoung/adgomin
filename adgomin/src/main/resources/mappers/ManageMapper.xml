@@ -137,4 +137,31 @@
         AND email = #{email}
         ORDER BY portfolio_order DESC
     </select>
+
+    <select id="portfolioOrderEmail" resultType="com.adgomin.portfolio.vo.PortfolioVO">
+        SELECT
+            COUNT(*) AS count
+        FROM adgomin_portfolio
+        WHERE 1=1
+          AND email = #{email}
+          AND portfolio_order = #{portfolioOrder}
+    </select>
+
+    <select id="portfolioEntity" resultType="com.adgomin.portfolio.entity.PortfolioEntity">
+        SELECT
+            portfolio_order AS portfolioOrder
+            ,email AS email
+            ,portfolio_title AS portfolioTitle
+            ,portfolio_ad_detail_category AS portfolioAdDetailCategory
+            ,portfolio_ad_category AS portfolioAdCategory
+            ,portfolio_region AS portfolioRegion
+            ,main_img_nm AS mainImgNm
+            ,main_origin_file_nm AS mainOriginFileNm
+            ,main_img_file_path AS mainImgFilePath
+            ,create_dt AS createDt
+            ,modify_dt AS modifyDt
+        FROM adgomin_portfolio
+        WHERE 1=1
+        AND portfolio_order = #{portfolioOrder}
+    </select>
 </mapper>

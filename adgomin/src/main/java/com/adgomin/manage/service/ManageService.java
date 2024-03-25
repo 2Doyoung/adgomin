@@ -7,6 +7,7 @@ import com.adgomin.manage.mapper.ManageMapper;
 import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.vo.MediaRegisterVO;
 import com.adgomin.portfolio.entity.PortfolioEntity;
+import com.adgomin.portfolio.vo.PortfolioVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -91,5 +92,13 @@ public class ManageService {
 
     public PortfolioEntity[] allPortfolio(String email) {
         return this.manageMapper.allPortfolio(email);
+    }
+
+    public PortfolioVO portfolioOrderEmail(String portfolioOrder, String email) {
+        return this.manageMapper.portfolioOrderEmail(portfolioOrder, email);
+    }
+
+    public PortfolioEntity portfolioEntity(String portfolioOrder) {
+        return this.manageMapper.portfolioEntity(portfolioOrder);
     }
 }

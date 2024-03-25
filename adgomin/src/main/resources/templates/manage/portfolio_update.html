@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - 포트폴리오 관리</title>
+    <link rel="stylesheet" th:href="@{/css/manage/portfolio_update.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/manage/portfolio_update.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let sessionLoginUser = [[${session.LOGIN_USER}]];
+
+    if(sessionLoginUser == null) {
+        window.location.href = "/";
+    }
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<div class="top-title">
+    <div class="portfolio-main-title">포트폴리오 관리</div>
+</div>
+<div class="portfolio-wrap">
+    <div class="portfolio-sub-wrap">
+        <div class="portfolio-sub-menu">
+            <ul>
+                <li style="font-weight: bolder">
+                    포트폴리오 등록
+                </li>
+            </ul>
+        </div>
+        <div class="portfolio-sub-main">
+            <div class="portfolio-sub-main-title">
+                포트폴리오 등록
+            </div>
+            <div class="portfolio-sub-main-content-information">
+                <div>
+                    <label>제목</label>
+                    <span id="titleSpan">포트폴리오 제목을 입력해주세요.</span><span id="titleLength"> (0 / 30)</span>
+                    <div>
+                        <input type="text" id="portfolioTitle" spellcheck="false" placeholder="포트폴리오 제목">
+                    </div>
+                </div>
+                <div class="ad-detail-category">
+                    <label>카테고리</label>
+                    <span id="adDetailCategorySpan">광고를 진행했던 카테고리를 선택해주세요.</span>
+                    <input type="text" class="ad-detail-category-focus" id="adDetailCategoryFocus" readonly>
+                    <div class="display-flex">
+                        <ul>
+                            <li class="ad-detail-category-first-li ad-detail-category-list">유튜브</li>
+                            <li class="ad-detail-category-list">인스타그램</li>
+                            <li class="ad-detail-category-list">페이스북</li>
+                            <li class="ad-detail-category-list">블로그</li>
+                            <li class="ad-detail-category-list">지하철</li>
+                            <li class="ad-detail-category-list">버스</li>
+                            <li class="ad-detail-category-list">옥외광고</li><br>
+                            <li class="ad-detail-category-first-li ad-detail-category-list">영화관</li>
+                            <li class="ad-detail-category-list">현수막</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="ad-category">
+                    <label>광고분야</label>
+                    <span id="adCategorySpan">광고를 진행했던 광고분야를 선택해주세요.</span>
+                    <input type="text" class="ad-category-focus" id="adCategoryFocus" readonly>
+                    <div class="display-flex">
+                        <ul>
+                            <li class="category-first-li ad-category-list">게임</li>
+                            <li class="ad-category-list">먹방</li>
+                            <li class="ad-category-list">어플</li>
+                            <li class="ad-category-list">병원</li>
+                            <li class="ad-category-list">음식점</li>
+                            <li class="ad-category-list">화장품</li>
+                            <li class="ad-category-list">학원</li>
+                            <li class="ad-category-list">식품</li><br>
+                            <li class="category-first-li ad-category-list">제품</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="region-choice">
+                    <label>지역</label>
+                    <span id="regionSpan">광고를 진행했던 지역을 선택해주세요.</span>
+                    <input type="text" class="region-focus" id="regionFocus" readonly>
+                    <div class="display-flex">
+                        <ul>
+                            <li class="region_first_li region-category">전국</li>
+                            <li class="region-category">서울</li>
+                            <li class="region-category">인천</li>
+                            <li class="region-category">부산</li>
+                            <li class="region-category">대전</li>
+                            <li class="region-category">광주</li>
+                            <li class="region-category">대구</li>
+                            <li class="region-category">울산</li>
+                            <li class="region-category">경기</li><br>
+                            <li class="region_first_li region-category">강원</li>
+                            <li class="region-category">충북</li>
+                            <li class="region-category">충남</li>
+                            <li class="region-category">전북</li>
+                            <li class="region-category">전남</li>
+                            <li class="region-category">경북</li>
+                            <li class="region-category">경남</li>
+                            <li class="region-category">제주</li>
+                            <li class="region-category">세종</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <label class="thumbnail-label">포트폴리오 메인 이미지<span id="thumbnailSpan">(필수)</span></label>
+                    <div class="thumbnail-div display-flex">
+                        <div class="thumbnail">
+                            <img class="thumbnailBasicImg" th:src="@{/images/media-register-thumbnail.png}">
+                        </div>
+                        <div class="thumbnail-change-div">
+                            <label for="thumbnailImg" id="thumbnailImgLabel">
+                                <div class="profile_change">메인이미지 변경</div>
+                            </label>
+                            <input type="file" class="profile_img" name="profile_img" id="thumbnailImg">
+                            <span id="extSpan">
+                                확장자 : png, jpg, jpeg
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <label class="detail-img-label">포트폴리오 상세 이미지<span id="detailSpan">(1개 필수)</span></label>
+                    <div class="detail-img-div">
+                        <div class="detail-img-change-div">
+                            <label for="detailImg">
+                                <div class="detail-img-change">이미지 추가</div><span class="file-count" id="fileCount"> (0 / 5)</span>
+                            </label>
+                            <input type="file" class="profile_img" name="profile_img" id="detailImg" multiple>
+                            <span>
+                                확장자 : png, jpg, jpeg
+                            </span>
+                        </div>
+                        <div class="details" id="details"></div>
+                    </div>
+                </div>
+                <input type="button" class="save-button" id="saveButton" value="등록완료">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-bg" id="modalBg">
+    <div class="modal-body">
+        <div id="modalTitle"></div>
+        <div class="modal-check-div" id="modalCheck">
+            <i class="ri-checkbox-circle-line"></i>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>
