@@ -17,6 +17,10 @@
     if(sessionLoginUser == null) {
         window.location.href = "/";
     }
+
+    let getPortfolioAdDetailCategorySelected = [[${portfolioAdDetailCategory}]];
+    let getPortfolioAdCategorySelected = [[${portfolioAdCategory}]];
+    let getPortfolioRegionSelected = [[${portfolioRegion}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <div class="top-title">
@@ -26,21 +30,24 @@
     <div class="portfolio-sub-wrap">
         <div class="portfolio-sub-menu">
             <ul>
+                <li id="manageMedia">
+                    내 광고매체 관리
+                </li>
                 <li style="font-weight: bolder">
-                    포트폴리오 등록
+                    내 포트폴리오 관리
                 </li>
             </ul>
         </div>
         <div class="portfolio-sub-main">
             <div class="portfolio-sub-main-title">
-                포트폴리오 등록
+                포트폴리오 수정
             </div>
             <div class="portfolio-sub-main-content-information">
                 <div>
                     <label>제목</label>
                     <span id="titleSpan">포트폴리오 제목을 입력해주세요.</span><span id="titleLength"> (0 / 30)</span>
                     <div>
-                        <input type="text" id="portfolioTitle" spellcheck="false" placeholder="포트폴리오 제목">
+                        <input type="text" id="portfolioTitle" spellcheck="false" placeholder="포트폴리오 제목" th:value="${portfolioTitle}">
                     </div>
                 </div>
                 <div class="ad-detail-category">
@@ -110,7 +117,7 @@
                     <label class="thumbnail-label">포트폴리오 메인 이미지<span id="thumbnailSpan">(필수)</span></label>
                     <div class="thumbnail-div display-flex">
                         <div class="thumbnail">
-                            <img class="thumbnailBasicImg" th:src="@{/images/media-register-thumbnail.png}">
+                            <img class="thumbnailBasicImg" th:src="@{/manage/thumbnail/image (thumbnailImgNm=${mainImgNm}, thumbnailImgFilePath =${mainImgFilePath})}">
                         </div>
                         <div class="thumbnail-change-div">
                             <label for="thumbnailImg" id="thumbnailImgLabel">
