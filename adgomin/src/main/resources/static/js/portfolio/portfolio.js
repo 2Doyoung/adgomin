@@ -101,6 +101,7 @@ saveButton.addEventListener("click", () => {
         xhr("/portfolio/register", formData, "POST", "portfolioRegister");
     }
 })
+
 portfolioTitle.addEventListener("keyup", () => {
     let titleLength = document.getElementById("titleLength");
     let portfolioTitleValue = portfolioTitle.value;

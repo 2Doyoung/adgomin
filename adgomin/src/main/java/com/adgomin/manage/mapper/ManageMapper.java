@@ -33,4 +33,12 @@ public interface ManageMapper {
     PortfolioEntity portfolioEntity(@Param(value = "portfolioOrder") String portfolioOrder);
 
     PortfolioImgEntity[] portfolioImgEntity(@Param(value = "portfolioOrder") String portfolioOrder);
+
+    int managePortfolioUpdate(PortfolioEntity portfolioEntity);
+
+    int managePortfolioChangeThumbnail(PortfolioEntity portfolioEntity);
+
+    int managePortfolioDetailImgDelete(PortfolioImgEntity portfolioImgEntity);
+
+    int managePortfolioDetailImgUpdate(PortfolioImgEntity portfolioImgEntity);
 }

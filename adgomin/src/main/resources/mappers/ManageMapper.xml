@@ -179,4 +179,39 @@
         WHERE 1=1
         AND portfolio_order = #{portfolioOrder}
     </select>
+
+    <update id="managePortfolioUpdate" parameterType="com.adgomin.portfolio.entity.PortfolioEntity">
+        UPDATE
+            adgomin_portfolio
+        SET
+            portfolio_title = #{portfolioTitle}
+            ,portfolio_ad_detail_category = #{portfolioAdDetailCategory}
+            ,portfolio_ad_category = #{portfolioAdCategory}
+            ,portfolio_region = #{portfolioRegion}
+            ,modify_dt = now()
+        WHERE 1=1
+        AND portfolio_order = #{portfolioOrder}
+    </update>
+
+    <update id="managePortfolioChangeThumbnail" parameterType="com.adgomin.portfolio.entity.PortfolioEntity">
+        UPDATE
+            adgomin_portfolio
+        SET main_img_nm = #{mainImgNm}
+          ,main_origin_file_nm = #{mainOriginFileNm}
+          ,main_img_file_path = #{mainImgFilePath}
+        WHERE 1=1
+        AND portfolio_order = #{portfolioOrder}
+    </update>
+
+    <delete id="managePortfolioDetailImgDelete" parameterType="com.adgomin.portfolio.entity.PortfolioImgEntity">
+        DELETE FROM adgomin_portfolio_img
+        WHERE portfolio_order = #{portfolioOrder}
+    </delete>
+
+    <insert id="managePortfolioDetailImgUpdate" parameterType="com.adgomin.portfolio.entity.PortfolioImgEntity">
+        INSERT INTO adgomin_portfolio_img
+        (portfolio_order, email, img_nm, origin_file_nm, img_file_path, create_dt, modify_dt)
+        SELECT
+            #{portfolioOrder}, #{email}, #{imgNm}, #{originFileNm}, #{imgFilePath}, NOW(), NOW();
+    </insert>
 </mapper>

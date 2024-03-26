@@ -8,7 +8,10 @@ import com.adgomin.media.vo.MediaRegisterVO;
 import com.adgomin.portfolio.entity.PortfolioEntity;
 import com.adgomin.portfolio.entity.PortfolioImgEntity;
 import com.adgomin.portfolio.vo.PortfolioVO;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
@@ -22,9 +25,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller(value = "com.adgomin.manage.controller.ManageController")
 public class ManageController {
@@ -211,5 +219,55 @@ public class ManageController {
         }
 
         return  modelAndView;
+    }
+
+    @PatchMapping("/manage/portfolio/update")
+    @ResponseBody
+    public String managePortfolioUpdate(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, PortfolioEntity portfolioEntity) {
+        JSONObject responseObject = new JSONObject();
+        portfolioEntity.setEmail(joinVO.getEmail());
+        Enum<?> result = this.manageService.managePortfolioUpdate(portfolioEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
+
+    @PatchMapping("/manage/portfolio/change/thumbnail")
+    @ResponseBody
+    public String managePortfolioChangeThumbnail(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MultipartFile thumbnail, PortfolioEntity portfolioEntity) {
+        JSONObject responseObject = new JSONObject();
+        portfolioEntity.setEmail(joinVO.getEmail());
+        Enum<?> result = this.manageService.managePortfolioChangeThumbnail(thumbnail, portfolioEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
+
+    @PatchMapping("/manage/portfolio/detail/img/update")
+    @ResponseBody
+    public String managePortfolioDetailImgUpdate(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, @RequestParam(value = "existDetailImgArr", required = false) String existDetailImgArr, MultipartFile[] detailImgArr, PortfolioImgEntity portfolioImgEntity) throws Exception {
+        JSONObject responseObject = new JSONObject();
+        portfolioImgEntity.setEmail(joinVO.getEmail());
+
+        JSONParser jp = new JSONParser();
+        JSONArray ja = (JSONArray)jp.parse(existDetailImgArr);
+
+        PortfolioImgEntity[] portfolioImgEntities = new PortfolioImgEntity[ja.size()];
+        for(int i = 0; i < ja.size(); i++) {
+            PortfolioImgEntity entity = new PortfolioImgEntity();
+            JSONObject jo = (JSONObject) ja.get(i);
+            entity.setPortfolioImgOrder(((Long) jo.get("portfolioImgOrder")).intValue());
+            entity.setPortfolioOrder(((Long) jo.get("portfolioOrder")).intValue());
+            entity.setEmail((String) jo.get("email"));
+            entity.setImgNm((String) jo.get("imgNm"));
+            entity.setOriginFileNm((String) jo.get("originFileNm"));
+            entity.setImgFilePath((String) jo.get("imgFilePath"));
+
+            portfolioImgEntities[i] = entity;
+        }
+        Enum<?> result = this.manageService.managePortfolioDetailImgUpdate(portfolioImgEntities, detailImgArr, portfolioImgEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
     }
 }
