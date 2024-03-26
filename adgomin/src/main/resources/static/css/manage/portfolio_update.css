@@ -246,7 +246,7 @@ body {
     margin-top: 1rem;
 }
 
-.save-button {
+.update-button {
     height: 2.7rem;
     width: 6.5rem;
     border: none;
@@ -257,7 +257,7 @@ body {
     font-weight: 500;
     font-size: 1rem;
     cursor: pointer;
-    margin-left: 36.5rem;
+    margin-left: 1rem;
 }
 
 .media-url {
@@ -400,4 +400,14 @@ body {
 .modal-check-div {
     margin-top: 1rem !important;
     cursor: pointer;
+}
+
+.portfolio-update-tip {
+    font-size: 0.95rem !important;
+    color: #81BEF7 !important;
+    padding-top: 1rem;
+}
+
+.save-tip-button {
+    display: flex;
 }

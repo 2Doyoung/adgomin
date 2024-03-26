@@ -21,6 +21,8 @@
     let getPortfolioAdDetailCategorySelected = [[${portfolioAdDetailCategory}]];
     let getPortfolioAdCategorySelected = [[${portfolioAdCategory}]];
     let getPortfolioRegionSelected = [[${portfolioRegion}]];
+
+    let getPortfolioImg = [[${portfolioImgEntity}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <div class="top-title">
@@ -145,7 +147,10 @@
                         <div class="details" id="details"></div>
                     </div>
                 </div>
-                <input type="button" class="save-button" id="saveButton" value="등록완료">
+                <div class="save-tip-button">
+                    <span class="portfolio-update-tip">Tip. 수정 완료 후 모니터링 또는 신고가 접수될 경우, 포트폴리오가 삭제처리 될 수 있습니다.</span>
+                    <input type="button" class="update-button" id="updateButton" value="수정완료">
+                </div>
             </div>
         </div>
     </div>

@@ -13,6 +13,12 @@ manageMedia.addEventListener("click", () => {
 /**
  * 사용자 함수
  */
+let titleLength = document.getElementById("titleLength");
+let portfolioTitleValue = document.getElementById("portfolioTitle").value;
+let portfolioTitleLength = portfolioTitleValue.length;
+
+titleLength.innerText = "(" + portfolioTitleLength + " / 30)";
+
 let getAdDetailCategoryList = document.getElementsByClassName("ad-detail-category-list");
 for(let i = 0; i < getAdDetailCategoryList.length; i++) {
     if(getAdDetailCategoryList[i].innerText == getPortfolioAdDetailCategorySelected) {
@@ -34,6 +40,27 @@ for(let i = 0; i < getRegionCategory.length; i++) {
     }
 }
 
+const fileCount = document.getElementById("fileCount");
+fileCount.innerText = " (" + getPortfolioImg.length + " / 5)";
+
+for(let i = 0; i < getPortfolioImg.length; i++) {
+    const thumbnailsContainer = document.getElementById('details');
+
+    const thumbnailContainer = document.createElement('div');
+    const thumbnailImg = document.createElement('img');
+    const deleteButton = document.createElement('button');
+
+    thumbnailImg.src = "/portfolio/thumbnail/image?mainImgNm=" + getPortfolioImg[i].imgNm + "&mainImgFilePath=" + getPortfolioImg[i].imgFilePath;
+
+    thumbnailContainer.classList.add('detail-container');
+    thumbnailImg.classList.add('detail-img');
+    deleteButton.classList.add('delete-btn');
+    deleteButton.innerHTML = '<i class="ri-delete-bin-fill" data-parent="' + getPortfolioImg[i].portfolioImgOrder + '"></i>';
+
+    thumbnailContainer.appendChild(thumbnailImg);
+    thumbnailContainer.appendChild(deleteButton);
+    thumbnailsContainer.appendChild(thumbnailContainer);
+}
 /**
  * XMLHttpRequest 성공 함수
  */
