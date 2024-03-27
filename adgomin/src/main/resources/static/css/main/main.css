@@ -232,7 +232,7 @@ ul {
 
 .category-search-example {
 	margin-left: 15%;
-	margin-top: 6rem;
+	margin-top: 1rem;
 }
 
 .category-search-example > ul {
@@ -672,4 +672,28 @@ ul {
 
 .category-search-second-ul > li {
 	margin-top: 1rem;
+}
+
+.main-click {
+	margin-left: 25%;
+	margin-top: 4rem;
+	font-size: 2rem;
+	color: #FFFFFF;
+	font-weight: 600;
+}
+
+.arrow-animation {
+	animation: slide1 1s ease-in-out infinite;
+	display: inline-block;
+}
+
+@keyframes slide1 {
+	0%,
+	100% {
+		transform: translate(0, 0);
+	}
+
+	50% {
+		transform: translate(0, 10px);
+	}
 }
