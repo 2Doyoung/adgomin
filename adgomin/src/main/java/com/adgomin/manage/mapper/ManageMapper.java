@@ -41,4 +41,6 @@ public interface ManageMapper {
     int managePortfolioDetailImgDelete(PortfolioImgEntity portfolioImgEntity);
 
     int managePortfolioDetailImgUpdate(PortfolioImgEntity portfolioImgEntity);
+
+    int managePortfolioDelete(PortfolioEntity portfolioEntity);
 }

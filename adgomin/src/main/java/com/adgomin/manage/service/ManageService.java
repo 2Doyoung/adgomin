@@ -191,4 +191,20 @@ public class ManageService {
 
         return result > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
+
+    public Enum<?> managePortfolioDelete(PortfolioEntity portfolioEntity) {
+        PortfolioImgEntity portfolioImgEntity = new PortfolioImgEntity();
+
+        portfolioImgEntity.setPortfolioOrder(portfolioEntity.getPortfolioOrder());
+
+        int result = 0;
+        int result1 = this.manageMapper.managePortfolioDetailImgDelete(portfolioImgEntity);
+        int result2 = this.manageMapper.managePortfolioDelete(portfolioEntity);
+
+        if(result1 > 0 && result2 > 0) {
+            result = 1;
+        }
+
+        return result > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
 }

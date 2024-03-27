@@ -214,4 +214,9 @@
         SELECT
             #{portfolioOrder}, #{email}, #{imgNm}, #{originFileNm}, #{imgFilePath}, NOW(), NOW();
     </insert>
+
+    <delete id="managePortfolioDelete" parameterType="com.adgomin.portfolio.entity.PortfolioEntity">
+        DELETE FROM adgomin_portfolio
+        WHERE portfolio_order = #{portfolioOrder}
+    </delete>
 </mapper>

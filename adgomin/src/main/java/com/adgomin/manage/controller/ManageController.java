@@ -270,4 +270,15 @@ public class ManageController {
 
         return responseObject.toString();
     }
+
+    @DeleteMapping("/manage/portfolio/delete")
+    @ResponseBody
+    public String managePortfolioDelete(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, PortfolioEntity portfolioEntity) {
+        JSONObject responseObject = new JSONObject();
+        portfolioEntity.setEmail(joinVO.getEmail());
+        Enum<?> result = this.manageService.managePortfolioDelete(portfolioEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
 }
