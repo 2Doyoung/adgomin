@@ -12,6 +12,8 @@
 </head>
 <body>
 <script th:inline="javascript">
+    let sessionLoginUser = [[${session.LOGIN_USER}]];
+
     let mediaTitle = [[${mediaTitle}]];
     let getAdCategory = [[${adCategory}]];
     let getRegion = [[${region}]];
@@ -80,7 +82,13 @@
                             <span id="region" class="introduce-region"></span>
                             <span id="adCategory" class="introduce-ad-category"></span>
                         </div>
-                        <input type="button" class="conversation-button" value="문의하기">
+                        <span th:if="${session.LOGIN_USER != null}">
+                            <input th:if="${session.LOGIN_USER.email != email}" type="button" class="conversation-button" id="conversation" th:value="문의하기">
+                            <input th:if="${session.LOGIN_USER.email == email}" type="button" class="conversation-button" id="mediaMange" value="내 광고매체 관리">
+                        </span>
+                        <span th:if="${session.LOGIN_USER == null}">
+                            <input type="button" class="conversation-button" id="conversationLogin" th:value="문의하기">
+                        </span>
                         <div class="introduce-introduce-wrap">
                             <label>광고매체 소개</label>
                             <div class="introduce-introduce" th:text="${mediaIntroduce}"></div>

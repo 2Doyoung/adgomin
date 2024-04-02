@@ -18,6 +18,10 @@ const portfolioCard = document.getElementsByClassName("portfolio-card");
 
 const allPortfolio = document.getElementById("allPortfolio");
 
+const conversationLogin = document.getElementById("conversationLogin");
+
+const mediaMange = document.getElementById("mediaMange");
+
 /**
  * 이벤트 함수
  */
@@ -82,6 +86,19 @@ allPortfolio.addEventListener("click", () => {
 
     window.location.href = "/introduce/all/portfolio/" + userOrder + "?page=1";
 })
+
+if(conversationLogin != null) {
+    conversationLogin.addEventListener("click", () => {
+        loginCover.style.display = "flex";
+        document.getElementById("loginBoxEmail").focus();
+    })
+}
+
+if(mediaMange != null) {
+    mediaMange.addEventListener("click", () => {
+        window.location.href = "/manage?manage=media";
+    })
+}
 
 /**
  * 사용자 함수
