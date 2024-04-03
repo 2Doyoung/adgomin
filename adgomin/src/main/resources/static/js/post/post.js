@@ -1,3 +1,33 @@
+var socket = new SockJS('/chat');
+var stompClient = Stomp.over(socket);
+
+stompClient.connect({}, function(frame) {
+    console.log('Connected: ' + frame);
+    stompClient.subscribe('/user/queue/messages', function(message) {
+        var messageObj = JSON.parse(message.body);
+        displayMessage(messageObj);
+    });
+});
+
+function sendMessage() {
+    var message = document.getElementById("messageInput").value;
+    var senderOrder = 1; // 보내는 사람 ID
+    var receiverOrder = 2; // 받는 사람 ID
+    var messageObj = {
+        senderOrder: senderOrder,
+        receiverOrder: receiverOrder,
+        message: message
+    };
+    stompClient.send("/app/send", {}, JSON.stringify(messageObj));
+    document.getElementById("messageInput").value = ""; // 메시지 입력란 비우기
+}
+
+function displayMessage(message) {
+    var messagesDiv = document.getElementById("messages");
+    var messageHTML = "<p><strong>Sender:</strong> " + message.senderOrder + "<br><strong>Message:</strong> " + message.message + "</p>";
+    messagesDiv.innerHTML += messageHTML;
+}
+
 /**
  * 전역변수
  */

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adgomin.chat.mapper.ChatMapper">
+    <insert id="insertChatMessage" parameterType="com.adgomin.chat.entity.ChatEntity">
+        INSERT INTO adgomin_chat_message
+            (sender_order, receiver_order, message)
+        VALUES
+            (#{senderOrder}, #{receiverOrder}, #{message})
+    </insert>
+
+    <select id="getMessagesByReceiverOrder" resultType="com.adgomin.chat.entity.ChatEntity">
+        SELECT * FROM adgomin_chat_message WHERE receiver_order = #{receiverOrder}
+    </select>
+</mapper>

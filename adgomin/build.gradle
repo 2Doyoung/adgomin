@@ -39,6 +39,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 
 	implementation 'org.springframework.session:spring-session-core'
+
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	implementation 'org.webjars:sockjs-client:1.5.1'
+	implementation 'org.webjars:stomp-websocket:2.3.3'
+	implementation 'org.springframework:spring-messaging'
 	
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
