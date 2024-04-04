@@ -22,7 +22,12 @@ public class PortfolioController {
 
     @GetMapping(value = "/portfolio")
     public ModelAndView portfolio(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
-        ModelAndView modelAndView = new ModelAndView("portfolio/portfolio");;
+        ModelAndView modelAndView = null;
+        if(joinVO != null) {
+            modelAndView = new ModelAndView("portfolio/portfolio");
+        } else {
+            modelAndView = new ModelAndView("error/error");
+        }
 
         return  modelAndView;
     }

@@ -53,6 +53,8 @@ public class MediaController {
                     modelAndView.addObject("adCategory", mediaIntroduceEntity.getAdCategory());
                     modelAndView.addObject("mediaUrl", mediaIntroduceEntity.getMediaUrl());
                 }
+            } else {
+                modelAndView = new ModelAndView("error/error");
             }
         } else if("mediaRegister".equals(manage)) {
             modelAndView =  new ModelAndView("media_manage/register");
@@ -68,7 +70,11 @@ public class MediaController {
                 modelAndView.addObject("thumbnailImgFilePath", mediaRegisterEntity.getThumbnailImgFilePath());
                 modelAndView.addObject("mediaPrice", mediaRegisterEntity.getMediaPrice());
                 modelAndView.addObject("mediaSubmitStatus", mediaRegisterEntity.getMediaSubmitStatus());
+            } else {
+                modelAndView = new ModelAndView("error/error");
             }
+        } else {
+            modelAndView = new ModelAndView("error/error");
         }
 
         return  modelAndView;
