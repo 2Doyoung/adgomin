@@ -99,6 +99,28 @@
             </div>
         </div>
     </div>
+<div class="conversation-modal" id="conversationModal">
+    <div class="conversation-modal-box">
+        <div class="conversation-close-btn" id="conversationCloseBtn">
+            <i class="ri-close-line"></i>
+        </div>
+        <div>
+            <textarea class="conversation-textarea" id="conversationTextarea" placeholder="신속하고 정확한 답변과 소통을 위해 요구사항을 상세하게 작성해주세요."></textarea>
+        </div>
+        <div class="conversation-span-div">
+            <span class="conversation-span" id="conversationSpan">최소 15자 이상 입력해주세요.</span><span class="conversation-length-span" id="conversationLength"> (0 / 255)</span>
+        </div>
+        <div class="conversation-introduce">
+            <div class="conversation-introduce-profile">
+                <img th:src="@{/profile/image/{userOrder} (userOrder=${userOrder})}">
+            </div>
+            <span class="conversation-introduce-nickname" th:text="${nickname}"></span>
+        </div>
+        <div class="conversation-modal-button-div">
+            <input type="button" value="문의하기" class="conversation-modal-button" id="conversationModalButton">
+        </div>
+    </div>
+</div>
 <hr class="user-footer">
 <th:block th:replace="~{layouts/footer :: body}"></th:block>
 </body>

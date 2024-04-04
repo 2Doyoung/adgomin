@@ -7,6 +7,8 @@ const mediaUrl = document.getElementById("mediaUrl");
 
 const tabs = document.querySelectorAll('.introduce-tap-list');
 
+const portfolioSection = document.getElementById("portfolioSection");
+
 /**
  * 이벤트 함수
  */

@@ -14,13 +14,17 @@ const userOrder = document.getElementById("userOrder");
 
 const portfolioSection = document.getElementById("portfolioSection");
 
-const portfolioCard = document.getElementsByClassName("portfolio-card");
-
 const allPortfolio = document.getElementById("allPortfolio");
 
 const conversationLogin = document.getElementById("conversationLogin");
 
 const mediaMange = document.getElementById("mediaMange");
+
+const conversation = document.getElementById("conversation");
+const conversationModal = document.getElementById("conversationModal");
+const conversationCloseBtn = document.getElementById("conversationCloseBtn");
+const conversationModalButton = document.getElementById("conversationModalButton");
+const conversationTextarea = document.getElementById("conversationTextarea");
 
 /**
  * 이벤트 함수
@@ -70,21 +74,6 @@ window.addEventListener('scroll', () => {
     });
 });
 
-for(let i = 0; i < portfolioCard.length; i++) {
-    portfolioCard[i].addEventListener("click", (e) => {
-        const userOrder = document.getElementById("userOrder").value
-        const portfolioOrder = e.currentTarget.dataset.parent;
-
-        window.location.href = "/introduce/detail/portfolio/" + userOrder + "/" + portfolioOrder;
-    })
-}
-
-allPortfolio.addEventListener("click", () => {
-    const userOrder = document.getElementById("userOrder").value;
-
-    window.location.href = "/introduce/all/portfolio/" + userOrder + "?page=1";
-})
-
 if(conversationLogin != null) {
     conversationLogin.addEventListener("click", () => {
         loginCover.style.display = "flex";
@@ -96,6 +85,50 @@ if(mediaMange != null) {
     mediaMange.addEventListener("click", () => {
         window.location.href = "/manage?manage=media";
     })
+}
+
+if(conversation != null) {
+    conversation.addEventListener("click", () => {
+        conversationModal.style.display = "flex";
+    })
+}
+
+if(conversationCloseBtn != null) {
+    conversationCloseBtn.addEventListener("click", () => {
+        conversationModal.style.display = "none";
+    })
+}
+
+if(conversationModalButton != null) {
+    conversationTextarea.addEventListener("keyup", () => {
+        let conversationLength = document.getElementById("conversationLength");
+        let conversationTextareaValue = conversationTextarea.value;
+        let conversationTextareaLength = conversationTextareaValue.length;
+
+        let conversationSpan = document.getElementById("conversationSpan");
+
+        if(conversationTextareaLength > 255) {
+            conversationTextarea.value = conversationTextareaValue.substr(0, 255);
+            conversationTextareaLength = conversationTextarea.value.length;
+        }
+
+        conversationLength.innerText = " (" + conversationTextareaLength + " / 255)";
+
+        if(conversationTextarea.value.length < 15) {
+            conversationSpan.style.color = "#FF0040";
+        } else if(conversationTextarea.value.length >= 15) {
+            conversationSpan.style.color = "#BDBDBD";
+        }
+    })
+
+    conversationModalButton.addEventListener("click", () => {
+        let conversationSpan = document.getElementById("conversationSpan");
+
+        if(!(conversationSpan.style.color == 'rgb(255, 0, 64)')) {
+
+        }
+    })
+
 }
 
 /**
@@ -167,9 +200,18 @@ if(portfolioSection != null) {
 
     for(let i = 0; i < portfolioCard.length; i++) {
         portfolioCard[i].addEventListener("click", (e) => {
-            let portfolioOrder = e.currentTarget.dataset.parent;
+            const userOrder = document.getElementById("userOrder").value
+            const portfolioOrder = e.currentTarget.dataset.parent;
+
+            window.location.href = "/introduce/detail/portfolio/" + userOrder + "/" + portfolioOrder;
         })
     }
+
+    allPortfolio.addEventListener("click", () => {
+        const userOrder = document.getElementById("userOrder").value;
+
+        window.location.href = "/introduce/all/portfolio/" + userOrder + "?page=1";
+    })
 
     let portfolioUpdateSlider = () => {
         const translateValue = -portfolioCurrentIndex * portfolioSlideWidth + 'px';
