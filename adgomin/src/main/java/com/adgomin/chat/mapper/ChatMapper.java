@@ -1,13 +1,17 @@
 package com.adgomin.chat.mapper;
 
-import com.adgomin.chat.entity.ChatEntity;
+import com.adgomin.chat.entity.ChatMessageEntity;
+import com.adgomin.chat.entity.ChatRoomEntity;
+import com.adgomin.join.entity.JoinEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
 public interface ChatMapper {
-    void insertChatMessage(ChatEntity message);
+    void insertChatMessage(ChatMessageEntity message);
 
-    List<ChatEntity> getMessagesByReceiverOrder(int receiverOrder);
+    int appConversationChatRoom(ChatRoomEntity chatRoomEntity);
+
+    int appConversationChatMessage(ChatMessageEntity chatMessageEntity);
 }

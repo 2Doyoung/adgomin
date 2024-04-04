@@ -14,12 +14,6 @@
 </head>
 <body>
 <script th:inline="javascript">
-    let sessionLoginUser = [[${session.LOGIN_USER}]];
-
-    if (sessionLoginUser == null) {
-        window.location.href = "/";
-    }
-
     let getRegion = [[${region}]];
     let getAdCategory = [[${adCategory}]];
     let getMediaUrl = [[${mediaUrl}]];

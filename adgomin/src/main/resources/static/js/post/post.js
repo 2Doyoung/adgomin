@@ -125,7 +125,15 @@ if(conversationModalButton != null) {
         let conversationSpan = document.getElementById("conversationSpan");
 
         if(!(conversationSpan.style.color == 'rgb(255, 0, 64)')) {
+            let receiverOrder = document.getElementById("userOrder").value;
+            let message = document.getElementById("conversationTextarea").value;
 
+            const formData = new FormData();
+
+            formData.append("receiverOrder", receiverOrder);
+            formData.append("message", message);
+
+            xhr("/app/conversation", formData, "PATCH", "appConversation");
         }
     })
 
@@ -223,7 +231,9 @@ if(portfolioSection != null) {
  * XMLHttpRequest 성공 함수
  */
 let successXhr = (responseObject, flag) => {
-
+    if(flag == "appConversation") {
+        window.location.href = "/app/chat?senderOrder="
+    }
 }
 
 /**

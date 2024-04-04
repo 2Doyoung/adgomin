@@ -1,16 +1,15 @@
 package com.adgomin.chat.controller;
 
-import com.adgomin.chat.entity.ChatEntity;
+import com.adgomin.chat.entity.ChatMessageEntity;
 import com.adgomin.chat.service.ChatService;
 import com.adgomin.join.vo.JoinVO;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/app")
@@ -26,7 +25,7 @@ public class ChatController {
     }
 
     @GetMapping(value = "/chat")
-    public ModelAndView portfolio(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
+    public ModelAndView chat(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, @RequestParam(value = "senderOrder", required = false) String senderOrder, @RequestParam(value = "receiverOrder", required = false) String receiverOrder) {
         ModelAndView modelAndView = null;
         if(joinVO != null) {
             modelAndView = new ModelAndView("chat/chat");
@@ -39,14 +38,18 @@ public class ChatController {
 
     @MessageMapping("/send")
     @ResponseBody
-    public void sendMessage(@RequestBody ChatEntity message) {
+    public void sendMessage(@RequestBody ChatMessageEntity message) {
         chatService.sendMessage(message);
         messagingTemplate.convertAndSend("/user/queue/messages", message);
     }
 
-    @GetMapping("/receive/{receiverOrder}")
+    @PatchMapping("/conversation")
     @ResponseBody
-    public List<ChatEntity> receiveMessages(@PathVariable int receiverOrder) {
-        return chatService.getMessagesByReceiverOrder(receiverOrder);
+    public String appConversation(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, ChatMessageEntity chatMessageEntity) {
+        JSONObject responseObject = new JSONObject();
+        Enum<?> result = this.chatService.appConversation(joinVO, chatMessageEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
     }
 }

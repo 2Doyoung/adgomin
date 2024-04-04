@@ -37,6 +37,7 @@ const dropdownRegion = document.getElementsByClassName("dropdown-region");
 const portfolio = document.getElementById("portfolio");
 
 const adgominManage = document.getElementById("adgominManage");
+const conversationMessage = document.getElementById("conversationMessage");
 
 /**
  * 이벤트 함수
@@ -175,6 +176,12 @@ if(adminAdManage != null) {
 	adminAdManage.addEventListener("click", () => {
 		window.location.href = "/admin/adManage?page=1"
 	});
+}
+
+if(conversationMessage != null) {
+	conversationMessage.addEventListener("click", () => {
+		window.location.href = "/app/chat"
+	})
 }
 
 for(let i = 0; i < allCategoryDropdownSpan.length; i++) {

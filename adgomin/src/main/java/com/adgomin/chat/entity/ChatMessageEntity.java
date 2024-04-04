@@ -2,12 +2,21 @@ package com.adgomin.chat.entity;
 
 import java.util.Date;
 
-public class ChatEntity {
+public class ChatMessageEntity {
     private int chatOrder;
+    private int chatRoomOrder;
     private int senderOrder;
     private int receiverOrder;
     private String message;
     private Date timestamp;
+
+    public int getChatRoomOrder() {
+        return chatRoomOrder;
+    }
+
+    public void setChatRoomOrder(int chatRoomOrder) {
+        this.chatRoomOrder = chatRoomOrder;
+    }
 
     public int getChatOrder() {
         return chatOrder;
