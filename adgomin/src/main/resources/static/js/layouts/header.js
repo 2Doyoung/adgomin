@@ -260,7 +260,7 @@ if(adgominManage != null) {
  */
 let successXhrHeader = (responseObject, flag) => {
 	if(flag === "postLogin") {
-		window.location.href = "/"
+		location.reload();
 	}
 }
 
