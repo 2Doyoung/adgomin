@@ -1,0 +1,38 @@
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.user-footer {
+    border: 0.5px solid #D9D9D9;
+    margin: 0;
+}
+
+.chat-wrap {
+    width: 1200px;
+    margin: auto;
+    display: flex;
+}
+
+.chat-sub-wrap {
+    display: flex;
+    height: 45rem;
+    width: 100%;
+    border-left: 1px solid #D9D9D9;
+    border-right: 1px solid #D9D9D9;
+}
+
+.chat-room-list {
+    width: 20rem;
+    border-right: 1px solid #D9D9D9;
+}
+
+.chat-message {
+    width: 55rem;
+}

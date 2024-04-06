@@ -6,6 +6,7 @@ import com.adgomin.chat.mapper.ChatMapper;
 import com.adgomin.enums.CommonResult;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.vo.JoinVO;
+import com.adgomin.media.vo.MediaRegisterVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,5 +51,9 @@ public class ChatService {
         }
 
         return result > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
+
+    public ChatRoomEntity[] getChatRoom(int userOrder) {
+        return this.chatMapper.getChatRoom(userOrder);
     }
 }

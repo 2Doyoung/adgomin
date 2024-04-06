@@ -2,8 +2,8 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>애드곰인 - </title>
-    <link rel="stylesheet" th:href="@{/css/post/post.css}">
+    <title>애드곰인</title>
+    <link rel="stylesheet" th:href="@{/css/chat/chat.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
@@ -14,12 +14,18 @@
 </head>
 <body>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
+<div class="chat-wrap">
+    <div class="chat-sub-wrap">
+        <div class="chat-room-list">
+            <div th:each="chatRoom : ${chatRoomList}">
+                <div th:text="${chatRoom.partnerNickname}"></div>
+            </div>
+        </div>
+        <div class="chat-message">
 
-<h1>Real-time Chat App</h1>
-<div id="messages"></div>
-<input type="text" id="messageInput" placeholder="Type your message...">
-<button onclick="sendMessage()">Send</button>
-
+        </div>
+    </div>
+</div>
 <hr class="user-footer">
 <th:block th:replace="~{layouts/footer :: body}"></th:block>
 </body>

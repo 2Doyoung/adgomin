@@ -1,12 +1,23 @@
 package com.adgomin.chat.entity;
 
+import com.adgomin.chat.vo.ChatRoomVO;
+
 import java.util.Date;
 
-public class ChatRoomEntity {
+public class ChatRoomEntity extends ChatRoomVO {
     private int chatRoomOrder;
     private int senderOrder;
     private int receiverOrder;
     private Date createDt;
+    private Date modifyDt;
+
+    public Date getModifyDt() {
+        return modifyDt;
+    }
+
+    public void setModifyDt(Date modifyDt) {
+        this.modifyDt = modifyDt;
+    }
 
     public int getSenderOrder() {
         return senderOrder;

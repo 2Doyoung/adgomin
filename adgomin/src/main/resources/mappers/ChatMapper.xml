@@ -3,12 +3,30 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.adgomin.chat.mapper.ChatMapper">
+    <select id="getChatRoom" resultType="com.adgomin.chat.entity.ChatRoomEntity">
+        SELECT
+            T1.chat_room_order AS chatRoomOrder
+             ,T1.sender_order AS senderOrder
+             ,T1.receiver_order AS receiverOrder
+             ,T1.create_dt AS createDt
+             ,T1.modify_dt AS modifyDt
+             ,T2.nickname AS senderNickname
+             ,T3.nickname AS receiverNickname
+        FROM adgomin_chat_room T1
+        LEFT JOIN adgomin_user T2 ON T1.sender_order = T2.user_order
+        LEFT JOIN adgomin_user T3 ON T1.receiver_order = T3.user_order
+        WHERE 1=1
+        AND sender_order = #{userOrder}
+        OR receiver_order = #{userOrder}
+        ORDER BY T1.modify_dt DESC;
+    </select>
+
     <insert id="appConversationChatRoom" parameterType="com.adgomin.chat.entity.ChatRoomEntity" useGeneratedKeys="true"
             keyProperty="chatRoomOrder" keyColumn="chat_room_order">
         INSERT INTO adgomin_chat_room
-            (sender_order, receiver_order, create_dt)
+            (sender_order, receiver_order, create_dt, modify_dt)
         VALUES
-            (#{senderOrder}, #{receiverOrder}, NOW())
+            (#{senderOrder}, #{receiverOrder}, NOW(), NOW())
     </insert>
 
     <insert id="appConversationChatMessage" parameterType="com.adgomin.chat.entity.ChatMessageEntity">

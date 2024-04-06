@@ -1,6 +1,7 @@
 package com.adgomin.chat.controller;
 
 import com.adgomin.chat.entity.ChatMessageEntity;
+import com.adgomin.chat.entity.ChatRoomEntity;
 import com.adgomin.chat.service.ChatService;
 import com.adgomin.join.vo.JoinVO;
 import org.json.simple.JSONObject;
@@ -29,6 +30,18 @@ public class ChatController {
         ModelAndView modelAndView = null;
         if(joinVO != null) {
             modelAndView = new ModelAndView("chat/chat");
+
+            ChatRoomEntity[] chatRoomList = this.chatService.getChatRoom(joinVO.getUserOrder());
+
+            for(int i = 0; i < chatRoomList.length; i++) {
+                if(chatRoomList[i].getReceiverOrder() == joinVO.getUserOrder()) {
+                    chatRoomList[i].setPartnerNickname(chatRoomList[i].getSenderNickname());
+                } else if(chatRoomList[i].getSenderOrder() == joinVO.getUserOrder()) {
+                    chatRoomList[i].setPartnerNickname(chatRoomList[i].getReceiverNickname());
+                }
+            }
+
+            modelAndView.addObject("chatRoomList", chatRoomList);
         } else {
             modelAndView = new ModelAndView("error/error");
         }
