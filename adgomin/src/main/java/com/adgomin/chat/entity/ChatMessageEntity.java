@@ -1,8 +1,10 @@
 package com.adgomin.chat.entity;
 
+import com.adgomin.chat.vo.ChatMessageVO;
+
 import java.util.Date;
 
-public class ChatMessageEntity {
+public class ChatMessageEntity extends ChatMessageVO {
     private int chatOrder;
     private int chatRoomOrder;
     private int senderOrder;

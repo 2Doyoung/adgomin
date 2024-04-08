@@ -35,4 +35,43 @@
         VALUES
             (#{chatRoomOrder}, #{senderOrder}, #{receiverOrder}, #{message})
     </insert>
+
+    <select id="getChatRoomCount" resultType="com.adgomin.chat.vo.ChatRoomVO">
+        SELECT
+            COUNT(*) AS count
+        FROM adgomin_chat_room
+        WHERE 1=1
+        AND chat_room_order = #{chatRoomOrder}
+        AND (sender_order = #{userOrder}
+        OR receiver_order = #{userOrder})
+    </select>
+
+    <select id="getChatMessage" resultType="com.adgomin.chat.entity.ChatMessageEntity">
+        SELECT
+            chat_order AS chatOrder
+             ,chat_room_order AS chatRoomOrder
+             ,sender_order AS senderOrder
+             ,receiver_order AS receiverOrder
+             ,message AS message
+             ,timestamp AS timestamp
+        FROM adgomin_chat_message
+        WHERE 1=1
+        AND chat_room_order = #{chatRoomOrder};
+    </select>
+
+    <select id="getChatRoomPartner" resultType="com.adgomin.chat.entity.ChatRoomEntity">
+        SELECT
+             sender_order AS senderOrder
+             ,receiver_order AS receiverOrder
+        FROM adgomin_chat_room
+        WHERE 1=1
+        AND chat_room_order = #{chatRoomOrder};
+    </select>
+
+    <insert id="insertChatMessage" parameterType="com.adgomin.chat.entity.ChatMessageEntity">
+        INSERT INTO adgomin_chat_message
+            (chat_room_order, sender_order, receiver_order, message)
+        VALUES
+            (#{chatRoomOrder}, #{senderOrder}, #{receiverOrder}, #{message})
+    </insert>
 </mapper>

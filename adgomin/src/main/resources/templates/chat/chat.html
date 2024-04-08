@@ -14,19 +14,47 @@
 </head>
 <body>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" th:value="${chatRoomOrder}" id="chatRoomOrder">
+<input type="hidden" th:value="${userOrder}" id="userOrder">
+<input type="hidden" th:value="${partnerOrder}" id="partnerOrder">
 <div class="chat-wrap">
     <div class="chat-sub-wrap">
         <div class="chat-room-list">
-            <div th:each="chatRoom : ${chatRoomList}">
-                <div th:text="${chatRoom.partnerNickname}"></div>
+            <div class="chat-room" th:each="chatRoom : ${chatRoomList}" th:data-parent="${chatRoom.chatRoomOrder}">
+                <div class="partner-profile">
+                    <img th:src="@{/profile/image/{userOrder} (userOrder=${chatRoom.partnerOrder})}">
+                </div>
+                <div class="partner-nickname" th:text="${chatRoom.partnerNickname}"></div>
             </div>
         </div>
-        <div class="chat-message">
+        <div th:if="${chatRoomOrder == null}" class="chat-message">
+            <div>
+                <i class="ri-message-2-line"></i>
+                <div class="chat-message-empty">문의 목록을 선택해주세요.</div>
+                <div class="chat-message-empty-sub">문의 목록을 선택한 후 지금 바로 대화를 시작해보세요!</div>
+            </div>
+        </div>
+        <div th:if="${chatRoomOrder != null}" class="chat-message-room">
+            <div class="chat-message-room-chat" id="chatMessageRoomChat">
+                <div th:each="chatMessage : ${chatMessageEntityList}">
+                    <div th:if="${userOrder == chatMessage.senderOrder}" class="chat-my-message">
+                        <span th:text="${chatMessage.message}"></span>
+                    </div>
+                    <div th:if="${userOrder != chatMessage.senderOrder}" class="chat-partner-message">
+                        <span th:text="${chatMessage.message}"></span>
+                    </div>
+                </div>
+                <div id="messages">
 
+                </div>
+            </div>
+            <div>
+                <input type="text" id="messageInput" placeholder="Type your message...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
         </div>
     </div>
 </div>
 <hr class="user-footer">
-<th:block th:replace="~{layouts/footer :: body}"></th:block>
 </body>
 </html>

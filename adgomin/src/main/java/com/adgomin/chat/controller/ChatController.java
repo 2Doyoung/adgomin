@@ -3,6 +3,7 @@ package com.adgomin.chat.controller;
 import com.adgomin.chat.entity.ChatMessageEntity;
 import com.adgomin.chat.entity.ChatRoomEntity;
 import com.adgomin.chat.service.ChatService;
+import com.adgomin.chat.vo.ChatRoomVO;
 import com.adgomin.join.vo.JoinVO;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class ChatController {
     }
 
     @GetMapping(value = "/chat")
-    public ModelAndView chat(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, @RequestParam(value = "senderOrder", required = false) String senderOrder, @RequestParam(value = "receiverOrder", required = false) String receiverOrder) {
+    public ModelAndView chat(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, @RequestParam(value = "chatRoomOrder", required = false) Integer chatRoomOrder) {
         ModelAndView modelAndView = null;
         if(joinVO != null) {
             modelAndView = new ModelAndView("chat/chat");
@@ -36,12 +37,36 @@ public class ChatController {
             for(int i = 0; i < chatRoomList.length; i++) {
                 if(chatRoomList[i].getReceiverOrder() == joinVO.getUserOrder()) {
                     chatRoomList[i].setPartnerNickname(chatRoomList[i].getSenderNickname());
+                    chatRoomList[i].setPartnerOrder(chatRoomList[i].getSenderOrder());
                 } else if(chatRoomList[i].getSenderOrder() == joinVO.getUserOrder()) {
                     chatRoomList[i].setPartnerNickname(chatRoomList[i].getReceiverNickname());
+                    chatRoomList[i].setPartnerOrder(chatRoomList[i].getReceiverOrder());
                 }
             }
 
             modelAndView.addObject("chatRoomList", chatRoomList);
+
+            if(chatRoomOrder != null) {
+                int partnerOrder = 0;
+                ChatRoomVO chatRoomVO = this.chatService.getChatRoomCount(joinVO.getUserOrder(), chatRoomOrder);
+                if(chatRoomVO.getCount() > 0) {
+                    ChatRoomEntity chatRoomPartner = this.chatService.getChatRoomPartner(chatRoomOrder);
+                    ChatMessageEntity[] chatMessageEntityList = this.chatService.getChatMessage(chatRoomOrder);
+
+                    if(chatRoomPartner.getSenderOrder() == joinVO.getUserOrder()) {
+                        partnerOrder = chatRoomPartner.getReceiverOrder();
+                    } else if(chatRoomPartner.getSenderOrder() != joinVO.getUserOrder()) {
+                        partnerOrder = chatRoomPartner.getSenderOrder();
+                    }
+
+                    modelAndView.addObject("userOrder", joinVO.getUserOrder());
+                    modelAndView.addObject("chatRoomOrder", chatRoomOrder);
+                    modelAndView.addObject("partnerOrder", partnerOrder);
+                    modelAndView.addObject("chatMessageEntityList", chatMessageEntityList);
+                } else if(chatRoomVO.getCount() == 0) {
+                    modelAndView = new ModelAndView("error/error");
+                }
+            }
         } else {
             modelAndView = new ModelAndView("error/error");
         }

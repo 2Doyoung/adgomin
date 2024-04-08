@@ -3,6 +3,7 @@ package com.adgomin.chat.service;
 import com.adgomin.chat.entity.ChatMessageEntity;
 import com.adgomin.chat.entity.ChatRoomEntity;
 import com.adgomin.chat.mapper.ChatMapper;
+import com.adgomin.chat.vo.ChatRoomVO;
 import com.adgomin.enums.CommonResult;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.vo.JoinVO;
@@ -55,5 +56,16 @@ public class ChatService {
 
     public ChatRoomEntity[] getChatRoom(int userOrder) {
         return this.chatMapper.getChatRoom(userOrder);
+    }
+    public ChatRoomVO getChatRoomCount(int userOrder, int chatRoomOrder) {
+        return this.chatMapper.getChatRoomCount(userOrder, chatRoomOrder);
+    }
+
+    public ChatMessageEntity[] getChatMessage(int userOrder) {
+        return this.chatMapper.getChatMessage(userOrder);
+    }
+
+    public ChatRoomEntity getChatRoomPartner(int chatRoomOrder) {
+        return this.chatMapper.getChatRoomPartner(chatRoomOrder);
     }
 }

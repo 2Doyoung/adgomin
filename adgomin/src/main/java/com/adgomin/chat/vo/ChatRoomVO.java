@@ -4,6 +4,24 @@ public class ChatRoomVO {
     private String partnerNickname;
     private String senderNickname;
     private String receiverNickname;
+    private int partnerOrder;
+    private int count;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getPartnerOrder() {
+        return partnerOrder;
+    }
+
+    public void setPartnerOrder(int partnerOrder) {
+        this.partnerOrder = partnerOrder;
+    }
 
     public String getPartnerNickname() {
         return partnerNickname;

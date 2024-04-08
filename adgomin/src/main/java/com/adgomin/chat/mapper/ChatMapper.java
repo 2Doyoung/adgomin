@@ -2,6 +2,7 @@ package com.adgomin.chat.mapper;
 
 import com.adgomin.chat.entity.ChatMessageEntity;
 import com.adgomin.chat.entity.ChatRoomEntity;
+import com.adgomin.chat.vo.ChatRoomVO;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.media.vo.MediaRegisterVO;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +19,10 @@ public interface ChatMapper {
     int appConversationChatMessage(ChatMessageEntity chatMessageEntity);
 
     ChatRoomEntity[] getChatRoom(@Param(value = "userOrder") int userOrder);
+
+    ChatRoomVO getChatRoomCount(@Param(value = "userOrder") int userOrder, @Param(value = "chatRoomOrder") int chatRoomOrder);
+
+    ChatMessageEntity[] getChatMessage(@Param(value = "chatRoomOrder") int chatRoomOrder);
+
+    ChatRoomEntity getChatRoomPartner(@Param(value = "chatRoomOrder") int chatRoomOrder);
 }
