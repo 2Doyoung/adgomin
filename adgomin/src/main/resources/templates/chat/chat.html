@@ -38,10 +38,18 @@
             <div class="chat-message-room-chat" id="chatMessageRoomChat">
                 <div th:each="chatMessage : ${chatMessageEntityList}">
                     <div th:if="${userOrder == chatMessage.senderOrder}" class="chat-my-message">
+                        <div class="chat-my-message-timestamp">
+                            <div th:text="${#dates.format(chatMessage.timestamp, 'yy.MM.dd')}"></div>
+                            <div th:text="${#dates.format(chatMessage.timestamp, 'HH:mm')}"></div>
+                        </div>
                         <span th:text="${chatMessage.message}"></span>
                     </div>
                     <div th:if="${userOrder != chatMessage.senderOrder}" class="chat-partner-message">
                         <span th:text="${chatMessage.message}"></span>
+                        <div class="chat-partner-message-timestamp">
+                            <div th:text="${#dates.format(chatMessage.timestamp, 'yy.MM.dd')}"></div>
+                            <div th:text="${#dates.format(chatMessage.timestamp, 'HH:mm')}"></div>
+                        </div>
                     </div>
                 </div>
                 <div id="messages">
@@ -49,7 +57,7 @@
                 </div>
             </div>
             <div>
-                <input type="text" id="messageInput" placeholder="Type your message...">
+                <input type="text" class="message-input" id="messageInput" placeholder="메세지를 입력하세요.">
                 <button onclick="sendMessage()">Send</button>
             </div>
         </div>

@@ -1,49 +1,10 @@
+/**
+ * 전역변수
+ */
 const chatRoomOrder = document.getElementById("chatRoomOrder").value;
 const userOrder = document.getElementById("userOrder").value;
 const partnerOrder = document.getElementById("partnerOrder").value;
 
-var socket = new SockJS('/chat');
-var stompClient = Stomp.over(socket);
-
-stompClient.connect({}, function(frame) {
-    console.log('Connected: ' + frame);
-    stompClient.subscribe('/user/queue/messages', function(message) {
-        var messageObj = JSON.parse(message.body);
-        displayMessage(messageObj);
-    });
-});
-
-function sendMessage() {
-    var message = document.getElementById("messageInput").value;
-    var messageObj = {
-        chatRoomOrder : chatRoomOrder,
-        senderOrder: userOrder,
-        receiverOrder: partnerOrder,
-        message: message
-    };
-    stompClient.send("/app/send", {}, JSON.stringify(messageObj));
-    document.getElementById("messageInput").value = ""; // 메시지 입력란 비우기
-}
-
-function displayMessage(message) {
-    var messagesDiv = document.getElementById("messages");
-    var messageHTML = "";
-    if (message.senderOrder == userOrder) {
-        messageHTML = "<div class='chat-my-message'><span>" + message.message + "</span></div>";
-    } else {
-        messageHTML = "<div class='chat-partner-message'><span>" + message.message + "</span></div>";
-    }
-    messagesDiv.innerHTML += messageHTML;
-    scrollToBottom();
-}
-
-function scrollToBottom() {
-    var chatMessageRoomChat = document.getElementById("chatMessageRoomChat");
-    chatMessageRoomChat.scrollTop = chatMessageRoomChat.scrollHeight;
-}
-/**
- * 전역변수
- */
 const chatRoom = document.getElementsByClassName("chat-room");
 const chatMessageRoomChat = document.getElementById("chatMessageRoomChat");
 
@@ -61,9 +22,56 @@ for(let i = 0; i < chatRoom.length; i++) {
 /**
  * 사용자 함수
  */
+const socket = new SockJS('/chat');
+const stompClient = Stomp.over(socket);
+
+stompClient.connect({}, function(frame) {
+    console.log('Connected: ' + frame);
+    stompClient.subscribe('/user/queue/messages', (message) => {
+        let messageObj = JSON.parse(message.body);
+        displayMessage(messageObj);
+    });
+});
+
+let sendMessage = () => {
+    let message = document.getElementById("messageInput").value;
+    let messageObj = {
+        chatRoomOrder : chatRoomOrder,
+        senderOrder: userOrder,
+        receiverOrder: partnerOrder,
+        message: message
+    };
+    stompClient.send("/app/send", {}, JSON.stringify(messageObj));
+    document.getElementById("messageInput").value = ""; // 메시지 입력란 비우기
+}
+
+let displayMessage = (message) => {
+    let messagesDiv = document.getElementById("messages");
+    let messageHTML = "";
+    if (message.senderOrder == userOrder) {
+        messageHTML = "<div class='chat-my-message'><span>" + message.message + "</span></div>";
+    } else {
+        messageHTML = "<div class='chat-partner-message'><span>" + message.message + "</span></div>";
+    }
+    messagesDiv.innerHTML += messageHTML;
+    scrollToBottom();
+}
+
+let scrollToBottom = () => {
+    let chatMessageRoomChat = document.getElementById("chatMessageRoomChat");
+    chatMessageRoomChat.scrollTop = chatMessageRoomChat.scrollHeight;
+}
 
 if(chatMessageRoomChat != null) {
     chatMessageRoomChat.scrollTop = chatMessageRoomChat.scrollHeight;
+}
+
+if(chatRoomOrder != '') {
+    for(let i = 0; i < chatRoom.length; i++) {
+        if(chatRoomOrder == chatRoom[i].dataset.parent) {
+            chatRoom[i].style.backgroundColor = "#FFFFFF";
+        }
+    }
 }
 
 /**
