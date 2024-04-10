@@ -76,6 +76,7 @@ if(messageInput != null) {
 /**
  * 사용자 함수
  */
+stompClient.debug = null
 stompClient.connect({}, (frame) => {
     stompClient.subscribe('/user/queue/messages', (message) => {
         let messageObj = JSON.parse(message.body);
