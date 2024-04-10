@@ -42,6 +42,9 @@ public class ChatController {
                     chatRoomList[i].setPartnerNickname(chatRoomList[i].getReceiverNickname());
                     chatRoomList[i].setPartnerOrder(chatRoomList[i].getReceiverOrder());
                 }
+
+                ChatMessageEntity chatMessageEntity = this.chatService.getLastMessage(chatRoomList[i].getChatRoomOrder());
+                chatRoomList[i].setLastMessage(chatMessageEntity.getMessage());
             }
 
             modelAndView.addObject("chatRoomList", chatRoomList);
@@ -52,6 +55,7 @@ public class ChatController {
                 if(chatRoomVO.getCount() > 0) {
                     ChatRoomEntity chatRoomPartner = this.chatService.getChatRoomPartner(chatRoomOrder);
                     ChatMessageEntity[] chatMessageEntityList = this.chatService.getChatMessage(chatRoomOrder);
+
 
                     if(chatRoomPartner.getSenderOrder() == joinVO.getUserOrder()) {
                         partnerOrder = chatRoomPartner.getReceiverOrder();

@@ -6,6 +6,15 @@ public class ChatRoomVO {
     private String receiverNickname;
     private int partnerOrder;
     private int count;
+    private String lastMessage;
+
+    public String getLastMessage() {
+        return lastMessage;
+    }
+
+    public void setLastMessage(String lastMessage) {
+        this.lastMessage = lastMessage;
+    }
 
     public int getCount() {
         return count;

@@ -24,8 +24,10 @@
                 <div class="partner-profile">
                     <img th:src="@{/profile/image/{userOrder} (userOrder=${chatRoom.partnerOrder})}">
                 </div>
-                <div class="partner-nickname" th:text="${chatRoom.partnerNickname}"></div>
-                <div></div>
+                <div>
+                    <div class="partner-nickname" th:text="${chatRoom.partnerNickname}"></div>
+                    <div class="chat-list chat-item" th:id="'chatList_' + ${chatRoom.chatRoomOrder}" th:text="${chatRoom.lastMessage}"></div>
+                </div>
             </div>
         </div>
         <div th:if="${chatRoomOrder == null}" class="chat-message">

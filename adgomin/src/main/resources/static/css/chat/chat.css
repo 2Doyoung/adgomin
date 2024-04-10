@@ -190,3 +190,16 @@ body {
 .disabled {
     background-color: #BDBDBD;
 }
+
+.chat-list {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+.chat-item {
+    width: 11rem;
+    height: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

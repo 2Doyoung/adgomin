@@ -68,4 +68,8 @@ public class ChatService {
     public ChatRoomEntity getChatRoomPartner(int chatRoomOrder) {
         return this.chatMapper.getChatRoomPartner(chatRoomOrder);
     }
+
+    public ChatMessageEntity getLastMessage(int chatRoomOrder) {
+        return this.chatMapper.getLastMessage(chatRoomOrder);
+    }
 }

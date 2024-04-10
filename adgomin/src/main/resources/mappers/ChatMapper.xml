@@ -18,7 +18,7 @@
         WHERE 1=1
         AND sender_order = #{userOrder}
         OR receiver_order = #{userOrder}
-        ORDER BY T1.modify_dt DESC;
+        ORDER BY T1.modify_dt DESC
     </select>
 
     <insert id="appConversationChatRoom" parameterType="com.adgomin.chat.entity.ChatRoomEntity" useGeneratedKeys="true"
@@ -56,7 +56,7 @@
              ,timestamp AS timestamp
         FROM adgomin_chat_message
         WHERE 1=1
-        AND chat_room_order = #{chatRoomOrder};
+        AND chat_room_order = #{chatRoomOrder}
     </select>
 
     <select id="getChatRoomPartner" resultType="com.adgomin.chat.entity.ChatRoomEntity">
@@ -65,7 +65,7 @@
              ,receiver_order AS receiverOrder
         FROM adgomin_chat_room
         WHERE 1=1
-        AND chat_room_order = #{chatRoomOrder};
+        AND chat_room_order = #{chatRoomOrder}
     </select>
 
     <insert id="insertChatMessage" parameterType="com.adgomin.chat.entity.ChatMessageEntity">
@@ -74,4 +74,14 @@
         VALUES
             (#{chatRoomOrder}, #{senderOrder}, #{receiverOrder}, #{message})
     </insert>
+
+    <select id="getLastMessage" resultType="com.adgomin.chat.entity.ChatMessageEntity">
+        SELECT
+            message AS message
+        FROM adgomin_chat_message
+        WHERE 1=1
+        AND chat_room_order = #{chatRoomOrder}
+        ORDER BY timestamp DESC
+        LIMIT 0, 1
+    </select>
 </mapper>

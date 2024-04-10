@@ -69,12 +69,12 @@ if(messageInput != null) {
  * 사용자 함수
  */
 stompClient.connect({}, function(frame) {
-    console.log('Connected: ' + frame);
     stompClient.subscribe('/user/queue/messages', (message) => {
         let messageObj = JSON.parse(message.body);
         if(chatRoomOrder == messageObj.chatRoomOrder) {
             displayMessage(messageObj);
         }
+        updateChatList(messageObj); // 채팅 목록 업데이트
     });
 });
 
@@ -129,6 +129,28 @@ if(chatRoomOrder != '') {
             chatRoom[i].style.backgroundColor = "#FFFFFF";
         }
     }
+}
+
+let updateChatList = (message) => {
+    let chatList = document.getElementById("chatList_" + message.chatRoomOrder);
+
+    chatList.innerHTML = '';
+
+    let chatItem = createChatItem(message);
+    chatList.appendChild(chatItem);
+}
+
+let createChatItem = (message) => {
+    let chatItem = document.createElement("div");
+    chatItem.className = "chat-item";
+    chatItem.dataset.senderOrder = message.senderOrder;
+
+    let messageContent = document.createElement("span");
+    messageContent.className = "message-content";
+    messageContent.textContent = message.message;
+
+    chatItem.appendChild(messageContent);
+    return chatItem;
 }
 
 /**
