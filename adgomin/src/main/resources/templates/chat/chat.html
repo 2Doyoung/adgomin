@@ -27,6 +27,7 @@
                 <div>
                     <div class="partner-nickname" th:text="${chatRoom.partnerNickname}"></div>
                     <div class="chat-list chat-item" th:id="'chatList_' + ${chatRoom.chatRoomOrder}" th:text="${chatRoom.lastMessage}"></div>
+                    <div class="unread-message" th:data-parent="${chatRoom.isRead}"></div>
                 </div>
             </div>
         </div>

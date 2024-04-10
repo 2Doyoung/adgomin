@@ -11,6 +11,15 @@ public class ChatMessageEntity extends ChatMessageVO {
     private int receiverOrder;
     private String message;
     private Date timestamp;
+    private int isRead;
+
+    public int getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(int isRead) {
+        this.isRead = isRead;
+    }
 
     public int getChatRoomOrder() {
         return chatRoomOrder;

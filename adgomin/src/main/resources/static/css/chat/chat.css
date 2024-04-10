@@ -203,3 +203,10 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.unread {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+}

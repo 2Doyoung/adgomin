@@ -54,6 +54,7 @@
              ,receiver_order AS receiverOrder
              ,message AS message
              ,timestamp AS timestamp
+             ,is_read AS isRead
         FROM adgomin_chat_message
         WHERE 1=1
         AND chat_room_order = #{chatRoomOrder}
@@ -84,4 +85,24 @@
         ORDER BY timestamp DESC
         LIMIT 0, 1
     </select>
+
+    <select id="getIsRead" resultType="com.adgomin.chat.entity.ChatMessageEntity">
+        SELECT
+            is_read AS isRead
+        FROM adgomin_chat_message
+        WHERE 1=1
+        AND chat_room_order = #{chatRoomOrder}
+        AND receiver_order = #{userOrder}
+        ORDER BY timestamp DESC
+        LIMIT 0, 1
+    </select>
+
+    <update id="isRead" parameterType="com.adgomin.chat.entity.ChatMessageEntity">
+        UPDATE
+            adgomin_chat_message
+        SET is_read = #{isRead}
+        WHERE 1=1
+        AND chat_room_order = #{chatRoomOrder}
+        AND receiver_order = #{userOrder}
+    </update>
 </mapper>

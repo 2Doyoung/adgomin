@@ -44,7 +44,12 @@ public class ChatController {
                 }
 
                 ChatMessageEntity chatMessageEntity = this.chatService.getLastMessage(chatRoomList[i].getChatRoomOrder());
+                ChatMessageEntity chatMessageEntityIsRead = this.chatService.getIsRead(joinVO.getUserOrder(), chatRoomList[i].getChatRoomOrder());
+
                 chatRoomList[i].setLastMessage(chatMessageEntity.getMessage());
+                if(chatMessageEntityIsRead != null) {
+                    chatRoomList[i].setIsRead(chatMessageEntityIsRead.getIsRead());
+                }
             }
 
             modelAndView.addObject("chatRoomList", chatRoomList);
@@ -90,6 +95,16 @@ public class ChatController {
     public String appConversation(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, ChatMessageEntity chatMessageEntity) {
         JSONObject responseObject = new JSONObject();
         Enum<?> result = this.chatService.appConversation(joinVO, chatMessageEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
+
+    @PatchMapping("/isRead")
+    @ResponseBody
+    public String isRead(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, ChatMessageEntity chatMessageEntity) {
+        JSONObject responseObject = new JSONObject();
+        Enum<?> result = this.chatService.isRead(joinVO, chatMessageEntity);
         responseObject.put("result", result.name().toLowerCase());
 
         return responseObject.toString();

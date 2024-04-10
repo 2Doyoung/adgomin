@@ -15,12 +15,20 @@ const sendMessage = document.getElementById("sendMessage");
 
 const messageInput = document.getElementById("messageInput");
 
+const unreadMessage = document.getElementsByClassName("unread-message");
+
 /**
  * 이벤트 함수
  */
 for(let i = 0; i < chatRoom.length; i++) {
     chatRoom[i].addEventListener("click", (e) => {
         const chatRoomOrder = e.currentTarget.dataset.parent;
+
+        let formData = new FormData();
+
+        formData.append("isRead", '1');
+        formData.append("chatRoomOrder", chatRoomOrder);
+        xhr("/app/isRead", formData, "PATCH", "");
 
         window.location.href = "/app/chat?chatRoomOrder=" + chatRoomOrder;
     })
@@ -68,13 +76,20 @@ if(messageInput != null) {
 /**
  * 사용자 함수
  */
-stompClient.connect({}, function(frame) {
+stompClient.connect({}, (frame) => {
     stompClient.subscribe('/user/queue/messages', (message) => {
         let messageObj = JSON.parse(message.body);
         if(chatRoomOrder == messageObj.chatRoomOrder) {
             displayMessage(messageObj);
+
+            let formData = new FormData();
+
+            formData.append("isRead", '1');
+            formData.append("chatRoomOrder", chatRoomOrder);
+            xhr("/app/isRead", formData, "PATCH", "");
         }
-        updateChatList(messageObj); // 채팅 목록 업데이트
+        updateChatList(messageObj);
+        receiveChatNotification(messageObj);
     });
 });
 
@@ -153,6 +168,42 @@ let createChatItem = (message) => {
     return chatItem;
 }
 
+let unreadChatRooms = {};
+
+let markChatRoomAsUnread = (chatRoomOrder) => {
+    unreadChatRooms[chatRoomOrder] = true;
+
+    updateChatRoomList();
+}
+
+let updateChatRoomList = () => {
+    for (let i = 0; i < chatRoom.length; i++) {
+        let datasetChatRoomOrder = chatRoom[i].dataset.parent;
+        let unreadMessage = document.getElementsByClassName("unread-message");
+
+        if(chatRoomOrder != datasetChatRoomOrder) {
+            if (unreadChatRooms[datasetChatRoomOrder]) {
+                unreadMessage[i].classList.add("unread");
+            } else {
+                unreadMessage[i].classList.remove("unread");
+            }
+        }
+    }
+}
+
+let receiveChatNotification = (message) => {
+    markChatRoomAsUnread(message.chatRoomOrder);
+}
+
+for(let i = 0; i < unreadMessage.length; i++) {
+    let unreadMessageIsRead =  unreadMessage[i].dataset.parent;
+
+    if(unreadMessageIsRead == 0) {
+        unreadMessage[i].classList.add("unread");
+    } else if(unreadMessageIsRead == 1) {
+        unreadMessage[i].classList.remove("unread");
+    }
+}
 /**
  * XMLHttpRequest 성공 함수
  */

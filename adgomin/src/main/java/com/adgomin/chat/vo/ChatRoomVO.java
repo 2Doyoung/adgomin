@@ -7,6 +7,15 @@ public class ChatRoomVO {
     private int partnerOrder;
     private int count;
     private String lastMessage;
+    private int isRead;
+
+    public int getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(int isRead) {
+        this.isRead = isRead;
+    }
 
     public String getLastMessage() {
         return lastMessage;

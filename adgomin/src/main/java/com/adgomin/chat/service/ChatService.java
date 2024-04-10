@@ -72,4 +72,12 @@ public class ChatService {
     public ChatMessageEntity getLastMessage(int chatRoomOrder) {
         return this.chatMapper.getLastMessage(chatRoomOrder);
     }
+
+    public ChatMessageEntity getIsRead(int userOrder, int chatRoomOrder) {
+        return this.chatMapper.getIsRead(userOrder, chatRoomOrder);
+    }
+
+    public Enum<?> isRead(JoinVO joinVO, ChatMessageEntity chatMessageEntity) {
+        return this.chatMapper.isRead(joinVO.getUserOrder(), chatMessageEntity.getChatRoomOrder(), chatMessageEntity.getIsRead()) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
 }
