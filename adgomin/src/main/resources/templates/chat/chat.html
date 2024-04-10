@@ -25,6 +25,7 @@
                     <img th:src="@{/profile/image/{userOrder} (userOrder=${chatRoom.partnerOrder})}">
                 </div>
                 <div class="partner-nickname" th:text="${chatRoom.partnerNickname}"></div>
+                <div></div>
             </div>
         </div>
         <div th:if="${chatRoomOrder == null}" class="chat-message">
@@ -42,10 +43,10 @@
                             <div th:text="${#dates.format(chatMessage.timestamp, 'yy.MM.dd')}"></div>
                             <div th:text="${#dates.format(chatMessage.timestamp, 'HH:mm')}"></div>
                         </div>
-                        <span th:text="${chatMessage.message}"></span>
+                        <span th:utext="${#strings.replace(chatMessage.message, '<br>', '&lt;br /&gt;')}"></span>
                     </div>
                     <div th:if="${userOrder != chatMessage.senderOrder}" class="chat-partner-message">
-                        <span th:text="${chatMessage.message}"></span>
+                        <span th:utext="${#strings.replace(chatMessage.message, '<br>', '&lt;br /&gt;')}"></span>
                         <div class="chat-partner-message-timestamp">
                             <div th:text="${#dates.format(chatMessage.timestamp, 'yy.MM.dd')}"></div>
                             <div th:text="${#dates.format(chatMessage.timestamp, 'HH:mm')}"></div>
@@ -56,9 +57,9 @@
 
                 </div>
             </div>
-            <div>
-                <input type="text" class="message-input" id="messageInput" placeholder="메세지를 입력하세요.">
-                <button onclick="sendMessage()">Send</button>
+            <div class="send-div">
+                <textarea type="text" class="message-input" id="messageInput" placeholder="메세지를 입력하세요.(Enter:줄바꿈, Shift + Enter:전송)" spellcheck="false"></textarea>
+                <input type="button" class="disabled send-message" id="sendMessage" value="전송">
             </div>
         </div>
     </div>
