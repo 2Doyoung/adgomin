@@ -2,6 +2,7 @@ package com.adgomin.chat.mapper;
 
 import com.adgomin.chat.entity.ChatMessageEntity;
 import com.adgomin.chat.entity.ChatRoomEntity;
+import com.adgomin.chat.vo.ChatMessageVO;
 import com.adgomin.chat.vo.ChatRoomVO;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.media.vo.MediaRegisterVO;
@@ -31,4 +32,6 @@ public interface ChatMapper {
     ChatMessageEntity getIsRead(@Param(value = "userOrder") int userOrder, @Param(value = "chatRoomOrder") int chatRoomOrder);
 
     int isRead(@Param(value = "userOrder") int userOrder, @Param(value = "chatRoomOrder") int chatRoomOrder, @Param(value = "isRead") int isRead);
+
+    ChatMessageVO getUnReadCount(@Param(value = "userOrder") int userOrder);
 }

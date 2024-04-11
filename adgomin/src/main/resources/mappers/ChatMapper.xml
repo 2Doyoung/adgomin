@@ -105,4 +105,13 @@
         AND chat_room_order = #{chatRoomOrder}
         AND receiver_order = #{userOrder}
     </update>
+
+    <select id="getUnReadCount" resultType="com.adgomin.chat.entity.ChatMessageEntity">
+        SELECT
+            COUNT(*) AS COUNT
+        FROM adgomin_chat_message
+        WHERE 1=1
+        AND receiver_order = #{userOrder}
+        AND is_read = '0'
+    </select>
 </mapper>

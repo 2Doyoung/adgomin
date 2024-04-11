@@ -3,6 +3,15 @@ package com.adgomin.chat.vo;
 public class ChatMessageVO {
     private int partnerOrder;
     private int userOrder;
+    private int count;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     public int getUserOrder() {
         return userOrder;

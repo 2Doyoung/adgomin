@@ -1,8 +1,8 @@
 /**
  * 전역변수
  */
-const socket = new SockJS('/chat');
-const stompClient = Stomp.over(socket);
+const socketHeader = new SockJS('/chat');
+const stompClientHeader = Stomp.over(socketHeader);
 
 const allCategoryClick = document.getElementsByClassName("all-category-click");
 
@@ -41,6 +41,9 @@ const portfolio = document.getElementById("portfolio");
 
 const adgominManage = document.getElementById("adgominManage");
 const conversationMessage = document.getElementById("conversationMessage");
+
+const unReadCount = document.getElementById("unReadCount");
+const messageNotification = document.getElementById("messageNotification");
 
 /**
  * 이벤트 함수
@@ -264,17 +267,30 @@ if(adgominManage != null) {
 /**
  * 사용자 함수
  */
-stompClient.debug = null
-stompClient.connect({}, (frame) => {
-	stompClient.subscribe('/user/queue/messages', (message) => {
-		messageNotification();
+stompClientHeader.debug = null
+stompClientHeader.connect({}, (frame) => {
+	stompClientHeader.subscribe('/user/queue/messages', (message) => {
+		messageNotificationF();
 	});
 });
 
-let messageNotification = () => {
+let messageNotificationF = () => {
 	let messageNotification = document.getElementById("messageNotification");
+	if(typeof socket == 'undefined') {
+		messageNotification.style.visibility = "visible";
+	}
+}
 
-	messageNotification.style.visibility = "visible";
+if(messageNotification != null) {
+	if(unReadCount.value > 0) {
+		let messageNotification = document.getElementById("messageNotification");
+
+		messageNotification.style.visibility = "visible";
+	} else if(unReadCount.value == 0) {
+		let messageNotification = document.getElementById("messageNotification");
+
+		messageNotification.style.visibility = "hidden";
+	}
 }
 
 /**
