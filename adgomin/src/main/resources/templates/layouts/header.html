@@ -6,9 +6,11 @@
 	<link rel="stylesheet" th:href="@{/css/layouts/header.css}">
 	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 	<script defer th:src="@{/js/layouts/header.js}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
 </head>
 <body>
-<input type="text" th:value="${unReadCount}" id="unReadCount">
+<input type="hidden" th:value="${unReadCount}" id="unReadCount">
 	<header>
 		<div class="header">
 			<div class="header-logo">

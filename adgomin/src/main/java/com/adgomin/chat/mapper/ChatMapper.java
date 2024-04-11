@@ -21,9 +21,9 @@ public interface ChatMapper {
 
     ChatRoomEntity[] getChatRoom(@Param(value = "userOrder") int userOrder);
 
-    ChatRoomVO getChatRoomCount(@Param(value = "userOrder") int userOrder, @Param(value = "chatRoomOrder") int chatRoomOrder);
-
     ChatMessageEntity[] getChatMessage(@Param(value = "chatRoomOrder") int chatRoomOrder);
+
+    ChatRoomVO getChatRoomCount(@Param(value = "userOrder") int userOrder, @Param(value = "chatRoomOrder") int chatRoomOrder);
 
     ChatRoomEntity getChatRoomPartner(@Param(value = "chatRoomOrder") int chatRoomOrder);
 
