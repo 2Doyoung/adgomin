@@ -264,7 +264,7 @@ header {
 .header-after-login {
 	display: flex;
 	align-items: center;
-	width: 367px;
+	width: 372px;
 }
 
 .header-message {
@@ -607,4 +607,13 @@ header {
 	cursor: pointer;
 	color: #303441;
 	margin-right: 1.5rem;
+	display: flex;
+}
+
+.message-notification {
+	width: 5px;
+	height: 5px;
+	background-color: red;
+	border-radius: 50%;
+	visibility: hidden;
 }

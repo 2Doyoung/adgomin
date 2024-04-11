@@ -1,6 +1,9 @@
 /**
  * 전역변수
  */
+const socket = new SockJS('/chat');
+const stompClient = Stomp.over(socket);
+
 const allCategoryClick = document.getElementsByClassName("all-category-click");
 
 const loginBtn = document.getElementById("loginBtn");
@@ -261,6 +264,18 @@ if(adgominManage != null) {
 /**
  * 사용자 함수
  */
+stompClient.debug = null
+stompClient.connect({}, (frame) => {
+	stompClient.subscribe('/user/queue/messages', (message) => {
+		messageNotification();
+	});
+});
+
+let messageNotification = () => {
+	let messageNotification = document.getElementById("messageNotification");
+
+	messageNotification.style.visibility = "visible";
+}
 
 /**
  * XMLHttpRequest 성공 함수
