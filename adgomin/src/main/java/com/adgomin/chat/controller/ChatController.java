@@ -49,6 +49,8 @@ public class ChatController {
                 chatRoomList[i].setLastMessage(chatMessageEntity.getMessage());
                 if(chatMessageEntityIsRead != null) {
                     chatRoomList[i].setIsRead(chatMessageEntityIsRead.getIsRead());
+                } else if(chatMessageEntityIsRead == null) {
+                    chatRoomList[i].setIsRead(1);
                 }
             }
 

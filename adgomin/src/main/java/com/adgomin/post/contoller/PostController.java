@@ -47,6 +47,7 @@ public class PostController {
         DecimalFormat df = new DecimalFormat("###,###");
         String fiveMonthMediaPriceFormat = df.format(fiveMonthMediaPrice);
 
+        modelAndView.addObject("mediaOrder", mediaOrder);
         modelAndView.addObject("adDetailCategory", getPost.getAdDetailCategory());
         modelAndView.addObject("mediaTitle", getPost.getMediaTitle());
         modelAndView.addObject("mediaSummary", getPost.getMediaSummary());

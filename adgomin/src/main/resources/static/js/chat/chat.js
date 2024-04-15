@@ -17,6 +17,9 @@ const messageInput = document.getElementById("messageInput");
 
 const unreadMessage = document.getElementsByClassName("unread-message");
 
+const myPostThumbnail = document.getElementById("myPostThumbnail");
+const partnerPostThumbnail = document.getElementById("partnerPostThumbnail");
+
 /**
  * 이벤트 함수
  */
@@ -70,6 +73,22 @@ if(messageInput != null) {
         } else if(message != '') {
             sendMessage.classList.remove("disabled");
         }
+    })
+}
+
+if(myPostThumbnail != null) {
+    myPostThumbnail.addEventListener("click", (e) => {
+        let mediaOrder = e.currentTarget.dataset.parent;
+
+        window.open("http://localhost:8080/post?mediaOrder=" + mediaOrder);
+    })
+}
+
+if(partnerPostThumbnail != null) {
+    partnerPostThumbnail.addEventListener("click", (e) => {
+        let mediaOrder = e.currentTarget.dataset.parent;
+
+        window.open("http://localhost:8080/post?mediaOrder=" + mediaOrder);
     })
 }
 

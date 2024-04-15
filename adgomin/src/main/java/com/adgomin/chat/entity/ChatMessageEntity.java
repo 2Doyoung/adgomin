@@ -12,6 +12,51 @@ public class ChatMessageEntity extends ChatMessageVO {
     private String message;
     private Date timestamp;
     private int isRead;
+    private int mediaOrder;
+    private String mediaTitle;
+    private String mediaPrice;
+    private String thumbnailImgNm;
+    private String thumbnailImgFilePath;
+
+    public int getMediaOrder() {
+        return mediaOrder;
+    }
+
+    public void setMediaOrder(int mediaOrder) {
+        this.mediaOrder = mediaOrder;
+    }
+
+    public String getMediaTitle() {
+        return mediaTitle;
+    }
+
+    public void setMediaTitle(String mediaTitle) {
+        this.mediaTitle = mediaTitle;
+    }
+
+    public String getMediaPrice() {
+        return mediaPrice;
+    }
+
+    public void setMediaPrice(String mediaPrice) {
+        this.mediaPrice = mediaPrice;
+    }
+
+    public String getThumbnailImgNm() {
+        return thumbnailImgNm;
+    }
+
+    public void setThumbnailImgNm(String thumbnailImgNm) {
+        this.thumbnailImgNm = thumbnailImgNm;
+    }
+
+    public String getThumbnailImgFilePath() {
+        return thumbnailImgFilePath;
+    }
+
+    public void setThumbnailImgFilePath(String thumbnailImgFilePath) {
+        this.thumbnailImgFilePath = thumbnailImgFilePath;
+    }
 
     public int getIsRead() {
         return isRead;

@@ -31,9 +31,9 @@
 
     <insert id="appConversationChatMessage" parameterType="com.adgomin.chat.entity.ChatMessageEntity">
         INSERT INTO adgomin_chat_message
-            (chat_room_order, sender_order, receiver_order, message)
+            (chat_room_order, sender_order, receiver_order, message, media_order, media_title, media_price, thumbnail_img_nm, thumbnail_img_file_path)
         VALUES
-            (#{chatRoomOrder}, #{senderOrder}, #{receiverOrder}, #{message})
+            (#{chatRoomOrder}, #{senderOrder}, #{receiverOrder}, #{message}, #{mediaOrder}, #{mediaTitle}, #{mediaPrice}, #{thumbnailImgNm}, #{thumbnailImgFilePath})
     </insert>
 
     <select id="getChatRoomCount" resultType="com.adgomin.chat.vo.ChatRoomVO">
@@ -55,6 +55,11 @@
              ,message AS message
              ,timestamp AS timestamp
              ,is_read AS isRead
+             ,media_order AS mediaOrder
+             ,media_title AS mediaTitle
+             ,media_price AS mediaPrice
+             ,thumbnail_img_nm AS thumbnailImgNm
+             ,thumbnail_img_file_path AS thumbnailImgFilePath
         FROM adgomin_chat_message
         WHERE 1=1
         AND chat_room_order = #{chatRoomOrder}

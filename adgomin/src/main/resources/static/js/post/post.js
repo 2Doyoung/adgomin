@@ -132,6 +132,11 @@ if(conversationModalButton != null) {
 
             formData.append("receiverOrder", receiverOrder);
             formData.append("message", message);
+            formData.append("mediaOrder", mediaOrder);
+            formData.append("mediaTitle", mediaTitle);
+            formData.append("mediaPrice", mediaPrice);
+            formData.append("thumbnailImgNm", thumbnailImgNm);
+            formData.append("thumbnailImgFilePath", thumbnailImgFilePath);
 
             xhr("/app/conversation", formData, "PATCH", "appConversation");
         }

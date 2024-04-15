@@ -210,3 +210,54 @@ body {
     background-color: red;
     border-radius: 50%;
 }
+
+.conversation-media {
+    font-weight: 600;
+}
+
+.post-thumbnail {
+    overflow: hidden;
+    position: relative;
+    height: 3.7rem;
+    width: 6rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+}
+
+.post-thumbnail-img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    object-fit: cover;
+}
+
+.conversation-media-div {
+    display: flex;
+    cursor: pointer;
+}
+
+.conversation-title-price {
+    margin-left: 1rem;
+    margin-top: 1rem;
+}
+
+.post-title {
+    width: 13rem;
+    height: 1.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.post-price {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.won {
+    font-weight: 600;
+}

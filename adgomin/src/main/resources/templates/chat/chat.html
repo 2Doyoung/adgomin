@@ -41,12 +41,48 @@
         <div th:if="${chatRoomOrder != null}" class="chat-message-room">
             <div class="chat-message-room-chat" id="chatMessageRoomChat">
                 <div th:each="chatMessage : ${chatMessageEntityList}">
+                    <div th:if="${chatMessage.mediaTitle != null && userOrder == chatMessage.senderOrder}" class="chat-my-message">
+                        <div class="chat-my-message-timestamp">
+                            <div th:text="${#dates.format(chatMessage.timestamp, 'yy.MM.dd')}"></div>
+                            <div th:text="${#dates.format(chatMessage.timestamp, 'HH:mm')}"></div>
+                        </div>
+                        <span>
+                            <div class="conversation-media">문의 광고매체</div>
+                            <div class="conversation-media-div" id="myPostThumbnail" th:data-parent="${chatMessage.mediaOrder}">
+                                <div class="post-thumbnail">
+                                    <img class="post-thumbnail-img" th:src="@{/main/thumbnail/image (thumbnailImgNm=${chatMessage.thumbnailImgNm}, thumbnailImgFilePath =${chatMessage.thumbnailImgFilePath})}">
+                                </div>
+                                <div class="conversation-title-price">
+                                    <div class="post-title" th:text="${chatMessage.mediaTitle}"></div>
+                                    <div class="post-price" th:text="${chatMessage.mediaPrice}"></div><span class="won">원</span>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
                     <div th:if="${userOrder == chatMessage.senderOrder}" class="chat-my-message">
                         <div class="chat-my-message-timestamp">
                             <div th:text="${#dates.format(chatMessage.timestamp, 'yy.MM.dd')}"></div>
                             <div th:text="${#dates.format(chatMessage.timestamp, 'HH:mm')}"></div>
                         </div>
                         <span th:utext="${#strings.replace(chatMessage.message, '<br>', '&lt;br /&gt;')}"></span>
+                    </div>
+                    <div th:if="${chatMessage.mediaTitle != null && userOrder != chatMessage.senderOrder}" class="chat-partner-message">
+                        <span>
+                            <div class="conversation-media">문의 광고매체</div>
+                            <div class="conversation-media-div" id="partnerPostThumbnail" th:data-parent="${chatMessage.mediaOrder}">
+                                <div class="post-thumbnail">
+                                    <img class="post-thumbnail-img" th:src="@{/main/thumbnail/image (thumbnailImgNm=${chatMessage.thumbnailImgNm}, thumbnailImgFilePath =${chatMessage.thumbnailImgFilePath})}">
+                                </div>
+                                <div class="conversation-title-price">
+                                    <div class="post-title" th:text="${chatMessage.mediaTitle}"></div>
+                                    <div class="post-price" th:text="${chatMessage.mediaPrice}"></div><span class="won">원</span>
+                                </div>
+                            </div>
+                        </span>
+                        <div class="chat-partner-message-timestamp">
+                            <div th:text="${#dates.format(chatMessage.timestamp, 'yy.MM.dd')}"></div>
+                            <div th:text="${#dates.format(chatMessage.timestamp, 'HH:mm')}"></div>
+                        </div>
                     </div>
                     <div th:if="${userOrder != chatMessage.senderOrder}" class="chat-partner-message">
                         <span th:utext="${#strings.replace(chatMessage.message, '<br>', '&lt;br /&gt;')}"></span>
