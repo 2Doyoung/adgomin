@@ -36,14 +36,22 @@ public class ChatService {
         chatRoomEntity.setSenderOrder(joinVO.getUserOrder());
         chatMessageEntity.setSenderOrder(joinVO.getUserOrder());
 
+        ChatRoomVO chatRoomVO = this.chatMapper.getExistChatRoomCount(chatRoomEntity);
+
         int result = 0;
-
-        int result1 = this.chatMapper.appConversationChatRoom(chatRoomEntity);
-
+        int result1 = 0;
         int result2 = 0;
 
-        if(result1 > 0) {
+        if(chatRoomVO.getCount() > 0) {
+            ChatRoomEntity chatRoomEntity1 = this.chatMapper.getExistChatRoom(chatRoomEntity);
+            chatMessageEntity.setChatRoomOrder(chatRoomEntity1.getChatRoomOrder());
+            result1 = 1;
+        } else if(chatRoomVO.getCount() == 0) {
+            result1 = this.chatMapper.appConversationChatRoom(chatRoomEntity);
             chatMessageEntity.setChatRoomOrder(chatRoomEntity.getChatRoomOrder());
+        }
+
+        if(result1 > 0) {
             result2 = this.chatMapper.appConversationChatMessage(chatMessageEntity);
         }
 

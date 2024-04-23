@@ -119,4 +119,26 @@
         AND receiver_order = #{userOrder}
         AND is_read = '0'
     </select>
+
+    <select id="getExistChatRoomCount" resultType="com.adgomin.chat.entity.ChatRoomEntity">
+        SELECT
+            COUNT(*) AS count
+        FROM adgomin_chat_room
+        WHERE 1=1
+        AND (sender_order = #{senderOrder}
+        AND receiver_order = #{receiverOrder})
+        OR (sender_order = #{receiverOrder}
+        AND receiver_order = #{senderOrder})
+    </select>
+
+    <select id="getExistChatRoom" resultType="com.adgomin.chat.entity.ChatRoomEntity">
+        SELECT
+            chat_room_order AS chatRoomOrder
+        FROM adgomin_chat_room
+        WHERE 1=1
+          AND (sender_order = #{senderOrder}
+          AND receiver_order = #{receiverOrder})
+           OR (sender_order = #{receiverOrder}
+          AND receiver_order = #{senderOrder})
+    </select>
 </mapper>

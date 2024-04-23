@@ -34,4 +34,8 @@ public interface ChatMapper {
     int isRead(@Param(value = "userOrder") int userOrder, @Param(value = "chatRoomOrder") int chatRoomOrder, @Param(value = "isRead") int isRead);
 
     ChatMessageVO getUnReadCount(@Param(value = "userOrder") int userOrder);
+
+    ChatRoomVO getExistChatRoomCount(ChatRoomEntity chatRoomEntity);
+
+    ChatRoomEntity getExistChatRoom(ChatRoomEntity chatRoomEntity);
 }
