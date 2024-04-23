@@ -88,4 +88,13 @@ public class ChatService {
     public Enum<?> isRead(JoinVO joinVO, ChatMessageEntity chatMessageEntity) {
         return this.chatMapper.isRead(joinVO.getUserOrder(), chatMessageEntity.getChatRoomOrder(), chatMessageEntity.getIsRead()) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
+
+    public ChatRoomEntity getConversationGetChatRoom(JoinVO joinVO, ChatMessageEntity chatMessageEntity) {
+        ChatRoomEntity chatRoomEntity = new ChatRoomEntity();
+
+        chatRoomEntity.setReceiverOrder(chatMessageEntity.getReceiverOrder());
+        chatRoomEntity.setSenderOrder(joinVO.getUserOrder());
+
+        return this.chatMapper.getExistChatRoom(chatRoomEntity);
+    }
 }

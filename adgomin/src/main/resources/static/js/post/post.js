@@ -237,7 +237,8 @@ if(portfolioSection != null) {
  */
 let successXhr = (responseObject, flag) => {
     if(flag == "appConversation") {
-        window.location.href = "/app/chat?senderOrder="
+        let chatRoomOrder = responseObject['chatRoomEntity'];
+        window.location.href = "/app/chat?chatRoomOrder=" + chatRoomOrder;
     }
 }
 

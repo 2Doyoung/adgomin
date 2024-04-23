@@ -97,7 +97,9 @@ public class ChatController {
     public String appConversation(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, ChatMessageEntity chatMessageEntity) {
         JSONObject responseObject = new JSONObject();
         Enum<?> result = this.chatService.appConversation(joinVO, chatMessageEntity);
+        ChatRoomEntity chatRoomEntity = this.chatService.getConversationGetChatRoom(joinVO, chatMessageEntity);
         responseObject.put("result", result.name().toLowerCase());
+        responseObject.put("chatRoomEntity", chatRoomEntity.getChatRoomOrder());
 
         return responseObject.toString();
     }
