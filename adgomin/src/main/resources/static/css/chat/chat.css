@@ -22,7 +22,7 @@ body {
 
 .chat-sub-wrap {
     display: flex;
-    height: 45rem;
+    height: 46rem;
     width: 100%;
     border-left: 1px solid #D9D9D9;
     border-right: 1px solid #D9D9D9;
@@ -260,4 +260,22 @@ body {
 
 .won {
     font-weight: 600;
+}
+
+.file-upload {
+    display: flex;
+    align-items: center;
+    color: #9a9ba7;
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+    width: 6rem;
+    cursor: pointer;
+}
+
+.file-upload-span {
+    margin-left: 0.5rem;
+}
+
+.ri-upload-2-line {
+    font-size: 1.4rem;
 }
