@@ -56,7 +56,7 @@ body {
 }
 
 .post-media-introduce {
-    height: 4rem;
+    height: 9rem;
     margin-top: 2rem;
     border: 1px solid #D8D8D8;
     border-radius: 5px 5px 0 0;
@@ -137,15 +137,19 @@ body {
 }
 
 .conversation-button {
-    background-color: #81BEF7;
+    background-color: #FFFFFF;
     height: 3rem;
-    border: 1px solid #81BEF7;
+    border: 1px solid #c8cad2;
     border-radius: 5px;
     font-size: 1.3rem;
     cursor: pointer;
-    color: #FFFFFF;
+    color: #212224;
     width: 22rem;
     font-weight: 600;
+}
+
+.conversation-button:hover {
+    background-color: #F2F2F2;
 }
 
 .region-span {
@@ -530,4 +534,17 @@ body {
 
 .conversation-span-div {
     margin-bottom: 0.5rem;
+}
+
+.purchase-button {
+    background-color: #81BEF7;
+    height: 3rem;
+    border: 1px solid #81BEF7;
+    border-radius: 5px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: #FFFFFF;
+    width: 22rem;
+    font-weight: 600;
+    margin-top: 1rem;
 }

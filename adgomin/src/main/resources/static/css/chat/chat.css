@@ -279,3 +279,7 @@ body {
 .ri-upload-2-line {
     font-size: 1.4rem;
 }
+
+.file-upload-input {
+    display: none;
+}
