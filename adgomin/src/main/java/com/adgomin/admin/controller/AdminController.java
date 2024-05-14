@@ -173,6 +173,16 @@ public class AdminController {
         return responseObject.toString();
     }
 
+    @PatchMapping("/admin/judgeRefuse")
+    @ResponseBody
+    public String judgeRefuse(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MediaRegisterEntity mediaRegisterEntity) {
+        JSONObject responseObject = new JSONObject();
+        Enum<?> result = this.adminService.judgeRefuse(mediaRegisterEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
+
     @GetMapping("/submit/thumbnail/image")
     public ResponseEntity<Resource> submitThumbnailImage(@RequestParam(value = "mediaOrder") String mediaOrder) {
         MediaRegisterEntity mediaRegisterEntity = this.adminService.submitThumbnailImage(mediaOrder);

@@ -63,6 +63,15 @@
           AND media_order = #{mediaOrder}
     </update>
 
+    <update id="judgeRefuse" parameterType="com.adgomin.media.entity.MediaIntroduceEntity">
+        UPDATE
+            adgomin_media_register
+        SET media_detail_explain = #{mediaDetailExplain}
+          ,media_submit_status = #{mediaSubmitStatus}
+        WHERE 1=1
+          AND media_order = #{mediaOrder}
+    </update>
+
     <select id="submitThumbnailImage" resultType="com.adgomin.media.entity.MediaRegisterEntity">
         SELECT
             thumbnail_img_nm AS thumbnailImgNm
