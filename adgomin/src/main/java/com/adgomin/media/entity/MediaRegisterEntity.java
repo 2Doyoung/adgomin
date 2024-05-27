@@ -17,6 +17,15 @@ public class MediaRegisterEntity {
     private Date createDt;
     private Date modifyDt;
     private Date submitDt;
+    private String refuseReason;
+
+    public String getRefuseReason() {
+        return refuseReason;
+    }
+
+    public void setRefuseReason(String refuseReason) {
+        this.refuseReason = refuseReason;
+    }
 
     public Date getCreateDt() {
         return createDt;

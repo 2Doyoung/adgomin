@@ -104,7 +104,7 @@ header {
 .header-login {
 	display: flex;
 	align-items: center;
-	margin-left: 12.35rem;
+	margin-left: 13rem;
 }
 
 .login-button {
@@ -264,7 +264,7 @@ header {
 .header-after-login {
 	display: flex;
 	align-items: center;
-	width: 372px;
+	width: 377px;
 }
 
 .header-message {
@@ -273,6 +273,7 @@ header {
 	margin-left: 1.5rem;
 	cursor: pointer;
 	color: #303441;
+	display: flex;
 }
 
 .header-mypage {
@@ -611,6 +612,14 @@ header {
 }
 
 .message-notification {
+	width: 5px;
+	height: 5px;
+	background-color: red;
+	border-radius: 50%;
+	visibility: hidden;
+}
+
+.notification {
 	width: 5px;
 	height: 5px;
 	background-color: red;

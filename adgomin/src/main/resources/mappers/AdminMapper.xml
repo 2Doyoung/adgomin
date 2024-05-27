@@ -66,8 +66,8 @@
     <update id="judgeRefuse" parameterType="com.adgomin.media.entity.MediaIntroduceEntity">
         UPDATE
             adgomin_media_register
-        SET media_detail_explain = #{mediaDetailExplain}
-          ,media_submit_status = #{mediaSubmitStatus}
+        SET media_submit_status = #{mediaSubmitStatus}
+          ,refuse_reason = #{refuseReason}
         WHERE 1=1
           AND media_order = #{mediaOrder}
     </update>

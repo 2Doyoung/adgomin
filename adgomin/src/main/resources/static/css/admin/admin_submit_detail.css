@@ -815,13 +815,13 @@ td.text-right {
     border-radius: 5px;
     font-size: 1.1rem;
     color: #FFFFFF;
-    background-color: #DF013A;
+    background-color: #81BEF7;
     margin-top: 1.5rem;
 }
 
 .ri-checkbox-circle-line {
     vertical-align: bottom;
-    color: #81BEF7;
+    color: #DF013A;
     font-size: 3rem;
 }
 

@@ -10,6 +10,9 @@ const adDetailCategory = document.getElementById("adDetailCategory");
 const judgeCompleteButton = document.getElementById("judgeCompleteButton");
 const judgeRefuseButton = document.getElementById("judgeRefuseButton");
 
+const modalCheck = document.getElementById("modalCheck");
+const modalCheck2 = document.getElementById("modalCheck2");
+
 let quill;
 
 /**
@@ -50,6 +53,19 @@ judgeRefuseButton.addEventListener("click", () => {
 
 modalCheck.addEventListener("click", () => {
     window.location.href = "/admin?page=1";
+})
+
+modalCheck2.addEventListener("click", () => {
+    let mediaOrder = document.getElementById("mediaOrder").value;
+    let refuseReason = document.getElementById("refuseReason").value;
+
+    const formData = new FormData();
+
+    formData.append("mediaOrder", mediaOrder);
+    formData.append("mediaSubmitStatus", "C");
+    formData.append("refuseReason", refuseReason);
+
+    xhr("/admin/judgeRefuse", formData, "PATCH", "adminJudgeRefuse");
 })
 
 /**
@@ -124,14 +140,7 @@ let successXhr = (responseObject, flag) => {
         modalBg.style.display = "block";
         modalTitle.innerText = "심사가 완료되었습니다.";
     } else if(flag == "adminJudgeRefuse") {
-        let mediaOrder = document.getElementById("mediaOrder").value;
-
-        const formData = new FormData();
-
-        formData.append("mediaOrder", mediaOrder);
-        formData.append("mediaSubmitStatus", "C");
-
-        xhr("/admin/judgeRefuse", formData, "PATCH", "adminJudgeRefuse");
+        window.location.href = "/admin?page=1";
     }
 
 }
