@@ -3,6 +3,8 @@ package com.adgomin.interceptor;
 import com.adgomin.chat.mapper.ChatMapper;
 import com.adgomin.chat.vo.ChatMessageVO;
 import com.adgomin.join.vo.JoinVO;
+import com.adgomin.media.mapper.MediaMapper;
+import com.adgomin.media.vo.MediaRegisterVO;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,9 +16,11 @@ import javax.servlet.http.HttpSession;
 @Component
 public class HeaderInterceptor implements HandlerInterceptor {
     private final ChatMapper chatMapper;
+    private final MediaMapper mediaMapper;
 
-    public HeaderInterceptor(ChatMapper chatMapper) {
+    public HeaderInterceptor(ChatMapper chatMapper, MediaMapper mediaMapper) {
         this.chatMapper = chatMapper;
+        this.mediaMapper = mediaMapper;
     }
 
     @Override
@@ -29,8 +33,10 @@ public class HeaderInterceptor implements HandlerInterceptor {
         }
 
         ChatMessageVO chatMessageVO = this.chatMapper.getUnReadCount(userOrder);
+        MediaRegisterVO mediaRegisterVO = this.mediaMapper.getRefuseCount(userOrder);
 
         request.setAttribute("unReadCount", chatMessageVO.getCount());
+        request.setAttribute("refuseCount", mediaRegisterVO.getCnt());
 
         return true;
     }

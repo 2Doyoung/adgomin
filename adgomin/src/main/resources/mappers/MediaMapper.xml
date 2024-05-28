@@ -167,4 +167,14 @@
                  WHERE email = #{email}) AS sub
         )
     </select>
+
+    <select id="getRefuseCount" resultType="com.adgomin.media.vo.MediaRegisterVO">
+        SELECT
+            COUNT(*) AS cnt
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_user T2 ON T1.email = T2.email
+        WHERE 1=1
+        AND T2.user_order = #{userOrder}
+        AND T1.media_submit_status = 'C';
+    </select>
 </mapper>

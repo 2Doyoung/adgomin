@@ -45,6 +45,9 @@ const conversationMessage = document.getElementById("conversationMessage");
 const unReadCount = document.getElementById("unReadCount");
 const messageNotification = document.getElementById("messageNotification");
 
+const refuseCount = document.getElementById("refuseCount");
+const notification = document.getElementById("notification");
+
 /**
  * 이벤트 함수
  */
@@ -271,6 +274,7 @@ stompClientHeader.debug = null
 stompClientHeader.connect({}, (frame) => {
 	stompClientHeader.subscribe('/user/queue/messages', (message) => {
 		messageNotificationF();
+		notificationF();
 	});
 });
 
@@ -290,6 +294,25 @@ if(messageNotification != null) {
 		let messageNotification = document.getElementById("messageNotification");
 
 		messageNotification.style.visibility = "hidden";
+	}
+}
+
+let notificationF = () => {
+	let notification = document.getElementById("notification");
+	if(typeof socket == 'undefined') {
+		notification.style.visibility = "visible";
+	}
+}
+
+if(notification != null) {
+	if(refuseCount.value > 0) {
+		let notification = document.getElementById("notification");
+
+		notification.style.visibility = "visible";
+	} else if(refuseCount.value == 0) {
+		let notification = document.getElementById("notification");
+
+		notification.style.visibility = "hidden";
 	}
 }
 

@@ -3,6 +3,7 @@ package com.adgomin.media.mapper;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
+import com.adgomin.media.vo.MediaRegisterVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -23,4 +24,6 @@ public interface MediaMapper {
     int changeThumbnail(MediaRegisterEntity mediaRegisterEntity);
 
     MediaRegisterEntity thumbnailImage(@Param(value = "email") String email);
+
+    MediaRegisterVO getRefuseCount(@Param(value = "userOrder") int userOrder);
 }
