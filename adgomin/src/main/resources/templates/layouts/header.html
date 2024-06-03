@@ -37,8 +37,20 @@
 				<div class="header-heart">
 					찜
 				</div>
-				<div class="header-message">
+				<div class="header-message notification-dropdown">
 					알림<div class="notification" id="notification"></div>
+					<div class="notification-dropdown-content">
+						<div class="notification-top">
+							애드인 알림
+						</div>
+						<div class="notification-bottom">
+							<div th:if="${refuseCount > 0}" class="notification-refuse-div">
+								<span class="notification-refuse-title">[광고매체 반려<i class="ri-error-warning-fill"></i>]</span>
+								<span class="notification-refuse-click">클릭해서 사유를 확인해주세요.</span>
+							</div>
+							<div th:if="${refuseCount == 0}">알림 내역이 없습니다.</div>
+						</div>
+					</div>
 				</div>
 				<div class="header-mypage dropdown">
 					프로필
