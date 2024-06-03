@@ -3,6 +3,7 @@ package com.adgomin.interceptor;
 import com.adgomin.chat.mapper.ChatMapper;
 import com.adgomin.chat.vo.ChatMessageVO;
 import com.adgomin.join.vo.JoinVO;
+import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.mapper.MediaMapper;
 import com.adgomin.media.vo.MediaRegisterVO;
 import org.springframework.stereotype.Component;
@@ -34,9 +35,13 @@ public class HeaderInterceptor implements HandlerInterceptor {
 
         ChatMessageVO chatMessageVO = this.chatMapper.getUnReadCount(userOrder);
         MediaRegisterVO mediaRegisterVO = this.mediaMapper.getRefuseCount(userOrder);
+        MediaRegisterEntity mediaRegisterEntity = this.mediaMapper.getRefuseMediaOrder(userOrder);
 
         request.setAttribute("unReadCount", chatMessageVO.getCount());
         request.setAttribute("refuseCount", mediaRegisterVO.getCnt());
+        if(mediaRegisterVO.getCnt() > 0) {
+            request.setAttribute("refuseMediaOrder", mediaRegisterEntity.getMediaOrder());
+        }
 
         return true;
     }

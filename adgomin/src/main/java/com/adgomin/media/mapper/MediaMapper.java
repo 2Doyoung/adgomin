@@ -26,4 +26,6 @@ public interface MediaMapper {
     MediaRegisterEntity thumbnailImage(@Param(value = "email") String email);
 
     MediaRegisterVO getRefuseCount(@Param(value = "userOrder") int userOrder);
+
+    MediaRegisterEntity getRefuseMediaOrder(@Param(value = "userOrder") int userOrder);
 }

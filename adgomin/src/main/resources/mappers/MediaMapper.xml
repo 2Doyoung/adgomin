@@ -177,4 +177,14 @@
         AND T2.user_order = #{userOrder}
         AND T1.media_submit_status = 'C';
     </select>
+
+    <select id="getRefuseMediaOrder" resultType="com.adgomin.media.entity.MediaRegisterEntity">
+        SELECT
+            T1.media_order AS mediaOrder
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_user T2 ON T1.email = T2.email
+        WHERE 1=1
+        AND T2.user_order = #{userOrder}
+        AND T1.media_submit_status = 'C';
+    </select>
 </mapper>
