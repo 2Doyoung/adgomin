@@ -685,6 +685,7 @@ header {
 .notification-refuse-div {
 	padding: 0.5rem;
 	border-radius: 10px;
+	cursor: pointer;
 }
 
 .notification-refuse-div:hover {

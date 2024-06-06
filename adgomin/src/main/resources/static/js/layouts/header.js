@@ -48,6 +48,8 @@ const messageNotification = document.getElementById("messageNotification");
 const refuseCount = document.getElementById("refuseCount");
 const notification = document.getElementById("notification");
 
+const notificationRefuse = document.getElementById("notificationRefuse");
+
 /**
  * 이벤트 함수
  */
@@ -265,6 +267,12 @@ if(portfolio != null) {
 if(adgominManage != null) {
 	adgominManage.addEventListener("click", () => {
 		window.location.href = "/manage?manage=media";
+	})
+}
+
+if(notificationRefuse != null) {
+	notificationRefuse.addEventListener("click", () => {
+		window.location.href = "/media?manage=mediaRegister"
 	})
 }
 /**
