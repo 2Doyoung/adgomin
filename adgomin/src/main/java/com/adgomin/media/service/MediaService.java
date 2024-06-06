@@ -111,4 +111,8 @@ public class MediaService {
     public MediaRegisterEntity thumbnailImage(String email) {
         return this.mediaMapper.thumbnailImage(email);
     }
+
+    public MediaRegisterEntity getRefuseReason(MediaRegisterEntity mediaRegisterEntity) {
+        return this.mediaMapper.getRefuseReason(mediaRegisterEntity);
+    }
 }

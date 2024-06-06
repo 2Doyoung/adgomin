@@ -19,6 +19,8 @@ public interface AdminMapper {
 
     int judgeRefuse(MediaRegisterEntity mediaRegisterEntity);
 
+    int judgeRefuseReason(MediaRegisterEntity mediaRegisterEntity);
+
     MediaRegisterEntity submitThumbnailImage(@Param(value = "mediaOrder") String mediaOrder);
 
     JoinVO getMediaUserListCnt(JoinVO joinVO);

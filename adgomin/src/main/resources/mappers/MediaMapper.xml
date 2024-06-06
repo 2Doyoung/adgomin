@@ -187,4 +187,13 @@
         AND T2.user_order = #{userOrder}
         AND T1.media_submit_status = 'C';
     </select>
+
+    <select id="getRefuseReason" resultType="com.adgomin.media.entity.MediaRegisterEntity">
+        SELECT
+            refuse_reason AS refuseReason
+        FROM adgomin_media_refuse_reason
+        WHERE 1=1
+        AND media_order = #{mediaOrder}
+        AND refuse_order = (SELECT MAX(refuse_order) FROM adgomin_media_refuse_reason WHERE media_order = #{mediaOrder})
+    </select>
 </mapper>

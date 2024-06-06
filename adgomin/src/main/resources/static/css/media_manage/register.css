@@ -595,3 +595,19 @@ textarea {
 .ql-editor img {
     width: 100%;
 }
+
+.register-refuse-reason-div {
+    margin-left: 3rem;
+    margin-top: 1rem;
+}
+
+.register-refuse-reason {
+    color: #FF0040;
+    width: 43.5rem;
+}
+
+.refuse-comment {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}

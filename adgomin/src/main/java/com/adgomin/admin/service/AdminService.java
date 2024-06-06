@@ -48,7 +48,15 @@ public class AdminService {
     }
 
     public Enum<?> judgeRefuse(MediaRegisterEntity mediaRegisterEntity) {
-        return this.adminMapper.judgeRefuse(mediaRegisterEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+        int result = 0;
+        int result1 = this.adminMapper.judgeRefuse(mediaRegisterEntity);
+        int result2 = this.adminMapper.judgeRefuseReason(mediaRegisterEntity);
+
+        if(result1 > 0 && result2 > 0) {
+            result = 1;
+        }
+
+        return result > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
     public MediaRegisterEntity submitThumbnailImage(String mediaOrder) {

@@ -63,14 +63,20 @@
           AND media_order = #{mediaOrder}
     </update>
 
-    <update id="judgeRefuse" parameterType="com.adgomin.media.entity.MediaIntroduceEntity">
+    <update id="judgeRefuse" parameterType="com.adgomin.media.entity.MediaRegisterEntity">
         UPDATE
             adgomin_media_register
         SET media_submit_status = #{mediaSubmitStatus}
-          ,refuse_reason = #{refuseReason}
         WHERE 1=1
-          AND media_order = #{mediaOrder}
+        AND media_order = #{mediaOrder}
     </update>
+
+    <insert id="judgeRefuseReason" parameterType="com.adgomin.media.entity.MediaRegisterEntity">
+        INSERT INTO adgomin_media_refuse_reason
+            (media_order, refuse_reason, create_dt)
+        VALUES
+            (#{mediaOrder}, #{refuseReason}, now())
+    </insert>
 
     <select id="submitThumbnailImage" resultType="com.adgomin.media.entity.MediaRegisterEntity">
         SELECT

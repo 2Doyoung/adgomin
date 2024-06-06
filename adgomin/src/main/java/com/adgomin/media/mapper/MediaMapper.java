@@ -28,4 +28,6 @@ public interface MediaMapper {
     MediaRegisterVO getRefuseCount(@Param(value = "userOrder") int userOrder);
 
     MediaRegisterEntity getRefuseMediaOrder(@Param(value = "userOrder") int userOrder);
+
+    MediaRegisterEntity getRefuseReason(MediaRegisterEntity mediaRegisterEntity);
 }

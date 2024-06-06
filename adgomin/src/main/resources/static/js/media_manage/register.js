@@ -28,7 +28,7 @@ tempSaveButton.addEventListener("click", () => {
 })
 
 submitButton.addEventListener("click", () => {
-    if(mediaSubmitStatus == "N" || mediaSubmitStatus == "T") {
+    if(mediaSubmitStatus == "N" || mediaSubmitStatus == "T" || mediaSubmitStatus == "C") {
         tempSaveAndSubmit("mediaRegisterSubmit");
     } else if(mediaSubmitStatus == "I") {
 
@@ -37,7 +37,7 @@ submitButton.addEventListener("click", () => {
 
 for(let i = 0; i < adCategoryList.length; i++) {
     adCategoryList[i].addEventListener("click", () => {
-        if(mediaSubmitStatus == "N" || mediaSubmitStatus == "T") {
+        if(mediaSubmitStatus == "N" || mediaSubmitStatus == "T" || mediaSubmitStatus == "C") {
             if(document.getElementsByClassName("ad-category-selected").length > 0) {
                 if(adCategoryList[i].classList.contains("ad-category-selected")) {
                     adCategoryList[i].classList.remove("ad-category-selected");
@@ -299,6 +299,14 @@ if(mediaSubmitStatus == "I") {
     quill = new Quill('#editor', {
         readOnly : true,
     });
+}
+
+if(mediaSubmitStatus == "C") {
+    let tempSaveButton = document.getElementById("tempSaveButton");
+    let submitButton = document.getElementById("submitButton");
+
+    tempSaveButton.style.visibility = "hidden";
+    submitButton.value = "재심사하기"
 }
 
 /**

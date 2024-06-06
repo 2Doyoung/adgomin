@@ -40,6 +40,13 @@
                 <div class="user-sub-main-title">
                     광고매체 등록
                 </div>
+               <div th:if="${mediaSubmitStatus == 'C'}" class="register-refuse-reason-div">
+                    <div class="register-refuse-reason">
+                        <div class="refuse-comment">심사가 반려되었습니다.</div>
+                        <span>반려사유 : </span>
+                        <span th:text="${refuseReason}"></span>
+                    </div>
+               </div>
                 <div class="user-sub-main-content">
                     <div class="user-sub-main-content-information">
                         <div>
