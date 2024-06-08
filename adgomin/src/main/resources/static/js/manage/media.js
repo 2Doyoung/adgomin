@@ -15,6 +15,8 @@ const managePortfolio = document.getElementById("managePortfolio");
 let mediaSubmitStatus;
 let mediaOrder;
 
+const mediaManageC = document.getElementsByClassName("media-manage-c");
+
 /**
  * 이벤트 함수
  */
@@ -24,6 +26,14 @@ managePortfolio.addEventListener("click", () => {
 
 for(let i = 0; i < mediaManageY.length; i++) {
     mediaManageY[i].addEventListener("click", (e) => {
+        let mediaOrder = e.currentTarget.dataset.parent;
+
+        window.location.href = "/post?mediaOrder=" + mediaOrder;
+    })
+}
+
+for(let i = 0; i < mediaManageC.length; i++) {
+    mediaManageC[i].addEventListener("click", (e) => {
         let mediaOrder = e.currentTarget.dataset.parent;
 
         window.location.href = "/post?mediaOrder=" + mediaOrder;

@@ -297,3 +297,13 @@ body {
     margin-top: 1rem !important;
     cursor: pointer;
 }
+
+.media-manage-c {
+    color: #FF0040;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.media-manage-i {
+    font-weight: 500;
+}

@@ -48,8 +48,8 @@
                         </div>
                         <div class="media-manage-submit-status">
                             <span th:if="${mediaRegister.mediaSubmitStatus == 'T'}">임시저장</span>
-                            <span th:if="${mediaRegister.mediaSubmitStatus == 'I'}">심사중</span>
-                            <span th:if="${mediaRegister.mediaSubmitStatus == 'C'}">반려</span>
+                            <span class="media-manage-i" th:if="${mediaRegister.mediaSubmitStatus == 'I'}">심사진행중</span>
+                            <span class="media-manage-c" th:data-parent="${mediaRegister.mediaOrder}" th:if="${mediaRegister.mediaSubmitStatus == 'C'}">심사반려(반려사유 보기)</span>
                             <span class="media-manage-y" th:data-parent="${mediaRegister.mediaOrder}" th:if="${mediaRegister.mediaSubmitStatus == 'Y'}">정상서비스(광고매체 보기)</span>
                         </div>
                         <div class="media-manage-modify-dt">
