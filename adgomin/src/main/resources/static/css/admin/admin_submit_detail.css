@@ -819,15 +819,8 @@ td.text-right {
     margin-top: 1.5rem;
 }
 
-.ri-checkbox-circle-line {
-    vertical-align: bottom;
-    color: #DF013A;
-    font-size: 3rem;
-}
-
 .modal-check-div2 {
     margin-top: 1rem !important;
-    cursor: pointer;
 }
 
 .refuse-reason {
@@ -836,4 +829,14 @@ td.text-right {
     width: 550px;
     height: 130px;
     padding: 1rem;
+}
+
+.ri-close-circle-line {
+    vertical-align: bottom;
+    color: #DF013A;
+    font-size: 3rem;
+}
+
+.refuse-checkbox, .refuse-close {
+    cursor: pointer;
 }

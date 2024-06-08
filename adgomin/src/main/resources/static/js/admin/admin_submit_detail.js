@@ -11,7 +11,8 @@ const judgeCompleteButton = document.getElementById("judgeCompleteButton");
 const judgeRefuseButton = document.getElementById("judgeRefuseButton");
 
 const modalCheck = document.getElementById("modalCheck");
-const modalCheck2 = document.getElementById("modalCheck2");
+const modalRefuseCheckbox = document.getElementById("modalRefuseCheckbox");
+const modalRefuseClose = document.getElementById("modalRefuseClose");
 
 let quill;
 
@@ -47,15 +48,17 @@ judgeCompleteButton.addEventListener("click", () => {
 
 judgeRefuseButton.addEventListener("click", () => {
     let modalBg = document.getElementById("modalBg2");
+    let refuseReason = document.getElementById("refuseReason");
 
     modalBg.style.display = "block";
+    refuseReason.focus();
 })
 
 modalCheck.addEventListener("click", () => {
     window.location.href = "/admin?page=1";
 })
 
-modalCheck2.addEventListener("click", () => {
+modalRefuseCheckbox.addEventListener("click", () => {
     let mediaOrder = document.getElementById("mediaOrder").value;
     let refuseReason = document.getElementById("refuseReason").value;
 
@@ -66,6 +69,14 @@ modalCheck2.addEventListener("click", () => {
     formData.append("refuseReason", refuseReason);
 
     xhr("/admin/judgeRefuse", formData, "PATCH", "adminJudgeRefuse");
+})
+
+modalRefuseClose.addEventListener("click", () => {
+    let modalBg2 = document.getElementsByClassName("modal-bg2");
+    let refuseReason = document.getElementById("refuseReason");
+
+    modalBg2[0].style.display = "none";
+    refuseReason.value = "";
 })
 
 /**
