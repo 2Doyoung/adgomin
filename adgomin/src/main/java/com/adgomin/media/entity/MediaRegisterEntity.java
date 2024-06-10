@@ -18,6 +18,15 @@ public class MediaRegisterEntity {
     private Date modifyDt;
     private Date submitDt;
     private String refuseReason;
+    private String confirmNotificationRead;
+
+    public String getConfirmNotificationRead() {
+        return confirmNotificationRead;
+    }
+
+    public void setConfirmNotificationRead(String confirmNotificationRead) {
+        this.confirmNotificationRead = confirmNotificationRead;
+    }
 
     public String getRefuseReason() {
         return refuseReason;

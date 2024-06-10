@@ -54,11 +54,12 @@
         AND media_order = #{mediaOrder}
     </select>
 
-    <update id="judgeComplete" parameterType="com.adgomin.media.entity.MediaIntroduceEntity">
+    <update id="judgeComplete" parameterType="com.adgomin.media.entity.MediaRegisterEntity">
         UPDATE
             adgomin_media_register
         SET media_detail_explain = #{mediaDetailExplain}
           ,media_submit_status = #{mediaSubmitStatus}
+          ,confirm_notification_read = #{confirmNotificationRead}
         WHERE 1=1
           AND media_order = #{mediaOrder}
     </update>

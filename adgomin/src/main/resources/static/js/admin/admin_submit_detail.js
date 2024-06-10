@@ -42,6 +42,7 @@ judgeCompleteButton.addEventListener("click", () => {
     formData.append("email", email);
     formData.append("mediaDetailExplain", editorHtml);
     formData.append("mediaSubmitStatus", "Y");
+    formData.append("confirmNotificationRead", "N");
 
     xhr("/admin/judgeComplete", formData, "PATCH", "adminJudgeComplete");
 })
