@@ -46,6 +46,7 @@ const unReadCount = document.getElementById("unReadCount");
 const messageNotification = document.getElementById("messageNotification");
 
 const refuseCount = document.getElementById("refuseCount");
+const confirmUnReadCount = document.getElementById("confirmUnReadCount");
 const notification = document.getElementById("notification");
 
 const notificationRefuse = document.getElementById("notificationRefuse");
@@ -313,11 +314,11 @@ let notificationF = () => {
 }
 
 if(notification != null) {
-	if(refuseCount.value > 0) {
+	if(refuseCount.value > 0 || confirmUnReadCount.value > 0) {
 		let notification = document.getElementById("notification");
 
 		notification.style.visibility = "visible";
-	} else if(refuseCount.value == 0) {
+	} else if(refuseCount.value == 0 && confirmUnReadCount.value == 0) {
 		let notification = document.getElementById("notification");
 
 		notification.style.visibility = "hidden";

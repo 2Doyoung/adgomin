@@ -175,7 +175,17 @@
         LEFT JOIN adgomin_user T2 ON T1.email = T2.email
         WHERE 1=1
         AND T2.user_order = #{userOrder}
-        AND T1.media_submit_status = 'C';
+        AND T1.media_submit_status = 'C'
+    </select>
+
+    <select id="getConfirmUnReadCount" resultType="com.adgomin.media.vo.MediaRegisterVO">
+        SELECT
+            COUNT(*) AS cnt
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_user T2 ON T1.email = T2.email
+        WHERE 1=1
+        AND T2.user_order = #{userOrder}
+        AND T1.confirm_notification_read = 'N'
     </select>
 
     <select id="getRefuseMediaOrder" resultType="com.adgomin.media.entity.MediaRegisterEntity">
