@@ -36,6 +36,9 @@
         AND T2.ad_category LIKE CONCAT('%', #{adCategoryKo}, '%')
         AND (T2.region LIKE CONCAT('%', #{regionKo}, '%') OR T2.region = '전국')
         AND T1.media_submit_status = 'Y'
+        <if test="order == 'recent'">
+            ORDER BY submit_dt DESC
+        </if>
         LIMIT #{pageStart}, #{perPageNum}
     </select>
 </mapper>
