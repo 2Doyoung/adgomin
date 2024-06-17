@@ -31,5 +31,9 @@ public interface MediaMapper {
 
     MediaRegisterEntity getRefuseMediaOrder(@Param(value = "userOrder") int userOrder);
 
+    MediaRegisterEntity getConfirmMediaOrder(@Param(value = "userOrder") int userOrder);
+
     MediaRegisterEntity getRefuseReason(MediaRegisterEntity mediaRegisterEntity);
+
+    int mediaNotificationRead(MediaRegisterEntity mediaRegisterEntity);
 }

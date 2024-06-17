@@ -115,4 +115,8 @@ public class MediaService {
     public MediaRegisterEntity getRefuseReason(MediaRegisterEntity mediaRegisterEntity) {
         return this.mediaMapper.getRefuseReason(mediaRegisterEntity);
     }
+
+    public Enum<?> mediaNotificationRead(MediaRegisterEntity mediaRegisterEntity) {
+        return this.mediaMapper.mediaNotificationRead(mediaRegisterEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
 }

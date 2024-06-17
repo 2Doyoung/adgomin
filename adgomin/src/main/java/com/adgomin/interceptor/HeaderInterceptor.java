@@ -38,12 +38,17 @@ public class HeaderInterceptor implements HandlerInterceptor {
         MediaRegisterEntity mediaRegisterEntity = this.mediaMapper.getRefuseMediaOrder(userOrder);
 
         MediaRegisterVO mediaRegisterVO2 = this.mediaMapper.getConfirmUnReadCount(userOrder);
+        MediaRegisterEntity mediaRegisterEntity2 = this.mediaMapper.getConfirmMediaOrder(userOrder);
 
         request.setAttribute("unReadCount", chatMessageVO.getCount());
         request.setAttribute("refuseCount", mediaRegisterVO.getCnt());
         request.setAttribute("confirmUnReadCount", mediaRegisterVO2.getCnt());
         if(mediaRegisterVO.getCnt() > 0) {
             request.setAttribute("refuseMediaOrder", mediaRegisterEntity.getMediaOrder());
+        }
+
+        if(mediaRegisterVO2.getCnt() > 0) {
+            request.setAttribute("confirmMediaOrder", mediaRegisterEntity2.getMediaOrder());
         }
 
         return true;
@@ -62,10 +67,18 @@ public class HeaderInterceptor implements HandlerInterceptor {
         MediaRegisterVO mediaRegisterVO = this.mediaMapper.getRefuseCount(userOrder);
         MediaRegisterEntity mediaRegisterEntity = this.mediaMapper.getRefuseMediaOrder(userOrder);
 
+        MediaRegisterVO mediaRegisterVO2 = this.mediaMapper.getConfirmUnReadCount(userOrder);
+        MediaRegisterEntity mediaRegisterEntity2 = this.mediaMapper.getConfirmMediaOrder(userOrder);
+
         request.setAttribute("unReadCount", chatMessageVO.getCount());
         request.setAttribute("refuseCount", mediaRegisterVO.getCnt());
+        request.setAttribute("confirmUnReadCount", mediaRegisterVO2.getCnt());
         if(mediaRegisterVO.getCnt() > 0) {
             request.setAttribute("refuseMediaOrder", mediaRegisterEntity.getMediaOrder());
+        }
+
+        if(mediaRegisterVO2.getCnt() > 0) {
+            request.setAttribute("confirmMediaOrder", mediaRegisterEntity2.getMediaOrder());
         }
     }
 

@@ -198,6 +198,16 @@
         AND T1.media_submit_status = 'C';
     </select>
 
+    <select id="getConfirmMediaOrder" resultType="com.adgomin.media.entity.MediaRegisterEntity">
+        SELECT
+            T1.media_order AS mediaOrder
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_user T2 ON T1.email = T2.email
+        WHERE 1=1
+        AND T2.user_order = #{userOrder}
+        AND T1.confirm_notification_read = 'N'
+    </select>
+
     <select id="getRefuseReason" resultType="com.adgomin.media.entity.MediaRegisterEntity">
         SELECT
             refuse_reason AS refuseReason
@@ -206,4 +216,13 @@
         AND media_order = #{mediaOrder}
         AND refuse_order = (SELECT MAX(refuse_order) FROM adgomin_media_refuse_reason WHERE media_order = #{mediaOrder})
     </select>
+
+    <update id="mediaNotificationRead" parameterType="com.adgomin.media.entity.MediaRegisterEntity">
+        UPDATE
+            adgomin_media_register
+        SET confirm_notification_read = #{confirmNotficationRead}
+        ,modify_dt = now()
+        WHERE 1=1
+        AND media_order = #{mediaOrder}
+    </update>
 </mapper>

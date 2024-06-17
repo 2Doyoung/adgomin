@@ -666,7 +666,7 @@ header {
 	font-size: 0.95rem;
 }
 
-.notification-refuse-title {
+.notification-refuse-title, .notification-confirm-title {
 	display: flex;
 	align-items: center;
 	margin-bottom: 0.5rem;
@@ -677,17 +677,22 @@ header {
 	font-size: 1.05rem;
 }
 
-.notification-refuse-click {
+.notification-refuse-click, .notification-confirm-click {
 	font-size: 0.9rem;
 	color: #A4A4A4;
 }
 
-.notification-refuse-div {
+.notification-refuse-div, .notification-confirm-div {
 	padding: 0.5rem;
 	border-radius: 10px;
 	cursor: pointer;
 }
 
-.notification-refuse-div:hover {
+.notification-refuse-div:hover, .notification-confirm-div:hover {
 	background-color: #F2F2F2;
+}
+
+.ri-checkbox-circle-fill {
+	color: #81BEF7;
+	font-size: 1.05rem;
 }

@@ -50,6 +50,7 @@ const confirmUnReadCount = document.getElementById("confirmUnReadCount");
 const notification = document.getElementById("notification");
 
 const notificationRefuse = document.getElementById("notificationRefuse");
+const notificationConfirm = document.getElementById("notificationConfirm");
 
 /**
  * 이벤트 함수
@@ -274,6 +275,21 @@ if(adgominManage != null) {
 if(notificationRefuse != null) {
 	notificationRefuse.addEventListener("click", () => {
 		window.location.href = "/media?manage=mediaRegister"
+	})
+}
+
+if(notificationConfirm != null) {
+	notificationConfirm.addEventListener("click", () => {
+		let confirmMediaOrder = document.getElementById("confirmMediaOrder").value;
+
+		const formData = new FormData();
+
+		formData.append("mediaOrder", confirmMediaOrder);
+		formData.append("confirmNotificationRead", "Y");
+
+		xhrHeader("/login", formData, "POST", "postLogin");
+
+		window.location.href = "/post?mediaOrder=" + confirmMediaOrder;
 	})
 }
 /**

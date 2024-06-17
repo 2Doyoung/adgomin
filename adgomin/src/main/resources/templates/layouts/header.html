@@ -15,6 +15,7 @@
 <input type="hidden" th:value="${refuseMediaOrder}" id="refuseMediaOrder">
 
 <input type="hidden" th:value="${confirmUnReadCount}" id="confirmUnReadCount">
+<input type="hidden" th:value="${confirmMediaOrder}" id="confirmMediaOrder">
 	<header>
 		<div class="header">
 			<div class="header-logo">
@@ -51,8 +52,9 @@
 								<span class="notification-refuse-title">[광고매체 반려<i class="ri-error-warning-fill"></i>]</span>
 								<span class="notification-refuse-click">클릭해서 사유를 확인해주세요.</span>
 							</div>
-							<div th:if="${confirmUnReadCount > 0}">
-								광고 승인
+							<div th:if="${confirmUnReadCount > 0}" class="notification-confirm-div" id="notificationConfirm">
+								<span class="notification-confirm-title">[광고매체 승인<i class="ri-checkbox-circle-fill"></i>]</span>
+								<span class="notification-confirm-click">클릭해서 서비스를 확인해주세요.</span>
 							</div>
 							<div th:if="${refuseCount == 0 && confirmUnReadCount == 0}">알림 내역이 없습니다.</div>
 						</div>

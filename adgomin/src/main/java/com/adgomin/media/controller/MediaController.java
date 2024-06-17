@@ -178,4 +178,14 @@ public class MediaController {
 
         return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
     }
+
+    @PatchMapping("/media/notification/read")
+    @ResponseBody
+    public String mediaNotificationRead(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, MediaRegisterEntity mediaRegisterEntity) {
+        JSONObject responseObject = new JSONObject();
+        Enum<?> result = this.mediaService.mediaNotificationRead(mediaRegisterEntity);
+        responseObject.put("result", result.name().toLowerCase());
+
+        return responseObject.toString();
+    }
 }
