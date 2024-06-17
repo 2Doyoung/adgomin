@@ -34,9 +34,7 @@ for(let i = 0; i < mediaManageY.length; i++) {
 
 for(let i = 0; i < mediaManageC.length; i++) {
     mediaManageC[i].addEventListener("click", (e) => {
-        let mediaOrder = e.currentTarget.dataset.parent;
-
-        window.location.href = "/post?mediaOrder=" + mediaOrder;
+        window.location.href = "/media?manage=mediaRegister";
     })
 }
 
