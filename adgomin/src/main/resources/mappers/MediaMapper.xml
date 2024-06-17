@@ -220,7 +220,7 @@
     <update id="mediaNotificationRead" parameterType="com.adgomin.media.entity.MediaRegisterEntity">
         UPDATE
             adgomin_media_register
-        SET confirm_notification_read = #{confirmNotficationRead}
+        SET confirm_notification_read = #{confirmNotificationRead}
         ,modify_dt = now()
         WHERE 1=1
         AND media_order = #{mediaOrder}

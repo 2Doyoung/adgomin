@@ -287,7 +287,7 @@ if(notificationConfirm != null) {
 		formData.append("mediaOrder", confirmMediaOrder);
 		formData.append("confirmNotificationRead", "Y");
 
-		xhrHeader("/login", formData, "POST", "postLogin");
+		xhrHeader("/media/notification/read", formData, "PATCH", "mediaNotificationRead");
 
 		window.location.href = "/post?mediaOrder=" + confirmMediaOrder;
 	})
