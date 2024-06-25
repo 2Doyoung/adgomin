@@ -41,4 +41,36 @@
         </if>
         LIMIT #{pageStart}, #{perPageNum}
     </select>
+
+    <select id="searchCnt" resultType="com.adgomin.media.vo.MediaRegisterVO">
+        SELECT
+            COUNT(*) AS cnt
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adgomin_user T3 ON T1.email = T3.email
+        WHERE 1=1
+        AND T1.media_title LIKE CONCAT('%', #{keyword}, '%')
+        AND T1.media_submit_status = 'Y'
+    </select>
+
+    <select id="searchList" resultType="com.adgomin.media.vo.MediaRegisterVO">
+        SELECT
+            media_order AS mediaOrder
+            ,media_title AS mediaTitle
+            ,thumbnail_img_nm AS thumbnailImgNm
+            ,thumbnail_origin_file_nm AS thumbnailOriginFileNm
+            ,thumbnail_img_file_path AS thumbnailImgFilePath
+            ,media_price AS mediaPrice
+            ,ad_detail_category AS adDetailCategory
+            ,T3.nickname AS nickname
+            ,T2.region AS region
+            ,T2.ad_category AS adCategory
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_media_introduce T2 ON T1.email = T2.email
+        LEFT JOIN adgomin_user T3 ON T1.email = T3.email
+        WHERE 1=1
+        AND T1.media_title LIKE CONCAT('%', #{keyword}, '%')
+        AND T1.media_submit_status = 'Y'
+        LIMIT #{pageStart}, #{perPageNum}
+    </select>
 </mapper>

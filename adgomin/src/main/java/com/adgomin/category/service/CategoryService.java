@@ -30,4 +30,12 @@ public class CategoryService {
 
         return this.categoryMapper.categoryCnt(order, adDetailCategoryKo, adCategoryKo, regionKo);
     }
+
+    public MediaRegisterVO searchCnt(String keyword) {
+        return this.categoryMapper.searchCnt(keyword);
+    }
+
+    public MediaRegisterVO[] searchList(String keyword, int pageStart, int perPageNum) {
+        return this.categoryMapper.searchList(keyword, pageStart, perPageNum);
+    }
 }

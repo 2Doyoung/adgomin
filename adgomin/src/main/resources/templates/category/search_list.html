@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - 카테고리</title>
+    <link rel="stylesheet" th:href="@{/css/category/category_list.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/category/search_list.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let keyword = [[${keyword}]];
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<div class="category-wrap">
+    <div class="category-sub-wrap">
+        <div class="category-main">
+            <div class="category-list-wrap">
+                <div th:each="search : ${searchList}" class="category-card" th:data-parent="${search.mediaOrder}">
+                    <div class="category-thumbnail">
+                        <img class="category-thumbnail-img" th:src="@{/main/thumbnail/image (thumbnailImgNm=${search.thumbnailImgNm}, thumbnailImgFilePath =${search.thumbnailImgFilePath})}">
+                    </div>
+                    <div class="category-title" th:text="${search.mediaTitle}"></div>
+                    <div class="category-nickname" th:text="${search.nickname}"></div>
+                    <div class="category-price"><span th:text="${search.mediaPrice}"></span><span>원</span></div>
+                    <div class="review-star">
+                        <i class="ri-star-fill"></i>
+                        <div class="review-count">5.0(123)</div>
+                    </div>
+                    <div class="category-card-hover">
+                        <div class="card-hover-info">
+                            <div><span><i class="ri-advertisement-line"> </i></span><span th:text="${search.adDetailCategory}"></span></div>
+                            <div><span><i class="ri-list-check"></i> </i></span><span th:text="${search.adCategory}"></span></div>
+                            <div><span><i class="ri-broadcast-fill"></i> </span><span th:text="${search.region}"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="div-paging">
+                    <span th:if="${paging.totalCount > 0}">
+                        <span th:if="${paging.cri.page > 1}"><a th:href="@{/search(keyword=${keyword}, page=${paging.cri.page - 1})}">이전페이지</a></span>
+                        <span th:each="num : ${#numbers.sequence((paging.startPage), (paging.endPage))}" th:class="${num == paging.cri.page} ? 'current-page' : ''"><a th:text="${num}" th:href="@{/search(keyword=${keyword}, page=${num})}"></a></span>
+                        <span th:if="${paging.cri.page < 1.0 * paging.totalCount / paging.cri.perPageNum}"><a th:href="@{/search(keyword=${keyword}, page=${paging.cri.page + 1})}">다음페이지</a></span>
+                    </span>
+                    <span th:unless="${paging.totalCount > 0}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

@@ -696,3 +696,7 @@ header {
 	color: #81BEF7;
 	font-size: 1.05rem;
 }
+
+.header-search-icon {
+	cursor: pointer;
+}

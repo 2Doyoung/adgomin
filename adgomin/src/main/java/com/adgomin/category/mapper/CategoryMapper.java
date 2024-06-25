@@ -13,4 +13,8 @@ public interface CategoryMapper {
     MediaRegisterVO categoryCnt(@Param(value = "order") String order, @Param(value = "adDetailCategoryKo") String adDetailCategoryKo
             ,@Param(value = "adCategoryKo") String adCategoryKo, @Param(value = "regionKo") String regionKo
     );
+
+    MediaRegisterVO searchCnt(@Param(value = "keyword") String keyword);
+
+    MediaRegisterVO[] searchList(@Param(value = "keyword") String keyword, @Param(value = "pageStart") int pageStart, @Param(value = "perPageNum") int perPageNum);
 }

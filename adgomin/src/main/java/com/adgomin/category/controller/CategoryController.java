@@ -156,4 +156,32 @@ public class CategoryController {
 
         return  modelAndView;
     }
+
+    @GetMapping(value = "/search")
+    public ModelAndView search(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "page", required = false) int page) {
+        ModelAndView modelAndView = new ModelAndView("category/search_list");
+
+        MediaRegisterVO searchCnt = this.categoryService.searchCnt(keyword);
+
+        int cnt = searchCnt.getCnt();
+        CategoryCriteria cri = new CategoryCriteria();
+        cri.setPage(page);
+
+        CategoryPaging paging = new CategoryPaging();
+        paging.setCri(cri);
+        paging.setTotalCount(cnt);
+
+        int pageStart = cri.getPageStart();
+        int perPageNum = cri.getPerPageNum();
+
+        MediaRegisterVO[] searchList = this.categoryService.searchList(keyword, pageStart, perPageNum);
+
+        modelAndView.addObject("searchList", searchList);
+
+        modelAndView.addObject("paging", paging);
+
+        modelAndView.addObject("keyword", keyword);
+
+        return  modelAndView;
+    }
 }

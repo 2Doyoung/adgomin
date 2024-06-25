@@ -52,6 +52,9 @@ const notification = document.getElementById("notification");
 const notificationRefuse = document.getElementById("notificationRefuse");
 const notificationConfirm = document.getElementById("notificationConfirm");
 
+const headerSearch = document.getElementById("headerSearch");
+const headerSearchIcon = document.getElementById("headerSearchIcon");
+
 /**
  * 이벤트 함수
  */
@@ -290,6 +293,24 @@ if(notificationConfirm != null) {
 		xhrHeader("/media/notification/read", formData, "PATCH", "mediaNotificationRead");
 
 		window.location.href = "/post?mediaOrder=" + confirmMediaOrder;
+	})
+}
+
+if(headerSearch != null) {
+	headerSearch.addEventListener("keyup", (e) => {
+		let keyword = headerSearch.value;
+
+		if(e.keyCode == 13) {
+			window.location.href = "/search?keyword=" + keyword + "&page=1";
+		}
+	})
+}
+
+if(headerSearchIcon != null) {
+	headerSearchIcon.addEventListener("click", () => {
+		let keyword = headerSearch.value;
+
+		window.location.href = "/search?keyword=" + keyword + "&page=1";
 	})
 }
 /**
