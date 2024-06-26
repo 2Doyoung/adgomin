@@ -3,6 +3,8 @@ package com.adgomin.category.controller;
 import com.adgomin.category.service.CategoryService;
 import com.adgomin.common.CategoryCriteria;
 import com.adgomin.common.CategoryPaging;
+import com.adgomin.common.SearchCriteria;
+import com.adgomin.common.SearchPaging;
 import com.adgomin.media.vo.MediaRegisterVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -164,10 +166,10 @@ public class CategoryController {
         MediaRegisterVO searchCnt = this.categoryService.searchCnt(keyword);
 
         int cnt = searchCnt.getCnt();
-        CategoryCriteria cri = new CategoryCriteria();
+        SearchCriteria cri = new SearchCriteria();
         cri.setPage(page);
 
-        CategoryPaging paging = new CategoryPaging();
+        SearchPaging paging = new SearchPaging();
         paging.setCri(cri);
         paging.setTotalCount(cnt);
 
