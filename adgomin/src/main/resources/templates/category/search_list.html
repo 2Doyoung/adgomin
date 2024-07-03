@@ -20,11 +20,11 @@
 <div class="category-wrap">
     <div class="search-keyword-div">
         <span class="search-keyword-input">검색어</span>
-        <span th:text="${keyword}"></span>
+        <span th:text="${keyword}" class="search-keyword"></span>
     </div>
     <div class="category-sub-wrap">
         <div class="category-main">
-            <div class="category-list-wrap">
+            <div th:if="${searchCnt.cnt > 0}" class="category-list-wrap">
                 <div th:each="search : ${searchList}" class="category-card" th:data-parent="${search.mediaOrder}">
                     <div class="category-thumbnail">
                         <img class="category-thumbnail-img" th:src="@{/main/thumbnail/image (thumbnailImgNm=${search.thumbnailImgNm}, thumbnailImgFilePath =${search.thumbnailImgFilePath})}">
@@ -44,6 +44,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div th:if="${searchCnt.cnt == 0}" class="no-search-div">
+                '<span th:text="${keyword}"></span>'
+                <span>광고매체 검색 결과가 없습니다.</span>
             </div>
             <div>
                 <div class="div-paging">

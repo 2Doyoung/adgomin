@@ -20,7 +20,7 @@ body {
 }
 
 .category-sub-wrap {
-    height: 69rem;
+    height: auto;
     display: flex;
 }
 
@@ -31,7 +31,7 @@ body {
 
 .category-main {
     width: 75rem;
-    height: 50rem;
+    margin-bottom: 2rem;
 }
 
 .category-menu > ul {
@@ -455,4 +455,21 @@ body {
 
 .search-keyword-input {
     color: #848484;
+}
+
+.search-keyword {
+    color: #424242;
+    font-size: 1.1rem;
+    margin-left: 1rem;
+    font-weight: 500;
+}
+
+.no-search-div {
+    display: flex;
+    height: 15rem;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #A4A4A4;
 }

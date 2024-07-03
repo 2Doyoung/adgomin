@@ -179,6 +179,7 @@ public class CategoryController {
         MediaRegisterVO[] searchList = this.categoryService.searchList(keyword, pageStart, perPageNum);
 
         modelAndView.addObject("searchList", searchList);
+        modelAndView.addObject("searchCnt", searchCnt);
 
         modelAndView.addObject("paging", paging);
 
