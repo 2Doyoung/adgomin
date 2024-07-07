@@ -301,7 +301,7 @@ if(headerSearch != null) {
 		let keyword = headerSearch.value;
 
 		if(e.keyCode == 13) {
-			window.location.href = "/search?keyword=" + keyword + "&page=1";
+			window.location.href = "/search?order=recommend&keyword=" + keyword + "&page=1";
 		}
 	})
 }
@@ -310,7 +310,7 @@ if(headerSearchIcon != null) {
 	headerSearchIcon.addEventListener("click", () => {
 		let keyword = headerSearch.value;
 
-		window.location.href = "/search?keyword=" + keyword + "&page=1";
+		window.location.href = "/search?order=recommend&keyword=" + keyword + "&page=1";
 	})
 }
 /**

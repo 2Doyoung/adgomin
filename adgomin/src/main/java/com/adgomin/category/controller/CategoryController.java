@@ -160,7 +160,23 @@ public class CategoryController {
     }
 
     @GetMapping(value = "/search")
-    public ModelAndView search(@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "page", required = false) int page) {
+    public ModelAndView search(@RequestParam(value = "order", required = false) String order, @RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value = "page", required = false) int page) {
+        String orderKo = "";
+
+        if("".equals(order)) {
+            orderKo = "추천순";
+        } else if("recommend".equals(order)) {
+            orderKo = "추천순";
+        } else if("popular".equals(order)) {
+            orderKo = "인기순";
+        } else if("rating".equals(order)) {
+            orderKo = "평점순";
+        } else if("recent".equals(order)) {
+            orderKo = "최신순";
+        } else {
+            orderKo = "추천순";
+        }
+
         ModelAndView modelAndView = new ModelAndView("category/search_list");
 
         MediaRegisterVO searchCnt = this.categoryService.searchCnt(keyword);
@@ -177,6 +193,8 @@ public class CategoryController {
         int perPageNum = cri.getPerPageNum();
 
         MediaRegisterVO[] searchList = this.categoryService.searchList(keyword, pageStart, perPageNum);
+
+        modelAndView.addObject("orderKo", orderKo);
 
         modelAndView.addObject("searchList", searchList);
         modelAndView.addObject("searchCnt", searchCnt);

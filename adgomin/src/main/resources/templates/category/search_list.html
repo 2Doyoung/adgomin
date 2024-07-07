@@ -15,12 +15,24 @@
 <body>
 <script th:inline="javascript">
     let keyword = [[${keyword}]];
+    let order = [[${order}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <div class="category-wrap">
     <div class="search-keyword-div">
         <span class="search-keyword-input">검색어</span>
         <span th:text="${keyword}" class="search-keyword"></span>
+    </div>
+    <div class="search-div">
+        <div class="order-option" id="orderOption"><span th:text="${orderKo}"></span><span class="arrow-icon arrow-icon-down-order"></span></div>
+        <div class="order-options order-options-hidden">
+            <div>
+                <label class="order-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill order-checkbox" data-parent="recommend"></i></div> 추천순</label>
+                <label class="order-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill order-checkbox" data-parent="popular"></i></div> 인기순</label>
+                <label class="order-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill order-checkbox" data-parent="rating"></i></div> 평점순</label>
+                <label class="order-checkbox-line"><div class="checkbox-div"><i class="ri-checkbox-circle-fill order-checkbox" data-parent="recent"></i></div> 최신순</label>
+            </div>
+        </div>
     </div>
     <div class="category-sub-wrap">
         <div class="category-main">
