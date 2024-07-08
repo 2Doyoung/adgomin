@@ -199,6 +199,8 @@ public class CategoryController {
         modelAndView.addObject("searchList", searchList);
         modelAndView.addObject("searchCnt", searchCnt);
 
+        modelAndView.addObject("order", order);
+
         modelAndView.addObject("paging", paging);
 
         modelAndView.addObject("keyword", keyword);
