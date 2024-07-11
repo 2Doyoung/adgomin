@@ -300,7 +300,7 @@ if(headerSearch != null) {
 	headerSearch.addEventListener("keyup", (e) => {
 		let keyword = headerSearch.value;
 
-		if(e.keyCode == 13) {
+		if(e.keyCode == 13 && keyword != "") {
 			window.location.href = "/search?order=recommend&keyword=" + keyword + "&page=1";
 		}
 	})
@@ -309,8 +309,25 @@ if(headerSearch != null) {
 if(headerSearchIcon != null) {
 	headerSearchIcon.addEventListener("click", () => {
 		let keyword = headerSearch.value;
+		if(keyword != "") {
+			window.location.href = "/search?order=recommend&keyword=" + keyword + "&page=1";
+		}
+	})
+}
 
-		window.location.href = "/search?order=recommend&keyword=" + keyword + "&page=1";
+if(headerSearch != null) {
+	headerSearch.addEventListener("focus", () => {
+		let headerSearchDiv = document.getElementById("headerSearchDiv");
+
+		headerSearchDiv.style.border = "2px solid #2E9AFE";
+	})
+}
+
+if(headerSearch != null) {
+	headerSearch.addEventListener("blur", () => {
+		let headerSearchDiv = document.getElementById("headerSearchDiv");
+
+		headerSearchDiv.style.border = "";
 	})
 }
 /**
