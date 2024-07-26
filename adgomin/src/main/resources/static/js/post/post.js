@@ -26,6 +26,9 @@ const conversationCloseBtn = document.getElementById("conversationCloseBtn");
 const conversationModalButton = document.getElementById("conversationModalButton");
 const conversationTextarea = document.getElementById("conversationTextarea");
 
+const purchaseLogin = document.getElementById("purchaseLogin");
+const mediaUpdate = document.getElementById("mediaUpdate");
+
 /**
  * 이벤트 함수
  */
@@ -142,6 +145,19 @@ if(conversationModalButton != null) {
         }
     })
 
+}
+
+if(purchaseLogin != null) {
+    purchaseLogin.addEventListener("click", () => {
+        loginCover.style.display = "flex";
+        document.getElementById("loginBoxEmail").focus();
+    })
+}
+
+if(mediaUpdate != null) {
+    mediaUpdate.addEventListener("click", () => {
+        window.location.href = "/manage/media/update?mediaOrder=" + mediaOrder;
+    })
 }
 
 /**

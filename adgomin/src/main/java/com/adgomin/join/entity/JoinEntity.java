@@ -20,6 +20,25 @@ public class JoinEntity {
     private String profileOriginFileNm;
     private String profileImgFilePath;
 
+    private String phoneNumber;
+    private String phoneNumberYn;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getPhoneNumberYn() {
+        return phoneNumberYn;
+    }
+
+    public void setPhoneNumberYn(String phoneNumberYn) {
+        this.phoneNumberYn = phoneNumberYn;
+    }
+
     public int getUserOrder() {
         return userOrder;
     }
