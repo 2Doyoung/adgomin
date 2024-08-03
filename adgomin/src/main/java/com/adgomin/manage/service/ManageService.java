@@ -50,7 +50,7 @@ public class ManageService {
 
     public Enum<?> manageMediaChangeThumbnail(MultipartFile thumbnail, MediaRegisterEntity mediaRegisterEntity) {
         JoinEntity userOrder = this.joinMapper.userOrder(mediaRegisterEntity.getEmail());
-        String path = "../thumbnail/" + userOrder.getUserOrder();
+        String path = "/home/ec2-user/thumbnail/" + userOrder.getUserOrder();
 
         String originalFilename = thumbnail.getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
@@ -113,7 +113,7 @@ public class ManageService {
 
     public Enum<?> managePortfolioChangeThumbnail(MultipartFile thumbnail, PortfolioEntity portfolioEntity) {
         JoinEntity userOrder = this.joinMapper.userOrder(portfolioEntity.getEmail());
-        String path = "../portfolio/thumbnail/" + userOrder.getUserOrder();
+        String path = "/home/ec2-user/portfolio/thumbnail/" + userOrder.getUserOrder();
 
         String originalFilename = thumbnail.getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
@@ -157,7 +157,7 @@ public class ManageService {
         if(detailImgArr != null) {
             JoinEntity userOrder = this.joinMapper.userOrder(portfolioImgEntity.getEmail());
             for(int i = 0; i < detailImgArr.length; i++) {
-                String path = "../portfolio/details/" + userOrder.getUserOrder();
+                String path = "/home/ec2-user/portfolio/details/" + userOrder.getUserOrder();
 
                 String originalFilename = detailImgArr[i].getOriginalFilename();
                 String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);

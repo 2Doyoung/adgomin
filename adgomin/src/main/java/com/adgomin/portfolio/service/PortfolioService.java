@@ -35,7 +35,7 @@ public class PortfolioService {
 
     public Enum<?> portfolioChangeThumbnail(MultipartFile thumbnail, PortfolioEntity portfolioEntity) {
         JoinEntity userOrder = this.joinMapper.userOrder(portfolioEntity.getEmail());
-        String path = "../portfolio/thumbnail/" + userOrder.getUserOrder();
+        String path = "/home/ec2-user/portfolio/thumbnail/" + userOrder.getUserOrder();
 
         String originalFilename = thumbnail.getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
@@ -64,7 +64,7 @@ public class PortfolioService {
         int result = 1;
         JoinEntity userOrder = this.joinMapper.userOrder(portfolioImgEntity.getEmail());
         for(int i = 0; i < detailImgArr.length; i++) {
-            String path = "../portfolio/details/" + userOrder.getUserOrder();
+            String path = "/home/ec2-user/portfolio/details/" + userOrder.getUserOrder();
 
             String originalFilename = detailImgArr[i].getOriginalFilename();
             String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);

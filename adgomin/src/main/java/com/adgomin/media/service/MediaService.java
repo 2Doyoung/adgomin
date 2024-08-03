@@ -59,7 +59,7 @@ public class MediaService {
 
     public Enum<?> changeThumbnail(MultipartFile thumbnail, MediaRegisterEntity mediaRegisterEntity) {
         JoinEntity userOrder = this.joinMapper.userOrder(mediaRegisterEntity.getEmail());
-        String path = "../thumbnail/" + userOrder.getUserOrder();
+        String path = "/home/ec2-user/thumbnail/" + userOrder.getUserOrder();
 
         String originalFilename = thumbnail.getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
@@ -86,7 +86,7 @@ public class MediaService {
 
     public String mediaDetailExplanationImage(String email, MultipartFile mediaDetailExplanationImage) {
         JoinEntity userOrder = this.joinMapper.userOrder(email);
-        String path = "../explanationImage/" + userOrder.getUserOrder();
+        String path = "/home/ec2-user/explanationImage/" + userOrder.getUserOrder();
 
         String originalFilename = mediaDetailExplanationImage.getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);

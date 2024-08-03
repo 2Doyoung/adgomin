@@ -33,7 +33,7 @@ public class UserService {
 
     public Enum<?> changeProfileImg(JoinVO joinVO, MultipartFile profileFile) {
         JoinEntity userOrder = this.joinMapper.userOrder(joinVO.getEmail());
-        String path = "../profile/" + userOrder.getUserOrder();
+        String path = "/home/ec2-user/profile/" + userOrder.getUserOrder();
 
         String originalFilename = profileFile.getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf(".") + 1);
