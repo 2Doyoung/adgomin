@@ -1,6 +1,7 @@
 /**
  * 전역변수
  */
+//const socket = new SockJS('https://www.adgomin.com/chat');
 const socket = new SockJS('/chat');
 const stompClient = Stomp.over(socket);
 
@@ -80,8 +81,7 @@ if(myPostThumbnail != null) {
     myPostThumbnail.addEventListener("click", (e) => {
         let mediaOrder = e.currentTarget.dataset.parent;
 
-        // window.open("http://localhost/post?mediaOrder=" + mediaOrder);
-        window.open("https://www.adgomin.com/post?mediaOrder=" + mediaOrder);
+        window.open(appUrl + "/post?mediaOrder=" + mediaOrder);
     })
 }
 
@@ -89,8 +89,7 @@ if(partnerPostThumbnail != null) {
     partnerPostThumbnail.addEventListener("click", (e) => {
         let mediaOrder = e.currentTarget.dataset.parent;
 
-        // window.open("http://localhost/post?mediaOrder=" + mediaOrder);
-        window.open("https://www.adgomin.com/post?mediaOrder=" + mediaOrder);
+        window.open(appUrl + "/post?mediaOrder=" + mediaOrder);
     })
 }
 

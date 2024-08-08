@@ -13,6 +13,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
 </head>
 <body>
+<script th:inline="javascript">
+    let appUrl = /*[[${@environment.getProperty('app.url')}]]*/ 'default';
+</script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <input type="hidden" th:value="${chatRoomOrder}" id="chatRoomOrder">
 <input type="hidden" th:value="${userOrder}" id="userOrder">

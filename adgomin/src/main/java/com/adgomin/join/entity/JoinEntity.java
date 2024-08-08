@@ -23,6 +23,16 @@ public class JoinEntity {
     private String phoneNumber;
     private String phoneNumberYn;
 
+    private String mediaDetailExplain;
+
+    public String getMediaDetailExplain() {
+        return mediaDetailExplain;
+    }
+
+    public void setMediaDetailExplain(String mediaDetailExplain) {
+        this.mediaDetailExplain = mediaDetailExplain;
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }

@@ -462,7 +462,7 @@ body {
 .password-change {
     border: 1px solid;
     border-radius: 0.5rem;
-    width: 27.7rem;
+    width: 28.7rem;
     height: 2.5rem;
     margin-left: 4rem;
     font-size: 1.5rem;
@@ -473,7 +473,7 @@ body {
 .password-change-button {
     background-color: #81BEF7;
     border: 1px solid #81BEF7;
-    width: 29rem;
+    width: 30rem;
     height: 3rem;
     font-size: 1.3rem;
     color: #FFFFFF;
@@ -503,7 +503,7 @@ body {
 .password-change-check {
     border: 1px solid;
     border-radius: 0.5rem;
-    width: 27.7rem;
+    width: 28.7rem;
     height: 2.5rem;
     margin-left: 4rem;
     font-size: 1.5rem;

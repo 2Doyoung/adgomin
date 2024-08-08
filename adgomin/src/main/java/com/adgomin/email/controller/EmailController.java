@@ -3,6 +3,7 @@ package com.adgomin.email.controller;
 import com.adgomin.email.service.EmailService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -16,6 +17,9 @@ import java.nio.charset.StandardCharsets;
 
 @Controller(value = "com.adgomin.email.controller.EmailController")
 public class EmailController {
+
+    @Value("${app.url}")
+    private String appUrl;
 
     private final EmailService emailService;
 
@@ -31,9 +35,9 @@ public class EmailController {
             byte[] fileBytes = FileCopyUtils.copyToByteArray(resource.getInputStream());
             String htmlContent = new String(fileBytes, StandardCharsets.UTF_8);
 
-            // Replace placeholders with actual values
             htmlContent = htmlContent.replace("{email}", email);
             htmlContent = htmlContent.replace("{certified}", certified);
+            htmlContent = htmlContent.replace("{appUrl}", appUrl);
 
             emailContent.append(htmlContent);
         } catch (IOException ioException) {
@@ -58,9 +62,9 @@ public class EmailController {
             byte[] fileBytes = FileCopyUtils.copyToByteArray(resource.getInputStream());
             String htmlContent = new String(fileBytes, StandardCharsets.UTF_8);
 
-            // Replace placeholders with actual values
             htmlContent = htmlContent.replace("{email}", email);
             htmlContent = htmlContent.replace("{certified}", certified);
+            htmlContent = htmlContent.replace("{appUrl}", appUrl);
 
             emailContent.append(htmlContent);
         } catch (IOException ioException) {
@@ -85,9 +89,9 @@ public class EmailController {
             byte[] fileBytes = FileCopyUtils.copyToByteArray(resource.getInputStream());
             String htmlContent = new String(fileBytes, StandardCharsets.UTF_8);
 
-            // Replace placeholders with actual values
             htmlContent = htmlContent.replace("{email}", email);
             htmlContent = htmlContent.replace("{certified}", certified);
+            htmlContent = htmlContent.replace("{appUrl}", appUrl);
 
             emailContent.append(htmlContent);
         } catch (IOException ioException) {

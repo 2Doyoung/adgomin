@@ -13,20 +13,20 @@ let snsCurrentIndex = 0;
 const transportSlider = document.getElementById('transportSlider');
 const transportPrevButton = document.getElementById('transportPrevButton');
 const transportNextButton = document.getElementById('transportNextButton');
-const transportSlide = transportSlider.querySelector('.popular-transport-card');
-const transportSlideStyles = getComputedStyle(transportSlide);
-const transportSlideWidth = transportSlide.offsetWidth + parseFloat(transportSlideStyles.marginLeft) + parseFloat(transportSlideStyles.marginRight);
-const transportSlidesToShow = Math.floor(transportSlider.offsetWidth / transportSlideWidth);
-let transportCurrentIndex = 0;
+// const transportSlide = transportSlider.querySelector('.popular-transport-card');
+// const transportSlideStyles = getComputedStyle(transportSlide);
+// const transportSlideWidth = transportSlide.offsetWidth + parseFloat(transportSlideStyles.marginLeft) + parseFloat(transportSlideStyles.marginRight);
+// const transportSlidesToShow = Math.floor(transportSlider.offsetWidth / transportSlideWidth);
+// let transportCurrentIndex = 0;
 
 const outdoorSlider = document.getElementById('outdoorSlider');
 const outdoorPrevButton = document.getElementById('outdoorPrevButton');
 const outdoorNextButton = document.getElementById('outdoorNextButton');
-const outdoorSlide = outdoorSlider.querySelector('.popular-outdoor-card');
-const outdoorSlideStyles = getComputedStyle(outdoorSlide);
-const outdoorSlideWidth = outdoorSlide.offsetWidth + parseFloat(outdoorSlideStyles.marginLeft) + parseFloat(outdoorSlideStyles.marginRight);
-const outdoorSlidesToShow = Math.floor(outdoorSlider.offsetWidth / outdoorSlideWidth);
-let outdoorCurrentIndex = 0;
+// const outdoorSlide = outdoorSlider.querySelector('.popular-outdoor-card');
+// const outdoorSlideStyles = getComputedStyle(outdoorSlide);
+// const outdoorSlideWidth = outdoorSlide.offsetWidth + parseFloat(outdoorSlideStyles.marginLeft) + parseFloat(outdoorSlideStyles.marginRight);
+// const outdoorSlidesToShow = Math.floor(outdoorSlider.offsetWidth / outdoorSlideWidth);
+// let outdoorCurrentIndex = 0;
 
 const popularSnsCard = document.getElementsByClassName("popular-sns-card");
 const popularTransportCard = document.getElementsByClassName("popular-transport-card");
@@ -52,33 +52,33 @@ snsPrevButton.addEventListener('click', () => {
     }
 });
 
-transportNextButton.addEventListener('click', () => {
-    if (transportCurrentIndex < transportSlider.children.length - transportSlidesToShow) {
-        transportCurrentIndex++;
-        transportUpdateSlider();
-    }
-});
-
-transportPrevButton.addEventListener('click', () => {
-    if (transportCurrentIndex > 0) {
-        transportCurrentIndex--;
-        transportUpdateSlider();
-    }
-});
-
-outdoorNextButton.addEventListener('click', () => {
-    if (outdoorCurrentIndex < outdoorSlider.children.length - outdoorSlidesToShow) {
-        outdoorCurrentIndex++;
-        outdoorUpdateSlider();
-    }
-});
-
-outdoorPrevButton.addEventListener('click', () => {
-    if (outdoorCurrentIndex > 0) {
-        outdoorCurrentIndex--;
-        outdoorUpdateSlider();
-    }
-});
+// transportNextButton.addEventListener('click', () => {
+//     if (transportCurrentIndex < transportSlider.children.length - transportSlidesToShow) {
+//         transportCurrentIndex++;
+//         transportUpdateSlider();
+//     }
+// });
+//
+// transportPrevButton.addEventListener('click', () => {
+//     if (transportCurrentIndex > 0) {
+//         transportCurrentIndex--;
+//         transportUpdateSlider();
+//     }
+// });
+//
+// outdoorNextButton.addEventListener('click', () => {
+//     if (outdoorCurrentIndex < outdoorSlider.children.length - outdoorSlidesToShow) {
+//         outdoorCurrentIndex++;
+//         outdoorUpdateSlider();
+//     }
+// });
+//
+// outdoorPrevButton.addEventListener('click', () => {
+//     if (outdoorCurrentIndex > 0) {
+//         outdoorCurrentIndex--;
+//         outdoorUpdateSlider();
+//     }
+// });
 
 
 for(let i = 0; i < popularSnsCard.length; i++) {

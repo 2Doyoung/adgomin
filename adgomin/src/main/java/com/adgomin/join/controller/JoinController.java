@@ -5,6 +5,7 @@ import com.adgomin.join.service.JoinService;
 import com.adgomin.media.service.MediaService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpSession;
 
 @Controller(value = "com.adgomin.join.controller.JoinController")
 public class JoinController {
+    @Value("${app.url}")
+    private String appUrl;
     private final JoinService joinService;
     private final MediaService mediaService;
 
@@ -85,13 +88,11 @@ public class JoinController {
         JSONObject responseObject = new JSONObject();
         Enum<?> result = this.joinService.certifiedCheck(email, certified, request);
         if("failure".equals(result.name().toLowerCase())) {
-//            return "redirect:http://localhost/error";
-            return "redirect:https://www.adgomin.com/error";
+            return "redirect:" + appUrl + "/error";
         }
         responseObject.put("result", result.name().toLowerCase());
 
-//        return "redirect:http://localhost";
-        return "redirect:https://www.adgomin.com";
+        return "redirect:" + appUrl;
     }
 
     @GetMapping(value = "/join/email")
@@ -123,8 +124,7 @@ public class JoinController {
         cookie2.setPath("/");
         response.addCookie(cookie2);
 
-//        return "redirect:http://localhost";
-        return "redirect:https://www.adgomin.com";
+        return "redirect:" + appUrl;
     }
 
     @GetMapping(value = "/passwordEmail")

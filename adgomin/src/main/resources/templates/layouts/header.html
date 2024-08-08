@@ -16,6 +16,8 @@
 
 <input type="hidden" th:value="${confirmUnReadCount}" id="confirmUnReadCount">
 <input type="hidden" th:value="${confirmMediaOrder}" id="confirmMediaOrder">
+
+<input type="hidden" th:if="${session.LOGIN_USER != null}" th:value="${session.LOGIN_USER.userType}" id="userType">
 	<header>
 		<div class="header">
 			<div class="header-logo">
@@ -59,6 +61,9 @@
 							<div th:if="${refuseCount == 0 && confirmUnReadCount == 0}">알림 내역이 없습니다.</div>
 						</div>
 					</div>
+				</div>
+				<div class="header-business-manage">
+					거래 관리
 				</div>
 				<div class="header-mypage dropdown">
 					프로필

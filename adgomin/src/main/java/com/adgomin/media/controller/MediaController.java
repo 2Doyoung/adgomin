@@ -8,6 +8,7 @@ import com.adgomin.media.service.MediaService;
 import com.adgomin.user.service.UserService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -126,28 +127,29 @@ public class MediaController {
     @GetMapping("/thumbnail/image")
     public ResponseEntity<Resource> thumbnailImage(@RequestParam(value = "email") String email) {
         MediaRegisterEntity mediaRegisterEntity = this.mediaService.thumbnailImage(email);
-        String filePath = null;
+        Resource resource = null;
 
-        if(mediaRegisterEntity != null) {
-            filePath = mediaRegisterEntity.getThumbnailImgFilePath() + "/" + mediaRegisterEntity.getThumbnailImgNm();
-        } else if(mediaRegisterEntity == null) {
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource("static/images/media-register-thumbnail.png").getFile());
-            filePath = file.getAbsolutePath();
+        if (mediaRegisterEntity != null) {
+            String filePath = mediaRegisterEntity.getThumbnailImgFilePath() + "/" + mediaRegisterEntity.getThumbnailImgNm();
+            resource = new FileSystemResource(filePath);
+        } else {
+            resource = new ClassPathResource("static/images/media-register-thumbnail.png");
         }
 
-        Resource resource = new FileSystemResource(filePath);
-
-        HttpHeaders header = new HttpHeaders();
-        Path path = null;
+        HttpHeaders headers = new HttpHeaders();
         try {
-            path = Paths.get(filePath);
-            header.add("Content-type", Files.probeContentType(path));
+            if (resource.exists()) {
+                Path path = Paths.get(resource.getURI());
+                headers.add(HttpHeaders.CONTENT_TYPE, Files.probeContentType(path));
+            } else {
+                headers.add(HttpHeaders.CONTENT_TYPE, "image/png");
+            }
         } catch (IOException e) {
             e.printStackTrace();
+            headers.add(HttpHeaders.CONTENT_TYPE, "image/png");
         }
 
-        return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
+        return new ResponseEntity<>(resource, headers, HttpStatus.OK);
     }
 
     @PostMapping("/media/detail/explanation/image")

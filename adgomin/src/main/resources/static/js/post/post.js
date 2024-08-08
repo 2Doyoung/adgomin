@@ -33,13 +33,11 @@ const mediaUpdate = document.getElementById("mediaUpdate");
  * 이벤트 함수
  */
 nickname.addEventListener("click", () => {
-    // window.open("http://localhost/introduce/" + userOrder.value);
-    window.open("https://www.adgomin.com/introduce/" + userOrder.value);
+    window.open(appUrl + "/introduce/" + userOrder.value);
 })
 
 introduceAllPage.addEventListener("click", () => {
-    // window.open("http://localhost/introduce/" + userOrder.value);
-    window.open("https://www.adgomin.com/introduce/" + userOrder.value);
+    window.open(appUrl + "/introduce/" + userOrder.value);
 })
 
 tabs.forEach(tab => {

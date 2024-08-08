@@ -23,6 +23,8 @@
     let mediaPrice = [[${mediaPrice}]];
     let thumbnailImgNm = [[${thumbnailImgNm}]];
     let thumbnailImgFilePath = [[${thumbnailImgFilePath}]];
+
+    let appUrl = /*[[${@environment.getProperty('app.url')}]]*/ 'default';
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
 <input type="hidden" id="userOrder" th:value="${userOrder}">
