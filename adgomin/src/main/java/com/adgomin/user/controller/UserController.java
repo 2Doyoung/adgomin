@@ -4,6 +4,7 @@ import com.adgomin.join.vo.JoinVO;
 import com.adgomin.user.service.UserService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -64,27 +65,28 @@ public class UserController {
     public ResponseEntity<Resource> profileImage(@PathVariable("userOrder") int userOrder) {
         JoinVO joinVO = this.userService.profileImage(userOrder);
         String filePath = null;
+        Resource resource = null;
 
-        if(joinVO != null) {
+        if (joinVO != null) {
             filePath = joinVO.getProfileImgFilePath() + "/" + joinVO.getProfileImgNm();
-        } else if(joinVO == null) {
-            ClassLoader classLoader = getClass().getClassLoader();
-            File file = new File(classLoader.getResource("static/images/profile.png").getFile());
-            filePath = file.getAbsolutePath();
+            resource = new FileSystemResource(filePath);
+        } else {
+            resource = new ClassPathResource("static/images/profile.png");
         }
 
-        Resource resource = new FileSystemResource(filePath);
-
         HttpHeaders header = new HttpHeaders();
-        Path path = null;
         try {
-            path = Paths.get(filePath);
-            header.add("Content-type", Files.probeContentType(path));
+            if (joinVO != null) {
+                Path path = Paths.get(filePath);
+                header.add("Content-type", Files.probeContentType(path));
+            } else {
+                header.add("Content-type", "image/png");
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return new ResponseEntity<Resource>(resource, header, HttpStatus.OK);
+        return new ResponseEntity<>(resource, header, HttpStatus.OK);
     }
 
     @PatchMapping("/change/nickname")

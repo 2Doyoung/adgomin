@@ -38,6 +38,7 @@
     <select id="certifiedCheck" resultType="com.adgomin.join.vo.JoinVO">
         SELECT
             count(*) AS count
+            ,user_order AS userOrder
             ,email AS email
             ,password AS password
             ,nickname AS nickname

@@ -85,11 +85,13 @@ public class JoinController {
         JSONObject responseObject = new JSONObject();
         Enum<?> result = this.joinService.certifiedCheck(email, certified, request);
         if("failure".equals(result.name().toLowerCase())) {
-            return "redirect:http://localhost:8080/error";
+//            return "redirect:http://localhost/error";
+            return "redirect:https://www.adgomin.com/error";
         }
         responseObject.put("result", result.name().toLowerCase());
 
-        return "redirect:http://localhost:8080";
+//        return "redirect:http://localhost";
+        return "redirect:https://www.adgomin.com";
     }
 
     @GetMapping(value = "/join/email")
@@ -121,7 +123,8 @@ public class JoinController {
         cookie2.setPath("/");
         response.addCookie(cookie2);
 
-        return "redirect:http://localhost:8080";
+//        return "redirect:http://localhost";
+        return "redirect:https://www.adgomin.com";
     }
 
     @GetMapping(value = "/passwordEmail")

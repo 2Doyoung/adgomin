@@ -80,7 +80,8 @@ if(myPostThumbnail != null) {
     myPostThumbnail.addEventListener("click", (e) => {
         let mediaOrder = e.currentTarget.dataset.parent;
 
-        window.open("http://localhost:8080/post?mediaOrder=" + mediaOrder);
+        // window.open("http://localhost/post?mediaOrder=" + mediaOrder);
+        window.open("https://www.adgomin.com/post?mediaOrder=" + mediaOrder);
     })
 }
 
@@ -88,7 +89,8 @@ if(partnerPostThumbnail != null) {
     partnerPostThumbnail.addEventListener("click", (e) => {
         let mediaOrder = e.currentTarget.dataset.parent;
 
-        window.open("http://localhost:8080/post?mediaOrder=" + mediaOrder);
+        // window.open("http://localhost/post?mediaOrder=" + mediaOrder);
+        window.open("https://www.adgomin.com/post?mediaOrder=" + mediaOrder);
     })
 }
 
