@@ -46,7 +46,6 @@ footer {
 .footer-right {
     height: 300px;
     display: flex;
-    margin-left: 17%;
 }
 
 .footer-right > ul {
