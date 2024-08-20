@@ -29,6 +29,8 @@ const conversationTextarea = document.getElementById("conversationTextarea");
 const purchaseLogin = document.getElementById("purchaseLogin");
 const mediaUpdate = document.getElementById("mediaUpdate");
 
+const purchase = document.getElementById("purchase");
+
 /**
  * 이벤트 함수
  */
@@ -157,6 +159,12 @@ if(purchaseLogin != null) {
 if(mediaUpdate != null) {
     mediaUpdate.addEventListener("click", () => {
         window.location.href = "/manage/media/update?mediaOrder=" + mediaOrder;
+    })
+}
+
+if(purchase != null) {
+    purchase.addEventListener("click", () => {
+        window.location.href = "/payment?mediaOrder=" + mediaOrder;
     })
 }
 

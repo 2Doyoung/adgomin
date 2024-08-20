@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - 결제하기</title>
+    <link rel="stylesheet" th:href="@{/css/payment/payment.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/payment/payment.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+</head>
+<body>
+<script th:inline="javascript">
+    let mediaPrice = [[${mediaPrice}]];
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<div class="payment-wrap">
+    <div class="payment-sub-wrap">
+        <div class="payment-left-wrap">
+            <div class="payment-title">
+                결제하기
+            </div>
+            <div class="purchase-history">
+                <div class="purchase-thumbnail">
+                    <img class="purchase-thumbnail-img" th:src="@{/main/thumbnail/image (thumbnailImgNm=${thumbnailImgNm}, thumbnailImgFilePath =${thumbnailImgFilePath})}">
+                </div>
+                <div class="purchase-title-nickname">
+                    <div class="purchase-title" th:text="${mediaTitle}"></div>
+                    <div class="purchase-profile-nickname">
+                        <div class="purchase-profile">
+                            <img th:src="@{/profile/image/{userOrder} (userOrder=${userOrder})}">
+                        </div>
+                        <div class="purchase-nickname" th:text="${nickname}"></div>
+                    </div>
+                </div>
+                <div th:text="${mediaPrice}" class="purchase-price"></div><span class="purchase-won">원</span>
+            </div>
+            <div class="identity-verification-div">
+                <div class="identity-verification-top">
+                    <div class="identity-verification-title">광고주 정보</div>
+                    <div class="identity-verification-terms">- 구매는 본인 확인을 거친 후에만 가능합니다. (첫 결제 시 1회만 필요)</div>
+                    <div class="identity-verification-terms">- 휴대폰번호 변경 시 프로필에도 반영됩니다.</div>
+                    <div class="identity-verification-terms">- 제공된 이름과 이메일은 거래 확인 목적으로 사용됩니다.</div>
+                </div>
+                <div class="identity-verification-bottom">
+                    <label><span class="essential-star">＊</span> 이름</label><br>
+                    <input type="text" id="name" placeholder="실명을 입력해주세요."><br>
+                    <div class="name-error" id="nameError">이름 입력을 입력해 주세요.</div>
+                    <label><span class="essential-star">＊</span> 이메일(이메일 변경을 하시려면 고객센터로 문의해 주세요.)</label><br>
+                    <input type="email" id="email" class="email-readonly" th:value="${session.LOGIN_USER.email}" readonly><br>
+                    <label><span class="essential-star">＊</span> 휴대폰 번호(-제외)</label><br>
+                    <input type="text" id="phoneNumber" placeholder="01012345678">
+                    <span>
+                        <input type="button" class="verification-button" id="verificationButton" value="인증요청">
+                    </span><br>
+                    <div class="phone-number-error" id="phoneNumberError">휴대폰 번호 형식이 올바르지 않습니다.</div>
+                    <div class="certification-notification-div">
+                        <span>인증번호가 카카오톡으로 전송되었습니다.</span><br>
+                        <span>(카카오톡으로 전송이 실패할 경우, 해당 메시지는 문자로 자동 전송됩니다.)</span>
+                    </div>
+                    <div>
+                        <input type="text" class="phone-number-certification" id="phoneNumberCertification" placeholder="인증 번호를 입력해주세요.">
+                        <input type="button" class="certification-button" id="certificationButton" value="인증">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="payment-right-wrap">
+            <div class="purchase-payment">
+                <div class="purchase-payment-sum">
+                    <span class="purchase-payment-sum-title purchase-width">상품 금액</span>
+                    <div th:text="${mediaPrice}" class="purchase-payment-sum-price"></div><span class="purchase-payment-sum-won">원</span>
+                </div>
+                <div class="purchase-payment-sum">
+                    <div class="purchase-width">
+                        <span class="purchase-payment-sum-title">수수료</span><i class="ri-question-line"></i>
+                    </div>
+                    <div class="purchase-payment-sum-price" id="purchaseCharge"></div><span class="purchase-payment-sum-won">원</span>
+                </div>
+                <div class="purchase-payment-sum purchase-sum-price">
+                    <span class="purchase-sum-price-title">총 결제금액</span>
+                    <div id="purchaseSumPrice" class="purchase-sum-price-last"></div><span class="purchase-last-won">원</span>
+                </div>
+                <div class="agree-div">
+                    회원 본인은 위 주문 내역을 확인했으며,<br>
+                    <span class="agree-underline">구매조건 및 개인정보처리방침</span>과 결제에 동의합니다.
+                </div>
+                <input type="button" value="결제하기" class="payment-button">
+            </div>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>

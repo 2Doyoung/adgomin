@@ -22,8 +22,27 @@ public class JoinEntity {
 
     private String phoneNumber;
     private String phoneNumberYn;
+    private String name;
 
     private String mediaDetailExplain;
+
+    private String phoneNumberCertification;
+
+    public String getPhoneNumberCertification() {
+        return phoneNumberCertification;
+    }
+
+    public void setPhoneNumberCertification(String phoneNumberCertification) {
+        this.phoneNumberCertification = phoneNumberCertification;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getMediaDetailExplain() {
         return mediaDetailExplain;

@@ -127,29 +127,29 @@ public class MediaController {
     @GetMapping("/thumbnail/image")
     public ResponseEntity<Resource> thumbnailImage(@RequestParam(value = "email") String email) {
         MediaRegisterEntity mediaRegisterEntity = this.mediaService.thumbnailImage(email);
+        String filePath = null;
         Resource resource = null;
 
         if (mediaRegisterEntity != null) {
-            String filePath = mediaRegisterEntity.getThumbnailImgFilePath() + "/" + mediaRegisterEntity.getThumbnailImgNm();
+            filePath = mediaRegisterEntity.getThumbnailImgFilePath() + "/" + mediaRegisterEntity.getThumbnailImgNm();
             resource = new FileSystemResource(filePath);
         } else {
             resource = new ClassPathResource("static/images/media-register-thumbnail.png");
         }
 
-        HttpHeaders headers = new HttpHeaders();
+        HttpHeaders header = new HttpHeaders();
         try {
-            if (resource.exists()) {
-                Path path = Paths.get(resource.getURI());
-                headers.add(HttpHeaders.CONTENT_TYPE, Files.probeContentType(path));
+            if (mediaRegisterEntity != null) {
+                Path path = Paths.get(filePath);
+                header.add("Content-type", Files.probeContentType(path));
             } else {
-                headers.add(HttpHeaders.CONTENT_TYPE, "image/png");
+                header.add("Content-type", "image/png");
             }
         } catch (IOException e) {
             e.printStackTrace();
-            headers.add(HttpHeaders.CONTENT_TYPE, "image/png");
         }
 
-        return new ResponseEntity<>(resource, headers, HttpStatus.OK);
+        return new ResponseEntity<>(resource, header, HttpStatus.OK);
     }
 
     @PostMapping("/media/detail/explanation/image")

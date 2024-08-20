@@ -1,0 +1,278 @@
+/* 글꼴 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.user-footer {
+    border: 0.5px solid #D9D9D9;
+    margin: 0;
+}
+
+.payment-wrap {
+    width: 1200px;
+    margin: auto;
+    height: 900px;
+}
+
+.payment-sub-wrap {
+    display: flex;
+}
+
+.payment-left-wrap {
+    width: 55rem;
+}
+
+.payment-title {
+    font-size: 1.5rem;
+    color: #303441;
+    font-weight: 500;
+    margin-top: 2rem;
+}
+
+.purchase-history {
+    border: 1px solid #e6e6e6;
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+    display: flex;
+}
+
+.purchase-thumbnail {
+    overflow: hidden;
+    position: relative;
+    height: 5.6rem;
+    width: 9rem;
+}
+
+.purchase-thumbnail-img {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.purchase-title-nickname {
+    margin-left: 1rem;
+}
+
+.purchase-title {
+    color: #303441;
+    margin-bottom: 0.3rem;
+}
+
+.purchase-nickname {
+    color: #858a8d;
+    font-size: 0.9rem;
+}
+
+.purchase-profile-nickname {
+    display: flex;
+}
+
+.purchase-profile {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+.purchase-profile > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.purchase-price {
+    font-size: 1.3rem;
+    width: 15rem;
+    text-align: right;
+    font-weight: 500;
+    color: #303441;
+    margin-top: -0.1rem;
+}
+
+.purchase-won {
+    margin-top: 0.2rem;
+    font-weight: 300;
+}
+
+.payment-right-wrap {
+    width: 19rem;
+    margin-left: 1rem;
+}
+
+.purchase-payment {
+    border: 1px solid #e6e6e6;
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-top: 6.2rem;
+}
+
+.purchase-payment-sum {
+    display: flex;
+}
+
+.purchase-payment-sum-title {
+    color: #555969;
+}
+
+.purchase-payment-sum-price {
+    width: 10rem;
+    text-align: end;
+    color: #858a8d;
+    font-size: 1.05rem;
+}
+
+.purchase-payment-sum-won {
+    color: #858a8d;
+    margin-left: 0.5rem;
+}
+
+.purchase-width {
+    width: 4rem;
+}
+
+.ri-question-line {
+    font-size: 0.9rem;
+    margin-left: 0.2rem;
+    color: #A4A4A4;
+}
+
+.purchase-sum-price {
+    margin-top: 2rem;
+}
+
+.purchase-sum-price-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #303441;
+}
+
+.purchase-sum-price-last {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #303441;
+    width: 8.5rem;
+    text-align: end;
+}
+
+.purchase-last-won {
+    font-size: 1.2rem;
+    color: #303441;
+    font-weight: 500;
+}
+
+.agree-div {
+    font-size: 0.8rem;
+    letter-spacing: -1px;
+    margin-top: 1rem;
+    color: #9a9ba7;
+}
+
+.agree-underline {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.payment-button {
+    background-color: #81BEF7;
+    height: 3rem;
+    border: 1px solid #81BEF7;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #FFFFFF;
+    width: 16rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.identity-verification-div {
+    border: 1px solid #e6e6e6;
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+}
+
+.identity-verification-title {
+    font-weight: 500;
+    color: #303441;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
+
+.identity-verification-terms {
+    font-size: 0.95rem;
+    color: #616568;
+    margin-bottom: 0.3rem;
+}
+
+.identity-verification-top {
+    width: 52rem;
+    border-bottom: 1px solid #e4e5ed;
+    padding-bottom: 2rem;
+}
+
+.essential-star {
+    font-size: 0.7rem;
+    color: #2E9AFE;
+}
+
+.identity-verification-top {
+    margin-bottom: 1rem;
+}
+
+.identity-verification-bottom > label {
+    font-size: 0.95rem;
+    color: #858a8d;
+}
+
+.identity-verification-bottom > input {
+    width: 28rem;
+    height: 2.5rem;
+    font-size: 0.95rem;
+    padding-left: 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    margin-bottom: 0.5rem;
+}
+
+.verification-button {
+    background-color: #FFFFFF;
+    height: 2.8rem;
+    border: 1px solid #c8cad2;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #212224;
+    width: 7rem;
+    font-weight: 600;
+}
+
+.name-error, .email-error, .phone-number-error {
+    font-size: 0.9rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    display: none;
+}
+
+.email-readonly {
+    background-color: #D8D8D8;
+}
+
+input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

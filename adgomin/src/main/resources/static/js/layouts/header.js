@@ -55,8 +55,6 @@ const notificationConfirm = document.getElementById("notificationConfirm");
 const headerSearch = document.getElementById("headerSearch");
 const headerSearchIcon = document.getElementById("headerSearchIcon");
 
-const userType = document.getElementById("userType");
-
 /**
  * 이벤트 함수
  */
@@ -331,14 +329,6 @@ if(headerSearch != null) {
 
 		headerSearchDiv.style.border = "";
 	})
-}
-
-if(userType != null) {
-	if(userType.value == 'advertiser') {
-		let allManage = document.getElementsByClassName("all-manage");
-
-		allManage[0].style.visibility = "hidden";
-	}
 }
 /**
  * 사용자 함수

@@ -16,8 +16,6 @@
 
 <input type="hidden" th:value="${confirmUnReadCount}" id="confirmUnReadCount">
 <input type="hidden" th:value="${confirmMediaOrder}" id="confirmMediaOrder">
-
-<input type="hidden" th:if="${session.LOGIN_USER != null}" th:value="${session.LOGIN_USER.userType}" id="userType">
 	<header>
 		<div class="header">
 			<div class="header-logo">
@@ -34,8 +32,11 @@
 				<button class="signup-button" id="signupBtn">회원가입</button>
 			</div>
 			<div class="header-after-login" th:if="${session.LOGIN_USER != null}">
-				<div class="all-manage" id="adgominManage">
+				<div th:if="${session.LOGIN_USER.userType == 'media'}" class="all-manage" id="adgominManage">
 					애드곰인 관리
+				</div>
+				<div th:if="${session.LOGIN_USER.userType == 'advertiser'}" class="all-manage-advertiser">
+					광고 대행사>
 				</div>
 				<div class="header-conversation-message" id="conversationMessage">
 					문의메시지<div class="message-notification" id="messageNotification"></div>

@@ -29,6 +29,9 @@
             ,marketing_yn AS marketingYn
             ,use_yn AS useYn
             ,certified_yn AS certifiedYn
+            ,phone_number AS phoneNumber
+            ,phone_number_yn AS phoneNumberYn
+            ,name AS name
         FROM adgomin_user
         WHERE 1=1
         AND email = #{email}
@@ -46,6 +49,9 @@
             ,marketing_yn AS marketingYn
             ,use_yn AS useYn
             ,certified_yn AS certifiedYn
+            ,phone_number AS phoneNumber
+            ,phone_number_yn AS phoneNumberYn
+            ,name AS name
         FROM adgomin_user
         WHERE 1=1
         AND email = #{email}

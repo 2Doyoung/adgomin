@@ -312,7 +312,7 @@ header {
 	padding: 12px 16px;
 	z-index: 1;
 	left: -180px;
-	top: 43px;
+	top: 38px;
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	opacity: 0;
@@ -395,6 +395,15 @@ header {
 	border-radius: 10px;
 	color: #303441;
 	cursor: pointer;
+}
+
+.all-manage-advertiser {
+	margin-right: 1rem;
+	padding: 0.4rem 0.5rem;
+	border-radius: 10px;
+	color: #303441;
+	cursor: pointer;
+	color: #FFFFFF;
 }
 
 .ri-heart-3-line, .ri-notification-2-line, .ri-user-5-line {
@@ -647,7 +656,7 @@ header {
 	padding: 12px 16px;
 	z-index: 1;
 	left: -180px;
-	top: 43px;
+	top: 38px;
 	border-radius: 5px;
 	border: 1px solid #ccc;
 	opacity: 0;
