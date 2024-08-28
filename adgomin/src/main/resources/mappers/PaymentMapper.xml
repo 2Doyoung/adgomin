@@ -3,5 +3,41 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.adgomin.payment.mapper.PaymentMapper">
+    <update id="setPhoneNumberCertification" parameterType="com.adgomin.join.entity.JoinEntity">
+        UPDATE
+            adgomin_user
+        SET phone_number_certification = #{phoneNumberCertification}
+        WHERE 1=1
+        AND user_order = #{userOrder}
+    </update>
 
+    <select id="phoneNumberCertificationCheck" resultType="com.adgomin.join.vo.JoinVO">
+        SELECT
+            COUNT(*) AS count
+        FROM adgomin_user
+        WHERE 1=1
+        AND user_order = #{userOrder}
+        AND phone_number_certification = #{phoneNumberCertification}
+    </select>
+
+    <select id="getVerificationInfo" resultType="com.adgomin.join.vo.JoinVO">
+        SELECT
+            email AS email
+            ,name AS name
+            ,phone_number AS phoneNumber
+            ,phone_number_yn AS phoneNumberYn
+        FROM adgomin_user
+        WHERE 1=1
+        AND user_order = #{userOrder}
+    </select>
+
+    <update id="phoneNumberCertificationSuccess" parameterType="com.adgomin.join.entity.JoinEntity">
+        UPDATE
+            adgomin_user
+        SET name = #{name}
+        ,phone_number = #{phoneNumber}
+        ,phone_number_yn = 1
+        WHERE 1=1
+        AND user_order = #{userOrder}
+    </update>
 </mapper>

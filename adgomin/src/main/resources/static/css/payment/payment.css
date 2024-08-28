@@ -249,7 +249,7 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.verification-button {
+.verification-button, .re-send-button {
     background-color: #FFFFFF;
     height: 2.8rem;
     border: 1px solid #c8cad2;
@@ -261,7 +261,7 @@ body {
     font-weight: 600;
 }
 
-.name-error, .email-error, .phone-number-error {
+.name-error, .email-error, .phone-number-error, .certification-error {
     font-size: 0.9rem;
     color: #FF402B;
     margin-left: 0.5rem;
@@ -272,7 +272,47 @@ body {
     background-color: #D8D8D8;
 }
 
-input[type=number]::-webkit-outer-spin-button, input[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.certification-notification-div {
+    font-size: 0.85rem;
+    color: #2E9AFE;
+    margin-left: 0.5rem;
+}
+
+.phone-number-certification {
+    width: 28rem;
+    height: 2.5rem;
+    font-size: 0.95rem;
+    padding-left: 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    margin-bottom: 0.5rem;
+}
+
+.certification-button {
+    background-color: #FFFFFF;
+    height: 2.8rem;
+    border: 1px solid #c8cad2;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #212224;
+    width: 7rem;
+    font-weight: 600;
+}
+
+.notification-underline {
+    text-decoration: underline;
+}
+
+.certification-wrap {
+    display: none;
+}
+
+.re-send-button {
+    display: none;
+}
+
+.identity-verification-success-div {
+    display: none;
 }

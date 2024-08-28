@@ -38,7 +38,7 @@
                 </div>
                 <div th:text="${mediaPrice}" class="purchase-price"></div><span class="purchase-won">원</span>
             </div>
-            <div class="identity-verification-div">
+            <div th:if="${phoneNumberYn == '0'}" class="identity-verification-div" id="identityVerificationDiv">
                 <div class="identity-verification-top">
                     <div class="identity-verification-title">광고주 정보</div>
                     <div class="identity-verification-terms">- 구매는 본인 확인을 거친 후에만 가능합니다. (첫 결제 시 1회만 필요)</div>
@@ -55,17 +55,38 @@
                     <input type="text" id="phoneNumber" placeholder="01012345678">
                     <span>
                         <input type="button" class="verification-button" id="verificationButton" value="인증요청">
+                        <input type="button" class="re-send-button" id="reSendButton" value="재전송">
                     </span><br>
                     <div class="phone-number-error" id="phoneNumberError">휴대폰 번호 형식이 올바르지 않습니다.</div>
-                    <div class="certification-notification-div">
-                        <span>인증번호가 카카오톡으로 전송되었습니다.</span><br>
-                        <span>(카카오톡으로 전송이 실패할 경우, 해당 메시지는 문자로 자동 전송됩니다.)</span>
-                    </div>
-                    <div>
-                        <input type="text" class="phone-number-certification" id="phoneNumberCertification" placeholder="인증 번호를 입력해주세요.">
-                        <input type="button" class="certification-button" id="certificationButton" value="인증">
+                    <div class="certification-wrap" id="certificationWrap">
+                        <div class="certification-notification-div">
+                            <span id="reSendText">인증번호가 카카오톡으로 전송되었습니다.</span><br>
+                            <span class="notification-underline">카카오톡으로 전송이 실패할 경우, 해당 메시지는 문자로 자동 전송됩니다.</span>
+                        </div>
+                        <div>
+                            <input type="text" class="phone-number-certification" id="phoneNumberCertification" placeholder="인증 번호를 입력해주세요.">
+                            <input type="button" class="certification-button" id="certificationButton" value="인증">
+                            <div class="certification-error" id="certificationError">인증번호가 일치하지 않습니다.</div>
+                        </div>
                     </div>
                 </div>
+            </div>
+            <div th:if="${phoneNumberYn == '1'}" class="identity-verification-complete-div" id="identityVerificationCompleteDiv">
+                <div>
+                    <span>이름</span>
+                    <div th:text="${name}"></div>
+                </div>
+                <div>
+                    <span>이메일</span>
+                    <div th:text="${email}"></div>
+                </div>
+                <div>
+                    <span>휴대폰 번호</span>
+                    <div th:text="${phoneNumber}"></div>
+                </div>
+            </div>
+            <div class="identity-verification-success-div" id="identityVerificationSuccessDiv">
+                인증완료
             </div>
         </div>
         <div class="payment-right-wrap">

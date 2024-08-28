@@ -1,6 +1,11 @@
 package com.adgomin.payment.service;
 
+import com.adgomin.enums.CommonResult;
+import com.adgomin.join.entity.JoinEntity;
+import com.adgomin.join.vo.JoinVO;
+import com.adgomin.media.vo.MediaRegisterVO;
 import com.adgomin.payment.mapper.PaymentMapper;
+import com.adgomin.portfolio.entity.PortfolioEntity;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
@@ -9,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 @Service(value = "com.adgomin.payment.service.PaymentService")
 public class PaymentService {
@@ -21,20 +27,28 @@ public class PaymentService {
         this.paymentMapper = paymentMapper;
     }
 
-    public String sendKakaoNotification(String templateCode) {
+    public String sendKakaoNotification(JoinVO joinVO, String phoneNumber) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
+        Random random = new Random();
+        int authCode = 100000 + random.nextInt(900000);
+
+        joinVO.setPhoneNumberCertification(String.valueOf(authCode));
+
+        this.paymentMapper.setPhoneNumberCertification(joinVO);
+
+        String templateCode = "TU_2783";
         String message = "애드곰인 인증번호를 입력해주세요.\n" +
-                "[123456]";
+                "[" + authCode + "]";
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("userid", userId);
         params.add("apikey", apiKey);
         params.add("senderkey", "72cea54ce70f33de15fb0c9be988becabfa9c55a");
         params.add("sender", "01095129725");
-        params.add("receiver_1", "01095129725");
+        params.add("receiver_1", phoneNumber);
         params.add("subject_1", "본인인증");
         params.add("message_1",  message);
         params.add("tpl_code", templateCode);
@@ -44,5 +58,24 @@ public class PaymentService {
         ResponseEntity<String> response = restTemplate.exchange(apiUrl, HttpMethod.POST, request, String.class);
 
         return response.getBody();
+    }
+
+    public Enum<?> phoneNumberCertificationCheck(JoinVO joinVO, String phoneNumberCertification) {
+        JoinVO joinVO1 = this.paymentMapper.phoneNumberCertificationCheck(joinVO.getUserOrder(), phoneNumberCertification);
+        Enum<?> result = CommonResult.SUCCESS;
+
+        if(joinVO1.getCount() == 0) {
+            result = CommonResult.FAILURE;
+        }
+
+        return result;
+    }
+
+    public JoinVO getVerificationInfo(JoinVO joinVO) {
+        return this.paymentMapper.getVerificationInfo(joinVO.getUserOrder());
+    }
+
+    public Enum<?> phoneNumberCertificationSuccess(JoinEntity joinEntity) {
+        return this.paymentMapper.phoneNumberCertificationSuccess(joinEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 }
