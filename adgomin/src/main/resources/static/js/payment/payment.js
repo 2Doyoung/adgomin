@@ -136,8 +136,19 @@ let successXhr = (responseObject, flag) => {
         let identityVerificationDiv = document.getElementById("identityVerificationDiv");
         let identityVerificationSuccessDiv = document.getElementById("identityVerificationSuccessDiv");
 
+        let name = document.getElementById("name").value;
+        let phoneNumber = document.getElementById("phoneNumber").value;
+
+        let verificationSuccessName = document.getElementById("verificationSuccessName");
+        let verificationSuccessPhoneNumber = document.getElementById("verificationSuccessPhoneNumber");
+
         identityVerificationDiv.style.display = "none";
         identityVerificationSuccessDiv.style.display = "block";
+
+        verificationSuccessName.innerText = name;
+        verificationSuccessPhoneNumber.innerText = phoneNumber;
+
+        identityVerificationSuccessDiv.scrollIntoView({block: "center"});
     }
 }
 

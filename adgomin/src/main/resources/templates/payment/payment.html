@@ -11,6 +11,8 @@
     <script defer th:src="@{/js/layouts/header.js}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+
+    <script src="https://js.tosspayments.com/v2/standard"></script>
 </head>
 <body>
 <script th:inline="javascript">
@@ -72,21 +74,44 @@
                 </div>
             </div>
             <div th:if="${phoneNumberYn == '1'}" class="identity-verification-complete-div" id="identityVerificationCompleteDiv">
-                <div>
-                    <span>이름</span>
-                    <div th:text="${name}"></div>
+                <div class="identity-verification-top">
+                    <div class="identity-verification-title">광고주 정보</div>
+                    <div class="identity-verification-terms">- 구매는 본인 확인을 거친 후에만 가능합니다. (첫 결제 시 1회만 필요)</div>
+                    <div class="identity-verification-terms">- 휴대폰번호 변경 시 프로필에도 반영됩니다.</div>
+                    <div class="identity-verification-terms">- 제공된 이름과 이메일은 거래 확인 목적으로 사용됩니다.</div>
                 </div>
-                <div>
-                    <span>이메일</span>
-                    <div th:text="${email}"></div>
+                <div class="verification-complete">
+                    <span class="verification-complete-title">이름</span>
+                    <div th:text="${name}" class="verification-complete-info"></div>
                 </div>
-                <div>
-                    <span>휴대폰 번호</span>
-                    <div th:text="${phoneNumber}"></div>
+                <div class="verification-complete">
+                    <span class="verification-complete-title">이메일</span>
+                    <div th:text="${email}" class="verification-complete-info"></div>
+                </div>
+                <div class="verification-complete">
+                    <span class="verification-complete-title">휴대폰 번호</span>
+                    <div th:text="${phoneNumber}" class="verification-complete-info"></div>
                 </div>
             </div>
             <div class="identity-verification-success-div" id="identityVerificationSuccessDiv">
-                인증완료
+                <div class="identity-verification-top">
+                    <div class="identity-verification-title">광고주 정보</div>
+                    <div class="identity-verification-terms">- 구매는 본인 확인을 거친 후에만 가능합니다. (첫 결제 시 1회만 필요)</div>
+                    <div class="identity-verification-terms">- 휴대폰번호 변경 시 프로필에도 반영됩니다.</div>
+                    <div class="identity-verification-terms">- 제공된 이름과 이메일은 거래 확인 목적으로 사용됩니다.</div>
+                </div>
+                <div class="verification-complete">
+                    <span class="verification-complete-title">이름</span>
+                    <div id="verificationSuccessName" class="verification-complete-info"></div>
+                </div>
+                <div class="verification-complete">
+                    <span class="verification-complete-title">이메일</span>
+                    <div th:text="${email}" class="verification-complete-info"></div>
+                </div>
+                <div class="verification-complete">
+                    <span class="verification-complete-title">휴대폰 번호</span>
+                    <div id="verificationSuccessPhoneNumber" class="verification-complete-info"></div>
+                </div>
             </div>
         </div>
         <div class="payment-right-wrap">
@@ -109,7 +134,7 @@
                     회원 본인은 위 주문 내역을 확인했으며,<br>
                     <span class="agree-underline">구매조건 및 개인정보처리방침</span>과 결제에 동의합니다.
                 </div>
-                <input type="button" value="결제하기" class="payment-button">
+                <input type="button" value="결제하기" class="payment-button" onclick="requestPayment()">
             </div>
         </div>
     </div>

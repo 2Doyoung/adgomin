@@ -316,3 +316,23 @@ body {
 .identity-verification-success-div {
     display: none;
 }
+
+.identity-verification-complete-div, .identity-verification-success-div {
+    border: 1px solid #e6e6e6;
+    padding: 1.5rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+}
+
+.verification-complete {
+    display: flex;
+}
+
+.verification-complete-title {
+    color: #555969;
+    width: 7rem;
+}
+
+.verification-complete-info {
+    color: #858a8d;
+}
