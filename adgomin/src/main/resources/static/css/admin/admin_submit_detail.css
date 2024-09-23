@@ -22,7 +22,7 @@ body {
 .user-wrap {
     margin: auto;
     width: 1200px;
-    height: 3300px;
+    height: 3400px;
 }
 
 .user-main-title {
@@ -39,7 +39,7 @@ body {
 
 .user-sub-menu {
     width: 14rem;
-    height: 3300px;
+    height: 3400px;
     display: inline-block;
     border-right: 1px solid #ccc;
 }

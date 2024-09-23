@@ -42,6 +42,7 @@
              ,T1.create_dt as createDt
              ,T1.modify_dt as modifyDt
              ,T1.submit_dt as submitDt
+             ,T1.offer_period as offerPeriod
              ,T2.nickname AS nickname
              ,T3.media_introduce AS mediaIntroduce
              ,T3.region AS region

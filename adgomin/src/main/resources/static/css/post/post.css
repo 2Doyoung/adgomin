@@ -56,7 +56,7 @@ body {
 }
 
 .post-media-introduce {
-    height: 9rem;
+    height: 11rem;
     margin-top: 2rem;
     border: 1px solid #D8D8D8;
     border-radius: 5px 5px 0 0;
@@ -90,7 +90,7 @@ body {
 
 .post-price, .won {
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 500;
     color: #343a40;
 }
 
@@ -547,4 +547,14 @@ body {
     width: 22rem;
     font-weight: 600;
     margin-top: 1rem;
+}
+
+.offer-period {
+    color: #303441;
+    margin-top: 1rem;
+    display: flex;
+}
+
+.offer-period-margin {
+    margin-left: 13rem;
 }

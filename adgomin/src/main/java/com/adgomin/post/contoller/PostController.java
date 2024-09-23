@@ -63,6 +63,7 @@ public class PostController {
         modelAndView.addObject("email", getPost.getEmail());
         modelAndView.addObject("userOrder", getPost.getUserOrder());
         modelAndView.addObject("fiveMonthMediaPriceFormat", fiveMonthMediaPriceFormat);
+        modelAndView.addObject("offerPeriod", getPost.getOfferPeriod());
 
         return  modelAndView;
     }

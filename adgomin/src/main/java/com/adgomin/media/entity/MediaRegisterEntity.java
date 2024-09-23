@@ -19,6 +19,15 @@ public class MediaRegisterEntity {
     private Date submitDt;
     private String refuseReason;
     private String confirmNotificationRead;
+    private String offerPeriod;
+
+    public String getOfferPeriod() {
+        return offerPeriod;
+    }
+
+    public void setOfferPeriod(String offerPeriod) {
+        this.offerPeriod = offerPeriod;
+    }
 
     public String getConfirmNotificationRead() {
         return confirmNotificationRead;

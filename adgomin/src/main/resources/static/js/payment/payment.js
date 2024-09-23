@@ -7,6 +7,12 @@ const verificationButton = document.getElementById("verificationButton");
 const reSendButton = document.getElementById("reSendButton");
 const certificationButton = document.getElementById("certificationButton");
 
+const purchaseConditionPage = document.getElementById("purchaseConditionPage");
+const privacyInfoPage = document.getElementById("privacyInfoPage");
+
+const requestPaymentWindow = document.getElementById("requestPaymentWindow");
+
+
 /**
  * 이벤트 함수
  */
@@ -87,16 +93,99 @@ if(certificationButton != null) {
     })
 }
 
+if(purchaseConditionPage != null) {
+    purchaseConditionPage.addEventListener("click", () => {
+        let newWindow = window.open("/terms", "_blank");
+
+        newWindow.onload = function() {
+            const targetElement = newWindow.document.getElementById("refund");
+
+            if (targetElement) {
+                const targetPosition = targetElement.getBoundingClientRect().top + newWindow.pageYOffset;
+
+                const headerHeight = newWindow.document.querySelector('header').offsetHeight;
+
+                newWindow.scrollTo({
+                    top: targetPosition - headerHeight,
+                    behavior: "smooth" // 스크롤 애니메이션
+                });
+            }
+        };
+    })
+}
+
+if(privacyInfoPage != null) {
+    privacyInfoPage.addEventListener("click", () => {
+        window.open("/privacy", "_blank")
+    })
+}
+
+if(requestPaymentWindow != null) {
+    requestPaymentWindow.addEventListener("click", () => {
+        let paymentWindow = document.getElementById("paymentWindow");
+        paymentWindow.style.display = "flex";
+    })
+}
+
 /**
  * 사용자 함수
  */
 let mediaPriceAmount = parseInt(mediaPrice.replace(/,/g, ''));
-let mediaPriceCharge = Math.floor(mediaPriceAmount * 0.035 / 10) * 10;
+let mediaPriceCharge = Math.floor(mediaPriceAmount * 0.05 / 10) * 10;
 let formattedMediaPriceCharge = mediaPriceCharge.toLocaleString(undefined, { maximumFractionDigits: 0 });
 purchaseCharge.innerText = formattedMediaPriceCharge;
 
 let purchaseSumPriceFormatted = (mediaPriceAmount + mediaPriceCharge).toLocaleString(undefined, { maximumFractionDigits: 0 });
-purchaseSumPrice.innerText = purchaseSumPriceFormatted
+purchaseSumPrice.innerText = purchaseSumPriceFormatted;
+
+function main() {
+    const requestPayment = document.getElementById("requestPayment");
+    const coupon = document.getElementById("coupon-box");
+
+    // ------  결제위젯 초기화 ------
+    const clientKey = "live_gck_Ba5PzR0Arnx7XX120QPG3vmYnNeD";
+    const tossPayments = TossPayments(clientKey);
+
+    // 회원 결제
+    const customerKey = "LVD4ovs2A0fA48Ox-fOtK";
+    const widgets = tossPayments.widgets({ customerKey });
+
+    // ------ 주문의 결제 금액 설정 ------
+    widgets.setAmount({
+        currency: "KRW",
+        value: 50000,
+    }).then(() => {
+        return Promise.all([
+            // ------  결제 UI 렌더링 ------
+            widgets.renderPaymentMethods({
+                selector: "#payment-method",
+                variantKey: "DEFAULT",
+            }),
+            // ------  이용약관 UI 렌더링 ------
+            widgets.renderAgreement({
+                selector: "#agreement",
+                variantKey: "AGREEMENT",
+            }),
+        ]);
+    }).then(() => {
+        // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
+        requestPayment.addEventListener("click", function () {
+            widgets.requestPayment({
+                orderId: "uHsVi0jWKOwMGFYX4ZzYw",
+                orderName: "토스 티셔츠 외 2건",
+                successUrl: window.location.origin + "/success.html",
+                failUrl: window.location.origin + "/fail.html",
+                customerEmail: "customer123@gmail.com",
+                customerName: "김토스",
+                customerMobilePhone: "01012341234",
+            });
+        });
+    }).catch((error) => {
+        console.error("Error:", error);
+    });
+}
+
+main();
 
 /**
  * XMLHttpRequest 성공 함수

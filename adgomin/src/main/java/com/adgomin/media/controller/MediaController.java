@@ -71,6 +71,7 @@ public class MediaController {
                 modelAndView.addObject("thumbnailImgFilePath", mediaRegisterEntity.getThumbnailImgFilePath());
                 modelAndView.addObject("mediaPrice", mediaRegisterEntity.getMediaPrice());
                 modelAndView.addObject("mediaSubmitStatus", mediaRegisterEntity.getMediaSubmitStatus());
+                modelAndView.addObject("offerPeriod", mediaRegisterEntity.getOfferPeriod());
                 if(mediaRegisterEntity.getMediaSubmitStatus().equals("C")) {
                     MediaRegisterEntity mediaRegisterEntity1 = this.mediaService.getRefuseReason(mediaRegisterEntity);
                     modelAndView.addObject("refuseReason", mediaRegisterEntity1.getRefuseReason());

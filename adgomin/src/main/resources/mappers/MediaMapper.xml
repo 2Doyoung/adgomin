@@ -52,6 +52,7 @@
             ,thumbnail_img_file_path as thumbnailImgFilePath
             ,media_price as mediaPrice
             ,media_submit_status as mediaSubmitStatus
+            ,offer_period as offerPeriod
         FROM adgomin_media_register
         WHERE 1=1
           AND email = #{email}
@@ -72,6 +73,7 @@
           ,media_detail_explain = #{mediaDetailExplain}
           ,media_price = #{mediaPrice}
           ,media_submit_status = #{mediaSubmitStatus}
+          ,offer_period = #{offerPeriod}
           ,modify_dt = now()
           <if test='mediaSubmitStatus == "I"'>
                 ,submit_dt = now()

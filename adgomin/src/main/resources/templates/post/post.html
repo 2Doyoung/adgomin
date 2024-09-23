@@ -77,6 +77,10 @@
                 <div class="post-information-wrap">
                     <div class="post-media-introduce">
                         <div class="post-price" th:text="${mediaPrice}"></div><span class="won">원</span>
+                        <div class="offer-period">
+                            <div>서비스 제공 기간</div>
+                            <div th:text="${offerPeriod}" class="offer-period-margin"></div><span>일</span>
+                        </div>
                         <span th:if="${session.LOGIN_USER != null}">
                             <input th:if="${session.LOGIN_USER.email != email}" type="button" class="purchase-button" id="purchase" th:value="구매하기">
                             <input th:if="${session.LOGIN_USER.email == email}" type="button" class="purchase-button" id="mediaUpdate" value="광고매체 수정">

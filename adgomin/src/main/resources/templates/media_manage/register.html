@@ -106,7 +106,17 @@
                             </div>
                         </div>
                         <div>
+                            <label>서비스 제공 기간</label>
+                            <span>제작물을 광고주에게 제공할 수 있는 예정일을 작성해주세요.</span><br>
+                            <span>광고주와 합의에 따라 조정할 수 있습니다. <span id="offerPeriodSpan">(최소 1일, 최대 90일)</span></span>
+                            <div class="currency-div" id="offerDiv">
+                                <input type="text" class="currency-input" spellcheck="false" id="offerPeriod" th:value="${offerPeriod}">
+                                <span class="currency-symbol">일</span>
+                            </div>
+                        </div>
+                        <div>
                             <label>가격설정</label>
+                            <span id="mediaPriceSpan">최소 5천원 이상 금액을 입력해주세요.</span>
                             <div class="currency-div" id="currencyDiv">
                                 <input type="text" class="currency-input" spellcheck="false" id="mediaPrice" th:value="${mediaPrice}">
                                 <span class="currency-symbol">원</span>

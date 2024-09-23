@@ -48,6 +48,7 @@ public class PaymentController {
             modelAndView.addObject("email", getPost.getEmail());
             modelAndView.addObject("userOrder", getPost.getUserOrder());
             modelAndView.addObject("phoneNumberYn", joinVO1.getPhoneNumberYn());
+            modelAndView.addObject("offerPeriod", getPost.getOfferPeriod());
             if("1".equals(joinVO1.getPhoneNumberYn())) {
                 modelAndView.addObject("email", joinVO1.getEmail());
                 modelAndView.addObject("name", joinVO1.getName());

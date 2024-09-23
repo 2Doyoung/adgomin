@@ -16,6 +16,8 @@ const modalCheck = document.getElementById("modalCheck");
 let thumbnailImgSave;
 
 let quill;
+
+const offerPeriod = document.getElementById("offerPeriod");
 /**
  * 이벤트 함수
  */
@@ -77,6 +79,27 @@ mediaPrice.addEventListener("keyup", (e) =>{
         const formatValue = value.toLocaleString('ko-KR');
         mediaPrice.value = formatValue;
     }
+})
+
+offerPeriod.addEventListener("keyup", (e) => {
+    let value = e.target.value;
+
+    value = value.replace(/[^0-9]/g, "");
+
+    if (value === "") {
+        offerPeriod.value = "";
+        return;
+    }
+
+    let numericValue = parseInt(value);
+
+    if (numericValue < 1) {
+        numericValue = 1;
+    } else if (numericValue > 90) {
+        numericValue = 90;
+    }
+
+    offerPeriod.value = numericValue;
 })
 
 modalCheck.addEventListener("click", () => {
@@ -207,6 +230,14 @@ const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
     let mediaSummary = document.getElementById("mediaSummary").value;
     let mediaSummarySpan = document.getElementById("mediaSummarySpan");
 
+    let offerPeriod = document.getElementById("offerPeriod").value;
+    let offerPeriodSpan = document.getElementById("offerPeriodSpan");
+
+    let mediaPrice = document.getElementById("mediaPrice").value;
+    let mediaPriceSpan = document.getElementById("mediaPriceSpan");
+
+    let mediaPriceNumber = Number(mediaPrice.replaceAll(',', ''));
+
     if(title.length < 5 || title.length > 30) {
         titleSpan.style.color = "#FF0040";
         document.getElementById("title").focus();
@@ -228,12 +259,28 @@ const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
         mediaSummarySpan.style.color = "#BDBDBD";
     }
 
-    if(!(titleSpan.style.color == 'rgb(255, 0, 64)') && !(adCategorySpan.style.color == 'rgb(255, 0, 64)') && !(extSpan.style.color == 'rgb(255, 0, 64)') && !(mediaSummarySpan.style.color == 'rgb(255, 0, 64)')) {
+    if(offerPeriod.length == 0) {
+        offerPeriodSpan.style.color = "#FF0040";
+        document.getElementById("offerPeriod").focus();
+    } else if(offerPeriod.length > 0) {
+        offerPeriodSpan.style.color = "#BDBDBD";
+    }
+
+    if(mediaPriceNumber < 5000) {
+        mediaPriceSpan.style.color = "#FF0040";
+        document.getElementById("mediaPrice").focus();
+    } else if(mediaPriceNumber >= 5000) {
+        mediaPriceSpan.style.color = "#BDBDBD";
+    }
+
+    if(!(titleSpan.style.color == 'rgb(255, 0, 64)') && !(adCategorySpan.style.color == 'rgb(255, 0, 64)') && !(extSpan.style.color == 'rgb(255, 0, 64)') && !(mediaSummarySpan.style.color == 'rgb(255, 0, 64)')
+    && !(offerPeriodSpan.style.color == 'rgb(255, 0, 64)')&& !(mediaPriceSpan.style.color == 'rgb(255, 0, 64)')) {
         let title = document.getElementById("title").value;
         let adCategorySelected = document.getElementsByClassName("ad-category-selected")[0].innerText;
         let mediaSummary = document.getElementById("mediaSummary").value;
         let quillHtml = document.getElementById("quillHtml").value;
         let mediaPrice = document.getElementById("mediaPrice").value;
+        let offerPeriod = document.getElementById("offerPeriod").value;
 
         const formData = new FormData();
 
@@ -242,6 +289,7 @@ const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
         formData.append("mediaSummary", mediaSummary);
         formData.append("mediaDetailExplain", quillHtml);
         formData.append("mediaPrice", mediaPrice);
+        formData.append("offerPeriod", offerPeriod);
         if(mediaRegisterTempSaveOrSubmit == "mediaRegisterTempSave") {
             formData.append("mediaSubmitStatus", "T");
         } else if(mediaRegisterTempSaveOrSubmit == "mediaRegisterSubmit") {
@@ -280,6 +328,9 @@ if(mediaSubmitStatus == "I") {
     let tempSaveButton = document.getElementById("tempSaveButton");
     let submitButton = document.getElementById("submitButton");
 
+    let offerPeriod = document.getElementById("offerPeriod");
+    let offerDiv = document.getElementById("offerDiv");
+
     title.readOnly = true;
     title.style.background = "#D8D8D8"
 
@@ -289,6 +340,10 @@ if(mediaSubmitStatus == "I") {
     mediaPrice.readOnly = true;
     mediaPrice.style.background = "#D8D8D8";
     currencyDiv.style.background = "#D8D8D8";
+
+    offerPeriod.readOnly = true;
+    offerPeriod.style.background = "#D8D8D8";
+    offerDiv.style.background = "#D8D8D8";
 
     thumbnailImgLabel.setAttribute("for", "");
 
@@ -304,6 +359,14 @@ if(mediaSubmitStatus == "I") {
 if(mediaSubmitStatus == "C") {
     let tempSaveButton = document.getElementById("tempSaveButton");
     let submitButton = document.getElementById("submitButton");
+
+    let userWrap = document.getElementsByClassName("user-wrap")[0];
+    let userSubMain = document.getElementsByClassName("user-sub-main")[0];
+    let userSubMenu = document.getElementsByClassName("user-sub-menu")[0];
+
+    userWrap.style.height = "2600px";
+    userSubMain.style.height = "2600px";
+    userSubMenu.style.height = "2600px";
 
     tempSaveButton.style.visibility = "hidden";
     submitButton.value = "재심사하기"

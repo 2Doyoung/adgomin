@@ -35,7 +35,9 @@
                         <div class="purchase-profile">
                             <img th:src="@{/profile/image/{userOrder} (userOrder=${userOrder})}">
                         </div>
-                        <div class="purchase-nickname" th:text="${nickname}"></div>
+                        <div class="nickname-period-div">
+                            <div class="purchase-nickname" th:text="${nickname}"></div> <span class="vertical-bar">|</span> <div class="period-div">서비스 제공 기간 <span th:text="${offerPeriod}" class="period-span"></span>일</div>
+                        </div>
                     </div>
                 </div>
                 <div th:text="${mediaPrice}" class="purchase-price"></div><span class="purchase-won">원</span>
@@ -132,10 +134,19 @@
                 </div>
                 <div class="agree-div">
                     회원 본인은 위 주문 내역을 확인했으며,<br>
-                    <span class="agree-underline">구매조건 및 개인정보처리방침</span>과 결제에 동의합니다.
+                    <span class="agree-underline" id="purchaseConditionPage">구매조건</span> 및 <span class="agree-underline" id="privacyInfoPage">개인정보처리방침</span>과 결제에 동의합니다.
                 </div>
-                <input type="button" value="결제하기" class="payment-button" onclick="requestPayment()">
+                <input type="button" value="결제하기" class="payment-button" id="requestPaymentWindow">
             </div>
+        </div>
+    </div>
+    <div class="payment-window" id="paymentWindow">
+        <!-- 결제 UI -->
+        <div id="payment-method"></div>
+        <!-- 이용약관 UI -->
+        <div id="agreement"></div>
+        <div class="request-payment-button">
+            <input type="button" value="결제하기" class="payment-button" id="requestPayment">
         </div>
     </div>
 </div>

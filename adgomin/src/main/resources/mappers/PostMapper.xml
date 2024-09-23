@@ -13,6 +13,7 @@
              ,T1.thumbnail_origin_file_nm AS thumbnailOriginFileNm
              ,T1.thumbnail_img_file_path AS thumbnailImgFilePath
              ,T1.media_price AS mediaPrice
+             ,T1.offer_period AS offerPeriod
              ,T2.media_introduce AS mediaIntroduce
              ,T2.region AS region
              ,T2.ad_category AS adCategory

@@ -149,6 +149,7 @@ public class AdminController {
                     modelAndView.addObject("adCategory", mediaRegisterVoDetail.getAdCategory());
                     modelAndView.addObject("mediaUrl", mediaRegisterVoDetail.getMediaUrl());
                     modelAndView.addObject("userOrder", mediaRegisterVoDetail.getUserOrder());
+                    modelAndView.addObject("offerPeriod", mediaRegisterVoDetail.getOfferPeriod());
                 } else {
                     modelAndView = new ModelAndView("error/error");
                 }
