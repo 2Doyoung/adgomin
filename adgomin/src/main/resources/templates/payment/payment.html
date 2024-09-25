@@ -17,8 +17,14 @@
 <body>
 <script th:inline="javascript">
     let mediaPrice = [[${mediaPrice}]];
+    let mediaTitle = [[${mediaTitle}]];
+    let mediaOrder = [[${mediaOrder}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
+<input type="hidden" th:value="${email}" id="customerEmail" readonly>
+<input type="hidden" th:value="${name}" id="customerName" readonly>
+<input type="hidden" th:value="${phoneNumber}" id="customerPhoneNumber" readonly>
+<input type="hidden" th:value="${totalAmount}" id="totalAmount" readonly>
 <div class="payment-wrap">
     <div class="payment-sub-wrap">
         <div class="payment-left-wrap">
@@ -126,11 +132,11 @@
                     <div class="purchase-width">
                         <span class="purchase-payment-sum-title">수수료</span><i class="ri-question-line"></i>
                     </div>
-                    <div class="purchase-payment-sum-price" id="purchaseCharge"></div><span class="purchase-payment-sum-won">원</span>
+                    <div class="purchase-payment-sum-price" id="purchaseCharge" th:text="${formattedMediaPriceCharge}"></div><span class="purchase-payment-sum-won">원</span>
                 </div>
                 <div class="purchase-payment-sum purchase-sum-price">
                     <span class="purchase-sum-price-title">총 결제금액</span>
-                    <div id="purchaseSumPrice" class="purchase-sum-price-last"></div><span class="purchase-last-won">원</span>
+                    <div id="purchaseSumPrice" class="purchase-sum-price-last" th:text="${formattedTotalAmount}"></div><span class="purchase-last-won">원</span>
                 </div>
                 <div class="agree-div">
                     회원 본인은 위 주문 내역을 확인했으며,<br>
@@ -141,12 +147,17 @@
         </div>
     </div>
     <div class="payment-window" id="paymentWindow">
-        <!-- 결제 UI -->
-        <div id="payment-method"></div>
-        <!-- 이용약관 UI -->
-        <div id="agreement"></div>
-        <div class="request-payment-button">
-            <input type="button" value="결제하기" class="payment-button" id="requestPayment">
+        <div class="payment-box">
+            <div class="payment-close-btn" id="paymentCloseBtn">
+                <i class="ri-close-line"></i>
+            </div>
+            <!-- 결제 UI -->
+            <div id="payment-method"></div>
+            <!-- 이용약관 UI -->
+            <div id="agreement"></div>
+            <div class="request-payment-button">
+                <input type="button" value="결제하기" class="payment-button" id="requestPayment">
+            </div>
         </div>
     </div>
 </div>

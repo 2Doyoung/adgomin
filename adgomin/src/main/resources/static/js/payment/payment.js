@@ -1,8 +1,6 @@
 /**
  * 전역변수
  */
-const purchaseCharge = document.getElementById("purchaseCharge");
-const purchaseSumPrice = document.getElementById("purchaseSumPrice");
 const verificationButton = document.getElementById("verificationButton");
 const reSendButton = document.getElementById("reSendButton");
 const certificationButton = document.getElementById("certificationButton");
@@ -12,6 +10,15 @@ const privacyInfoPage = document.getElementById("privacyInfoPage");
 
 const requestPaymentWindow = document.getElementById("requestPaymentWindow");
 
+const paymentCloseBtn = document.getElementById("paymentCloseBtn");
+
+const customerEmail = document.getElementById("customerEmail");
+const customerName = document.getElementById("customerName");
+const customerPhoneNumber = document.getElementById("customerPhoneNumber");
+
+const totalAmount = document.getElementById("totalAmount").value;
+
+const integerTotalAmount = parseInt(totalAmount);
 
 /**
  * 이벤트 함수
@@ -107,7 +114,7 @@ if(purchaseConditionPage != null) {
 
                 newWindow.scrollTo({
                     top: targetPosition - headerHeight,
-                    behavior: "smooth" // 스크롤 애니메이션
+                    behavior: "smooth"
                 });
             }
         };
@@ -124,36 +131,38 @@ if(requestPaymentWindow != null) {
     requestPaymentWindow.addEventListener("click", () => {
         let paymentWindow = document.getElementById("paymentWindow");
         paymentWindow.style.display = "flex";
+
+        requestPaymentWidget();
+    })
+}
+
+if(paymentCloseBtn != null) {
+    paymentCloseBtn.addEventListener("click", () => {
+        let paymentWindow = document.getElementById("paymentWindow");
+        paymentWindow.style.display = "none";
     })
 }
 
 /**
  * 사용자 함수
  */
-let mediaPriceAmount = parseInt(mediaPrice.replace(/,/g, ''));
-let mediaPriceCharge = Math.floor(mediaPriceAmount * 0.05 / 10) * 10;
-let formattedMediaPriceCharge = mediaPriceCharge.toLocaleString(undefined, { maximumFractionDigits: 0 });
-purchaseCharge.innerText = formattedMediaPriceCharge;
-
-let purchaseSumPriceFormatted = (mediaPriceAmount + mediaPriceCharge).toLocaleString(undefined, { maximumFractionDigits: 0 });
-purchaseSumPrice.innerText = purchaseSumPriceFormatted;
-
-function main() {
+let requestPaymentWidget = () => {
     const requestPayment = document.getElementById("requestPayment");
-    const coupon = document.getElementById("coupon-box");
 
     // ------  결제위젯 초기화 ------
-    const clientKey = "live_gck_Ba5PzR0Arnx7XX120QPG3vmYnNeD";
+    const clientKey = "test_gck_yZqmkKeP8gpga7Xa1Kzj3bQRxB9l";
     const tossPayments = TossPayments(clientKey);
 
     // 회원 결제
-    const customerKey = "LVD4ovs2A0fA48Ox-fOtK";
+    const customerKey = customerEmail.value;
     const widgets = tossPayments.widgets({ customerKey });
+
+    const orderId = generateUUID();
 
     // ------ 주문의 결제 금액 설정 ------
     widgets.setAmount({
         currency: "KRW",
-        value: 50000,
+        value: integerTotalAmount,
     }).then(() => {
         return Promise.all([
             // ------  결제 UI 렌더링 ------
@@ -171,13 +180,13 @@ function main() {
         // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
         requestPayment.addEventListener("click", function () {
             widgets.requestPayment({
-                orderId: "uHsVi0jWKOwMGFYX4ZzYw",
-                orderName: "토스 티셔츠 외 2건",
-                successUrl: window.location.origin + "/success.html",
-                failUrl: window.location.origin + "/fail.html",
-                customerEmail: "customer123@gmail.com",
-                customerName: "김토스",
-                customerMobilePhone: "01012341234",
+                orderId: orderId,
+                orderName: mediaTitle,
+                successUrl: window.location.origin + "/success",
+                failUrl: window.location.origin + "/fail",
+                customerEmail: customerEmail.value,
+                customerName: customerName.value,
+                customerMobilePhone: customerPhoneNumber.value,
             });
         });
     }).catch((error) => {
@@ -185,7 +194,21 @@ function main() {
     });
 }
 
-main();
+let generateUUID = () => { // Public Domain/MIT
+    let d = new Date().getTime(); // Timestamp
+    let d2 = (performance && performance.now && (performance.now()*1000)) || 0; // Time in microseconds since page-load or 0 if unsupported
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        let r = Math.random() * 16; // random number between 0 and 16
+        if(d > 0){ // Use timestamp until depleted
+            r = (d + r)%16 | 0;
+            d = Math.floor(d/16);
+        } else { // Use microseconds since page-load if supported
+            r = (d2 + r)%16 | 0;
+            d2 = Math.floor(d2/16);
+        }
+        return (c === 'x' ? r : (r&0x3|0x8)).toString(16);
+    });
+}
 
 /**
  * XMLHttpRequest 성공 함수
@@ -252,6 +275,8 @@ let defaultXhr = (responseObject, flag) => {
         setTimeout(() => {
             certificationError.style.display = "block";
         }, 100);
+    } else if(flag == "totalAmount") {
+        console.log();
     }
 }
 
