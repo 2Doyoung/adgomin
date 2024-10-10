@@ -4,16 +4,15 @@ import com.adgomin.enums.CommonResult;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.vo.JoinVO;
 import com.adgomin.media.vo.MediaRegisterVO;
+import com.adgomin.payment.entity.PaymentEntity;
 import com.adgomin.payment.mapper.PaymentMapper;
-import com.adgomin.portfolio.entity.PortfolioEntity;
+import com.adgomin.post.mapper.PostMapper;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 @Service(value = "com.adgomin.payment.service.PaymentService")
@@ -22,9 +21,11 @@ public class PaymentService {
     private final String userId = "adgomin"; // 알리고 계정 ID
     private final String apiUrl = "https://kakaoapi.aligo.in/akv10/alimtalk/send/";
     private final PaymentMapper paymentMapper;
+    private final PostMapper postMapper;
 
-    public PaymentService(PaymentMapper paymentMapper) {
+    public PaymentService(PaymentMapper paymentMapper, PostMapper postMapper) {
         this.paymentMapper = paymentMapper;
+        this.postMapper = postMapper;
     }
 
     public String sendKakaoNotification(JoinVO joinVO, String phoneNumber) {
@@ -77,5 +78,19 @@ public class PaymentService {
 
     public Enum<?> phoneNumberCertificationSuccess(JoinEntity joinEntity) {
         return this.paymentMapper.phoneNumberCertificationSuccess(joinEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
+
+    public Enum<?> paymentRegister(JoinVO joinVO, PaymentEntity paymentEntity) {
+        JoinVO sellerOrder = this.paymentMapper.getSellerOrder(paymentEntity.getMediaOrder());
+        MediaRegisterVO getPost = this.postMapper.getPost(String.valueOf(paymentEntity.getMediaOrder()));
+        int mediaPriceAmount = Integer.parseInt(getPost.getMediaPrice().replace(",", ""));
+        int mediaPriceCharge = (int) Math.floor(mediaPriceAmount * 0.05 / 10) * 10;
+        int totalAmount = mediaPriceAmount + mediaPriceCharge;
+
+        paymentEntity.setBuyerOrder(joinVO.getUserOrder());
+        paymentEntity.setSellerOrder(sellerOrder.getUserOrder());
+        paymentEntity.setTotalAmount(totalAmount);
+
+        return this.paymentMapper.paymentRegister(paymentEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 }

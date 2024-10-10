@@ -157,8 +157,6 @@ let requestPaymentWidget = () => {
     const customerKey = customerEmail.value;
     const widgets = tossPayments.widgets({ customerKey });
 
-    const orderId = generateUUID();
-
     // ------ 주문의 결제 금액 설정 ------
     widgets.setAmount({
         currency: "KRW",
@@ -179,6 +177,8 @@ let requestPaymentWidget = () => {
     }).then(() => {
         // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
         requestPayment.addEventListener("click", function () {
+            const orderId = generateUUID();
+
             widgets.requestPayment({
                 orderId: orderId,
                 orderName: mediaTitle,
@@ -188,6 +188,13 @@ let requestPaymentWidget = () => {
                 customerName: customerName.value,
                 customerMobilePhone: customerPhoneNumber.value,
             });
+
+            const formData = new FormData();
+
+            formData.append("orderId", orderId);
+            formData.append("mediaOrder", mediaOrder);
+
+            xhr("/payment/register", formData, "POST", "paymentRegister");
         });
     }).catch((error) => {
         console.error("Error:", error);

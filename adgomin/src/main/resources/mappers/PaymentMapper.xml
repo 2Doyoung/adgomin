@@ -40,4 +40,20 @@
         WHERE 1=1
         AND user_order = #{userOrder}
     </update>
+
+    <select id="getSellerOrder" resultType="com.adgomin.join.vo.JoinVO">
+        SELECT
+            T2.user_order AS userOrder
+        FROM adgomin_media_register T1
+        LEFT JOIN adgomin_user T2 ON T1.email = T2.email
+        WHERE 1=1
+        AND media_order = #{mediaOrder}
+    </select>
+
+    <insert id="paymentRegister" parameterType="com.adgomin.payment.entity.PaymentEntity">
+        INSERT INTO adgomin_payments
+        (order_id, buyer_order, seller_order, media_order, total_amount, create_dt, modify_dt)
+        VALUES
+        (#{orderId}, #{buyerOrder}, #{sellerOrder}, #{mediaOrder}, #{totalAmount}, NOW(), NOW())
+    </insert>
 </mapper>

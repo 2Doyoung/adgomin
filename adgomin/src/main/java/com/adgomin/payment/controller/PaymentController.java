@@ -3,6 +3,7 @@ package com.adgomin.payment.controller;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.vo.JoinVO;
 import com.adgomin.media.vo.MediaRegisterVO;
+import com.adgomin.payment.entity.PaymentEntity;
 import com.adgomin.payment.service.PaymentService;
 import com.adgomin.portfolio.entity.PortfolioEntity;
 import com.adgomin.post.service.PostService;
@@ -191,16 +192,12 @@ public class PaymentController {
         return ResponseEntity.status(code).body(jsonObject);
     }
 
-    @GetMapping("/total/amount")
+    @PostMapping("/payment/register")
     @ResponseBody
-    public String totalAmount(@RequestParam(value = "mediaOrder", required = false) String mediaOrder) {
-        MediaRegisterVO getPost = this.postService.getPost(mediaOrder);
-
-        int mediaPriceAmount = Integer.parseInt(getPost.getMediaPrice().replace(",", ""));
-        int mediaPriceCharge = (int) Math.floor(mediaPriceAmount * 0.05 / 10) * 10;
-        int totalAmount = mediaPriceAmount + mediaPriceCharge;
+    public String paymentRegister(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, PaymentEntity paymentEntity) {
         JSONObject responseObject = new JSONObject();
-        responseObject.put("result", totalAmount);
+        Enum<?> result = this.paymentService.paymentRegister(joinVO, paymentEntity);
+        responseObject.put("result", result.name().toLowerCase());
 
         return responseObject.toString();
     }
