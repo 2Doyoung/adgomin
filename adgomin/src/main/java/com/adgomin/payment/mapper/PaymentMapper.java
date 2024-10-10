@@ -15,4 +15,5 @@ public interface PaymentMapper {
     int phoneNumberCertificationSuccess(JoinEntity joinEntity);
     int paymentRegister(PaymentEntity paymentEntity);
     JoinVO getSellerOrder(@Param(value = "mediaOrder") int mediaOrder);
+    PaymentEntity getTotalAmount(@Param(value = "orderId") String orderId);
 }

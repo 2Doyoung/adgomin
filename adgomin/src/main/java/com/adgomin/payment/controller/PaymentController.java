@@ -10,6 +10,7 @@ import com.adgomin.post.service.PostService;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -156,6 +157,17 @@ public class PaymentController {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         };
+
+        PaymentEntity getTotalAmount = this.paymentService.getTotalAmount(orderId);
+
+        if(getTotalAmount.getTotalAmount() != Integer.parseInt(amount)) {
+            JSONObject failResponse = new JSONObject();
+            failResponse.put("message", "결제 금액이 일치하지 않습니다.");
+            failResponse.put("code", "AMOUNT_MISMATCH");
+
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(failResponse);
+        }
+
         JSONObject obj = new JSONObject();
         obj.put("orderId", orderId);
         obj.put("amount", amount);

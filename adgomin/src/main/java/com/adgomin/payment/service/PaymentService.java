@@ -93,4 +93,8 @@ public class PaymentService {
 
         return this.paymentMapper.paymentRegister(paymentEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
+
+    public PaymentEntity getTotalAmount(String orderId) {
+        return this.paymentMapper.getTotalAmount(orderId);
+    }
 }

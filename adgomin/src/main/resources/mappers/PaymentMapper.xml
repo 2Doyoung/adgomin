@@ -56,4 +56,12 @@
         VALUES
         (#{orderId}, #{buyerOrder}, #{sellerOrder}, #{mediaOrder}, #{totalAmount}, NOW(), NOW())
     </insert>
+
+    <select id="getTotalAmount" resultType="com.adgomin.payment.entity.PaymentEntity">
+        SELECT
+            total_amount AS totalAmount
+        FROM adgomin_payments
+        WHERE 1=1
+        AND order_id = #{orderId}
+    </select>
 </mapper>
