@@ -46,7 +46,9 @@ header {
 }
 
 .logo {
-
+	width: 9rem;
+	margin-top: 1rem;
+	vertical-align: super;
 }
 
 /* 메인 검색창 */
