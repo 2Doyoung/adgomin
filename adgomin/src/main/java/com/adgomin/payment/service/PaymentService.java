@@ -17,7 +17,7 @@ import java.util.Random;
 
 @Service(value = "com.adgomin.payment.service.PaymentService")
 public class PaymentService {
-    private final String apiKey = "mfnu5yj7kvlv6glkqyu0ohmm5djept3o"; // 발급받은 API Key
+    private final String apiKey = "g8uqfwdzx7swxj3sk6mbzlnb2cu4zmro"; // 발급받은 API Key
     private final String userId = "adgomin"; // 알리고 계정 ID
     private final String apiUrl = "https://kakaoapi.aligo.in/akv10/alimtalk/send/";
     private final PaymentMapper paymentMapper;
@@ -96,5 +96,13 @@ public class PaymentService {
 
     public PaymentEntity getTotalAmount(String orderId) {
         return this.paymentMapper.getTotalAmount(orderId);
+    }
+
+    public void setFailureReason(PaymentEntity paymentEntity) {
+        this.paymentMapper.setFailureReason(paymentEntity);
+    }
+
+    public void setSuccessPayment(PaymentEntity paymentEntity) {
+        this.paymentMapper.setSuccessPayment(paymentEntity);
     }
 }

@@ -129,10 +129,26 @@ if(privacyInfoPage != null) {
 
 if(requestPaymentWindow != null) {
     requestPaymentWindow.addEventListener("click", () => {
-        let paymentWindow = document.getElementById("paymentWindow");
-        paymentWindow.style.display = "flex";
+        if(parseInt(phoneNumberYn)) {
+            AUTHNICE.requestPay({
+                clientId: 'R2_6a8ed8d3f4314352bf6dab371ed932c3',
+                method: 'card',
+                orderId: '{{orderId}}',
+                amount: 1004,
+                goodsName: '나이스페이-상품',
+                returnUrl: 'http://localhost:8080/clientAuth',
+                fnError: function (result) {
+                    alert('개발자확인용 : ' + result.errorMsg + '')
+                }
+            });
+        } else if(!parseInt(phoneNumberYn)) {
+            let name = document.getElementById("name");
+            let purchaseSpan = document.getElementById("purchaseSpan");
 
-        requestPaymentWidget();
+            purchaseSpan.style.color = "#FF0040";
+            name.focus();
+        }
+
     })
 }
 
@@ -146,61 +162,6 @@ if(paymentCloseBtn != null) {
 /**
  * 사용자 함수
  */
-let requestPaymentWidget = () => {
-    const requestPayment = document.getElementById("requestPayment");
-
-    // ------  결제위젯 초기화 ------
-    const clientKey = "test_gck_yZqmkKeP8gpga7Xa1Kzj3bQRxB9l";
-    const tossPayments = TossPayments(clientKey);
-
-    // 회원 결제
-    const customerKey = customerEmail.value;
-    const widgets = tossPayments.widgets({ customerKey });
-
-    // ------ 주문의 결제 금액 설정 ------
-    widgets.setAmount({
-        currency: "KRW",
-        value: integerTotalAmount,
-    }).then(() => {
-        return Promise.all([
-            // ------  결제 UI 렌더링 ------
-            widgets.renderPaymentMethods({
-                selector: "#payment-method",
-                variantKey: "DEFAULT",
-            }),
-            // ------  이용약관 UI 렌더링 ------
-            widgets.renderAgreement({
-                selector: "#agreement",
-                variantKey: "AGREEMENT",
-            }),
-        ]);
-    }).then(() => {
-        // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
-        requestPayment.addEventListener("click", function () {
-            const orderId = generateUUID();
-
-            widgets.requestPayment({
-                orderId: orderId,
-                orderName: mediaTitle,
-                successUrl: window.location.origin + "/success",
-                failUrl: window.location.origin + "/fail",
-                customerEmail: customerEmail.value,
-                customerName: customerName.value,
-                customerMobilePhone: customerPhoneNumber.value,
-            });
-
-            const formData = new FormData();
-
-            formData.append("orderId", orderId);
-            formData.append("mediaOrder", mediaOrder);
-
-            xhr("/payment/register", formData, "POST", "paymentRegister");
-        });
-    }).catch((error) => {
-        console.error("Error:", error);
-    });
-}
-
 let generateUUID = () => { // Public Domain/MIT
     let d = new Date().getTime(); // Timestamp
     let d2 = (performance && performance.now && (performance.now()*1000)) || 0; // Time in microseconds since page-load or 0 if unsupported
@@ -268,6 +229,10 @@ let successXhr = (responseObject, flag) => {
         verificationSuccessPhoneNumber.innerText = phoneNumber;
 
         identityVerificationSuccessDiv.scrollIntoView({block: "center"});
+
+        phoneNumberYn = 1;
+
+        xhr("/phoneNumberSendEmail", null, "GET", "sendEmail");
     }
 }
 
@@ -282,8 +247,6 @@ let defaultXhr = (responseObject, flag) => {
         setTimeout(() => {
             certificationError.style.display = "block";
         }, 100);
-    } else if(flag == "totalAmount") {
-        console.log();
     }
 }
 

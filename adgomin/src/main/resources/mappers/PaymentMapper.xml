@@ -64,4 +64,29 @@
         WHERE 1=1
         AND order_id = #{orderId}
     </select>
+
+    <update id="setFailureReason" parameterType="com.adgomin.payment.entity.PaymentEntity">
+        UPDATE
+            adgomin_payments
+        SET payment_status = 'FAILURE'
+        ,payment_key = #{paymentKey}
+        ,payment_type = #{paymentType}
+        ,payment_failure_reason = #{paymentFailureReason}
+        ,payment_amount = #{paymentAmount}
+        ,modify_dt = NOW()
+        WHERE 1=1
+        AND order_id = #{orderId}
+    </update>
+
+    <update id="setSuccessPayment" parameterType="com.adgomin.payment.entity.PaymentEntity">
+        UPDATE
+            adgomin_payments
+        SET payment_status = 'SUCCESS'
+          ,payment_key = #{paymentKey}
+          ,payment_type = #{paymentType}
+          ,payment_amount = #{paymentAmount}
+          ,modify_dt = NOW()
+        WHERE 1=1
+        AND order_id = #{orderId}
+    </update>
 </mapper>

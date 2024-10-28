@@ -13,18 +13,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
     <th:block th:replace="~{layouts/favicon :: head}"></th:block>
 
-    <script src="https://js.tosspayments.com/v2/standard"></script>
+    <script src="https://pay.nicepay.co.kr/v1/js/"></script>
 </head>
 <body>
 <script th:inline="javascript">
     let mediaPrice = [[${mediaPrice}]];
     let mediaTitle = [[${mediaTitle}]];
     let mediaOrder = [[${mediaOrder}]];
+    let phoneNumberYn = [[${phoneNumberYn}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
-<input type="hidden" th:value="${email}" id="customerEmail" readonly>
-<input type="hidden" th:value="${name}" id="customerName" readonly>
-<input type="hidden" th:value="${phoneNumber}" id="customerPhoneNumber" readonly>
+<input type="hidden" th:value="${customerEmail}" id="customerEmail" readonly>
+<input type="hidden" th:value="${customerName}" id="customerName" readonly>
+<input type="hidden" th:value="${customerPhoneNumber}" id="customerPhoneNumber" readonly>
 <input type="hidden" th:value="${totalAmount}" id="totalAmount" readonly>
 <div class="payment-wrap">
     <div class="payment-sub-wrap">
@@ -52,7 +53,7 @@
             <div th:if="${phoneNumberYn == '0'}" class="identity-verification-div" id="identityVerificationDiv">
                 <div class="identity-verification-top">
                     <div class="identity-verification-title">광고주 정보</div>
-                    <div class="identity-verification-terms">- 구매는 본인 확인을 거친 후에만 가능합니다. (첫 결제 시 1회만 필요)</div>
+                    <div class="identity-verification-terms">- <span id="purchaseSpan">구매는 본인 확인을 거친 후에만 가능합니다. (첫 결제 시 1회만 필요)</span></div>
                     <div class="identity-verification-terms">- 휴대폰번호 변경 시 프로필에도 반영됩니다.</div>
                     <div class="identity-verification-terms">- 제공된 이름과 이메일은 거래 확인 목적으로 사용됩니다.</div>
                 </div>
@@ -91,15 +92,15 @@
                 </div>
                 <div class="verification-complete">
                     <span class="verification-complete-title">이름</span>
-                    <div th:text="${name}" class="verification-complete-info"></div>
+                    <div th:text="${customerName}" class="verification-complete-info"></div>
                 </div>
                 <div class="verification-complete">
                     <span class="verification-complete-title">이메일</span>
-                    <div th:text="${email}" class="verification-complete-info"></div>
+                    <div th:text="${customerEmail}" class="verification-complete-info"></div>
                 </div>
                 <div class="verification-complete">
                     <span class="verification-complete-title">휴대폰 번호</span>
-                    <div th:text="${phoneNumber}" class="verification-complete-info"></div>
+                    <div th:text="${customerPhoneNumber}" class="verification-complete-info"></div>
                 </div>
             </div>
             <div class="identity-verification-success-div" id="identityVerificationSuccessDiv">
@@ -115,12 +116,20 @@
                 </div>
                 <div class="verification-complete">
                     <span class="verification-complete-title">이메일</span>
-                    <div th:text="${email}" class="verification-complete-info"></div>
+                    <div th:text="${sessionEmail}" class="verification-complete-info"></div>
                 </div>
                 <div class="verification-complete">
                     <span class="verification-complete-title">휴대폰 번호</span>
                     <div id="verificationSuccessPhoneNumber" class="verification-complete-info"></div>
                 </div>
+            </div>
+            <div class="payment-select-box">
+                <div class="payment-select-box-title">결제 방법</div>
+                <ul class="payment-select-list-ul">
+                    <li class="payment-select-list payment-select-list-check">신용카드</li>
+                    <li class="payment-select-list">계좌이체</li>
+                    <li class="payment-select-list">가상계좌</li>
+                </ul>
             </div>
         </div>
         <div class="payment-right-wrap">
@@ -144,20 +153,6 @@
                     <span class="agree-underline" id="purchaseConditionPage">구매조건</span> 및 <span class="agree-underline" id="privacyInfoPage">개인정보처리방침</span>과 결제에 동의합니다.
                 </div>
                 <input type="button" value="결제하기" class="payment-button" id="requestPaymentWindow">
-            </div>
-        </div>
-    </div>
-    <div class="payment-window" id="paymentWindow">
-        <div class="payment-box">
-            <div class="payment-close-btn" id="paymentCloseBtn">
-                <i class="ri-close-line"></i>
-            </div>
-            <!-- 결제 UI -->
-            <div id="payment-method"></div>
-            <!-- 이용약관 UI -->
-            <div id="agreement"></div>
-            <div class="request-payment-button">
-                <input type="button" value="결제하기" class="payment-button" id="requestPayment">
             </div>
         </div>
     </div>

@@ -13,8 +13,17 @@ public class PaymentEntity {
     private int paymentAmount;
     private String paymentType;
     private String paymentStatus;
+    private String paymentFailureReason;
     private Date createDt;
     private Date modifyDt;
+
+    public String getPaymentFailureReason() {
+        return paymentFailureReason;
+    }
+
+    public void setPaymentFailureReason(String paymentFailureReason) {
+        this.paymentFailureReason = paymentFailureReason;
+    }
 
     public int getPaymentOrder() {
         return paymentOrder;

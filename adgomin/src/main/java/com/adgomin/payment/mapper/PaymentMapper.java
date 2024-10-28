@@ -16,4 +16,6 @@ public interface PaymentMapper {
     int paymentRegister(PaymentEntity paymentEntity);
     JoinVO getSellerOrder(@Param(value = "mediaOrder") int mediaOrder);
     PaymentEntity getTotalAmount(@Param(value = "orderId") String orderId);
+    void setFailureReason(PaymentEntity paymentEntity);
+    void setSuccessPayment(PaymentEntity paymentEntity);
 }
