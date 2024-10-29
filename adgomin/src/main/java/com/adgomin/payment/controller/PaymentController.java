@@ -7,19 +7,30 @@ import com.adgomin.media.vo.MediaRegisterVO;
 import com.adgomin.payment.entity.PaymentEntity;
 import com.adgomin.payment.service.PaymentService;
 import com.adgomin.post.service.PostService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.MessagingException;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.text.NumberFormat;
+import java.util.Base64;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 @Controller(value = "com.adgomin.payment.controller.PaymentController")
 public class PaymentController {
@@ -28,6 +39,12 @@ public class PaymentController {
     private final PostService postService;
 
     private final EmailService emailService;
+
+    private final RestTemplate restTemplate = new RestTemplate();
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    private final String CLIENT_ID = "R2_6a8ed8d3f4314352bf6dab371ed932c3";
+    private final String SECRET_KEY = "4d936c2a756c4969a8b3064579940c3a";
     @Value("${app.url}")
     private String appUrl;
 
@@ -172,5 +189,38 @@ public class PaymentController {
         responseObject.put("result", "success");
 
         return responseObject.toString();
+    }
+
+    @RequestMapping("/serverAuth")
+    public String requestPayment(
+            @RequestParam String tid,
+            @RequestParam Long amount,
+            Model model) throws Exception {
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Basic " + Base64.getEncoder().encodeToString((CLIENT_ID + ":" + SECRET_KEY).getBytes()));
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        Map<String, Object> AuthenticationMap = new HashMap<>();
+        AuthenticationMap.put("amount", String.valueOf(amount));
+
+        HttpEntity<String> request = new HttpEntity<>(objectMapper.writeValueAsString(AuthenticationMap), headers);
+
+        ResponseEntity<JsonNode> responseEntity = restTemplate.postForEntity(
+                "https://sandbox-api.nicepay.co.kr/v1/payments/" + tid, request, JsonNode.class);
+
+        JsonNode responseNode = responseEntity.getBody();
+        String resultCode = responseNode.get("resultCode").asText();
+        model.addAttribute("resultMsg", responseNode.get("resultMsg").asText());
+
+        System.out.println(responseNode.toPrettyString());
+
+        if (resultCode.equalsIgnoreCase("0000")) {
+            // 결제 성공 비즈니스 로직 구현
+        } else {
+            // 결제 실패 비즈니스 로직 구현
+        }
+
+        return "/response";
     }
 }

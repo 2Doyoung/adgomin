@@ -20,6 +20,8 @@ const totalAmount = document.getElementById("totalAmount").value;
 
 const integerTotalAmount = parseInt(totalAmount);
 
+const paymentSelectList = document.getElementsByClassName("payment-select-list");
+
 /**
  * 이벤트 함수
  */
@@ -129,14 +131,18 @@ if(privacyInfoPage != null) {
 
 if(requestPaymentWindow != null) {
     requestPaymentWindow.addEventListener("click", () => {
+        let method = document.getElementsByClassName("payment-select-list-check")[0].dataset.parent;
+        let orderId = generateUUID();
+        let goodsName = document.getElementsByClassName("purchase-title")[0].innerText;
+
         if(parseInt(phoneNumberYn)) {
             AUTHNICE.requestPay({
                 clientId: 'R2_6a8ed8d3f4314352bf6dab371ed932c3',
-                method: 'card',
-                orderId: '{{orderId}}',
-                amount: 1004,
-                goodsName: '나이스페이-상품',
-                returnUrl: 'http://localhost:8080/clientAuth',
+                method: method,
+                orderId: orderId,
+                amount: integerTotalAmount,
+                goodsName: goodsName,
+                returnUrl: 'http://localhost:8080/serverAuth',
                 fnError: function (result) {
                     alert('개발자확인용 : ' + result.errorMsg + '')
                 }
@@ -159,6 +165,15 @@ if(paymentCloseBtn != null) {
     })
 }
 
+for(let i = 0; i < paymentSelectList.length; i++) {
+    paymentSelectList[i].addEventListener("click", () => {
+        const selected = document.querySelector(".payment-select-list-check");
+        if (selected) {
+            selected.classList.remove("payment-select-list-check");
+        }
+        paymentSelectList[i].classList.add("payment-select-list-check");
+    })
+}
 /**
  * 사용자 함수
  */

@@ -4,20 +4,20 @@
 const snsSlider = document.getElementById('snsSlider');
 const snsPrevButton = document.getElementById('snsPrevButton');
 const snsNextButton = document.getElementById('snsNextButton');
-const snsSlide = snsSlider.querySelector('.popular-sns-card');
-const snsSlideStyles = getComputedStyle(snsSlide);
-const snsSlideWidth = snsSlide.offsetWidth + parseFloat(snsSlideStyles.marginLeft) + parseFloat(snsSlideStyles.marginRight);
-const snsSlidesToShow = Math.floor(snsSlider.offsetWidth / snsSlideWidth);
-let snsCurrentIndex = 0;
+// const snsSlide = snsSlider.querySelector('.popular-sns-card');
+// const snsSlideStyles = getComputedStyle(snsSlide);
+// const snsSlideWidth = snsSlide.offsetWidth + parseFloat(snsSlideStyles.marginLeft) + parseFloat(snsSlideStyles.marginRight);
+// const snsSlidesToShow = Math.floor(snsSlider.offsetWidth / snsSlideWidth);
+// let snsCurrentIndex = 0;
 
 const transportSlider = document.getElementById('transportSlider');
 const transportPrevButton = document.getElementById('transportPrevButton');
 const transportNextButton = document.getElementById('transportNextButton');
-// const transportSlide = transportSlider.querySelector('.popular-transport-card');
-// const transportSlideStyles = getComputedStyle(transportSlide);
-// const transportSlideWidth = transportSlide.offsetWidth + parseFloat(transportSlideStyles.marginLeft) + parseFloat(transportSlideStyles.marginRight);
-// const transportSlidesToShow = Math.floor(transportSlider.offsetWidth / transportSlideWidth);
-// let transportCurrentIndex = 0;
+const transportSlide = transportSlider.querySelector('.popular-transport-card');
+const transportSlideStyles = getComputedStyle(transportSlide);
+const transportSlideWidth = transportSlide.offsetWidth + parseFloat(transportSlideStyles.marginLeft) + parseFloat(transportSlideStyles.marginRight);
+const transportSlidesToShow = Math.floor(transportSlider.offsetWidth / transportSlideWidth);
+let transportCurrentIndex = 0;
 
 const outdoorSlider = document.getElementById('outdoorSlider');
 const outdoorPrevButton = document.getElementById('outdoorPrevButton');
@@ -38,34 +38,34 @@ const iconCategoryLi = document.getElementsByClassName("icon-category-li");
 /**
  * 이벤트 함수
  */
-snsNextButton.addEventListener('click', () => {
-    if (snsCurrentIndex < snsSlider.children.length - snsSlidesToShow) {
-        snsCurrentIndex++;
-        snsUpdateSlider();
-    }
-});
-
-snsPrevButton.addEventListener('click', () => {
-    if (snsCurrentIndex > 0) {
-        snsCurrentIndex--;
-        snsUpdateSlider();
-    }
-});
-
-// transportNextButton.addEventListener('click', () => {
-//     if (transportCurrentIndex < transportSlider.children.length - transportSlidesToShow) {
-//         transportCurrentIndex++;
-//         transportUpdateSlider();
+// snsNextButton.addEventListener('click', () => {
+//     if (snsCurrentIndex < snsSlider.children.length - snsSlidesToShow) {
+//         snsCurrentIndex++;
+//         snsUpdateSlider();
 //     }
 // });
 //
-// transportPrevButton.addEventListener('click', () => {
-//     if (transportCurrentIndex > 0) {
-//         transportCurrentIndex--;
-//         transportUpdateSlider();
+// snsPrevButton.addEventListener('click', () => {
+//     if (snsCurrentIndex > 0) {
+//         snsCurrentIndex--;
+//         snsUpdateSlider();
 //     }
 // });
-//
+
+transportNextButton.addEventListener('click', () => {
+    if (transportCurrentIndex < transportSlider.children.length - transportSlidesToShow) {
+        transportCurrentIndex++;
+        transportUpdateSlider();
+    }
+});
+
+transportPrevButton.addEventListener('click', () => {
+    if (transportCurrentIndex > 0) {
+        transportCurrentIndex--;
+        transportUpdateSlider();
+    }
+});
+
 // outdoorNextButton.addEventListener('click', () => {
 //     if (outdoorCurrentIndex < outdoorSlider.children.length - outdoorSlidesToShow) {
 //         outdoorCurrentIndex++;
