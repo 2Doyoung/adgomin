@@ -3,6 +3,7 @@ package com.adgomin.media.service;
 import com.adgomin.enums.CommonResult;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.mapper.JoinMapper;
+import com.adgomin.join.vo.JoinVO;
 import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.mapper.MediaMapper;
@@ -159,5 +160,9 @@ public class MediaService {
 
     public Enum<?> mediaNotificationRead(MediaRegisterEntity mediaRegisterEntity) {
         return this.mediaMapper.mediaNotificationRead(mediaRegisterEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+    }
+
+    public JoinVO getPhoneNumberYn(int userOrder) {
+        return this.mediaMapper.getPhoneNumberYn(userOrder);
     }
 }

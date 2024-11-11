@@ -186,4 +186,12 @@
         WHERE 1=1
         AND media_order = #{mediaOrder}
     </update>
+
+    <select id="getPhoneNumberYn" resultType="com.adgomin.join.vo.JoinVO">
+        SELECT
+            phone_number_yn AS phoneNumberYn
+        FROM adgomin_user
+        WHERE 1=1
+        AND user_order = #{userOrder}
+    </select>
 </mapper>

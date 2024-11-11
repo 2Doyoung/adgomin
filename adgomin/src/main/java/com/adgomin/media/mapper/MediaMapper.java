@@ -1,6 +1,7 @@
 package com.adgomin.media.mapper;
 
 import com.adgomin.join.entity.JoinEntity;
+import com.adgomin.join.vo.JoinVO;
 import com.adgomin.media.entity.MediaIntroduceEntity;
 import com.adgomin.media.entity.MediaRegisterEntity;
 import com.adgomin.media.vo.MediaRegisterVO;
@@ -36,4 +37,6 @@ public interface MediaMapper {
     MediaRegisterEntity getRefuseReason(MediaRegisterEntity mediaRegisterEntity);
 
     int mediaNotificationRead(MediaRegisterEntity mediaRegisterEntity);
+
+    JoinVO getPhoneNumberYn(@Param(value = "userOrder") int userOrder);
 }

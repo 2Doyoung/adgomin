@@ -40,47 +40,53 @@ public class MediaController {
     @GetMapping(value = "/media")
     public ModelAndView media(@RequestParam(value = "manage", required = false) String manage, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
         ModelAndView modelAndView = null;
-        if(manage == null) {
-            modelAndView =  new ModelAndView("media_manage/introduce");
-            if(joinVO != null) {
-                modelAndView.addObject("nickname", joinVO.getNickname());
-                modelAndView.addObject("email", joinVO.getEmail());
+        JoinVO joinVO1 = this.mediaService.getPhoneNumberYn(joinVO.getUserOrder());
+        if("0".equals(joinVO1.getPhoneNumberYn())) {
+            modelAndView =  new ModelAndView("media_manage/phone_number");
+            modelAndView.addObject("phoneNumberYn", joinVO1.getPhoneNumberYn());
+        } else if("1".equals(joinVO1.getPhoneNumberYn())) {
+            if(manage == null) {
+                modelAndView =  new ModelAndView("media_manage/introduce");
+                if(joinVO != null) {
+                    modelAndView.addObject("nickname", joinVO.getNickname());
+                    modelAndView.addObject("email", joinVO.getEmail());
 
-                MediaIntroduceEntity mediaIntroduceEntity = this.mediaService.getMediaIntroduce(joinVO.getEmail());
+                    MediaIntroduceEntity mediaIntroduceEntity = this.mediaService.getMediaIntroduce(joinVO.getEmail());
 
-                if(mediaIntroduceEntity != null) {
-                    modelAndView.addObject("mediaIntroduce", mediaIntroduceEntity.getMediaIntroduce());
-                    modelAndView.addObject("region", mediaIntroduceEntity.getRegion());
-                    modelAndView.addObject("adCategory", mediaIntroduceEntity.getAdCategory());
-                    modelAndView.addObject("mediaUrl", mediaIntroduceEntity.getMediaUrl());
+                    if(mediaIntroduceEntity != null) {
+                        modelAndView.addObject("mediaIntroduce", mediaIntroduceEntity.getMediaIntroduce());
+                        modelAndView.addObject("region", mediaIntroduceEntity.getRegion());
+                        modelAndView.addObject("adCategory", mediaIntroduceEntity.getAdCategory());
+                        modelAndView.addObject("mediaUrl", mediaIntroduceEntity.getMediaUrl());
+                    }
+                } else {
+                    modelAndView = new ModelAndView("error/error");
+                }
+            } else if("mediaRegister".equals(manage)) {
+                modelAndView =  new ModelAndView("media_manage/register");
+                if(joinVO != null) {
+                    MediaRegisterEntity mediaRegisterEntity = this.mediaService.getMediaRegister(joinVO.getEmail());
+                    modelAndView.addObject("mediaOrder", mediaRegisterEntity.getMediaOrder());
+                    modelAndView.addObject("adDetailCategory", mediaRegisterEntity.getAdDetailCategory());
+                    modelAndView.addObject("mediaTitle", mediaRegisterEntity.getMediaTitle());
+                    modelAndView.addObject("mediaSummary", mediaRegisterEntity.getMediaSummary());
+                    modelAndView.addObject("mediaDetailExplain", mediaRegisterEntity.getMediaDetailExplain());
+                    modelAndView.addObject("thumbnailImgNm", mediaRegisterEntity.getThumbnailImgNm());
+                    modelAndView.addObject("thumbnailOriginFileNm", mediaRegisterEntity.getThumbnailOriginFileNm());
+                    modelAndView.addObject("thumbnailImgFilePath", mediaRegisterEntity.getThumbnailImgFilePath());
+                    modelAndView.addObject("mediaPrice", mediaRegisterEntity.getMediaPrice());
+                    modelAndView.addObject("mediaSubmitStatus", mediaRegisterEntity.getMediaSubmitStatus());
+                    modelAndView.addObject("offerPeriod", mediaRegisterEntity.getOfferPeriod());
+                    if(mediaRegisterEntity.getMediaSubmitStatus().equals("C")) {
+                        MediaRegisterEntity mediaRegisterEntity1 = this.mediaService.getRefuseReason(mediaRegisterEntity);
+                        modelAndView.addObject("refuseReason", mediaRegisterEntity1.getRefuseReason());
+                    }
+                } else {
+                    modelAndView = new ModelAndView("error/error");
                 }
             } else {
                 modelAndView = new ModelAndView("error/error");
             }
-        } else if("mediaRegister".equals(manage)) {
-            modelAndView =  new ModelAndView("media_manage/register");
-            if(joinVO != null) {
-                MediaRegisterEntity mediaRegisterEntity = this.mediaService.getMediaRegister(joinVO.getEmail());
-                modelAndView.addObject("mediaOrder", mediaRegisterEntity.getMediaOrder());
-                modelAndView.addObject("adDetailCategory", mediaRegisterEntity.getAdDetailCategory());
-                modelAndView.addObject("mediaTitle", mediaRegisterEntity.getMediaTitle());
-                modelAndView.addObject("mediaSummary", mediaRegisterEntity.getMediaSummary());
-                modelAndView.addObject("mediaDetailExplain", mediaRegisterEntity.getMediaDetailExplain());
-                modelAndView.addObject("thumbnailImgNm", mediaRegisterEntity.getThumbnailImgNm());
-                modelAndView.addObject("thumbnailOriginFileNm", mediaRegisterEntity.getThumbnailOriginFileNm());
-                modelAndView.addObject("thumbnailImgFilePath", mediaRegisterEntity.getThumbnailImgFilePath());
-                modelAndView.addObject("mediaPrice", mediaRegisterEntity.getMediaPrice());
-                modelAndView.addObject("mediaSubmitStatus", mediaRegisterEntity.getMediaSubmitStatus());
-                modelAndView.addObject("offerPeriod", mediaRegisterEntity.getOfferPeriod());
-                if(mediaRegisterEntity.getMediaSubmitStatus().equals("C")) {
-                    MediaRegisterEntity mediaRegisterEntity1 = this.mediaService.getRefuseReason(mediaRegisterEntity);
-                    modelAndView.addObject("refuseReason", mediaRegisterEntity1.getRefuseReason());
-                }
-            } else {
-                modelAndView = new ModelAndView("error/error");
-            }
-        } else {
-            modelAndView = new ModelAndView("error/error");
         }
 
         return  modelAndView;

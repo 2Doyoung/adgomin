@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - 결제하기</title>
+    <link rel="stylesheet" th:href="@{/css/media_manage/phone_number.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/media_manage/phone_number.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <th:block th:replace="~{layouts/favicon :: head}"></th:block>
+</head>
+<body>
+<script th:inline="javascript">
+    let phoneNumberYn = [[${phoneNumberYn}]];
+</script>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<div class="payment-wrap">
+    <div class="payment-sub-wrap">
+        <div class="payment-left-wrap">
+            <div class="payment-title">
+                광고매체 등록 전 본인인증
+            </div>
+            <div class="identity-verification-div">
+                <div class="identity-verification-top">
+                    <div class="identity-verification-title">광고매체 정보</div>
+                    <div class="identity-verification-terms">- 광고매체 등록은 본인 확인을 거친 후에만 가능합니다. (첫 등록 시 1회만 필요)</div>
+                    <div class="identity-verification-terms">- 휴대폰번호 변경 시 프로필에도 반영됩니다.</div>
+                    <div class="identity-verification-terms">- 제공된 이름과 이메일은 거래 확인 목적으로 사용됩니다.</div>
+                </div>
+                <div class="identity-verification-bottom">
+                    <label><span class="essential-star">＊</span> 이름</label><br>
+                    <input type="text" id="name" placeholder="실명을 입력해주세요."><br>
+                    <div class="name-error" id="nameError">이름 입력을 입력해 주세요.</div>
+                    <label><span class="essential-star">＊</span> 이메일(이메일 변경을 하시려면 고객센터로 문의해 주세요.)</label><br>
+                    <input type="email" id="email" class="email-readonly" th:value="${session.LOGIN_USER.email}" readonly><br>
+                    <label><span class="essential-star">＊</span> 휴대폰 번호(-제외)</label><br>
+                    <input type="text" id="phoneNumber" placeholder="01012345678">
+                    <span>
+                        <input type="button" class="verification-button" id="verificationButton" value="인증요청">
+                        <input type="button" class="re-send-button" id="reSendButton" value="재전송">
+                    </span><br>
+                    <div class="phone-number-error" id="phoneNumberError">휴대폰 번호 형식이 올바르지 않습니다.</div>
+                    <div class="certification-wrap" id="certificationWrap">
+                        <div class="certification-notification-div">
+                            <span id="reSendText">인증번호가 카카오톡으로 전송되었습니다.</span><br>
+                            <span class="notification-underline">카카오톡으로 전송이 실패할 경우, 해당 메시지는 문자로 자동 전송됩니다.</span>
+                        </div>
+                        <div>
+                            <input type="text" class="phone-number-certification" id="phoneNumberCertification" placeholder="인증 번호를 입력해주세요.">
+                            <input type="button" class="certification-button" id="certificationButton" value="인증">
+                            <div class="certification-error" id="certificationError">인증번호가 일치하지 않습니다.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-bg" id="modalBg">
+    <div class="modal-body">
+        <div id="modalTitle"></div>
+        <div class="modal-check-div" id="modalCheck">
+            <i class="ri-checkbox-circle-line"></i>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>
