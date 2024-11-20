@@ -1,6 +1,7 @@
 package com.adgomin.user.controller;
 
 import com.adgomin.join.vo.JoinVO;
+import com.adgomin.payment.service.PaymentService;
 import com.adgomin.user.service.UserService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,8 +30,12 @@ public class UserController {
 
     private final UserService userService;
 
+    private final PaymentService paymentService;
+
     @Autowired
-    public UserController(UserService userService) { this.userService = userService; }
+    public UserController(UserService userService, PaymentService paymentService) { this.userService = userService;
+        this.paymentService = paymentService;
+    }
 
     @GetMapping(value = "/user")
     public ModelAndView user(@RequestParam(value = "setting", required = false) String setting, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
@@ -39,8 +43,13 @@ public class UserController {
         if(setting == null) {
             modelAndView = new ModelAndView("user/user");
             if(joinVO != null) {
+                JoinVO joinVO1 = this.paymentService.getVerificationInfo(joinVO);
+
                 modelAndView.addObject("nickname", joinVO.getNickname());
                 modelAndView.addObject("email", joinVO.getEmail());
+                modelAndView.addObject("phoneNumberYn", joinVO1.getPhoneNumberYn());
+                modelAndView.addObject("name", joinVO1.getName());
+                modelAndView.addObject("phoneNumber", joinVO1.getPhoneNumber());
             }
         } else if("userPasswordChange".equals(setting)) {
             modelAndView = new ModelAndView("user/password_change");

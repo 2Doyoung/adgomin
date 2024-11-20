@@ -330,3 +330,131 @@ body {
 .user_phone_readonly:focus {
     outline: none;
 }
+
+.identity-verification-bottom > label {
+    font-size: 0.95rem;
+    color: #858a8d;
+}
+
+.identity-verification-bottom > input {
+    width: 28rem;
+    height: 2.5rem;
+    font-size: 0.95rem;
+    padding-left: 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    margin-bottom: 0.5rem;
+}
+
+.verification-button, .re-send-button, .re-verification-button {
+    height: 2.7rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.name-error, .email-error, .phone-number-error, .certification-error {
+    font-size: 0.9rem;
+    color: #FF402B;
+    margin-left: 0.5rem;
+    display: none;
+}
+
+.certification-notification-div {
+    font-size: 0.85rem;
+    color: #2E9AFE;
+    margin-left: 0.5rem;
+}
+
+.phone-number-certification {
+    width: 28rem;
+    height: 2.5rem;
+    font-size: 0.95rem;
+    padding-left: 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    margin-bottom: 0.5rem;
+}
+
+.certification-button {
+    height: 2.7rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #81BEF7;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.notification-underline {
+    text-decoration: underline;
+}
+
+.certification-wrap {
+    display: none;
+}
+
+.re-send-button {
+    display: none;
+}
+
+.identity-verification-div {
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.identity-verification-div > label {
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: #303441;
+}
+
+.identity-verification-div > span {
+    font-size: 0.9rem;
+    color: #BDBDBD;
+}
+
+.identity-verification-div > div > input {
+    height: 2.5rem;
+    width: 42rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    padding-left: 1rem;
+    color: #303441;
+}
+
+.identity-verification-complete-div > div > input[type=text] {
+    height: 2.5rem;
+    width: 42rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    padding-left: 1rem;
+    color: #303441;
+}
+
+.input-readonly {
+    background-color: #F6F6F6;
+    color: #c8cad2!important;
+}
+
+.re-verification-div {
+    display: flex;
+}

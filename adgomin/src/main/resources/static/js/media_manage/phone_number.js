@@ -120,10 +120,14 @@ let successXhr = (responseObject, flag) => {
         xhr("/phoneNumberSendEmail", null, "GET", "sendEmail");
     } else if(flag == "reSendKakao") {
         let certificationWrap = document.getElementById("certificationWrap");
-
         let reSendText = document.getElementById("reSendText");
+        let certificationError = document.getElementById("certificationError");
 
+        document.getElementById("phoneNumberCertification").value = '';
+
+        certificationError.style.display = "none";
         certificationWrap.style.display = "none";
+
         setTimeout(() => {
             certificationWrap.style.display = "block";
         }, 100);
