@@ -13,6 +13,14 @@ const verificationButton = document.getElementById("verificationButton");
 const certificationButton = document.getElementById("certificationButton");
 
 const reSendButton = document.getElementById("reSendButton");
+
+const requestVerificationButton = document.getElementById("requestVerificationButton");
+
+const reVerificationCancel = document.getElementById("reVerificationCancel");
+const reVerificationButton = document.getElementById("reVerificationButton");
+const reCertificationButton = document.getElementById("reCertificationButton");
+const requestSendButton= document.getElementById("requestSendButton");
+
 /**
  * 이벤트 함수
  */
@@ -148,6 +156,125 @@ if(reSendButton != null) {
     })
 }
 
+if(requestVerificationButton != null) {
+    requestVerificationButton.addEventListener("click", () => {
+        let identityVerificationCompleteDiv = document.getElementById("identityVerificationCompleteDiv");
+        let requestIdentityVerificationBottom = document.getElementById("requestIdentityVerificationBottom");
+
+        identityVerificationCompleteDiv.style.display = "none";
+        requestIdentityVerificationBottom.style.display = "block";
+    })
+}
+
+if(reVerificationCancel != null) {
+    reVerificationCancel.addEventListener("click", () => {
+        let requestIdentityVerificationBottom = document.getElementById("requestIdentityVerificationBottom");
+        let identityVerificationCompleteDiv = document.getElementById("identityVerificationCompleteDiv");
+
+        let reNameError = document.getElementById("reNameError");
+        let rePhoneNumberError = document.getElementById("rePhoneNumberError");
+
+        let reCertificationWrap = document.getElementById("reCertificationWrap");
+        let reCertificationError = document.getElementById("reCertificationError");
+
+        let reVerificationButton = document.getElementById("reVerificationButton");
+        let requestSendButton = document.getElementById("requestSendButton");
+
+        document.getElementById("reName").value = "";
+        document.getElementById("rePhoneNumber").value = "";
+        document.getElementById("rePhoneNumberCertification").value = "";
+
+        requestIdentityVerificationBottom.style.display = "none";
+        identityVerificationCompleteDiv.style.display = "block";
+
+        reNameError.style.display = "none";
+        rePhoneNumberError.style.display = "none";
+
+        reCertificationWrap.style.display = "none";
+        reCertificationError.style.display = "none";
+
+        reVerificationButton.style.display = "inline-block";
+        requestSendButton.style.display = "none"
+    })
+}
+
+if(reVerificationButton != null) {
+    reVerificationButton.addEventListener("click", () => {
+        let reName = document.getElementById("reName");
+        let rePhoneNumber = document.getElementById("rePhoneNumber");
+
+        let reNameError = document.getElementById("reNameError");
+        let rePhoneNumberError = document.getElementById("rePhoneNumberError");
+
+        if(reName.value === "") {
+            reNameError.style.display = "block";
+        }
+
+        if(rePhoneNumber.value === "" || !/^010\d{4}\d{4}$/.test(rePhoneNumber.value)) {
+            rePhoneNumberError.style.display = "inline-block";
+        }
+
+        if(reNameError.style.display !== "block" && rePhoneNumberError.style.display !== "inline-block") {
+            xhr("/send/kakao?phoneNumber=" + rePhoneNumber.value, null, "GET", "requestSendKakao");
+        }
+    })
+}
+
+if(reCertificationButton != null) {
+    reCertificationButton.addEventListener("click", () => {
+        let rePhoneNumberCertification = document.getElementById("rePhoneNumberCertification").value;
+
+        const formData = new FormData();
+
+        formData.append("phoneNumberCertification", rePhoneNumberCertification);
+
+        xhr('/phone/number/certification/check', formData, 'POST', 'rePhoneNumberCertificationCheck');
+    })
+}
+
+if(requestSendButton != null) {
+    requestSendButton.addEventListener("click", ()=> {
+        let rePhoneNumber = document.getElementById("rePhoneNumber");
+
+        let reNameError = document.getElementById("reNameError");
+        let rePhoneNumberError = document.getElementById("rePhoneNumberError");
+
+        if(reNameError.style.display !== "block" && rePhoneNumberError.style.display !== "inline-block") {
+            xhr("/send/kakao?phoneNumber=" + rePhoneNumber.value, null, "GET", "requestReSendKakao");
+        }
+    })
+}
+
+if(document.getElementById("reName") != null) {
+    document.getElementById("reName").addEventListener("keyup", () => {
+        let reName = document.getElementById("reName");
+        let reNameError = document.getElementById("reNameError");
+
+        if(reName.value !== "") {
+            reNameError.style.display = "none";
+        } else if(reName.value === "") {
+            reNameError.style.display = "block";
+        }
+    })
+}
+
+if(document.getElementById("rePhoneNumber") != null) {
+    document.getElementById("rePhoneNumber").addEventListener("keyup", (e) => {
+        let rePhoneNumber = document.getElementById("rePhoneNumber");
+        let rePhoneNumberError = document.getElementById("rePhoneNumberError");
+
+        let cleanedValue = rePhoneNumber.value.replace(/[^0-9]/g, '');
+
+        rePhoneNumber.value = cleanedValue;
+
+        if(/^010\d{4}\d{4}$/.test(cleanedValue)) {
+            rePhoneNumberError.style.display = "none";
+        } else if(!/^010\d{4}\d{4}$/.test(cleanedValue)) {
+            rePhoneNumberError.style.display = "inline-block";
+        }
+    })
+}
+
 /**
  * 사용자 함수
  */
@@ -210,6 +337,40 @@ let successXhr = (responseObject, flag) => {
         }, 100);
 
         reSendText.innerText = "인증번호가 카카오톡으로 재전송되었습니다.";
+    } else if(flag == "requestSendKakao") {
+        let reVerificationButton = document.getElementById("reVerificationButton");
+        let requestSendButton = document.getElementById("requestSendButton");
+
+        let reCertificationWrap = document.getElementById("reCertificationWrap");
+
+        reVerificationButton.style.display = "none";
+        requestSendButton.style.display = "inline-block"
+        reCertificationWrap.style.display = "block";
+    } else if(flag == "rePhoneNumberCertificationCheck") {
+        let reName = document.getElementById("reName").value;
+        let rePhoneNumber = document.getElementById("rePhoneNumber").value;
+
+        const formData = new FormData();
+
+        formData.append("name", reName);
+        formData.append("phoneNumber", rePhoneNumber);
+
+        xhr("/phone/number/certification/success", formData, "PATCH", "phoneNumberCertificationSuccess");
+    } else if(flag == "requestReSendKakao") {
+        let reCertificationWrap = document.getElementById("reCertificationWrap");
+        let requestSendText = document.getElementById("requestSendText");
+        let reCertificationError = document.getElementById("reCertificationError");
+
+        document.getElementById("rePhoneNumberCertification").value = '';
+
+        reCertificationError.style.display = "none";
+        reCertificationWrap.style.display = "none";
+
+        setTimeout(() => {
+            reCertificationWrap.style.display = "block";
+        }, 100);
+
+        requestSendText.innerText = "인증번호가 카카오톡으로 재전송되었습니다.";
     }
 }
 
@@ -223,6 +384,13 @@ let defaultXhr = (responseObject, flag) => {
         certificationError.style.display = "none";
         setTimeout(() => {
             certificationError.style.display = "block";
+        }, 100);
+    } else if(flag == "rePhoneNumberCertificationCheck") {
+        let reCertificationError = document.getElementById("reCertificationError");
+
+        reCertificationError.style.display = "none";
+        setTimeout(() => {
+            reCertificationError.style.display = "block";
         }, 100);
     }
 }

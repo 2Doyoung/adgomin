@@ -347,7 +347,7 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.verification-button, .re-send-button, .re-verification-button {
+.verification-button, .re-send-button, .request-verification-button {
     height: 2.7rem;
     width: 6.5rem;
     border: none;
@@ -455,6 +455,51 @@ body {
     color: #c8cad2!important;
 }
 
-.re-verification-div {
+.request-verification-div {
     display: flex;
+}
+
+.request-identity-verification-bottom {
+    display: none;
+}
+
+.phone-number-div > input[type=text], .request-name-div > input[type=text] {
+    height: 2.5rem;
+    width: 42rem;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    padding-left: 1rem;
+    color: #303441;
+}
+
+.phone-number-div {
+    display: flex;
+}
+
+.certification-div {
+    display: flex;
+}
+
+.request-name-div {
+    display: flex;
+}
+
+.request-cancel-button {
+    height: 2.7rem;
+    width: 6.5rem;
+    border: none;
+    border-radius: 5px;
+    color: #868e96;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #FFFFFF;
+}
+
+.request-cancel-button:hover {
+    background-color: #F6F6F6;
 }
