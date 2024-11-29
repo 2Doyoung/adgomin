@@ -274,7 +274,7 @@ const tempSaveAndSubmit = (mediaRegisterTempSaveOrSubmit) => {
     }
 
     if(!(titleSpan.style.color == 'rgb(255, 0, 64)') && !(adCategorySpan.style.color == 'rgb(255, 0, 64)') && !(extSpan.style.color == 'rgb(255, 0, 64)') && !(mediaSummarySpan.style.color == 'rgb(255, 0, 64)')
-    && !(offerPeriodSpan.style.color == 'rgb(255, 0, 64)')&& !(mediaPriceSpan.style.color == 'rgb(255, 0, 64)')) {
+    && !(offerPeriodSpan.style.color == 'rgb(255, 0, 64)') && !(mediaPriceSpan.style.color == 'rgb(255, 0, 64)')) {
         let title = document.getElementById("title").value;
         let adCategorySelected = document.getElementsByClassName("ad-category-selected")[0].innerText;
         let mediaSummary = document.getElementById("mediaSummary").value;

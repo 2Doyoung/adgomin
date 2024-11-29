@@ -86,6 +86,7 @@ public class ManageController {
             modelAndView.addObject("thumbnailImgFilePath", mediaRegisterEntity.getThumbnailImgFilePath());
             modelAndView.addObject("mediaPrice", mediaRegisterEntity.getMediaPrice());
             modelAndView.addObject("mediaSubmitStatus", mediaRegisterEntity.getMediaSubmitStatus());
+            modelAndView.addObject("offerPeriod", mediaRegisterEntity.getOfferPeriod());
         } else {
             modelAndView =  new ModelAndView("error/error");
         }

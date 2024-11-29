@@ -13,6 +13,7 @@ let thumbnailImgSave;
 
 let quill;
 
+const offerPeriod = document.getElementById("offerPeriod");
 /**
  * 이벤트 함수
  */
@@ -29,6 +30,9 @@ updateButton.addEventListener("click", () => {
 
     let extSpan = document.getElementById("extSpan");
 
+    let offerPeriod = document.getElementById("offerPeriod").value;
+    let offerPeriodSpan = document.getElementById("offerPeriodSpan");
+
     if(mediaSummary.length == 0) {
         mediaSummarySpan.style.color = "#FF0040";
         document.getElementById("mediaSummary").focus();
@@ -43,11 +47,20 @@ updateButton.addEventListener("click", () => {
         mediaPriceSpan.style.color = "#BDBDBD";
     }
 
-    if(!(mediaSummarySpan.style.color == 'rgb(255, 0, 64)') && !(mediaPriceSpan.style.color == 'rgb(255, 0, 64)') && !(extSpan.style.color == 'rgb(255, 0, 64)')) {
+    if(offerPeriod.length == 0) {
+        offerPeriodSpan.style.color = "#FF0040";
+        document.getElementById("offerPeriod").focus();
+    } else if(offerPeriod.length > 0) {
+        offerPeriodSpan.style.color = "#BDBDBD";
+    }
+
+    if(!(mediaSummarySpan.style.color == 'rgb(255, 0, 64)') && !(mediaPriceSpan.style.color == 'rgb(255, 0, 64)') && !(extSpan.style.color == 'rgb(255, 0, 64)')
+    && !(offerPeriodSpan.style.color == 'rgb(255, 0, 64)')) {
         let mediaOrder = document.getElementById("mediaOrder").value;
         let mediaSummary = document.getElementById("mediaSummary").value;
         let quillHtml = document.getElementById("quillHtml").value;
         let mediaPrice = document.getElementById("mediaPrice").value;
+        let offerPeriod = document.getElementById("offerPeriod").value;
 
         const formData = new FormData();
 
@@ -55,6 +68,7 @@ updateButton.addEventListener("click", () => {
         formData.append("mediaSummary", mediaSummary);
         formData.append("mediaDetailExplain", quillHtml);
         formData.append("mediaPrice", mediaPrice);
+        formData.append("offerPeriod", offerPeriod);
 
         xhr("/manage/media/update", formData, "PATCH", "manageMediaUpdate");
     }
@@ -122,6 +136,28 @@ thumbnailImg.addEventListener("change", (e) => {
 modalCheck.addEventListener("click", () => {
     window.location.href = "/manage?manage=media";
 })
+
+offerPeriod.addEventListener("keyup", (e) => {
+    let value = e.target.value;
+
+    value = value.replace(/[^0-9]/g, "");
+
+    if (value === "") {
+        offerPeriod.value = "";
+        return;
+    }
+
+    let numericValue = parseInt(value);
+
+    if (numericValue < 1) {
+        numericValue = 1;
+    } else if (numericValue > 90) {
+        numericValue = 90;
+    }
+
+    offerPeriod.value = numericValue;
+})
+
 /**
  * 사용자 함수
  */

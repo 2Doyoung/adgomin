@@ -41,6 +41,7 @@
              ,thumbnail_img_file_path as thumbnailImgFilePath
              ,media_price as mediaPrice
              ,media_submit_status as mediaSubmitStatus
+             ,offer_period as offerPeriod
         FROM adgomin_media_register
         WHERE 1=1
         AND media_order = #{mediaOrder}
@@ -53,6 +54,7 @@
             media_summary = #{mediaSummary}
             ,media_detail_explain = #{mediaDetailExplain}
             ,media_price = #{mediaPrice}
+            ,offer_period = #{offerPeriod}
             ,modify_dt = now()
         WHERE 1=1
         AND media_order = #{mediaOrder}
