@@ -23,9 +23,9 @@
     let phoneNumberYn = [[${phoneNumberYn}]];
 </script>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
-<input type="hidden" th:value="${customerEmail}" id="customerEmail" readonly>
-<input type="hidden" th:value="${customerName}" id="customerName" readonly>
-<input type="hidden" th:value="${customerPhoneNumber}" id="customerPhoneNumber" readonly>
+<input type="hidden" th:value="${buyerEmail}" id="buyerEmail" readonly>
+<input type="hidden" th:value="${buyerName}" id="buyerName" readonly>
+<input type="hidden" th:value="${buyerTel}" id="buyerTel" readonly>
 <input type="hidden" th:value="${totalAmount}" id="totalAmount" readonly>
 <div class="payment-wrap">
     <div class="payment-sub-wrap">
@@ -92,15 +92,15 @@
                 </div>
                 <div class="verification-complete">
                     <span class="verification-complete-title">이름</span>
-                    <div th:text="${customerName}" class="verification-complete-info"></div>
+                    <div th:text="${buyerName}" class="verification-complete-info"></div>
                 </div>
                 <div class="verification-complete">
                     <span class="verification-complete-title">이메일</span>
-                    <div th:text="${customerEmail}" class="verification-complete-info"></div>
+                    <div th:text="${buyerEmail}" class="verification-complete-info"></div>
                 </div>
                 <div class="verification-complete">
                     <span class="verification-complete-title">휴대폰 번호</span>
-                    <div th:text="${customerPhoneNumber}" class="verification-complete-info"></div>
+                    <div th:text="${buyerTel}" class="verification-complete-info"></div>
                 </div>
             </div>
             <div class="identity-verification-success-div" id="identityVerificationSuccessDiv">
@@ -127,8 +127,14 @@
                 <div class="payment-select-box-title">결제 방법</div>
                 <ul class="payment-select-list-ul">
                     <li class="payment-select-list payment-select-list-check" data-parent="card">신용카드</li>
-                    <li class="payment-select-list">계좌이체</li>
-                    <li class="payment-select-list">가상계좌</li>
+                    <li class="payment-select-list" data-parent="bank">계좌이체</li>
+                    <li class="payment-select-list" data-parent="vbank">가상계좌</li>
+                    <li class="payment-select-list kakaopay-logo-li" data-parent="kakaopay">
+                        <img th:src="@{/images/kakaopay-logo.png}" class="kakaopay-logo">
+                    </li>
+                    <li class="payment-select-list naverpay-logo-li" data-parent="naverpayCard">
+                        <img th:src="@{/images/naverpay-logo.png}" class="naverpay-logo">
+                    </li>
                 </ul>
             </div>
         </div>
@@ -139,8 +145,12 @@
                     <div th:text="${mediaPrice}" class="purchase-payment-sum-price"></div><span class="purchase-payment-sum-won">원</span>
                 </div>
                 <div class="purchase-payment-sum">
-                    <div class="purchase-width">
+                    <div class="purchase-width charge-div">
                         <span class="purchase-payment-sum-title">수수료</span><i class="ri-question-line"></i>
+                        <div class="charge-info-div">
+                            주문 금액의 5% (VAT 포함)<br>
+                            플랫폼 사용자에 더 나은 서비스 제공을 위해 사용됩니다.
+                        </div>
                     </div>
                     <div class="purchase-payment-sum-price" id="purchaseCharge" th:text="${formattedMediaPriceCharge}"></div><span class="purchase-payment-sum-won">원</span>
                 </div>

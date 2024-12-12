@@ -148,6 +148,7 @@ body {
     font-size: 0.9rem;
     margin-left: 0.2rem;
     color: #A4A4A4;
+    cursor: pointer;
 }
 
 .purchase-sum-price {
@@ -408,7 +409,7 @@ body {
     float: left;
     color: #303441;
     margin: 0.5rem 0.5rem 0.5rem 0rem;
-    padding: 0.8rem 3rem;
+    padding: 0.8rem 2.6rem;
     border-radius: 5px;
     cursor: pointer;
     border: 1px solid #e6e6e6;
@@ -425,4 +426,53 @@ body {
 
 .purchase-sum-price-vat {
     font-size: 0.8rem;
+}
+
+.kakaopay-logo {
+    width: 5rem;
+}
+
+.kakaopay-logo-li {
+    padding: 0.37rem 1.85rem;
+}
+
+.naverpay-logo-li {
+    padding: 0.28rem 1.35rem;
+}
+
+.naverpay-logo {
+    width: 6rem;
+}
+
+.charge-div {
+    position: relative;
+    display: inline-block;
+}
+
+.charge-info-div {
+    visibility: hidden;
+    position: absolute;
+    background-color: #A4A4A4;
+    color: #FFFFFF;
+    border-radius: 5px;
+    width: 19rem;
+    font-size: 0.8rem;
+    height: 2.5rem;
+    padding: 1rem;
+    top: 27px;
+}
+
+.charge-div:hover .charge-info-div {
+    visibility: visible;
+}
+
+.charge-info-div:after {
+    border-top: 0px solid transparent;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #A4A4A4;
+    content: "";
+    left: 46px;
+    top: -5px;
+    position: absolute;
 }

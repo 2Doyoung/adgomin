@@ -91,9 +91,9 @@ public class PaymentController {
             modelAndView.addObject("totalAmount", totalAmount);
             modelAndView.addObject("sessionEmail", joinVO.getEmail());
             if("1".equals(joinVO1.getPhoneNumberYn())) {
-                modelAndView.addObject("customerEmail", joinVO1.getEmail());
-                modelAndView.addObject("customerName", joinVO1.getName());
-                modelAndView.addObject("customerPhoneNumber", joinVO1.getPhoneNumber());
+                modelAndView.addObject("buyerEmail", joinVO1.getEmail());
+                modelAndView.addObject("buyerName", joinVO1.getName());
+                modelAndView.addObject("buyerTel", joinVO1.getPhoneNumber());
             }
         } else {
             modelAndView = new ModelAndView("error/error");
@@ -192,10 +192,11 @@ public class PaymentController {
     }
 
     @RequestMapping("/serverAuth")
-    public String requestPayment(
+    public ModelAndView requestPayment(
             @RequestParam String tid,
-            @RequestParam Long amount,
+            @RequestParam int amount,
             Model model) throws Exception {
+        ModelAndView modelAndView = null;
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Basic " + Base64.getEncoder().encodeToString((CLIENT_ID + ":" + SECRET_KEY).getBytes()));
@@ -207,7 +208,7 @@ public class PaymentController {
         HttpEntity<String> request = new HttpEntity<>(objectMapper.writeValueAsString(AuthenticationMap), headers);
 
         ResponseEntity<JsonNode> responseEntity = restTemplate.postForEntity(
-                "https://sandbox-api.nicepay.co.kr/v1/payments/" + tid, request, JsonNode.class);
+                "https://api.nicepay.co.kr/v1/payments/" + tid, request, JsonNode.class);
 
         JsonNode responseNode = responseEntity.getBody();
         String resultCode = responseNode.get("resultCode").asText();
@@ -216,11 +217,11 @@ public class PaymentController {
         System.out.println(responseNode.toPrettyString());
 
         if (resultCode.equalsIgnoreCase("0000")) {
-            // 결제 성공 비즈니스 로직 구현
+            modelAndView = new ModelAndView("payment/success");
         } else {
-            // 결제 실패 비즈니스 로직 구현
+            modelAndView = new ModelAndView("payment/fail");
         }
 
-        return "/response";
+        return modelAndView;
     }
 }

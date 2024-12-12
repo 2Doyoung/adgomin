@@ -12,9 +12,9 @@ const requestPaymentWindow = document.getElementById("requestPaymentWindow");
 
 const paymentCloseBtn = document.getElementById("paymentCloseBtn");
 
-const customerEmail = document.getElementById("customerEmail");
-const customerName = document.getElementById("customerName");
-const customerPhoneNumber = document.getElementById("customerPhoneNumber");
+const buyerEmail = document.getElementById("buyerEmail");
+const buyerName = document.getElementById("buyerName");
+const buyerTel = document.getElementById("buyerTel");
 
 const totalAmount = document.getElementById("totalAmount").value;
 
@@ -142,9 +142,13 @@ if(requestPaymentWindow != null) {
                 orderId: orderId,
                 amount: integerTotalAmount,
                 goodsName: goodsName,
-                returnUrl: 'http://localhost:8080/serverAuth',
+                buyerName: buyerName.value,
+                buyerTel: buyerTel.value,
+                buyerEmail: buyerEmail.value,
+                vbankHolder: buyerName.value,
+                returnUrl: '/serverAuth',
                 fnError: function (result) {
-                    alert('개발자확인용 : ' + result.errorMsg + '')
+
                 }
             });
         } else if(!parseInt(phoneNumberYn)) {
