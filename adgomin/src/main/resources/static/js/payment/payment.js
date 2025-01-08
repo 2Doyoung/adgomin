@@ -147,6 +147,7 @@ if(requestPaymentWindow != null) {
                 buyerEmail: buyerEmail.value,
                 vbankHolder: buyerName.value,
                 returnUrl: '/serverAuth',
+                mallReserved: mediaOrder,
                 fnError: function (result) {
 
                 }

@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>애드곰인 - 결제하기</title>
+    <link rel="stylesheet" th:href="@{/css/payment/fail.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
     <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/payment/fail.js}"></script>
     <script defer th:src="@{/js/layouts/header.js}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
@@ -13,19 +15,12 @@
 </head>
 <body>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
-<h2> 결제 실패 </h2>
-<p id="code"></p>
-<p id="message"></p>
-
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
-
-    const codeElement = document.getElementById("code");
-    const messageElement = document.getElementById("message");
-
-    codeElement.textContent = "에러코드: " + urlParams.get("code");
-    messageElement.textContent = "실패 사유: " + urlParams.get("message");
-</script>
+<div class="fail-wrap">
+    <div class="fail-icon"><i class="ri-error-warning-fill"></i></div>
+    <div class="fail-title">결제가 실패하였습니다.</div>
+    <div th:text="${reason}" class="fail-reason"></div>
+    <button class="fail-payment-page-button" id="failPaymentPageButton">결제페이지로 이동</button>
+</div>
 <hr class="user-footer">
 <th:block th:replace="~{layouts/footer :: body}"></th:block>
 </body>

@@ -133,30 +133,6 @@ public class PaymentController {
         return responseObject.toString();
     }
 
-    @GetMapping(value = "/success")
-    public ModelAndView success(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
-        ModelAndView modelAndView = null;
-        if(joinVO != null) {
-            modelAndView = new ModelAndView("payment/success");
-        } else {
-            modelAndView = new ModelAndView("error/error");
-        }
-
-        return  modelAndView;
-    }
-
-    @GetMapping(value = "/fail")
-    public ModelAndView fail(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) {
-        ModelAndView modelAndView = null;
-        if(joinVO != null) {
-            modelAndView = new ModelAndView("payment/fail");
-        } else {
-            modelAndView = new ModelAndView("error/error");
-        }
-
-        return  modelAndView;
-    }
-
     @PostMapping("/payment/register")
     @ResponseBody
     public String paymentRegister(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, PaymentEntity paymentEntity) {
@@ -195,8 +171,23 @@ public class PaymentController {
     public ModelAndView requestPayment(
             @RequestParam String tid,
             @RequestParam int amount,
-            Model model) throws Exception {
+            @RequestParam int mallReserved,
+            Model model, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) throws Exception {
         ModelAndView modelAndView = null;
+
+        MediaRegisterVO getPost = this.postService.getPost(String.valueOf(mallReserved));
+
+        int mediaPriceAmount = Integer.parseInt(getPost.getMediaPrice().replace(",", ""));
+        int mediaPriceCharge = (int) Math.floor(mediaPriceAmount * 0.05 / 10) * 10;
+        int totalAmount = mediaPriceAmount + mediaPriceCharge;
+
+        if(amount != totalAmount) {
+            modelAndView = new ModelAndView("payment/fail");
+
+            modelAndView.addObject("reason", "결제 중 불일치 정보가 감지되었습니다.");
+
+            return modelAndView;
+        }
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Basic " + Base64.getEncoder().encodeToString((CLIENT_ID + ":" + SECRET_KEY).getBytes()));
