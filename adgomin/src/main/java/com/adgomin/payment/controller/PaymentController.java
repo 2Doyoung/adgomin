@@ -4,7 +4,9 @@ import com.adgomin.email.service.EmailService;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.vo.JoinVO;
 import com.adgomin.media.vo.MediaRegisterVO;
-import com.adgomin.payment.entity.PaymentEntity;
+import com.adgomin.payment.entity.PaymentFailedEntity;
+import com.adgomin.payment.entity.PaymentsCardEntity;
+import com.adgomin.payment.entity.PaymentsEntity;
 import com.adgomin.payment.service.PaymentService;
 import com.adgomin.post.service.PostService;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -27,6 +29,8 @@ import javax.mail.MessagingException;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.text.NumberFormat;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Locale;
@@ -135,9 +139,9 @@ public class PaymentController {
 
     @PostMapping("/payment/register")
     @ResponseBody
-    public String paymentRegister(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, PaymentEntity paymentEntity) {
+    public String paymentRegister(@SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO, PaymentsEntity paymentsEntity) {
         JSONObject responseObject = new JSONObject();
-        Enum<?> result = this.paymentService.paymentRegister(joinVO, paymentEntity);
+        Enum<?> result = this.paymentService.paymentRegister(joinVO, paymentsEntity);
         responseObject.put("result", result.name().toLowerCase());
 
         return responseObject.toString();
@@ -182,6 +186,16 @@ public class PaymentController {
         int totalAmount = mediaPriceAmount + mediaPriceCharge;
 
         if(amount != totalAmount) {
+            PaymentFailedEntity paymentFailedEntity = new PaymentFailedEntity();
+            paymentFailedEntity.setBuyerOrder(joinVO.getUserOrder());
+            paymentFailedEntity.setSellerOrder(getPost.getUserOrder());
+            paymentFailedEntity.setMediaOrder(mallReserved);
+            paymentFailedEntity.setTotalAmount(totalAmount);
+            paymentFailedEntity.setPaymentAmount(amount);
+            paymentFailedEntity.setPaymentFailedReason("결제금액 불일치");
+
+            this.paymentService.insertPaymentFailed(paymentFailedEntity);
+
             modelAndView = new ModelAndView("payment/fail");
 
             modelAndView.addObject("reason", "결제 중 불일치 정보가 감지되었습니다.");
@@ -208,7 +222,53 @@ public class PaymentController {
         System.out.println(responseNode.toPrettyString());
 
         if (resultCode.equalsIgnoreCase("0000")) {
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+            DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            ZonedDateTime dateTime = ZonedDateTime.parse(responseNode.get("paidAt").asText(), inputFormatter);
+            String paidAt = dateTime.format(outputFormatter);
+
+            PaymentsEntity paymentsEntity = new PaymentsEntity();
+            paymentsEntity.setOrderId(responseNode.get("orderId").asText());
+            paymentsEntity.setBuyerOrder(joinVO.getUserOrder());
+            paymentsEntity.setSellerOrder(getPost.getUserOrder());
+            paymentsEntity.setMediaOrder(mallReserved);
+            paymentsEntity.setTotalAmount(totalAmount);
+            paymentsEntity.setPaymentAmount(amount);
+            paymentsEntity.setTid(responseNode.get("tid").asText());
+            paymentsEntity.setSignature(responseNode.get("signature").asText());
+            paymentsEntity.setStatus(responseNode.get("status").asText());
+            paymentsEntity.setPaidAt(paidAt);
+            paymentsEntity.setPayMethod(responseNode.get("payMethod").asText());
+            paymentsEntity.setGoodsName(responseNode.get("goodsName").asText());
+            paymentsEntity.setApproveNo(responseNode.get("approveNo").asText());
+            paymentsEntity.setBuyerName(responseNode.get("buyerName").asText());
+            paymentsEntity.setBuyerTel(responseNode.get("buyerTel").asText());
+            paymentsEntity.setBuyerEmail(responseNode.get("buyerEmail").asText());
+            paymentsEntity.setReceiptUrl(responseNode.get("receiptUrl").asText());
+
+            this.paymentService.insertPayments(paymentsEntity);
+
+            int paymentOrder = paymentsEntity.getPaymentOrder();
+
+            if(responseNode.get("payMethod").asText().equals("card")) {
+                PaymentsCardEntity paymentsCardEntity = new PaymentsCardEntity();
+
+                paymentsCardEntity.setPaymentOrder(paymentOrder);
+                paymentsCardEntity.setCardCode(responseNode.get("card").get("cardCode").asText());
+                paymentsCardEntity.setCardName(responseNode.get("card").get("cardName").asText());
+                paymentsCardEntity.setCardNum(responseNode.get("card").get("cardNum").asText());
+                paymentsCardEntity.setCardQuota(responseNode.get("card").get("cardQuota").asText());
+                paymentsCardEntity.setCardType(responseNode.get("card").get("cardType").asText());
+                paymentsCardEntity.setCanPartCancel(responseNode.get("card").get("canPartCancel").asText());
+                paymentsCardEntity.setAcquCardCode(responseNode.get("card").get("acquCardCode").asText());
+                paymentsCardEntity.setAcquCardName(responseNode.get("card").get("acquCardName").asText());
+
+                this.paymentService.insertPaymentsCard(paymentsCardEntity);
+            }
+
             modelAndView = new ModelAndView("payment/success");
+
+            modelAndView.addObject("receiptUrl", responseNode.get("receiptUrl").asText());
         } else {
             modelAndView = new ModelAndView("payment/fail");
         }

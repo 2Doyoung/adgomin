@@ -50,14 +50,14 @@
         AND media_order = #{mediaOrder}
     </select>
 
-    <insert id="paymentRegister" parameterType="com.adgomin.payment.entity.PaymentEntity">
+    <insert id="paymentRegister" parameterType="com.adgomin.payment.entity.PaymentsEntity">
         INSERT INTO adgomin_payments
         (order_id, buyer_order, seller_order, media_order, total_amount, create_dt, modify_dt)
         VALUES
         (#{orderId}, #{buyerOrder}, #{sellerOrder}, #{mediaOrder}, #{totalAmount}, NOW(), NOW())
     </insert>
 
-    <select id="getTotalAmount" resultType="com.adgomin.payment.entity.PaymentEntity">
+    <select id="getTotalAmount" resultType="com.adgomin.payment.entity.PaymentsEntity">
         SELECT
             total_amount AS totalAmount
         FROM adgomin_payments
@@ -65,28 +65,24 @@
         AND order_id = #{orderId}
     </select>
 
-    <update id="setFailureReason" parameterType="com.adgomin.payment.entity.PaymentEntity">
-        UPDATE
-            adgomin_payments
-        SET payment_status = 'FAILURE'
-        ,payment_key = #{paymentKey}
-        ,payment_type = #{paymentType}
-        ,payment_failure_reason = #{paymentFailureReason}
-        ,payment_amount = #{paymentAmount}
-        ,modify_dt = NOW()
-        WHERE 1=1
-        AND order_id = #{orderId}
-    </update>
+    <insert id="insertPaymentFailed" parameterType="com.adgomin.payment.entity.PaymentFailedEntity">
+        INSERT INTO adgomin_payment_failed
+        (buyer_order, seller_order, media_order, total_amount, payment_amount, payment_failed_reason, create_dt, modify_dt)
+        VALUES
+        (#{buyerOrder}, #{sellerOrder}, #{mediaOrder}, #{totalAmount}, #{paymentAmount}, #{paymentFailedReason}, NOW(), NOW())
+    </insert>
 
-    <update id="setSuccessPayment" parameterType="com.adgomin.payment.entity.PaymentEntity">
-        UPDATE
-            adgomin_payments
-        SET payment_status = 'SUCCESS'
-          ,payment_key = #{paymentKey}
-          ,payment_type = #{paymentType}
-          ,payment_amount = #{paymentAmount}
-          ,modify_dt = NOW()
-        WHERE 1=1
-        AND order_id = #{orderId}
-    </update>
+    <insert id="insertPayments" useGeneratedKeys="true" keyProperty="paymentOrder" parameterType="com.adgomin.payment.entity.PaymentsEntity">
+        INSERT INTO adgomin_payments
+        (order_id, buyer_order, seller_order, media_order, total_amount, payment_amount, create_dt, modify_dt, tid, signature, status, paid_at, pay_method, goods_name, approve_no, buyer_name, buyer_tel, buyer_email, receipt_url)
+        VALUES
+        (#{orderId}, #{buyerOrder}, #{sellerOrder}, #{mediaOrder}, #{totalAmount}, #{paymentAmount}, NOW(), NOW(), #{tid}, #{signature}, #{status}, #{paidAt}, #{payMethod}, #{goodsName}, #{approveNo}, #{buyerName}, #{buyerTel}, #{buyerEmail}, #{receiptUrl})
+    </insert>
+
+    <insert id="insertPaymentsCard" parameterType="com.adgomin.payment.entity.PaymentsCardEntity">
+        INSERT INTO adgomin_payments_card
+        (payment_order, card_code, card_name, card_num, card_quota, card_type, can_part_cancel, acqu_card_code, acqu_card_name)
+        VALUES
+        (#{paymentOrder}, #{cardCode}, #{cardName}, #{cardNum}, #{cardQuota}, #{cardType}, #{canPartCancel}, #{acquCardCode}, #{acquCardName})
+    </insert>
 </mapper>

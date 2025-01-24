@@ -15,7 +15,9 @@
 </head>
 <body>
 <th:block th:replace="~{layouts/header :: body}"></th:block>
-<h2>결제 성공</h2>
+<div>
+    <div th:text="${receiptUrl}"></div>
+</div>
 <hr class="user-footer">
 <th:block th:replace="~{layouts/footer :: body}"></th:block>
 </body>

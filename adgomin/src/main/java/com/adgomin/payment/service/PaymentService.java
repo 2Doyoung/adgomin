@@ -4,7 +4,9 @@ import com.adgomin.enums.CommonResult;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.vo.JoinVO;
 import com.adgomin.media.vo.MediaRegisterVO;
-import com.adgomin.payment.entity.PaymentEntity;
+import com.adgomin.payment.entity.PaymentFailedEntity;
+import com.adgomin.payment.entity.PaymentsCardEntity;
+import com.adgomin.payment.entity.PaymentsEntity;
 import com.adgomin.payment.mapper.PaymentMapper;
 import com.adgomin.post.mapper.PostMapper;
 import org.springframework.http.*;
@@ -80,29 +82,29 @@ public class PaymentService {
         return this.paymentMapper.phoneNumberCertificationSuccess(joinEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
-    public Enum<?> paymentRegister(JoinVO joinVO, PaymentEntity paymentEntity) {
-        JoinVO sellerOrder = this.paymentMapper.getSellerOrder(paymentEntity.getMediaOrder());
-        MediaRegisterVO getPost = this.postMapper.getPost(String.valueOf(paymentEntity.getMediaOrder()));
+    public Enum<?> paymentRegister(JoinVO joinVO, PaymentsEntity paymentsEntity) {
+        JoinVO sellerOrder = this.paymentMapper.getSellerOrder(paymentsEntity.getMediaOrder());
+        MediaRegisterVO getPost = this.postMapper.getPost(String.valueOf(paymentsEntity.getMediaOrder()));
         int mediaPriceAmount = Integer.parseInt(getPost.getMediaPrice().replace(",", ""));
         int mediaPriceCharge = (int) Math.floor(mediaPriceAmount * 0.05 / 10) * 10;
         int totalAmount = mediaPriceAmount + mediaPriceCharge;
 
-        paymentEntity.setBuyerOrder(joinVO.getUserOrder());
-        paymentEntity.setSellerOrder(sellerOrder.getUserOrder());
-        paymentEntity.setTotalAmount(totalAmount);
+        paymentsEntity.setBuyerOrder(joinVO.getUserOrder());
+        paymentsEntity.setSellerOrder(sellerOrder.getUserOrder());
+        paymentsEntity.setTotalAmount(totalAmount);
 
-        return this.paymentMapper.paymentRegister(paymentEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
+        return this.paymentMapper.paymentRegister(paymentsEntity) > 0 ? CommonResult.SUCCESS : CommonResult.FAILURE;
     }
 
-    public PaymentEntity getTotalAmount(String orderId) {
-        return this.paymentMapper.getTotalAmount(orderId);
+    public void insertPaymentFailed(PaymentFailedEntity paymentFailedEntity) {
+        this.paymentMapper.insertPaymentFailed(paymentFailedEntity);
     }
 
-    public void setFailureReason(PaymentEntity paymentEntity) {
-        this.paymentMapper.setFailureReason(paymentEntity);
+    public void insertPayments(PaymentsEntity paymentsEntity) {
+        this.paymentMapper.insertPayments(paymentsEntity);
     }
 
-    public void setSuccessPayment(PaymentEntity paymentEntity) {
-        this.paymentMapper.setSuccessPayment(paymentEntity);
+    public void insertPaymentsCard(PaymentsCardEntity paymentsCardEntity) {
+        this.paymentMapper.insertPaymentsCard(paymentsCardEntity);
     }
 }

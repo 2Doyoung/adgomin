@@ -2,8 +2,9 @@ package com.adgomin.payment.mapper;
 
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.vo.JoinVO;
-import com.adgomin.media.vo.MediaRegisterVO;
-import com.adgomin.payment.entity.PaymentEntity;
+import com.adgomin.payment.entity.PaymentFailedEntity;
+import com.adgomin.payment.entity.PaymentsCardEntity;
+import com.adgomin.payment.entity.PaymentsEntity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -13,9 +14,9 @@ public interface PaymentMapper {
     JoinVO phoneNumberCertificationCheck(@Param(value = "userOrder") int userOrder, @Param(value = "phoneNumberCertification") String phoneNumberCertification);
     JoinVO getVerificationInfo(@Param(value = "userOrder") int userOrder);
     int phoneNumberCertificationSuccess(JoinEntity joinEntity);
-    int paymentRegister(PaymentEntity paymentEntity);
+    int paymentRegister(PaymentsEntity paymentsEntity);
     JoinVO getSellerOrder(@Param(value = "mediaOrder") int mediaOrder);
-    PaymentEntity getTotalAmount(@Param(value = "orderId") String orderId);
-    void setFailureReason(PaymentEntity paymentEntity);
-    void setSuccessPayment(PaymentEntity paymentEntity);
+    void insertPaymentFailed(PaymentFailedEntity paymentFailedEntity);
+    void insertPayments(PaymentsEntity paymentsEntity);
+    void insertPaymentsCard(PaymentsCardEntity paymentsCardEntity);
 }

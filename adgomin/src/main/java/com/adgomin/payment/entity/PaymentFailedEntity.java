@@ -2,43 +2,23 @@ package com.adgomin.payment.entity;
 
 import java.util.Date;
 
-public class PaymentEntity {
-    private int paymentOrder;
-    private String orderId;
+public class PaymentFailedEntity {
+    private int paymentFailedOrder;
     private int buyerOrder;
     private int sellerOrder;
     private int mediaOrder;
     private int totalAmount;
-    private String paymentKey;
     private int paymentAmount;
-    private String paymentType;
-    private String paymentStatus;
-    private String paymentFailureReason;
+    private String paymentFailedReason;
     private Date createDt;
     private Date modifyDt;
 
-    public String getPaymentFailureReason() {
-        return paymentFailureReason;
+    public int getPaymentFailedOrder() {
+        return paymentFailedOrder;
     }
 
-    public void setPaymentFailureReason(String paymentFailureReason) {
-        this.paymentFailureReason = paymentFailureReason;
-    }
-
-    public int getPaymentOrder() {
-        return paymentOrder;
-    }
-
-    public void setPaymentOrder(int paymentOrder) {
-        this.paymentOrder = paymentOrder;
-    }
-
-    public String getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setPaymentFailedOrder(int paymentFailedOrder) {
+        this.paymentFailedOrder = paymentFailedOrder;
     }
 
     public int getBuyerOrder() {
@@ -73,14 +53,6 @@ public class PaymentEntity {
         this.totalAmount = totalAmount;
     }
 
-    public String getPaymentKey() {
-        return paymentKey;
-    }
-
-    public void setPaymentKey(String paymentKey) {
-        this.paymentKey = paymentKey;
-    }
-
     public int getPaymentAmount() {
         return paymentAmount;
     }
@@ -89,20 +61,12 @@ public class PaymentEntity {
         this.paymentAmount = paymentAmount;
     }
 
-    public String getPaymentType() {
-        return paymentType;
+    public String getPaymentFailedReason() {
+        return paymentFailedReason;
     }
 
-    public void setPaymentType(String paymentType) {
-        this.paymentType = paymentType;
-    }
-
-    public String getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
+    public void setPaymentFailedReason(String paymentFailedReason) {
+        this.paymentFailedReason = paymentFailedReason;
     }
 
     public Date getCreateDt() {
