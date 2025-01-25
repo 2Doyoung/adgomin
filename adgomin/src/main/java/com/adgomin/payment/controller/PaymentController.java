@@ -5,6 +5,7 @@ import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.vo.JoinVO;
 import com.adgomin.media.vo.MediaRegisterVO;
 import com.adgomin.payment.entity.PaymentFailedEntity;
+import com.adgomin.payment.entity.PaymentsBankEntity;
 import com.adgomin.payment.entity.PaymentsCardEntity;
 import com.adgomin.payment.entity.PaymentsEntity;
 import com.adgomin.payment.service.PaymentService;
@@ -264,6 +265,12 @@ public class PaymentController {
                 paymentsCardEntity.setAcquCardName(responseNode.get("card").get("acquCardName").asText());
 
                 this.paymentService.insertPaymentsCard(paymentsCardEntity);
+            } else if(responseNode.get("payMethod").asText().equals("bank")) {
+                PaymentsBankEntity paymentsBankEntity = new PaymentsBankEntity();
+
+                paymentsBankEntity.setPaymentOrder(paymentOrder);
+                paymentsBankEntity.setBankCode(responseNode.get("bank").get("bankCode").asText());
+                paymentsBankEntity.setBankName(responseNode.get("bank").get("bankName").asText());
             }
 
             modelAndView = new ModelAndView("payment/success");

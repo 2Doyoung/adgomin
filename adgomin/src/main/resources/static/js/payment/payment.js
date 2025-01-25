@@ -148,6 +148,7 @@ if(requestPaymentWindow != null) {
                 vbankHolder: buyerName.value,
                 returnUrl: '/serverAuth',
                 mallReserved: mediaOrder,
+                logoImgUrl: "https://www.adgomin.com/images/logo.png",
                 fnError: function (result) {
 
                 }
