@@ -2,9 +2,7 @@ package com.adgomin.payment.mapper;
 
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.vo.JoinVO;
-import com.adgomin.payment.entity.PaymentFailedEntity;
-import com.adgomin.payment.entity.PaymentsCardEntity;
-import com.adgomin.payment.entity.PaymentsEntity;
+import com.adgomin.payment.entity.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,4 +17,6 @@ public interface PaymentMapper {
     void insertPaymentFailed(PaymentFailedEntity paymentFailedEntity);
     void insertPayments(PaymentsEntity paymentsEntity);
     void insertPaymentsCard(PaymentsCardEntity paymentsCardEntity);
+    void insertPaymentsBank(PaymentsBankEntity paymentsBankEntity);
+    void insertPaymentsVbank(PaymentsVbankEntity paymentsVbankEntity);
 }

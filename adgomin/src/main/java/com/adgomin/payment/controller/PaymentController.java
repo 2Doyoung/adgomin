@@ -4,10 +4,7 @@ import com.adgomin.email.service.EmailService;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.vo.JoinVO;
 import com.adgomin.media.vo.MediaRegisterVO;
-import com.adgomin.payment.entity.PaymentFailedEntity;
-import com.adgomin.payment.entity.PaymentsBankEntity;
-import com.adgomin.payment.entity.PaymentsCardEntity;
-import com.adgomin.payment.entity.PaymentsEntity;
+import com.adgomin.payment.entity.*;
 import com.adgomin.payment.service.PaymentService;
 import com.adgomin.post.service.PostService;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -29,13 +26,12 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.mail.MessagingException;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 @Controller(value = "com.adgomin.payment.controller.PaymentController")
 public class PaymentController {
@@ -177,6 +173,12 @@ public class PaymentController {
             @RequestParam String tid,
             @RequestParam int amount,
             @RequestParam int mallReserved,
+            @RequestParam String authResultCode,
+            @RequestParam String authResultMsg,
+            @RequestParam String clientId,
+            @RequestParam String orderId,
+            @RequestParam String authToken,
+            @RequestParam String signature,
             Model model, @SessionAttribute(name = "LOGIN_USER", required = false) JoinVO joinVO) throws Exception {
         ModelAndView modelAndView = null;
 
@@ -185,6 +187,24 @@ public class PaymentController {
         int mediaPriceAmount = Integer.parseInt(getPost.getMediaPrice().replace(",", ""));
         int mediaPriceCharge = (int) Math.floor(mediaPriceAmount * 0.05 / 10) * 10;
         int totalAmount = mediaPriceAmount + mediaPriceCharge;
+
+        String clientSignatureTest = generateClientSignature(authToken, clientId, amount);
+
+        if(!authResultCode.equals("0000")) {
+            modelAndView = new ModelAndView("payment/fail");
+
+            modelAndView.addObject("reason", "결제 중 불일치 정보가 감지되었습니다.");
+
+            return modelAndView;
+        }
+
+        if(!signature.equals(clientSignatureTest)) {
+            modelAndView = new ModelAndView("payment/fail");
+
+            modelAndView.addObject("reason", "결제 중 불일치 정보가 감지되었습니다.");
+
+            return modelAndView;
+        }
 
         if(amount != totalAmount) {
             PaymentFailedEntity paymentFailedEntity = new PaymentFailedEntity();
@@ -204,12 +224,21 @@ public class PaymentController {
             return modelAndView;
         }
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+        String ediDate = sdf.format(new Date());
+
+        String signData = generateServerSignature(tid, amount, ediDate);
+
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Basic " + Base64.getEncoder().encodeToString((CLIENT_ID + ":" + SECRET_KEY).getBytes()));
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         Map<String, Object> AuthenticationMap = new HashMap<>();
         AuthenticationMap.put("amount", String.valueOf(amount));
+        AuthenticationMap.put("tid", tid);
+        AuthenticationMap.put("ediDate", ediDate);
+        AuthenticationMap.put("signData", signData);
+        AuthenticationMap.put("returnCharSet", "utf-8");
 
         HttpEntity<String> request = new HttpEntity<>(objectMapper.writeValueAsString(AuthenticationMap), headers);
 
@@ -221,6 +250,21 @@ public class PaymentController {
         model.addAttribute("resultMsg", responseNode.get("resultMsg").asText());
 
         System.out.println(responseNode.toPrettyString());
+
+        String responseSignData = responseNode.get("signature").asText();
+        String responseTid = responseNode.get("tid").asText();
+        int responseAmount = responseNode.get("amount").asInt();
+        String responseEdiDate = responseNode.get("ediDate").asText();
+
+        String expectedSignData = generateServerSignature(responseTid, responseAmount, responseEdiDate);
+
+        if (!expectedSignData.equals(responseSignData)) {
+            modelAndView = new ModelAndView("payment/fail");
+
+            modelAndView.addObject("reason", "결제 중 불일치 정보가 감지되었습니다.");
+
+            return modelAndView;
+        }
 
         if (resultCode.equalsIgnoreCase("0000")) {
             DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
@@ -251,7 +295,8 @@ public class PaymentController {
 
             int paymentOrder = paymentsEntity.getPaymentOrder();
 
-            if(responseNode.get("payMethod").asText().equals("card")) {
+            if(responseNode.get("payMethod").asText().equals("card") || responseNode.get("payMethod").asText().equals("kakaopay")
+            || responseNode.get("payMethod").asText().equals("naverpay")) {
                 PaymentsCardEntity paymentsCardEntity = new PaymentsCardEntity();
 
                 paymentsCardEntity.setPaymentOrder(paymentOrder);
@@ -271,6 +316,24 @@ public class PaymentController {
                 paymentsBankEntity.setPaymentOrder(paymentOrder);
                 paymentsBankEntity.setBankCode(responseNode.get("bank").get("bankCode").asText());
                 paymentsBankEntity.setBankName(responseNode.get("bank").get("bankName").asText());
+
+                this.paymentService.insertPaymentsBank(paymentsBankEntity);
+            } else if(responseNode.get("payMethod").asText().equals("vbank")) {
+                DateTimeFormatter inputFormatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+                DateTimeFormatter outputFormatter2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                ZonedDateTime dateTime2 = ZonedDateTime.parse(responseNode.get("vbank").get("vbankExpDate").asText(), inputFormatter2);
+                String vbankExpDate = dateTime2.format(outputFormatter2);
+
+                PaymentsVbankEntity paymentsVbankEntity = new PaymentsVbankEntity();
+
+                paymentsVbankEntity.setPaymentOrder(paymentOrder);
+                paymentsVbankEntity.setVbankCode(responseNode.get("vbank").get("vbankCode").asText());
+                paymentsVbankEntity.setVbankName(responseNode.get("vbank").get("vbankName").asText());
+                paymentsVbankEntity.setVbankNumber(responseNode.get("vbank").get("vbankNumber").asText());
+                paymentsVbankEntity.setVbankExpDate(vbankExpDate);
+                paymentsVbankEntity.setVbankHolder(responseNode.get("vbank").get("vbankHolder").asText());
+
+                this.paymentService.insertPaymentsVbank(paymentsVbankEntity);
             }
 
             modelAndView = new ModelAndView("payment/success");
@@ -281,5 +344,41 @@ public class PaymentController {
         }
 
         return modelAndView;
+    }
+
+    public String generateClientSignature(String authToken, String clientId, int amount) throws Exception {
+        String rawData = authToken + clientId + amount + SECRET_KEY;
+
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hash = digest.digest(rawData.getBytes(StandardCharsets.UTF_8));
+
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : hash) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+
+        return hexString.toString();
+    }
+
+    public String generateServerSignature(String tid, int amount, String ediDate) throws Exception {
+        String rawData = tid + amount + ediDate + SECRET_KEY;
+
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        byte[] hash = digest.digest(rawData.getBytes(StandardCharsets.UTF_8));
+
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : hash) {
+            String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+
+        return hexString.toString();
     }
 }

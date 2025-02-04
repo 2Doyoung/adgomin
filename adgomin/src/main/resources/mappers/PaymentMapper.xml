@@ -85,4 +85,18 @@
         VALUES
         (#{paymentOrder}, #{cardCode}, #{cardName}, #{cardNum}, #{cardQuota}, #{cardType}, #{canPartCancel}, #{acquCardCode}, #{acquCardName})
     </insert>
+
+    <insert id="insertPaymentsBank" parameterType="com.adgomin.payment.entity.PaymentsBankEntity">
+        INSERT INTO adgomin_payments_bank
+        (payment_order, bank_code, bank_name)
+        VALUES
+        (#{paymentOrder}, #{bankCode}, #{bankName})
+    </insert>
+
+    <insert id="insertPaymentsVbank" parameterType="com.adgomin.payment.entity.PaymentsVbankEntity">
+        INSERT INTO adgomin_payments_vbank
+            (payment_order, vbank_code, vbank_name, vbank_number, vbank_exp_date, vbank_holder)
+        VALUES
+            (#{paymentOrder}, #{vbankCode}, #{vbankName}, #{vbankNumber}, #{vbankExpDate}, #{vbankHolder})
+    </insert>
 </mapper>

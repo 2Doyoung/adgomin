@@ -4,9 +4,7 @@ import com.adgomin.enums.CommonResult;
 import com.adgomin.join.entity.JoinEntity;
 import com.adgomin.join.vo.JoinVO;
 import com.adgomin.media.vo.MediaRegisterVO;
-import com.adgomin.payment.entity.PaymentFailedEntity;
-import com.adgomin.payment.entity.PaymentsCardEntity;
-import com.adgomin.payment.entity.PaymentsEntity;
+import com.adgomin.payment.entity.*;
 import com.adgomin.payment.mapper.PaymentMapper;
 import com.adgomin.post.mapper.PostMapper;
 import org.springframework.http.*;
@@ -106,5 +104,13 @@ public class PaymentService {
 
     public void insertPaymentsCard(PaymentsCardEntity paymentsCardEntity) {
         this.paymentMapper.insertPaymentsCard(paymentsCardEntity);
+    }
+
+    public void insertPaymentsBank(PaymentsBankEntity paymentsBankEntity) {
+        this.paymentMapper.insertPaymentsBank(paymentsBankEntity);
+    }
+
+    public void insertPaymentsVbank(PaymentsVbankEntity paymentsVbankEntity) {
+        this.paymentMapper.insertPaymentsVbank(paymentsVbankEntity);
     }
 }
