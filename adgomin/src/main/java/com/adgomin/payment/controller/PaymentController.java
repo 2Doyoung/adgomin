@@ -336,8 +336,22 @@ public class PaymentController {
                 this.paymentService.insertPaymentsVbank(paymentsVbankEntity);
             }
 
-            modelAndView = new ModelAndView("payment/success");
+            if(responseNode.get("payMethod").asText().equals("card") || responseNode.get("payMethod").asText().equals("kakaopay")
+                    || responseNode.get("payMethod").asText().equals("naverpay")) {
+                modelAndView = new ModelAndView("payment/success");
+            } else if(responseNode.get("payMethod").asText().equals("vbank")) {
+                modelAndView = new ModelAndView("payment/success_vbank");
+            }
 
+            modelAndView.addObject("totalAmount", totalAmount);
+            modelAndView.addObject("mediaPriceCharge", mediaPriceCharge);
+            modelAndView.addObject("mediaTitle", getPost.getMediaTitle());
+            modelAndView.addObject("userOrder", getPost.getUserOrder());
+            modelAndView.addObject("nickname", getPost.getNickname());
+            modelAndView.addObject("mediaPrice", getPost.getMediaPrice());
+            modelAndView.addObject("thumbnailImgNm", getPost.getThumbnailImgNm());
+            modelAndView.addObject("thumbnailImgFilePath", getPost.getThumbnailImgFilePath());
+            modelAndView.addObject("orderId", responseNode.get("orderId").asText());
             modelAndView.addObject("receiptUrl", responseNode.get("receiptUrl").asText());
         } else {
             modelAndView = new ModelAndView("payment/fail");

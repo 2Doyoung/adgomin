@@ -452,7 +452,7 @@ body {
 .charge-info-div {
     visibility: hidden;
     position: absolute;
-    background-color: #A4A4A4;
+    background-color: #0B0B61;
     color: #FFFFFF;
     border-radius: 5px;
     width: 15rem;
@@ -470,7 +470,7 @@ body {
     border-top: 0px solid transparent;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid #A4A4A4;
+    border-bottom: 8px solid #0B0B61;
     content: "";
     left: 46px;
     top: -5px;
