@@ -1,5 +1,8 @@
 ## 애드곰인 (adgomin) - 광고 중개 플랫폼
 
+## 주소
+[https://adgomin.com](https://www.adgomin.com/)
+
 ## 프로젝트 개요
 **광고주**와 **광고 매체**를 연결하는 광고 중개 플랫폼
 
