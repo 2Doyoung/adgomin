@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>애드곰인 - 결제하기</title>
+    <link rel="stylesheet" th:href="@{/css/payment/success_vbank.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/header.css}">
+    <link rel="stylesheet" th:href="@{/css/layouts/footer.css}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script defer th:src="@{/js/payment/success_vbank.js}"></script>
+    <script defer th:src="@{/js/layouts/header.js}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <th:block th:replace="~{layouts/favicon :: head}"></th:block>
+</head>
+<body>
+<th:block th:replace="~{layouts/header :: body}"></th:block>
+<div class="success-wrap">
+    <div class="order-complete-wrap">
+        <div class="order-complete-title">주문이 완료되었습니다.</div>
+        <div class="order-id">(주문번호 <span th:text="${orderId}"></span>)</div>
+    </div>
+    <div class="purchase-history-title">주문 내역</div>
+    <div class="purchase-history">
+        <div class="success-thumbnail">
+            <img class="success-thumbnail-img" th:src="@{/main/thumbnail/image (thumbnailImgNm=${thumbnailImgNm}, thumbnailImgFilePath =${thumbnailImgFilePath})}">
+        </div>
+        <div class="success-title-nickname">
+            <div class="success-title" th:text="${mediaTitle}"></div>
+            <div class="success-profile-nickname">
+                <div class="success-profile">
+                    <img th:src="@{/profile/image/{userOrder} (userOrder=${userOrder})}">
+                </div>
+                <div class="success-nickname-div">
+                    <div class="success-nickname" th:text="${nickname}"></div>
+                </div>
+            </div>
+        </div>
+        <div th:text="${mediaPrice}" class="success-price"></div><span class="success-won">원</span>
+    </div>
+    <div class="payment-information-title">결제 정보</div>
+    <div class="payment-information">
+        <div class="payment-information-line">
+            <div class="payment-information-line-title">주문 금액</div>
+            <div class="payment-information-line-detail">
+                <div th:text="${mediaPrice}"></div>
+                <span>원</span>
+            </div>
+        </div>
+        <div class="payment-information-line">
+            <div class="payment-information-line-title">수수료</div>
+            <div class="payment-information-line-detail">
+                <div th:text="${mediaPriceCharge}"></div>
+                <span>원</span>
+            </div>
+        </div>
+        <div class="payment-information-line">
+            <div class="payment-information-line-title">총 결제 금액</div>
+            <div class="payment-information-line-detail-total">
+                <div th:text="${totalAmount}"></div>
+                <span>원</span>
+            </div>
+        </div>
+        <div class="payment-information-line">
+            <a class="receipt-url-a-tag" th:href="${receiptUrl}">영수증 확인</a>
+        </div>
+    </div>
+</div>
+<hr class="user-footer">
+<th:block th:replace="~{layouts/footer :: body}"></th:block>
+</body>
+</html>
