@@ -1,6 +1,6 @@
 BUILD_JAR=$(ls ./build/libs/*.jar | grep 'SNAPSHOT.jar')
 JAR_NAME=$(basename $BUILD_JAR)
-DEPLOY_PATH=/home/ec2-user/app
+DEPLOY_PATH=/home/ec2-user
 DEPLOY_LOG="$DEPLOY_PATH/deploy.log"
 APP_LOG="$DEPLOY_PATH/application.log"
 PID=$(pgrep -f $JAR_NAME)
