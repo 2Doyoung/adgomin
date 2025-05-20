@@ -1,18 +1,14 @@
-BUILD_JAR=$(ls ./build/libs/*.jar | grep 'SNAPSHOT.jar')
-JAR_NAME=$(basename $BUILD_JAR)
-DEPLOY_PATH=/home/ec2-user
-DEPLOY_LOG="$DEPLOY_PATH/deploy.log"
-APP_LOG="$DEPLOY_PATH/application.log"
-PID=$(pgrep -f $JAR_NAME)
 
-echo "> 빌드 파일 복사" >> $DEPLOY_LOG
-cp $BUILD_JAR $DEPLOY_PATH
+echo ">>> 권한 복구 시작"
 
-echo "> 실행 중인 애플리케이션 종료" >> $DEPLOY_LOG
-if [ -n "$PID" ]; then
-    kill -15 $PID
-    sleep 5
-fi
+# ec2-user 홈 디렉토리 소유자 및 그룹 복구
+sudo chown -R ec2-user:ec2-user /home/ec2-user
 
-echo "> 애플리케이션 실행" >> $DEPLOY_LOG
-nohup java -jar $DEPLOY_PATH/$JAR_NAME >> $APP_LOG 2>&1 &
+# 권한 복구 (홈 디렉토리는 755 권한 권장)
+sudo chmod 755 /home/ec2-user
+
+# 하위 파일/디렉토리는 기본 권한으로(필요하면 조절)
+sudo find /home/ec2-user -type d -exec chmod 755 {} \;
+sudo find /home/ec2-user -type f -exec chmod 644 {} \;
+
+echo ">>> 권한 복구 완료"
