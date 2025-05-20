@@ -27,6 +27,6 @@ fi
 
 # 3. 애플리케이션 실행 (jenkins 권한으로)
 echo "> 애플리케이션 실행" >> $DEPLOY_LOG
-sudo nohup java -jar $DEPLOY_PATH/$JAR_NAME &
+nohup java -jar $DEPLOY_PATH/$JAR_NAME &
 
 echo "> 배포 완료" >> $DEPLOY_LOG
